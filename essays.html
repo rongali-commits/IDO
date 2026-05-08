@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="All essays by Sai R — Noerong. History, geopolitics, philosophy, science, and human nature.">
+  <title>Essays — Noerong</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='80' font-size='90' font-family='Georgia' fill='%23c9a84c'%3EN%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+  <div class="reading-progress"></div>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">Noerong</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="essays.html" class="active">Essays</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    </div>
+  </nav>
+
+  <p class="section-label" style="margin-top: 80px;">All Essays</p>
+
+  <div class="filters" id="filters">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="History">History</button>
+    <button class="filter-btn" data-filter="Geopolitics">Geopolitics</button>
+    <button class="filter-btn" data-filter="Philosophy">Philosophy</button>
+    <button class="filter-btn" data-filter="Anthropology">Anthropology</button>
+    <button class="filter-btn" data-filter="Science">Science</button>
+    <button class="filter-btn" data-filter="What If">What If</button>
+  </div>
+
+  <main class="essays" id="essays-list">
+
+    <a href="posts/the-man-who-changed-8-billion-peoples-dna.html" class="essay-card" data-category="History">
+      <div class="essay-meta">
+        <span class="essay-category">History</span>
+        <span class="essay-dot">·</span>
+        <span>9 min read</span>
+      </div>
+      <h2 class="essay-title">The Man Who Changed 8 Billion People's DNA — Without Having Children</h2>
+      <p class="essay-excerpt">Hitler had no children. His DNA died with him. Yet the war he started may be the single most influential force shaping who was born — and who was not — in the twentieth century.</p>
+      <span class="essay-read-more">Read essay</span>
+    </a>
+
+    <a href="posts/britishers-still-rule-the-world.html" class="essay-card" data-category="Geopolitics">
+      <div class="essay-meta">
+        <span class="essay-category">Geopolitics</span>
+        <span class="essay-dot">·</span>
+        <span>9 min read</span>
+      </div>
+      <h2 class="essay-title">Britishers Ruled 2/3 of the World in the Past. They Still Rule 2/3 of the World Today.</h2>
+      <p class="essay-excerpt">You think the British Empire is dead. The flags changed. The borders moved. The governors went home. But the children stayed. And so did the laws, the language, and the institutions.</p>
+      <span class="essay-read-more">Read essay</span>
+    </a>
+
+    <a href="posts/the-universe-is-not-a-coffee-mug.html" class="essay-card" data-category="Philosophy">
+      <div class="essay-meta">
+        <span class="essay-category">Philosophy</span>
+        <span class="essay-dot">·</span>
+        <span>8 min read</span>
+      </div>
+      <h2 class="essay-title">The Universe Is Not a Coffee Mug</h2>
+      <p class="essay-excerpt">When people ask why the universe exists, the instinct feels obvious: surely it must have a cause. But there is a hidden assumption buried inside that reasoning — and unpacking it changes everything.</p>
+      <span class="essay-read-more">Read essay</span>
+    </a>
+
+  </main>
+
+  <p class="no-results" id="no-results">No essays in this category yet.</p>
+
+  <footer class="footer">
+    <span class="footer-name">Noerong</span>
+    <div class="footer-links">
+      <a href="essays.html">Essays</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <span>&copy; 2026 Sai R</span>
+  </footer>
+
+  <button class="scroll-top" aria-label="Back to top">↑</button>
+  <script src="js/main.js"></script>
+  <script>
+    (function () {
+      var buttons    = document.querySelectorAll('.filter-btn');
+      var cards      = document.querySelectorAll('.essay-card');
+      var noResults  = document.getElementById('no-results');
+
+      buttons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          buttons.forEach(function (b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+
+          var filter  = btn.dataset.filter;
+          var visible = 0;
+
+          cards.forEach(function (card) {
+            var show = filter === 'all' || card.dataset.category === filter;
+            card.style.display = show ? 'block' : 'none';
+            if (show) visible++;
+          });
+
+          noResults.classList.toggle('visible', visible === 0);
+        });
+      });
+    }());
+  </script>
+
+</body>
+</html>
