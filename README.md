@@ -1,81 +1,72 @@
-# Noerong
+# Noerong v2
 
-**Big Ideas. Vivid Thinking.**
+A production-ready long-form publication built with Next.js 15, TypeScript, MDX, and a custom editorial design.
 
-The personal essay site of Sai R — writing on history, anthropology, geopolitics, philosophy, and the quiet forces that shape who we are.
+## Run locally
 
----
-
-## File structure
-
-```
-noerong/
-├── index.html              ← Homepage
-├── essays.html             ← Archive with category filters
-├── about.html              ← About page
-├── contact.html            ← Contact page
-├── css/
-│   └── style.css           ← All styling
-├── posts/
-│   ├── the-man-who-changed-8-billion-peoples-dna.html
-│   ├── britishers-still-rule-the-world.html
-│   └── the-universe-is-not-a-coffee-mug.html
-├── images/                 ← For future article images
-├── .gitignore
-└── README.md
+```bash
+pnpm install
+pnpm dev
 ```
 
+Open [http://localhost:3000](http://localhost:3000).
+
+## Publish a new essay
+
+1. Duplicate one of the files in `content/essays/`.
+2. Rename it to the URL slug you want, such as `why-intelligence-evolves.mdx`.
+3. Update the frontmatter:
+
+```yaml
 ---
-
-## How to publish a new essay
-
-1. **Copy** any existing post in `/posts/` as a template
-2. **Rename** the file: `your-essay-slug.html` (lowercase, hyphens, no spaces)
-3. **Edit** these things in the new file:
-   - `<title>` tag in the `<head>`
-   - All `<meta>` description tags
-   - The article meta line (category, read time)
-   - The `<h1>` title
-   - The `<p class="article-subtitle">` subtitle
-   - The article body content
-   - The closing line in `<p class="article-closing">`
-4. **Add** the essay card to `index.html` (top of the essays list)
-5. **Add** the essay card to `essays.html` with the correct `data-category` attribute
-6. **Commit and push:**
-   ```bash
-   git add .
-   git commit -m "Published: [Essay Title]"
-   git push
-   ```
-7. Hostinger auto-deploys in 30–60 seconds.
-
+title: "Why Intelligence Evolves"
+description: "A one-sentence promise to the reader."
+topic: "Human Nature"
+date: "2026-06-20"
+featured: false
+accent: "coral" # coral, blue, or gold
 ---
+```
 
-## Categories supported
+4. Write the essay beneath the frontmatter using Markdown.
+5. Commit and push. Vercel rebuilds the site automatically.
 
-Each essay card uses a `data-category` attribute that matches the filter buttons on the essays page:
+## Deploy on Vercel
 
-- History
-- Geopolitics
-- Philosophy
-- Anthropology
-- Science
-- What If
+1. Push this folder to a GitHub repository.
+2. In Vercel, choose **Add New → Project** and import that repository.
+3. Keep the detected Next.js defaults and deploy.
+4. In **Project Settings → Domains**, add `noerong.com` and `www.noerong.com`.
+5. Vercel will show the DNS records to add in Hostinger. Add those records in Hostinger's DNS Zone Editor and remove any old records that point to the previous host.
+6. Set `NEXT_PUBLIC_SITE_URL=https://noerong.com` in Vercel's environment variables.
 
-To add a new category: update both the filter button list in `essays.html` and add the category to a new essay card.
+Your domain remains registered at Hostinger; only the web traffic points to Vercel.
 
----
+## Newsletter
 
-## Design tokens (in case you want to tweak)
+The subscription form is wired for [Buttondown](https://buttondown.email/). Create an account, copy its API key, and add this Vercel environment variable:
 
-Edit `css/style.css`:
+```text
+BUTTONDOWN_API_KEY=your_key_here
+```
 
-- `--bg: #0e0e14` — page background
-- `--text: #ece7da` — body text
-- `--accent: #c9a84c` — gold/amber accent
-- `--serif: 'Cormorant Garamond'` — heading font
-- `--sans: 'Inter'` — body font
+Without that key, the site still builds and the form displays a clear configuration message instead of silently losing an address.
 
----
+## Included
 
-© 2026 Sai R · noerong.com
+- Responsive editorial homepage
+- MDX essay publishing
+- Essay archive and topic collections
+- Reading progress and automatic reading time
+- Dark mode
+- Newsletter endpoint
+- SEO metadata, sitemap, robots.txt, and RSS
+- Three migrated Noerong essays
+- Generated original hero artwork
+
+## Verification
+
+```bash
+pnpm typecheck
+pnpm build
+```
