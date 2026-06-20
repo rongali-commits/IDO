@@ -18,8 +18,8 @@ importers:
         specifier: ^15.5.7
         version: 15.5.19(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       next-mdx-remote:
-        specifier: ^5.0.0
-        version: 5.0.0(@types/react@19.2.17)(react@19.2.7)
+        specifier: ^6.0.0
+        version: 6.0.0(@types/react@19.2.17)(react@19.2.7)
       react:
         specifier: ^19.1.1
         version: 19.2.7
@@ -853,6 +853,12 @@ packages:
 
   next-mdx-remote@5.0.0:
     resolution: {integrity: sha512-RNNbqRpK9/dcIFZs/esQhuLA8jANqlH694yqoDBK8hkVdJUndzzGmnPHa2nyi90N4Z9VmzuSWNRpr5ItT3M7xQ==}
+    engines: {node: '>=14', npm: '>=7'}
+    peerDependencies:
+      react: '>=16'
+
+  next-mdx-remote@6.0.0:
+    resolution: {integrity: sha512-cJEpEZlgD6xGjB4jL8BnI8FaYdN9BzZM4NwadPe1YQr7pqoWjg9EBCMv3nXBkuHqMRfv2y33SzUsuyNh9LFAQQ==}
     engines: {node: '>=14', npm: '>=7'}
     peerDependencies:
       react: '>=16'
@@ -2221,6 +2227,20 @@ snapshots:
       '@mdx-js/react': 3.1.1(@types/react@19.2.17)(react@19.2.7)
       react: 19.2.7
       unist-util-remove: 3.1.1
+      vfile: 6.0.3
+      vfile-matter: 5.0.1
+    transitivePeerDependencies:
+      - '@types/react'
+      - supports-color
+
+  next-mdx-remote@6.0.0(@types/react@19.2.17)(react@19.2.7):
+    dependencies:
+      '@babel/code-frame': 7.29.7
+      '@mdx-js/mdx': 3.1.1
+      '@mdx-js/react': 3.1.1(@types/react@19.2.17)(react@19.2.7)
+      react: 19.2.7
+      unist-util-remove: 4.0.0
+      unist-util-visit: 5.1.0
       vfile: 6.0.3
       vfile-matter: 5.0.1
     transitivePeerDependencies:

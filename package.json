@@ -13,7 +13,7 @@
     "@tailwindcss/typography": "^0.5.16",
     "gray-matter": "^4.0.3",
     "next": "^15.5.7",
-    "next-mdx-remote": "^5.0.0",
+    "next-mdx-remote": "^6.0.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "reading-time": "^1.5.0",
