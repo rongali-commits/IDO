@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { EssayCard } from "@/components/essay-card";
 import { getAllEssays } from "@/lib/essays";
 
-export const metadata: Metadata = { title: "Essays", description: "Long-form Noerong essays on history, science, geopolitics, and philosophy." };
+export const metadata: Metadata = { title: "Essays", description: "Long-form Noerong essays on history, science, geopolitics, and philosophy.", alternates: { canonical: "/essays" } };
 
 export default function EssaysPage() {
   const essays = getAllEssays();
