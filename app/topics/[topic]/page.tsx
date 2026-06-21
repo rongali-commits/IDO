@@ -1,8 +1,16 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { EssayCard } from "@/components/essay-card";
 import { getAllEssays } from "@/lib/essays";
 import { topicDescriptions } from "@/lib/site";
+
+export async function generateMetadata({ params }: { params: Promise<{ topic: string }> }): Promise<Metadata> {
+  const { topic: slug } = await params;
+  const topic = Object.keys(topicDescriptions).find((item) => item.toLowerCase().replaceAll(" ", "-") === slug);
+  if (!topic) return {};
+  return { title: topic, description: topicDescriptions[topic], alternates: { canonical: `/topics/${slug}` } };
+}
 
 export default async function TopicPage({ params }: { params: Promise<{ topic: string }> }) {
   const { topic: slug } = await params;

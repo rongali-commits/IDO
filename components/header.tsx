@@ -9,6 +9,7 @@ export function Header() {
         <nav aria-label="Primary navigation">
           <Link href="/essays">Essays</Link>
           <Link href="/topics">Topics</Link>
+          <Link href="/newsletter">Newsletter</Link>
           <Link href="/about">About</Link>
         </nav>
         <ThemeToggle />

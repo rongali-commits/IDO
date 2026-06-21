@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Source_Serif_4 } from "next/font/google";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { Analytics } from "@/components/analytics";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
@@ -12,7 +13,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: { default: siteConfig.title, template: "%s — Noerong" },
   description: siteConfig.description,
-  alternates: { types: { "application/rss+xml": "/feed.xml" } },
+  alternates: { canonical: "./", types: { "application/rss+xml": "/feed.xml" } },
+  verification: { google: process.env.GOOGLE_SITE_VERIFICATION },
+  robots: { index: true, follow: true },
   openGraph: { title: siteConfig.title, description: siteConfig.description, url: siteConfig.url, siteName: siteConfig.name, type: "website" },
 };
 
@@ -26,6 +29,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Header />
         {children}
         <Footer />
+        <Analytics />
       </body>
     </html>
   );

@@ -2,14 +2,22 @@
 
 import { FormEvent, useState } from "react";
 
-export function NewsletterForm({ dark = false }: { dark?: boolean }) {
+export function NewsletterForm({ dark = false, source = "site" }: { dark?: boolean; source?: string }) {
   const [state, setState] = useState<"idle" | "loading" | "done" | "error">("idle");
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setState("loading");
-    const form = new FormData(event.currentTarget);
+    const formElement = event.currentTarget;
+    const form = new FormData(formElement);
     const response = await fetch("/api/subscribe", { method: "POST", body: JSON.stringify({ email: form.get("email") }), headers: { "Content-Type": "application/json" } });
     setState(response.ok ? "done" : "error");
+    if (response.ok) {
+      window.gtag?.("event", "newsletter_signup", {
+        signup_source: source,
+        page_path: window.location.pathname,
+      });
+      formElement.reset();
+    }
   }
   return (
     <form className={`newsletter-form ${dark ? "newsletter-dark" : ""}`} onSubmit={submit}>
