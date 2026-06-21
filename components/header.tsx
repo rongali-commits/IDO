@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ThemeToggle } from "./theme-toggle";
+import { MobileNav } from "./mobile-nav";
 
 export function Header() {
   return (
@@ -12,7 +13,7 @@ export function Header() {
           <Link href="/newsletter">Newsletter</Link>
           <Link href="/about">About</Link>
         </nav>
-        <ThemeToggle />
+        <div className="header-actions"><ThemeToggle /><MobileNav /></div>
       </div>
     </header>
   );

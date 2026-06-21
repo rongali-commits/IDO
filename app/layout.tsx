@@ -15,8 +15,9 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   alternates: { canonical: "./", types: { "application/rss+xml": "/feed.xml" } },
   verification: { google: process.env.GOOGLE_SITE_VERIFICATION },
-  robots: { index: true, follow: true },
-  openGraph: { title: siteConfig.title, description: siteConfig.description, url: siteConfig.url, siteName: siteConfig.name, type: "website" },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 } },
+  openGraph: { title: siteConfig.title, description: siteConfig.description, url: siteConfig.url, siteName: siteConfig.name, type: "website", images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Noerong — Big questions, carefully explored" }] },
+  twitter: { card: "summary_large_image", title: siteConfig.title, description: siteConfig.description, images: ["/twitter-image"] },
 };
 
 const themeScript = `(function(){try{var t=localStorage.getItem('noerong-theme');var d=t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches);document.documentElement.classList.toggle('dark',d)}catch(e){}})()`;

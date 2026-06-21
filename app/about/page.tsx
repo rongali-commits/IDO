@@ -20,6 +20,7 @@ export default function AboutPage() {
         <h2>What the name means</h2>
         <p>Noerong is less a doctrine than a working posture: stay curious, follow the awkward implication, and never confuse confidence with clarity.</p>
         <div className="about-signoff"><span>SR</span><p><strong>Sai R</strong><br />Writer &amp; builder of Noerong</p></div>
+        <p className="about-contact">Questions, corrections, or reading suggestions: <a href="mailto:hello@noerong.com">hello@noerong.com</a>. Read the <Link href="/editorial-policy">editorial and corrections policy</Link>.</p>
         <Link className="button" href="/essays">Read the essays →</Link>
       </section>
     </main>

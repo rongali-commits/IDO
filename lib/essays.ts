@@ -11,9 +11,11 @@ export type Essay = {
   description: string;
   topic: string;
   date: string;
+  updated: string;
   featured: boolean;
   accent: "coral" | "blue" | "gold";
   readTime: string;
+  wordCount: number;
   content: string;
 };
 
@@ -24,15 +26,18 @@ export function getEssaySlugs() {
 export function getEssay(slug: string): Essay {
   const raw = fs.readFileSync(path.join(ESSAYS_DIR, `${slug}.mdx`), "utf8");
   const { data, content } = matter(raw);
+  const readingStats = readingTime(content);
   return {
     slug,
     title: data.title,
     description: data.description,
     topic: data.topic,
     date: data.date,
+    updated: data.updated || data.date,
     featured: Boolean(data.featured),
     accent: data.accent || "coral",
-    readTime: readingTime(content).text.replace("min read", "minute read"),
+    readTime: readingStats.text.replace("min read", "minute read"),
+    wordCount: readingStats.words,
     content,
   };
 }
