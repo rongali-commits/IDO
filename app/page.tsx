@@ -48,7 +48,7 @@ export default function Home() {
       </section>
 
       <section className="newsletter-band">
-        <div className="shell newsletter-band-grid"><div><p className="eyebrow">The occasional letter</p><h2>Keep one good question<br />in your inbox.</h2></div><NewsletterForm /></div>
+        <div className="shell newsletter-band-grid"><div><p className="eyebrow">The occasional letter</p><h2>Keep one good question<br />in your inbox.</h2></div><NewsletterForm source="homepage" /></div>
       </section>
     </main>
   );
