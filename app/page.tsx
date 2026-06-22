@@ -8,6 +8,7 @@ import { topicDescriptions } from "@/lib/site";
 
 export default function Home() {
   const essays = getAllEssays();
+  const populatedTopics = Object.entries(topicDescriptions).filter(([topic]) => essays.some((essay) => essay.topic === topic));
   return (
     <main>
       <section className="hero">
@@ -39,7 +40,7 @@ export default function Home() {
       <section className="section shell">
         <div className="section-heading"><div><p className="eyebrow">Follow a thread</p><h2>Explore by topic</h2></div></div>
         <div className="topic-grid">
-          {Object.entries(topicDescriptions).slice(0, 4).map(([topic, description], index) => (
+          {populatedTopics.slice(0, 4).map(([topic, description], index) => (
             <Link href={`/topics/${encodeURIComponent(topic.toLowerCase().replaceAll(" ", "-"))}`} className="topic-card" key={topic}>
               <span>0{index + 1}</span><h3>{topic}</h3><p>{description}</p><ArrowIcon />
             </Link>

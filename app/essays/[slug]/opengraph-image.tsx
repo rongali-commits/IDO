@@ -20,7 +20,7 @@ export default async function EssayOpenGraphImage({ params }: { params: Promise<
     <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "66px 76px", color: palette.foreground, background: palette.background, fontFamily: "Georgia, serif" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontFamily: "Arial, sans-serif", fontSize: 24, fontWeight: 800, letterSpacing: 4 }}><span>NOERONG.</span><span style={{ color: palette.accent, letterSpacing: 2 }}>{essay.topic.toUpperCase()}</span></div>
       <div style={{ display: "flex", maxWidth: 1040, fontSize: essay.title.length > 64 ? 61 : 72, lineHeight: 1.02, letterSpacing: -2 }}>{essay.title}</div>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontFamily: "Arial, sans-serif", fontSize: 22 }}><span>By Sai R</span><span>noerong.com</span></div>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontFamily: "Arial, sans-serif", fontSize: 22 }}><span>By Rongali Chaitanya</span><span>noerong.com</span></div>
     </div>,
     size,
   );

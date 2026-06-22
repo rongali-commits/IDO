@@ -16,7 +16,7 @@ export default function NewsletterPage() {
         <p>New essays, research notes, and one question worth carrying into the week. Sent only when there is something worthwhile to say.</p>
       </header>
       <section className="signup-panel">
-        <div><h2>Join the readers of Noerong.</h2><p>No daily churn, no growth-hack theatre, and no sharing your address.</p></div>
+        <div><h2>Join the readers of Noerong.</h2><p>Each letter brings a new essay, the sources behind it, and the questions the research left unresolved. There is no fixed schedule—only a note when the work is ready.</p></div>
         <NewsletterForm source="newsletter_page" />
       </section>
     </main>
