@@ -14,7 +14,7 @@ export function Footer() {
       <div className="shell footer-bottom">
         <Link className="wordmark inverse" href="/">NOERONG<span>.</span></Link>
         <nav aria-label="Footer navigation"><Link href="/reading-list">Reading List</Link><Link href="/now">Now</Link><Link href="/editorial-policy">Editorial</Link><Link href="/privacy">Privacy</Link></nav>
-        <p>© {new Date().getFullYear()} Sai R</p>
+        <p>© {new Date().getFullYear()} Rongali Chaitanya</p>
       </div>
     </footer>
   );

@@ -4,7 +4,7 @@ export const siteConfig = {
   description:
     "Long-form essays about history, science, civilization, philosophy, and the hidden forces that shape human life.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://noerong.com",
-  author: "Sai R",
+  author: "Rongali Chaitanya",
   email: "hello@noerong.com",
 };
 
