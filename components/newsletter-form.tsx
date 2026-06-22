@@ -9,14 +9,17 @@ export function NewsletterForm({ dark = false, source = "site" }: { dark?: boole
     setState("loading");
     const formElement = event.currentTarget;
     const form = new FormData(formElement);
-    const response = await fetch("/api/subscribe", { method: "POST", body: JSON.stringify({ email: form.get("email") }), headers: { "Content-Type": "application/json" } });
-    setState(response.ok ? "done" : "error");
-    if (response.ok) {
+    try {
+      const response = await fetch("/api/subscribe", { method: "POST", body: JSON.stringify({ email: form.get("email") }), headers: { "Content-Type": "application/json" } });
+      if (!response.ok) throw new Error("Subscription failed");
+      setState("done");
       window.gtag?.("event", "newsletter_signup", {
         signup_source: source,
         page_path: window.location.pathname,
       });
       formElement.reset();
+    } catch {
+      setState("error");
     }
   }
   return (
@@ -26,7 +29,7 @@ export function NewsletterForm({ dark = false, source = "site" }: { dark?: boole
         <input id={dark ? "footer-email" : "email"} name="email" type="email" placeholder="you@example.com" required disabled={state === "loading" || state === "done"} />
         <button type="submit" disabled={state === "loading" || state === "done"}>{state === "loading" ? "Joining…" : state === "done" ? "You’re in" : "Subscribe"}</button>
       </div>
-      <p aria-live="polite">{state === "error" ? "Newsletter setup is not connected yet. See .env.example." : state === "done" ? "Welcome. The next idea will find you." : "No noise. No growth hacks. Unsubscribe whenever."}</p>
+      <p aria-live="polite">{state === "error" ? "That did not go through. Please try again in a moment." : state === "done" ? "Welcome. The next idea will find you." : "No noise. No growth hacks. Unsubscribe whenever."}</p>
     </form>
   );
 }
