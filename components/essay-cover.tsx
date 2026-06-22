@@ -1,12 +1,9 @@
-export function EssayCover({ accent, compact = false }: { accent: "coral" | "blue" | "gold"; compact?: boolean }) {
+import Image from "next/image";
+
+export function EssayCover({ accent, src, alt, compact = false, priority = false, decorative = false }: { accent: "coral" | "blue" | "gold"; src: string; alt: string; compact?: boolean; priority?: boolean; decorative?: boolean }) {
   return (
-    <div className={`essay-cover cover-${accent} ${compact ? "cover-compact" : ""}`} aria-hidden="true">
-      <span className="cover-orbit orbit-one" />
-      <span className="cover-orbit orbit-two" />
-      <span className="cover-dot dot-one" />
-      <span className="cover-dot dot-two" />
-      <span className="cover-line" />
-      <span className="cover-figure">●</span>
+    <div className={`essay-cover cover-${accent} ${compact ? "cover-compact" : ""}`}>
+      <Image className="essay-cover-image" src={src} alt={decorative ? "" : alt} fill priority={priority} sizes={compact ? "(max-width: 650px) 110px, 160px" : "(max-width: 900px) calc(100vw - 48px), 720px"} />
     </div>
   );
 }
