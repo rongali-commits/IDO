@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "Noerong",
-  title: "Noerong — Big questions, carefully explored",
+  title: "Noerong — Question the obvious. Follow the strange.",
   description:
     "Long-form essays about history, science, civilization, philosophy, and the hidden forces that shape human life.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://noerong.com",

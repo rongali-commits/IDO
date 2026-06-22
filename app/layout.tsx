@@ -15,8 +15,9 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   alternates: { canonical: "./", types: { "application/rss+xml": "/feed.xml" } },
   verification: { google: process.env.GOOGLE_SITE_VERIFICATION },
+  icons: { icon: [{ url: "/favicon.ico", sizes: "any" }, { url: "/favicon-48x48.png", type: "image/png", sizes: "48x48" }], apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }] },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 } },
-  openGraph: { title: siteConfig.title, description: siteConfig.description, url: siteConfig.url, siteName: siteConfig.name, type: "website", images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Noerong — Big questions, carefully explored" }] },
+  openGraph: { title: siteConfig.title, description: siteConfig.description, url: siteConfig.url, siteName: siteConfig.name, type: "website", images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Noerong — Question the obvious. Follow the strange." }] },
   twitter: { card: "summary_large_image", title: siteConfig.title, description: siteConfig.description, images: ["/twitter-image"] },
 };
 

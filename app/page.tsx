@@ -15,7 +15,7 @@ export default function Home() {
         <Image src="/images/noerong-hero.png" alt="Abstract illustration connecting history, science, nature, and human curiosity" fill priority sizes="100vw" className="hero-image" />
         <div className="shell hero-content">
           <p className="eyebrow">Independent essays on a complicated world</p>
-          <h1>Big questions.<br /><em>Carefully explored.</em></h1>
+          <h1>Question the obvious.<br /><em>Follow the strange.</em></h1>
           <p className="hero-deck">History, science, philosophy, and the hidden forces shaping who we are—made vivid without being made simple.</p>
           <Link className="button" href={`/essays/${essays[0].slug}`}>Start with an essay <ArrowIcon /></Link>
         </div>
