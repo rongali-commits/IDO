@@ -1,0 +1,22 @@
+{
+  "name": "Noerong",
+  "short_name": "Noerong",
+  "description": "Long-form essays about history, science, civilization, philosophy, and the hidden forces that shape human life.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#17231f",
+  "theme_color": "#17231f",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
