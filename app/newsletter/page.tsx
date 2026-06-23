@@ -3,7 +3,7 @@ import { NewsletterForm } from "@/components/newsletter-form";
 
 export const metadata: Metadata = {
   title: "Newsletter",
-  description: "Occasional letters from Noerong: one worthwhile question, carefully explored.",
+  description: "Occasional letters from Noerong: one worthwhile question, patiently followed.",
   alternates: { canonical: "/newsletter" },
 };
 
