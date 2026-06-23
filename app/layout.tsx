@@ -13,6 +13,10 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: { default: siteConfig.title, template: "%s — Noerong" },
   description: siteConfig.description,
+  applicationName: siteConfig.name,
+  authors: [{ name: siteConfig.author, url: `${siteConfig.url}/about` }],
+  creator: siteConfig.author,
+  publisher: siteConfig.name,
   alternates: { canonical: "./", types: { "application/rss+xml": "/feed.xml" } },
   verification: { google: process.env.GOOGLE_SITE_VERIFICATION },
   icons: { icon: [{ url: "/favicon.ico", sizes: "any" }, { url: "/favicon-48x48.png", type: "image/png", sizes: "48x48" }], apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }] },
@@ -27,8 +31,32 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   const publicationJsonLd = {
     "@context": "https://schema.org",
     "@graph": [
-      { "@type": "WebSite", "@id": `${siteConfig.url}/#website`, name: siteConfig.name, url: siteConfig.url, description: siteConfig.description, inLanguage: "en" },
-      { "@type": "Organization", "@id": `${siteConfig.url}/#organization`, name: siteConfig.name, url: siteConfig.url, email: siteConfig.email },
+      {
+        "@type": "WebSite",
+        "@id": `${siteConfig.url}/#website`,
+        name: siteConfig.name,
+        url: siteConfig.url,
+        description: siteConfig.description,
+        inLanguage: "en",
+        author: { "@id": `${siteConfig.url}/about#rongali-chaitanya` },
+        publisher: { "@id": `${siteConfig.url}/#organization` },
+      },
+      {
+        "@type": "Organization",
+        "@id": `${siteConfig.url}/#organization`,
+        name: siteConfig.name,
+        url: siteConfig.url,
+        email: siteConfig.email,
+        logo: `${siteConfig.url}/favicon-48x48.png`,
+        founder: { "@id": `${siteConfig.url}/about#rongali-chaitanya` },
+      },
+      {
+        "@type": "Person",
+        "@id": `${siteConfig.url}/about#rongali-chaitanya`,
+        name: siteConfig.author,
+        url: `${siteConfig.url}/about`,
+        description: "Writer and builder of Noerong.",
+      },
     ],
   };
   return (
