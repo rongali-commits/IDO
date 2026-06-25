@@ -10,7 +10,11 @@ export async function generateMetadata({ params }: { params: Promise<{ topic: st
   const { topic: slug } = await params;
   const topic = Object.keys(topicDescriptions).find((item) => item.toLowerCase().replaceAll(" ", "-") === slug);
   if (!topic) return {};
-  return { title: topic, description: topicDescriptions[topic], alternates: { canonical: `/topics/${slug}` } };
+  return {
+    title: `${topic} Essays`,
+    description: `${topicDescriptions[topic]} Essays by Rongali Chaitanya for Noerong.`,
+    alternates: { canonical: `/topics/${slug}` },
+  };
 }
 
 export default async function TopicPage({ params }: { params: Promise<{ topic: string }> }) {

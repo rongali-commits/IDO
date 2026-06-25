@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 
-export const metadata: Metadata = { title: "Reading List", description: "Books and intellectual influences behind Noerong.", alternates: { canonical: "/reading-list" } };
+export const metadata: Metadata = {
+  title: "Reading List",
+  description: "Books and intellectual influences behind Noerong and Rongali Chaitanya's essays.",
+  alternates: { canonical: "/reading-list" },
+};
 
 const shelves = [
   { title: "How knowledge changes", books: [["The Structure of Scientific Revolutions", "Thomas S. Kuhn"], ["The Beginning of Infinity", "David Deutsch"]] },
