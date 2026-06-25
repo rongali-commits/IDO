@@ -3,45 +3,6 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
-  async redirects() {
-    return [
-      {
-        source: "/posts/the-man-who-changed-8-billion-peoples-dna.html",
-        destination: "/essays/the-man-who-changed-8-billion-peoples-dna",
-        permanent: true,
-      },
-      {
-        source: "/posts/the-man-who-changed-8-billion-peoples-dna",
-        destination: "/essays/the-man-who-changed-8-billion-peoples-dna",
-        permanent: true,
-      },
-      {
-        source: "/posts/the-universe-is-not-a-coffee-mug.html",
-        destination: "/essays/the-universe-is-not-a-coffee-mug",
-        permanent: true,
-      },
-      {
-        source: "/posts/the-universe-is-not-a-coffee-mug",
-        destination: "/essays/the-universe-is-not-a-coffee-mug",
-        permanent: true,
-      },
-      {
-        source: "/posts/britishers-still-rule-the-world.html",
-        destination: "/essays/britishers-still-rule-the-world",
-        permanent: true,
-      },
-      {
-        source: "/posts/britishers-still-rule-the-world",
-        destination: "/essays/britishers-still-rule-the-world",
-        permanent: true,
-      },
-      {
-        source: "/posts",
-        destination: "/essays",
-        permanent: true,
-      },
-    ];
-  },
   async headers() {
     return [
       {

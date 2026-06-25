@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About",
-  description: "Why Rongali Chaitanya created Noerong and how its essays are researched.",
+  title: "About Rongali Chaitanya",
+  description: "About Rongali Chaitanya, the writer and builder of Noerong.",
   alternates: { canonical: "/about" },
 };
 
