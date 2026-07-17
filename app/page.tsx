@@ -12,14 +12,15 @@ export default function Home() {
   return (
     <main>
       <section className="hero">
-        <Image src="/images/noerong-hero.png" alt="Abstract illustration connecting history, science, nature, and human curiosity" fill priority sizes="100vw" className="hero-image" />
+        <Image src="/images/noerong-hero.webp" alt="Bookshelves and readers in a library reading room" fill priority sizes="100vw" className="hero-image" />
         <div className="shell hero-content">
-          <p className="eyebrow">Independent essays on a complicated world</p>
+          <p className="eyebrow">Independent essays by Rongali Chaitanya</p>
           <h1>Question the obvious.<br /><em>Follow the strange.</em></h1>
           <p className="hero-deck">History, science, philosophy, and the hidden forces shaping who we are—made vivid without being made simple.</p>
           <Link className="button" href={`/essays/${essays[0].slug}`}>Start with an essay <ArrowIcon /></Link>
         </div>
         <div className="hero-note"><SparkIcon /><span>For people who enjoy<br />changing their minds.</span></div>
+        <p className="hero-photo-credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:LibraryReadingRoom4.jpg" target="_blank" rel="noreferrer">Raysonho / CC0</a></p>
       </section>
 
       <section className="section shell">
