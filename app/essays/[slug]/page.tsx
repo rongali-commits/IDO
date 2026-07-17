@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: essay.description,
     authors: [{ name: siteConfig.author, url: `${siteConfig.url}/about` }],
     alternates: { canonical: url },
-    openGraph: { title: essay.title, description: essay.description, url, type: "article", publishedTime: essay.date, modifiedTime: essay.updated, authors: [siteConfig.author], section: essay.topic, images: [{ url: image, width: 1536, height: 1024, alt: essay.coverAlt }] },
+    openGraph: { title: essay.title, description: essay.description, url, type: "article", publishedTime: essay.date, modifiedTime: essay.updated, authors: [siteConfig.author], section: essay.topic, images: [{ url: image, width: 1800, height: 1200, alt: essay.coverAlt }] },
     twitter: { card: "summary_large_image", title: essay.title, description: essay.description, images: [image] },
   };
 }
@@ -44,8 +44,8 @@ export default async function EssayPage({ params }: { params: Promise<{ slug: st
     articleSection: essay.topic,
     inLanguage: "en",
     image: `${siteConfig.url}${essay.coverImage}`,
-    author: { "@type": "Person", name: siteConfig.author, url: `${siteConfig.url}/about` },
-    publisher: { "@type": "Organization", name: siteConfig.name, url: siteConfig.url },
+    author: { "@id": `${siteConfig.url}/about#rongali-chaitanya` },
+    publisher: { "@id": `${siteConfig.url}/#organization` },
     mainEntityOfPage: `${siteConfig.url}/essays/${slug}`,
   };
   const breadcrumbJsonLd = {
@@ -60,7 +60,7 @@ export default async function EssayPage({ params }: { params: Promise<{ slug: st
   return (
     <main><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd).replace(/</g, "\\u003c") }} /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, "\\u003c") }} /><ReadingProgress /><article>
       <header className="article-header shell-narrow"><p className="essay-meta"><Link href={`/topics/${essay.topic.toLowerCase().replaceAll(" ", "-")}`}>{essay.topic}</Link><i />{essay.readTime}</p><h1>{essay.title}</h1><p className="article-deck">{essay.description}</p><div className="byline"><span className="avatar">RC</span><p>By <strong>{siteConfig.author}</strong><br /><time dateTime={essay.date}>{formatDate(essay.date)}</time></p></div></header>
-      <div className="article-cover-wrap shell"><EssayCover accent={essay.accent} src={essay.coverImage} alt={essay.coverAlt} priority /></div>
+      <div className="article-cover-wrap shell"><EssayCover accent={essay.accent} src={essay.coverImage} alt={essay.coverAlt} credit={essay.coverCredit} sourceUrl={essay.coverSource} license={essay.coverLicense} priority /></div>
       <div className="article-body"><MDXRemote source={essay.content} components={mdxComponents} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} /></div>
       <aside className="article-newsletter shell-narrow"><div><p className="eyebrow">Continue the conversation</p><h2>One worthwhile idea,<br />occasionally.</h2><p>New Noerong essays and research notes, sent only when there is something worth reading.</p></div><NewsletterForm source={`essay_${slug}`} /></aside>
       <footer className="article-end shell-narrow"><span className="end-mark">N.</span><p>Written by <Link href="/about">{siteConfig.author}</Link> for Noerong.</p></footer>
