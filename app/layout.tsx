@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 } },
-  openGraph: { title: siteConfig.title, description: siteConfig.description, url: siteConfig.url, siteName: siteConfig.name, type: "website", images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Noerong — Question the obvious. Follow the strange." }] },
+  openGraph: { title: siteConfig.title, description: siteConfig.description, url: siteConfig.url, siteName: siteConfig.name, type: "website", images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Noerong — Essays by Rongali Chaitanya" }] },
   twitter: { card: "summary_large_image", title: siteConfig.title, description: siteConfig.description, images: ["/twitter-image"] },
 };
 
@@ -64,8 +64,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         "@type": "Person",
         "@id": `${siteConfig.url}/about#rongali-chaitanya`,
         name: siteConfig.author,
-        url: `${siteConfig.url}/about`,
-        description: "Writer and builder of Noerong.",
+        url: siteConfig.personalUrl,
+        mainEntityOfPage: `${siteConfig.url}/about`,
+        description: "Writer and founder of Noerong, and a developer building Python automation, practical AI assistants, and focused web tools.",
+        jobTitle: ["Writer and founder of Noerong", "Python automation and AI integration developer"],
+        sameAs: [siteConfig.personalUrl, siteConfig.githubUrl],
+        knowsAbout: ["History", "Anthropology", "Science", "Philosophy", "Geopolitics", "Python automation", "AI integration", "Web development"],
       },
     ],
   };

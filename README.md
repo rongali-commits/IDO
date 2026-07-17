@@ -4,7 +4,7 @@
 
 Noerong is an independent long-form publication for essays on history, science, philosophy, geopolitics, and the hidden systems shaping ordinary life. This repository contains the complete editorial website and publishing workflow.
 
-![Noerong editorial homepage](public/images/noerong-hero.png)
+![Noerong editorial homepage](public/images/noerong-hero.webp)
 
 ## What this project demonstrates
 

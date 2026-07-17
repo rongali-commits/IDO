@@ -16,6 +16,9 @@ export type Essay = {
   accent: "coral" | "blue" | "gold";
   coverImage: string;
   coverAlt: string;
+  coverCredit: string;
+  coverSource: string;
+  coverLicense: string;
   readTime: string;
   wordCount: number;
   content: string;
@@ -28,7 +31,7 @@ export function getEssaySlugs() {
 export function getEssay(slug: string): Essay {
   const raw = fs.readFileSync(path.join(ESSAYS_DIR, `${slug}.mdx`), "utf8");
   const { data, content } = matter(raw);
-  if (!data.coverImage || !data.coverAlt) throw new Error(`Essay "${slug}" must define coverImage and coverAlt in its frontmatter.`);
+  if (!data.coverImage || !data.coverAlt || !data.coverCredit || !data.coverSource || !data.coverLicense) throw new Error(`Essay "${slug}" must define complete cover image metadata in its frontmatter.`);
   const readingStats = readingTime(content);
   return {
     slug,
@@ -41,6 +44,9 @@ export function getEssay(slug: string): Essay {
     accent: data.accent || "coral",
     coverImage: data.coverImage,
     coverAlt: data.coverAlt || data.title,
+    coverCredit: data.coverCredit,
+    coverSource: data.coverSource,
+    coverLicense: data.coverLicense,
     readTime: readingStats.text.replace("min read", "minute read"),
     wordCount: readingStats.words,
     content,
