@@ -7,6 +7,7 @@ export const siteConfig = {
   author: "Rongali Chaitanya",
   personalUrl: "https://www.rongalichaitanya.com",
   githubUrl: "https://github.com/rongali-commits",
+  linkedinUrl: "https://www.linkedin.com/in/rongali-chaitanya-29b4772a2",
   email: "hello@noerong.com",
 };
 

@@ -68,7 +68,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         mainEntityOfPage: `${siteConfig.url}/about`,
         description: "Writer and founder of Noerong, and a developer building Python automation, practical AI assistants, and focused web tools.",
         jobTitle: ["Writer and founder of Noerong", "Python automation and AI integration developer"],
-        sameAs: [siteConfig.personalUrl, siteConfig.githubUrl],
+        sameAs: [siteConfig.personalUrl, siteConfig.githubUrl, siteConfig.linkedinUrl],
         knowsAbout: ["History", "Anthropology", "Science", "Philosophy", "Geopolitics", "Python automation", "AI integration", "Web development"],
       },
     ],
