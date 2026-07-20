@@ -44,7 +44,7 @@ export default async function EssayPage({ params }: { params: Promise<{ slug: st
     articleSection: essay.topic,
     inLanguage: "en",
     image: `${siteConfig.url}${essay.coverImage}`,
-    author: { "@id": `${siteConfig.url}/about#rongali-chaitanya` },
+    author: { "@id": siteConfig.personId },
     publisher: { "@id": `${siteConfig.url}/#organization` },
     mainEntityOfPage: `${siteConfig.url}/essays/${slug}`,
   };

@@ -23,15 +23,15 @@ export default function AboutPage() {
     "@type": "ProfilePage",
     "@id": `${siteConfig.url}/about#profile-page`,
     url: `${siteConfig.url}/about`,
-    dateModified: "2026-07-18",
+    dateModified: "2026-07-20",
     mainEntity: {
       "@type": "Person",
-      "@id": `${siteConfig.url}/about#rongali-chaitanya`,
+      "@id": siteConfig.personId,
       name: siteConfig.author,
       url: siteConfig.personalUrl,
       description: "Writer and founder of Noerong, and a developer focused on Python automation, AI integration, and practical web tools.",
       jobTitle: ["Writer and founder of Noerong", "Python automation and AI integration developer"],
-      sameAs: [siteConfig.personalUrl, siteConfig.githubUrl, siteConfig.linkedinUrl],
+      sameAs: [`${siteConfig.url}/about`, siteConfig.githubUrl, siteConfig.linkedinUrl],
       knowsAbout: ["History", "Anthropology", "Science", "Philosophy", "Geopolitics", "Python automation", "AI integration", "Web development"],
     },
     hasPart: getAllEssays().map((essay) => ({
@@ -39,7 +39,7 @@ export default function AboutPage() {
       headline: essay.title,
       url: `${siteConfig.url}/essays/${essay.slug}`,
       datePublished: essay.date,
-      author: { "@id": `${siteConfig.url}/about#rongali-chaitanya` },
+      author: { "@id": siteConfig.personId },
     })),
   };
   return (
