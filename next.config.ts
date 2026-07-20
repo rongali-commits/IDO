@@ -3,6 +3,20 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  async redirects() {
+    return [
+      {
+        source: "/essays/the-man-who-changed-8-billion-peoples-dna",
+        destination: "/essays/world-war-ii-and-the-people-who-almost-existed",
+        permanent: true,
+      },
+      {
+        source: "/essays/britishers-still-rule-the-world",
+        destination: "/essays/the-british-empire-didnt-vanish-it-became-background-noise",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
