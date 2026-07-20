@@ -6,6 +6,7 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://noerong.com",
   author: "Rongali Chaitanya",
   personalUrl: "https://www.rongalichaitanya.com",
+  personId: "https://www.rongalichaitanya.com/#rongali-chaitanya",
   githubUrl: "https://github.com/rongali-commits",
   linkedinUrl: "https://www.linkedin.com/in/rongalichaitanya",
   email: "hello@noerong.com",
