@@ -23,7 +23,7 @@ export default function AboutPage() {
     "@type": "ProfilePage",
     "@id": `${siteConfig.url}/about#profile-page`,
     url: `${siteConfig.url}/about`,
-    dateModified: "2026-07-20",
+    dateModified: "2026-07-20T18:35:22+05:30",
     mainEntity: {
       "@type": "Person",
       "@id": siteConfig.personId,
