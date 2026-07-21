@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Noerong",
   title: "Noerong — Essays by Rongali Chaitanya",
   description:
-    "Rongali Chaitanya's independent publication of long-form essays on history, science, philosophy, civilization, and human life.",
+    "Independent, source-backed essays by research writer Rongali Chaitanya on history, science, philosophy, civilization, and human life.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://noerong.com",
   author: "Rongali Chaitanya",
   personalUrl: "https://www.rongalichaitanya.com",
