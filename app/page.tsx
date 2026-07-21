@@ -14,7 +14,7 @@ export default function Home() {
       <section className="hero">
         <Image src="/images/noerong-hero.webp" alt="Bookshelves and readers in a library reading room" fill priority sizes="100vw" className="hero-image" />
         <div className="shell hero-content">
-          <p className="eyebrow">Independent essays by Rongali Chaitanya</p>
+          <p className="eyebrow">Independent research essays by Rongali Chaitanya</p>
           <h1>Question the obvious.<br /><em>Follow the strange.</em></h1>
           <p className="hero-deck">History, science, philosophy, and the hidden forces shaping who we are—made vivid without being made simple.</p>
           <Link className="button" href={`/essays/${essays[0].slug}`}>Start with an essay <ArrowIcon /></Link>
@@ -34,7 +34,7 @@ export default function Home() {
         <div className="shell manifesto-grid">
           <p className="eyebrow">What Noerong is for</p>
           <blockquote>“The world becomes more interesting the moment an obvious answer stops being enough.”</blockquote>
-          <p>Noerong is an independent publication about the ideas hiding in plain sight. Each essay begins with one stubborn question and follows it wherever the evidence leads.</p>
+          <p>Noerong is an independent, source-backed publication about ideas hiding in plain sight. Each essay begins with one stubborn question, tests competing explanations, and follows the evidence wherever it leads.</p>
         </div>
       </section>
 
@@ -46,6 +46,17 @@ export default function Home() {
               <span>0{index + 1}</span><h3>{topic}</h3><p>{description}</p><ArrowIcon />
             </Link>
           ))}
+        </div>
+      </section>
+
+      <section className="section shell commission-band">
+        <div>
+          <p className="eyebrow">Commissioned research &amp; writing</p>
+          <h2>Need a difficult subject investigated and explained clearly?</h2>
+        </div>
+        <div>
+          <p>I take on research-led articles, reports, explainers, scripts, white papers, and fact-checking projects across a broad range of subjects. The topic can change; the standard stays the same: credible sources, clear reasoning, and prose written for real readers.</p>
+          <Link className="button" href="/work-with-me">Work with me <ArrowIcon /></Link>
         </div>
       </section>
 

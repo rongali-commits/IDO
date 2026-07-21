@@ -8,6 +8,7 @@ const links = [
   ["Essays", "/essays"],
   ["Topics", "/topics"],
   ["Newsletter", "/newsletter"],
+  ["Work with me", "/work-with-me"],
   ["About", "/about"],
   ["Reading List", "/reading-list"],
   ["Now", "/now"],
