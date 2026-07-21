@@ -2,7 +2,7 @@
 
 [Live publication](https://noerong.com) · [Editorial policy](https://noerong.com/editorial-policy) · [RSS feed](https://noerong.com/feed.xml)
 
-Noerong is an independent long-form publication for essays on history, science, philosophy, geopolitics, and the hidden systems shaping ordinary life. This repository contains the complete editorial website and publishing workflow.
+Noerong is an independent, source-backed publication by research writer Rongali Chaitanya, covering history, science, philosophy, geopolitics, and the hidden systems shaping ordinary life. This repository contains the complete editorial website, commissioned-writing surface, and publishing workflow.
 
 ![Noerong editorial homepage](public/images/noerong-hero.webp)
 
@@ -15,6 +15,7 @@ Noerong is an independent long-form publication for essays on history, science, 
 - RSS, sitemap, robots, manifest, and SEO metadata;
 - reading progress, theme controls, responsive navigation, and accessible long-form typography;
 - editorial-policy, privacy, newsletter, now, and about surfaces.
+- a professional research-writing services page that keeps commercial work distinct from independent editorial.
 
 ## Architecture
 
