@@ -11,10 +11,10 @@ Noerong stores optimized WebP derivatives locally so pages remain fast and stabl
 
 ## Essays
 
-- `essays/world-war-ii-refugees-hayange.webp`
-  - Original: [Russian refugees boarding a train at Hayange, France, 24 January 1945](https://commons.wikimedia.org/wiki/File:SC_405011_-_Soldiers_of_Civil_Affairs_Regiment_load_Russian_refugees_onto_a_train_at_a_railroad_station_in_Hayange,_France._(52298555001).jpg)
-  - Creator: Pvt. W. Chichersky, 166th Signal Photo Company, U.S. Army Signal Corps
-  - Source: U.S. National Archives
+- `essays/japanese-aircraft-carrier-ryujo-1934.webp`
+  - Original: [Japanese aircraft carrier Ryūjō underway, 6 September 1934](https://commons.wikimedia.org/wiki/File:Japanese_aircraft_carrier_Ry%C5%ABj%C5%8D_underway_on_6_September_1934.jpg)
+  - Creator: Unknown photographer
+  - Source: Kure Maritime Museum archive
   - License: Public domain
 
 - `essays/webb-first-deep-field.webp`
