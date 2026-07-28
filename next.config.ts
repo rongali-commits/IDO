@@ -7,7 +7,12 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/essays/the-man-who-changed-8-billion-peoples-dna",
-        destination: "/essays/world-war-ii-and-the-people-who-almost-existed",
+        destination: "/essays/would-i-exist-without-world-war-ii",
+        permanent: true,
+      },
+      {
+        source: "/essays/world-war-ii-and-the-people-who-almost-existed",
+        destination: "/essays/would-i-exist-without-world-war-ii",
         permanent: true,
       },
       {
