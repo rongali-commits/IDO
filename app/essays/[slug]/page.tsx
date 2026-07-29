@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import { EssayCover } from "@/components/essay-cover";
+import { EssayShare } from "@/components/essay-share";
 import { ReadingProgress } from "@/components/reading-progress";
 import { mdxComponents } from "@/components/essay-components";
 import { formatDate, getAllEssays, getEssay, getEssaySlugs } from "@/lib/essays";
@@ -33,6 +34,10 @@ export default async function EssayPage({ params }: { params: Promise<{ slug: st
   if (!getEssaySlugs().includes(slug)) notFound();
   const essay = getEssay(slug);
   const related = getAllEssays().filter((item) => item.slug !== slug).slice(0, 2);
+  const sourcesMatch = /^## Sources and Further Reading$/m.exec(essay.content);
+  const essayContent = sourcesMatch ? essay.content.slice(0, sourcesMatch.index) : essay.content;
+  const sourcesContent = sourcesMatch ? essay.content.slice(sourcesMatch.index) : null;
+  const essayUrl = `${siteConfig.url}/essays/${slug}`;
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -46,7 +51,7 @@ export default async function EssayPage({ params }: { params: Promise<{ slug: st
     image: `${siteConfig.url}${essay.coverImage}`,
     author: { "@id": siteConfig.personId },
     publisher: { "@id": `${siteConfig.url}/#organization` },
-    mainEntityOfPage: `${siteConfig.url}/essays/${slug}`,
+    mainEntityOfPage: essayUrl,
   };
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
@@ -61,7 +66,11 @@ export default async function EssayPage({ params }: { params: Promise<{ slug: st
     <main><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd).replace(/</g, "\\u003c") }} /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, "\\u003c") }} /><ReadingProgress /><article>
       <header className="article-header shell-narrow"><p className="essay-meta"><Link href={`/topics/${essay.topic.toLowerCase().replaceAll(" ", "-")}`}>{essay.topic}</Link><i />{essay.readTime}</p><h1>{essay.title}</h1><p className="article-deck">{essay.description}</p><div className="byline"><span className="avatar">RC</span><p>By <strong>{siteConfig.author}</strong><br /><time dateTime={essay.date}>{formatDate(essay.date)}</time></p></div></header>
       <div className="article-cover-wrap shell"><EssayCover accent={essay.accent} src={essay.coverImage} alt={essay.coverAlt} credit={essay.coverCredit} sourceUrl={essay.coverSource} license={essay.coverLicense} priority /></div>
-      <div className="article-body"><MDXRemote source={essay.content} components={mdxComponents} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} /></div>
+      <div className="article-body">
+        <MDXRemote source={essayContent} components={mdxComponents} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
+        <EssayShare title={essay.title} url={essayUrl} />
+        {sourcesContent ? <div className="article-sources"><MDXRemote source={sourcesContent} components={mdxComponents} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} /></div> : null}
+      </div>
       <aside className="article-newsletter shell-narrow"><div><p className="eyebrow">Continue the conversation</p><h2>One worthwhile idea,<br />occasionally.</h2><p>New Noerong essays and research notes, sent only when there is something worth reading.</p></div><NewsletterForm source={`essay_${slug}`} /></aside>
       <footer className="article-end shell-narrow"><span className="end-mark">N.</span><p>Written by <Link href="/about">{siteConfig.author}</Link> for Noerong.</p></footer>
     </article>
