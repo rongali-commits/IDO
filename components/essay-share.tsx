@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-type ShareMethod = "WhatsApp" | "X" | "Facebook" | "Copy link";
+type ShareMethod = "WhatsApp" | "X" | "LinkedIn" | "Copy link";
 
 function trackShare(method: ShareMethod, title: string, url: string) {
   window.gtag?.("event", "share", {
@@ -92,13 +92,13 @@ export function EssayShare({ title, url }: { title: string; url: string }) {
         </a>
         <a
           className="essay-share-action"
-          href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`}
+          href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`}
           target="_blank"
           rel="noopener noreferrer"
-          onClick={() => trackShare("Facebook", title, url)}
-          aria-label={`Share “${title}” on Facebook`}
+          onClick={() => trackShare("LinkedIn", title, url)}
+          aria-label={`Share “${title}” on LinkedIn`}
         >
-          Facebook
+          LinkedIn
         </a>
         <button className="essay-share-action" type="button" onClick={copyLink}>
           {copyStatus === "copied" ? "Copied" : copyStatus === "failed" ? "Try again" : "Copy link"}
