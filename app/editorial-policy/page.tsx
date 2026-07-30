@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Editorial Policy",
@@ -22,7 +23,7 @@ export default function EditorialPolicyPage() {
       <h2>Independence</h2>
       <p>Noerong currently publishes no sponsored editorial. Any future sponsorship, affiliate relationship, or material conflict will be disclosed where readers encounter it.</p>
       <p className="policy-updated">Last updated: July 2026</p>
-      <Link className="button" href="/about">About Noerong →</Link>
+      <Link className="button" href={siteConfig.authorPath}>About Noerong →</Link>
     </main>
   );
 }

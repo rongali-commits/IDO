@@ -213,6 +213,14 @@ button, input { font: inherit; }
 .about-copy { padding-top: 75px; font-family: var(--font-serif), Georgia, serif; font-size: 1.18rem; line-height: 1.75; }
 .about-copy .lead { font-size: 1.6rem; line-height: 1.5; }
 .about-copy h2 { margin-top: 2em; font-family: var(--font-sans), Arial, sans-serif; font-size: 1.8rem; }
+.author-essays { margin-top: 3.2em; }
+.about-copy .author-essays h2 { margin: 0 0 20px; }
+.author-essays-list { border-top: 1px solid var(--line); }
+.author-essays-list > a { display: grid; gap: 8px; padding: 24px 2px; border-bottom: 1px solid var(--line); text-decoration: none; transition: padding .2s, color .2s; }
+.author-essays-list > a:hover { padding-inline: 14px; color: var(--coral); }
+.author-essays-list span { color: var(--coral); font-family: var(--font-sans), Arial, sans-serif; font-size: .64rem; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
+.author-essays-list strong { font-size: 1.35rem; line-height: 1.2; }
+.about-copy .author-essays-list p { margin: 0; color: var(--ink-soft); font-size: .92rem; line-height: 1.55; }
 .about-signoff { display: flex; align-items: center; gap: 18px; margin: 45px 0; }
 .about-signoff > span { display: grid; place-items: center; width: 64px; height: 64px; border-radius: 50%; color: #f4ebdc; background: var(--coral); }
 .about-signoff p { margin: 0; font-size: .85rem; line-height: 1.45; }
