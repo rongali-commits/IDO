@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: essay.title,
     description: essay.description,
-    authors: [{ name: siteConfig.author, url: `${siteConfig.url}/about` }],
+    authors: [{ name: siteConfig.author, url: `${siteConfig.url}${siteConfig.authorPath}` }],
     alternates: { canonical: url },
     openGraph: { title: essay.title, description: essay.description, url, type: "article", publishedTime: essay.date, modifiedTime: essay.updated, authors: [siteConfig.author], section: essay.topic, images: [{ url: image, width: 1800, height: 1200, alt: essay.coverAlt }] },
     twitter: { card: "summary_large_image", title: essay.title, description: essay.description, images: [image] },
@@ -49,7 +49,13 @@ export default async function EssayPage({ params }: { params: Promise<{ slug: st
     articleSection: essay.topic,
     inLanguage: "en",
     image: `${siteConfig.url}${essay.coverImage}`,
-    author: { "@id": siteConfig.personId },
+    author: {
+      "@type": "Person",
+      "@id": siteConfig.personId,
+      name: siteConfig.author,
+      url: `${siteConfig.url}${siteConfig.authorPath}`,
+      sameAs: [siteConfig.personalUrl, siteConfig.githubUrl, siteConfig.linkedinUrl],
+    },
     publisher: { "@id": `${siteConfig.url}/#organization` },
     mainEntityOfPage: essayUrl,
   };
@@ -72,7 +78,7 @@ export default async function EssayPage({ params }: { params: Promise<{ slug: st
         {sourcesContent ? <div className="article-sources"><MDXRemote source={sourcesContent} components={mdxComponents} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} /></div> : null}
       </div>
       <aside className="article-newsletter shell-narrow"><div><p className="eyebrow">Continue the conversation</p><h2>One worthwhile idea,<br />occasionally.</h2><p>New Noerong essays and research notes, sent only when there is something worth reading.</p></div><NewsletterForm source={`essay_${slug}`} /></aside>
-      <footer className="article-end shell-narrow"><span className="end-mark">N.</span><p>Written by <Link href="/about">{siteConfig.author}</Link> for Noerong.</p></footer>
+      <footer className="article-end shell-narrow"><span className="end-mark">N.</span><p>Written by <Link href={siteConfig.authorPath}>{siteConfig.author}</Link> for Noerong.</p></footer>
     </article>
     <section className="related shell"><p className="eyebrow">Keep thinking</p><h2>Read next</h2><div className="related-grid">{related.map((item) => <Link href={`/essays/${item.slug}`} key={item.slug}><span>{item.topic} · {item.readTime}</span><h3>{item.title}</h3></Link>)}</div></section>
     </main>

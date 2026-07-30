@@ -3,13 +3,14 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { siteConfig } from "@/lib/site";
 
 const links = [
   ["Essays", "/essays"],
   ["Topics", "/topics"],
   ["Newsletter", "/newsletter"],
   ["Work with me", "/work-with-me"],
-  ["About", "/about"],
+  ["About", siteConfig.authorPath],
   ["Reading List", "/reading-list"],
   ["Now", "/now"],
 ];

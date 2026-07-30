@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { siteConfig } from "@/lib/site";
 import { ThemeToggle } from "./theme-toggle";
 import { MobileNav } from "./mobile-nav";
 
@@ -12,7 +13,7 @@ export function Header() {
           <Link href="/topics">Topics</Link>
           <Link href="/newsletter">Newsletter</Link>
           <Link href="/work-with-me">Work with me</Link>
-          <Link href="/about">About</Link>
+          <Link href={siteConfig.authorPath}>About</Link>
         </nav>
         <div className="header-actions"><ThemeToggle /><MobileNav /></div>
       </div>
