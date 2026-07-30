@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-type ShareMethod = "WhatsApp" | "X" | "LinkedIn" | "Copy link";
+type ShareMethod = "Device share" | "WhatsApp" | "X" | "LinkedIn" | "Copy link";
 
 function trackShare(method: ShareMethod, title: string, url: string) {
   window.gtag?.("event", "share", {
@@ -26,8 +26,21 @@ function copyWithFallback(value: string) {
   return copied;
 }
 
+async function copyToClipboard(value: string) {
+  try {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(value);
+      return true;
+    }
+    return copyWithFallback(value);
+  } catch {
+    return copyWithFallback(value);
+  }
+}
+
 export function EssayShare({ title, url }: { title: string; url: string }) {
   const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "failed">("idle");
+  const [deviceShareStatus, setDeviceShareStatus] = useState<"idle" | "copied" | "failed">("idle");
   const resetTimer = useRef<number | null>(null);
   const encodedTitle = encodeURIComponent(title);
   const encodedUrl = encodeURIComponent(url);
@@ -37,24 +50,16 @@ export function EssayShare({ title, url }: { title: string; url: string }) {
     if (resetTimer.current !== null) window.clearTimeout(resetTimer.current);
   }, []);
 
-  function resetCopyStatusLater() {
+  function resetStatusesLater() {
     if (resetTimer.current !== null) window.clearTimeout(resetTimer.current);
-    resetTimer.current = window.setTimeout(() => setCopyStatus("idle"), 2400);
+    resetTimer.current = window.setTimeout(() => {
+      setCopyStatus("idle");
+      setDeviceShareStatus("idle");
+    }, 2400);
   }
 
   async function copyLink() {
-    let copied = false;
-
-    try {
-      if (navigator.clipboard?.writeText) {
-        await navigator.clipboard.writeText(url);
-        copied = true;
-      } else {
-        copied = copyWithFallback(url);
-      }
-    } catch {
-      copied = copyWithFallback(url);
-    }
+    const copied = await copyToClipboard(url);
 
     if (copied) {
       setCopyStatus("copied");
@@ -62,7 +67,30 @@ export function EssayShare({ title, url }: { title: string; url: string }) {
     } else {
       setCopyStatus("failed");
     }
-    resetCopyStatusLater();
+    resetStatusesLater();
+  }
+
+  async function shareWithDevice() {
+    if (typeof navigator.share === "function") {
+      try {
+        await navigator.share({
+          title,
+          text: "An essay from Noerong",
+          url,
+        });
+        trackShare("Device share", title, url);
+      } catch (error) {
+        if (error instanceof DOMException && error.name === "AbortError") return;
+        setDeviceShareStatus("failed");
+        resetStatusesLater();
+      }
+      return;
+    }
+
+    const copied = await copyToClipboard(url);
+    setDeviceShareStatus(copied ? "copied" : "failed");
+    if (copied) trackShare("Device share", title, url);
+    resetStatusesLater();
   }
 
   return (
@@ -70,6 +98,14 @@ export function EssayShare({ title, url }: { title: string; url: string }) {
       <p className="eyebrow">Pass it on</p>
       <h2 id="essay-share-title">If you enjoyed this essay, share it with someone who might enjoy it too.</h2>
       <div className="essay-share-actions" aria-label="Share this essay">
+        <button
+          className="essay-share-action"
+          type="button"
+          onClick={shareWithDevice}
+          aria-label={`Share “${title}” using your device`}
+        >
+          {deviceShareStatus === "copied" ? "Link copied" : deviceShareStatus === "failed" ? "Try again" : "Share"}
+        </button>
         <a
           className="essay-share-action"
           href={`https://wa.me/?text=${encodedWhatsAppText}`}
@@ -105,7 +141,11 @@ export function EssayShare({ title, url }: { title: string; url: string }) {
         </button>
       </div>
       <p className="sr-only" aria-live="polite">
-        {copyStatus === "copied" ? "Essay link copied." : copyStatus === "failed" ? "The link could not be copied." : ""}
+        {deviceShareStatus === "copied" || copyStatus === "copied"
+          ? "Essay link copied."
+          : deviceShareStatus === "failed" || copyStatus === "failed"
+            ? "The essay could not be shared."
+            : ""}
       </p>
     </aside>
   );

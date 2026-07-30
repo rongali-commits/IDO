@@ -324,6 +324,7 @@ button, input { font: inherit; }
   .essay-share { margin-top: 2.8em; padding-block: 26px 28px; }
   .essay-share-actions { display: grid; grid-template-columns: 1fr 1fr; }
   .article-body .essay-share-action { width: 100%; }
+  .essay-share-actions .essay-share-action:first-child { grid-column: 1 / -1; }
   .article-newsletter { width: 100%; padding: 35px 22px; }
   .related-grid { grid-template-columns: 1fr; }
   .consent-banner { right: 15px; bottom: 15px; grid-template-columns: 1fr; gap: 15px; width: calc(100% - 30px); }
