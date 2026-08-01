@@ -125,7 +125,12 @@ button, input { font: inherit; }
 .newsletter-band { padding-block: 90px; background: var(--gold); color: #17231f; }
 .newsletter-band-grid { display: grid; grid-template-columns: 1.1fr 1fr; align-items: end; gap: 80px; }
 .newsletter-form { width: 100%; }
-.newsletter-embed iframe { display: block; width: 100%; max-width: 480px; border: 1px solid color-mix(in srgb, currentColor 22%, transparent); background: #fff; }
+.newsletter-substack-label { margin: 0 0 11px; font-size: .65rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; opacity: .7; }
+.newsletter-substack-link { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 62px; padding: 0 19px; border: 2px solid currentColor; color: inherit; background: transparent; font-size: .73rem; font-weight: 900; letter-spacing: .075em; text-transform: uppercase; transition: color .2s, background .2s, border-color .2s, transform .2s; }
+.newsletter-substack-link svg { width: 21px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s; }
+.newsletter-substack-link:hover { border-color: var(--coral); color: #f6f0e5; background: var(--coral); transform: translateY(-2px); }
+.newsletter-substack-link:hover svg { transform: translateX(4px); }
+.newsletter-substack-link:focus-visible { outline: 3px solid color-mix(in srgb, var(--coral) 50%, transparent); outline-offset: 4px; }
 .newsletter-form > p { margin: 12px 0 0; font-size: .75rem; opacity: .88; }
 
 .site-footer { padding: 32px 0 25px; color: #f4ebdc; background: #08100e; }
@@ -342,5 +347,5 @@ button, input { font: inherit; }
 
 @media (forced-colors: active) {
   :where(a, button, input):focus-visible { outline-color: Highlight; }
-  .newsletter-embed iframe { border-color: CanvasText; }
+  .newsletter-substack-link { border-color: CanvasText; }
 }
