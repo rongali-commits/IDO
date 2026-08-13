@@ -4,12 +4,12 @@ import { getAllEssays } from "@/lib/essays";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Rongali Chaitanya — Writer and Creator of Noerong",
-  description: "Meet Rongali Chaitanya, the independent research writer behind Noerong and a Python automation developer.",
+  title: "Rongali Chaitanya — Founder and Editor of Noerong",
+  description: "Meet Rongali Chaitanya, the writer, founder, and editor of the independent publication Noerong.",
   alternates: { canonical: siteConfig.authorPath },
   openGraph: {
-    title: "Rongali Chaitanya — Independent Research Writer & Creator of Noerong",
-    description: "The research writer behind Noerong and a developer building Python automation, practical AI workflows, and focused web tools.",
+    title: "Rongali Chaitanya — Founder and Editor of Noerong",
+    description: "The writer, founder, and editor behind the independent publication Noerong.",
     url: siteConfig.authorPath,
     type: "profile",
     firstName: "Rongali",
@@ -31,10 +31,11 @@ export default function AboutPage() {
       "@id": siteConfig.personId,
       name: siteConfig.author,
       url: authorUrl,
-      description: "Independent research writer and creator of Noerong, and a developer focused on Python automation, AI integration, and practical web tools.",
-      jobTitle: ["Independent research writer", "Creator of Noerong", "Python automation and AI integration developer"],
+      description: "Writer, founder, and editor of Noerong, an independent publication of source-backed essays.",
+      jobTitle: ["Writer", "Founder and editor of Noerong"],
+      worksFor: { "@id": `${siteConfig.url}/#organization` },
       sameAs: [siteConfig.personalUrl, siteConfig.githubUrl, siteConfig.linkedinUrl],
-      knowsAbout: ["History", "Anthropology", "Science", "Philosophy", "Geopolitics", "Python automation", "AI integration", "Web development"],
+      knowsAbout: ["History", "Anthropology", "Science", "Philosophy", "Geopolitics"],
     },
     hasPart: essays.map((essay) => ({
       "@type": "Article",
@@ -47,14 +48,13 @@ export default function AboutPage() {
   return (
     <main className="about-page">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(profileJsonLd).replace(/</g, "\\u003c") }} />
-      <section className="about-hero shell"><p className="eyebrow">Independent research writer &amp; builder</p><h1>Rongali Chaitanya</h1><p className="about-hero-deck">I follow difficult questions until they become clear enough to share.</p></section>
+      <section className="about-hero shell"><p className="eyebrow">Founder &amp; editor of Noerong</p><h1>Rongali Chaitanya</h1><p className="about-hero-deck">I follow difficult questions until they become clear enough to share.</p></section>
       <section className="about-copy shell-narrow">
-        <p className="lead">I’m Rongali Chaitanya, an independent research writer and the creator of Noerong.</p>
+        <p className="lead">I’m Rongali Chaitanya, an independent research writer and the founder and editor of Noerong.</p>
         <p>I am interested in subjects that do not fit comfortably inside one category: history touching biology, philosophy colliding with physics, institutions surviving the empires that built them, and ordinary assumptions becoming strange when examined closely.</p>
         <p>My subject range is deliberately broad. I do not claim to begin every project as an expert. I begin as a disciplined investigator: define the question, find credible sources, compare explanations, locate the uncertainty, and keep working until a non-specialist reader can see both the argument and the evidence behind it.</p>
         <p>Noerong is where I practice that method publicly. The essays are not generic content assembled around keywords. They are question-led, source-backed pieces with an identifiable point of view. The aim is to make complicated ideas vivid without pretending they are simple.</p>
-        <p>I also accept commissioned research and writing for publications, founders, organizations, newsletters, and video channels. That can include long-form articles, reports, explainers, scripts, white papers, source research, fact-checking, and structural editing. <Link href="/work-with-me">See how to work with me</Link>.</p>
-        <p>Alongside writing, I build practical software—Python automations, AI-assisted workflows, and focused web tools. You can review both professional tracks at <a className="personal-site-link" href={siteConfig.personalUrl} target="_blank" rel="me noreferrer">RongaliChaitanya.com ↗</a>, or connect with me on <a href={siteConfig.linkedinUrl} target="_blank" rel="me noreferrer">LinkedIn ↗</a>.</p>
+        <p>Outside the publication, I also build practical software. That work lives at <a className="personal-site-link" href={siteConfig.personalUrl} target="_blank" rel="me noreferrer">RongaliChaitanya.com ↗</a>. You can also find me on <a href={siteConfig.linkedinUrl} target="_blank" rel="me noreferrer">LinkedIn ↗</a>.</p>
         <section className="author-essays" aria-labelledby="author-essays-title">
           <h2 id="author-essays-title">Essays by Rongali Chaitanya</h2>
           <div className="author-essays-list">
@@ -72,7 +72,7 @@ export default function AboutPage() {
         <h2>What the name means</h2>
         <p><em>Noerong</em> joins two ideas. “Noe” comes from <em>noesis</em>, a Greek word associated with thought and intellectual understanding. “Rong” comes from <em>Rongali</em>, a word I associate with colour and liveliness. Together, the name captures what I want this publication to be: colourful intellectual exploration—serious without becoming lifeless, and curious without being afraid of unusual ideas.</p>
         <p>More than a title, it is a working posture: stay curious, follow the awkward implication, question easy certainty, and never confuse confidence with clarity.</p>
-        <div className="about-signoff"><span>RC</span><p><strong>Rongali Chaitanya</strong><br />Independent research writer &amp; creator of Noerong</p></div>
+        <div className="about-signoff"><span>RC</span><p><strong>Rongali Chaitanya</strong><br />Founder &amp; editor of Noerong</p></div>
         <p className="about-contact">Questions, corrections, or reading suggestions: <a href="mailto:hello@noerong.com">hello@noerong.com</a>. Read the <Link href="/editorial-policy">editorial and corrections policy</Link>.</p>
         <Link className="button" href="/essays">Read the essays →</Link>
       </section>

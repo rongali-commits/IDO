@@ -60,6 +60,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         email: siteConfig.email,
         logo: `${siteConfig.url}/icon-192.png`,
         founder: { "@id": siteConfig.personId },
+        sameAs: ["https://noerong.substack.com"],
       },
       {
         "@type": "Person",
@@ -67,10 +68,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         name: siteConfig.author,
         url: `${siteConfig.url}${siteConfig.authorPath}`,
         mainEntityOfPage: `${siteConfig.url}${siteConfig.authorPath}`,
-        description: "Independent research writer and creator of Noerong, and a developer building Python automation, practical AI workflows, and focused web tools.",
-        jobTitle: ["Independent research writer", "Creator of Noerong", "Python automation and AI integration developer"],
+        description: "Writer, founder, and editor of Noerong, an independent publication of source-backed essays.",
+        jobTitle: ["Writer", "Founder and editor of Noerong"],
+        worksFor: { "@id": `${siteConfig.url}/#organization` },
         sameAs: [siteConfig.personalUrl, siteConfig.githubUrl, siteConfig.linkedinUrl],
-        knowsAbout: ["History", "Anthropology", "Science", "Philosophy", "Geopolitics", "Python automation", "AI integration", "Web development"],
+        knowsAbout: ["History", "Anthropology", "Science", "Philosophy", "Geopolitics"],
       },
     ],
   };

@@ -9,10 +9,9 @@ const links = [
   ["Essays", "/essays"],
   ["Topics", "/topics"],
   ["Newsletter", "/newsletter"],
-  ["Work with me", "/work-with-me"],
   ["About", siteConfig.authorPath],
   ["Reading List", "/reading-list"],
-  ["Now", "/now"],
+  ["Editorial Policy", "/editorial-policy"],
 ];
 
 export function MobileNav() {

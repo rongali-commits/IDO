@@ -5,8 +5,8 @@ export function Footer() {
     <footer className="site-footer">
       <div className="shell footer-bottom">
         <Link className="wordmark inverse" href="/">NOERONG<span>.</span></Link>
-        <nav aria-label="Footer navigation"><Link href="/reading-list">Reading List</Link><Link href="/work-with-me">Work with me</Link><Link href="/now">Now</Link><Link href="/editorial-policy">Editorial</Link><a href="https://www.rongalichaitanya.com/" target="_blank" rel="me noreferrer">Portfolio ↗</a><a href="https://www.linkedin.com/in/rongalichaitanya" target="_blank" rel="me noreferrer">LinkedIn ↗</a><Link href="/privacy">Privacy</Link></nav>
-        <p>© {new Date().getFullYear()} Rongali Chaitanya<br /><a className="footer-portfolio-link" href="https://www.rongalichaitanya.com/" target="_blank" rel="me noreferrer">RongaliChaitanya.com ↗</a></p>
+        <nav aria-label="Footer navigation"><Link href="/essays">Essays</Link><Link href="/topics">Topics</Link><Link href="/newsletter">Newsletter</Link><Link href="/reading-list">Reading List</Link><Link href="/editorial-policy">Editorial Policy</Link><Link href="/about/rongali-chaitanya">About</Link><a href="/feed.xml">RSS</a><Link href="/privacy">Privacy</Link></nav>
+        <p>© {new Date().getFullYear()} Noerong<br />Founded and edited by <Link href="/about/rongali-chaitanya">Rongali Chaitanya</Link></p>
       </div>
     </footer>
   );

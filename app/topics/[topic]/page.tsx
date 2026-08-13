@@ -10,6 +10,7 @@ export async function generateMetadata({ params }: { params: Promise<{ topic: st
   const { topic: slug } = await params;
   const topic = Object.keys(topicDescriptions).find((item) => item.toLowerCase().replaceAll(" ", "-") === slug);
   if (!topic) return {};
+  if (!getAllEssays().some((essay) => essay.topic === topic)) return {};
   return {
     title: `${topic} Essays`,
     description: `${topicDescriptions[topic]} Essays by Rongali Chaitanya for Noerong.`,
@@ -22,6 +23,7 @@ export default async function TopicPage({ params }: { params: Promise<{ topic: s
   const topic = Object.keys(topicDescriptions).find((item) => item.toLowerCase().replaceAll(" ", "-") === slug);
   if (!topic) notFound();
   const essays = getAllEssays().filter((essay) => essay.topic === topic);
+  if (!essays.length) notFound();
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -31,5 +33,5 @@ export default async function TopicPage({ params }: { params: Promise<{ topic: s
       { "@type": "ListItem", position: 3, name: topic, item: `${siteConfig.url}/topics/${slug}` },
     ],
   };
-  return <main className="page-main shell"><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, "\\u003c") }} /><header className="page-header"><p className="eyebrow"><Link href="/topics">Topics</Link> / {topic}</p><h1>{topic}</h1><p>{topicDescriptions[topic]}</p></header>{essays.length ? <div className="archive-grid">{essays.map((essay) => <EssayCard key={essay.slug} essay={essay} />)}</div> : <div className="empty-state"><p>The first {topic.toLowerCase()} essay is being researched. Subscribe for the finished essay, its sources, and the questions that survive the research.</p><Link className="button" href="/newsletter">Follow this question</Link></div>}</main>;
+  return <main className="page-main shell"><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, "\\u003c") }} /><header className="page-header"><p className="eyebrow"><Link href="/topics">Topics</Link> / {topic}</p><h1>{topic}</h1><p>{topicDescriptions[topic]}</p></header><div className="archive-grid">{essays.map((essay) => <EssayCard key={essay.slug} essay={essay} />)}</div></main>;
 }
