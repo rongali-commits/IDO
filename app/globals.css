@@ -163,7 +163,8 @@ button, input { font: inherit; }
 .article-header h1 { margin: 0 auto 27px; font-family: var(--font-serif), Georgia, serif; font-size: clamp(3.2rem, 7vw, 6rem); line-height: .93; letter-spacing: -.055em; font-weight: 570; }
 .article-deck { max-width: 670px; margin: auto; color: var(--ink-soft); font-family: var(--font-serif), Georgia, serif; font-size: 1.28rem; line-height: 1.5; }
 .byline { display: flex; justify-content: center; align-items: center; gap: 13px; margin-top: 30px; text-align: left; }
-.avatar { display: grid; place-items: center; width: 39px; height: 39px; border-radius: 50%; color: #f4ebdc; background: var(--ink); font-family: var(--font-serif), Georgia, serif; font-size: .72rem; }
+.avatar { position: relative; display: block; width: 39px; height: 39px; overflow: hidden; border: 1px solid var(--line); border-radius: 50%; background: var(--paper-deep); }
+.avatar img, .about-signoff > span img { object-fit: cover; }
 .byline p { margin: 0; color: var(--ink-soft); font-size: .68rem; line-height: 1.5; }
 .byline strong { color: var(--ink); }
 .article-cover-wrap { margin-bottom: 80px; }
@@ -218,7 +219,7 @@ button, input { font: inherit; }
 .author-essays-list strong { font-size: 1.35rem; line-height: 1.2; }
 .about-copy .author-essays-list p { margin: 0; color: var(--ink-soft); font-size: .92rem; line-height: 1.55; }
 .about-signoff { display: flex; align-items: center; gap: 18px; margin: 45px 0; }
-.about-signoff > span { display: grid; place-items: center; width: 64px; height: 64px; border-radius: 50%; color: #f4ebdc; background: var(--coral); }
+.about-signoff > span { position: relative; display: block; flex: 0 0 auto; width: 64px; height: 64px; overflow: hidden; border: 2px solid var(--coral); border-radius: 50%; background: var(--paper-deep); }
 .about-signoff p { margin: 0; font-size: .85rem; line-height: 1.45; }
 .about-contact { margin-bottom: 35px; padding: 22px 0; border-block: 1px solid var(--line); font-size: .96rem; }
 .about-contact a { color: var(--coral); text-decoration: underline; text-underline-offset: 3px; }

@@ -68,6 +68,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         name: siteConfig.author,
         url: `${siteConfig.url}${siteConfig.authorPath}`,
         mainEntityOfPage: `${siteConfig.url}${siteConfig.authorPath}`,
+        image: `${siteConfig.url}${siteConfig.authorImage}`,
         description: "Writer, founder, and editor of Noerong, an independent publication of source-backed essays.",
         jobTitle: ["Writer", "Founder and editor of Noerong"],
         worksFor: { "@id": `${siteConfig.url}/#organization` },
