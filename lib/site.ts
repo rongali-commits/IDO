@@ -9,6 +9,7 @@ export const siteConfig = {
   url: siteUrl,
   author: "Rongali Chaitanya",
   authorPath,
+  authorImage: "/images/rongali-chaitanya.png",
   personalUrl: "https://www.rongalichaitanya.com",
   personId: `${siteUrl}${authorPath}#rongali-chaitanya`,
   githubUrl: "https://github.com/rongali-commits",

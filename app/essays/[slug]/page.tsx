@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
@@ -54,6 +55,7 @@ export default async function EssayPage({ params }: { params: Promise<{ slug: st
       "@id": siteConfig.personId,
       name: siteConfig.author,
       url: `${siteConfig.url}${siteConfig.authorPath}`,
+      image: `${siteConfig.url}${siteConfig.authorImage}`,
       sameAs: [siteConfig.personalUrl, siteConfig.githubUrl, siteConfig.linkedinUrl],
     },
     publisher: { "@id": `${siteConfig.url}/#organization` },
@@ -70,7 +72,7 @@ export default async function EssayPage({ params }: { params: Promise<{ slug: st
   };
   return (
     <main><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd).replace(/</g, "\\u003c") }} /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, "\\u003c") }} /><ReadingProgress /><article>
-      <header className="article-header shell-narrow"><p className="essay-meta"><Link href={`/topics/${essay.topic.toLowerCase().replaceAll(" ", "-")}`}>{essay.topic}</Link><i />{essay.readTime}</p><h1>{essay.title}</h1><p className="article-deck">{essay.description}</p><div className="byline"><span className="avatar">RC</span><p>By <strong>{siteConfig.author}</strong><br /><time dateTime={essay.date}>{formatDate(essay.date)}</time></p></div></header>
+      <header className="article-header shell-narrow"><p className="essay-meta"><Link href={`/topics/${essay.topic.toLowerCase().replaceAll(" ", "-")}`}>{essay.topic}</Link><i />{essay.readTime}</p><h1>{essay.title}</h1><p className="article-deck">{essay.description}</p><div className="byline"><Link className="avatar" href={siteConfig.authorPath} aria-label={`About ${siteConfig.author}`}><Image src={siteConfig.authorImage} alt="" fill sizes="39px" /></Link><p>By <strong><Link href={siteConfig.authorPath}>{siteConfig.author}</Link></strong><br /><time dateTime={essay.date}>{formatDate(essay.date)}</time></p></div></header>
       <div className="article-cover-wrap shell"><EssayCover accent={essay.accent} src={essay.coverImage} alt={essay.coverAlt} credit={essay.coverCredit} sourceUrl={essay.coverSource} license={essay.coverLicense} priority /></div>
       <div className="article-body">
         <MDXRemote source={essayContent} components={mdxComponents} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
