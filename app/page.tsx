@@ -49,17 +49,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section shell commission-band">
-        <div>
-          <p className="eyebrow">Commissioned research &amp; writing</p>
-          <h2>Need a difficult subject investigated and explained clearly?</h2>
-        </div>
-        <div>
-          <p>I take on research-led articles, reports, explainers, scripts, white papers, and fact-checking projects across a broad range of subjects. The topic can change; the standard stays the same: credible sources, clear reasoning, and prose written for real readers.</p>
-          <Link className="button" href="/work-with-me">Work with me <ArrowIcon /></Link>
-        </div>
-      </section>
-
       <section className="newsletter-band">
         <div className="shell newsletter-band-grid"><div><p className="eyebrow">The occasional letter</p><h2>Keep one good question<br />in your inbox.</h2></div><NewsletterForm source="homepage" /></div>
       </section>

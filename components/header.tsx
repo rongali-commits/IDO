@@ -12,7 +12,6 @@ export function Header() {
           <Link href="/essays">Essays</Link>
           <Link href="/topics">Topics</Link>
           <Link href="/newsletter">Newsletter</Link>
-          <Link href="/work-with-me">Work with me</Link>
           <Link href={siteConfig.authorPath}>About</Link>
         </nav>
         <div className="header-actions"><ThemeToggle /><MobileNav /></div>
