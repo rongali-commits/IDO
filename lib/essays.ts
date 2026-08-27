@@ -1,9 +1,14 @@
-import fs from "node:fs";
-import path from "node:path";
-import matter from "gray-matter";
 import readingTime from "reading-time";
+import { parse as parseYaml } from "yaml";
+import worldWarSource from "@/content/essays/would-i-exist-without-world-war-ii.mdx?raw";
+import universeSource from "@/content/essays/the-universe-is-not-a-coffee-mug.mdx?raw";
+import empireSource from "@/content/essays/the-british-empire-didnt-vanish-it-became-background-noise.mdx?raw";
 
-const ESSAYS_DIR = path.join(process.cwd(), "content", "essays");
+const essaySources: Record<string, string> = {
+  "would-i-exist-without-world-war-ii": worldWarSource,
+  "the-universe-is-not-a-coffee-mug": universeSource,
+  "the-british-empire-didnt-vanish-it-became-background-noise": empireSource,
+};
 
 export type Essay = {
   slug: string;
@@ -11,54 +16,40 @@ export type Essay = {
   description: string;
   topic: string;
   date: string;
-  updated: string;
-  featured: boolean;
-  accent: "coral" | "blue" | "gold";
   coverImage: string;
   coverAlt: string;
-  coverCredit: string;
-  coverSource: string;
-  coverLicense: string;
   readTime: string;
-  wordCount: number;
   content: string;
 };
 
 export function getEssaySlugs() {
-  return fs.readdirSync(ESSAYS_DIR).filter((file) => file.endsWith(".mdx")).map((file) => file.replace(/\.mdx$/, ""));
+  return Object.keys(essaySources);
 }
 
 export function getEssay(slug: string): Essay {
-  const raw = fs.readFileSync(path.join(ESSAYS_DIR, `${slug}.mdx`), "utf8");
-  const { data, content } = matter(raw);
-  if (!data.coverImage || !data.coverAlt || !data.coverCredit || !data.coverSource || !data.coverLicense) throw new Error(`Essay "${slug}" must define complete cover image metadata in its frontmatter.`);
-  const readingStats = readingTime(content);
+  const source = essaySources[slug];
+  if (!source) throw new Error(`Unknown essay: ${slug}`);
+  const match = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
+  if (!match) throw new Error(`Invalid essay frontmatter: ${slug}`);
+  const data = parseYaml(match[1]) as Record<string, unknown>;
+  const content = match[2];
   return {
     slug,
-    title: data.title,
-    description: data.description,
-    topic: data.topic,
-    date: data.date,
-    updated: data.updated || data.date,
-    featured: Boolean(data.featured),
-    accent: data.accent || "coral",
-    coverImage: data.coverImage,
-    coverAlt: data.coverAlt || data.title,
-    coverCredit: data.coverCredit,
-    coverSource: data.coverSource,
-    coverLicense: data.coverLicense,
-    readTime: readingStats.text.replace("min read", "minute read"),
-    wordCount: readingStats.words,
+    title: String(data.title),
+    description: String(data.description),
+    topic: String(data.topic),
+    date: String(data.date),
+    coverImage: String(data.coverImage),
+    coverAlt: String(data.coverAlt || data.title),
+    readTime: readingTime(content).text.replace("min read", "minute read"),
     content,
   };
 }
 
 export function getAllEssays() {
-  return getEssaySlugs()
-    .map(getEssay)
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  return getEssaySlugs().map(getEssay).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
 export function formatDate(date: string) {
-  return new Intl.DateTimeFormat("en", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" }).format(new Date(date));
+  return new Intl.DateTimeFormat("en", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" }).format(new Date(date));
 }
