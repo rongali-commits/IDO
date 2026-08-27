@@ -42,7 +42,20 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     url: "https://noerong.com",
     logo: "https://noerong.com/icon-192.png",
     description: "An independent SaaS product studio building practical AI and automation products.",
-    founder: { "@type": "Person", name: "Rongali Chaitanya" },
+    founder: {
+      "@type": "Person",
+      name: "Rongali Chaitanya",
+      url: "https://noerong.com/#about",
+      jobTitle: "Founder and SaaS Product Builder",
+      sameAs: [
+        "https://github.com/rongali-commits",
+        "https://www.linkedin.com/in/rongalichaitanya",
+      ],
+    },
+    location: {
+      "@type": "Place",
+      address: { "@type": "PostalAddress", addressLocality: "Bengaluru", addressCountry: "IN" },
+    },
     sameAs: [
       "https://github.com/rongali-commits",
       "https://www.linkedin.com/in/rongalichaitanya",
