@@ -1,16 +1,14 @@
-import Link from "next/link";
-
 export function SiteHeader() {
   return (
     <header className="site-header shell">
-      <Link className="wordmark" href="/" aria-label="Noerong home">noerong<span>.</span></Link>
+      <a className="wordmark" href="/" aria-label="Noerong home">noerong<span>.</span></a>
       <nav aria-label="Primary navigation">
-        <Link href="/#products">Products</Link>
-        <Link href="/#method">Method</Link>
-        <Link href="/essays">Essays</Link>
-        <Link href="/#about">About</Link>
+        <a href="/#products">Products</a>
+        <a href="/#method">Method</a>
+        <a href="/essays">Essays</a>
+        <a href="/#about">About</a>
       </nav>
-      <a className="header-cta" href="mailto:hello@noerong.com?subject=Noerong%20product%20enquiry">Start a conversation</a>
+      <a className="header-cta" href="/#contact">Start a conversation</a>
     </header>
   );
 }
