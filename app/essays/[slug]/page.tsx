@@ -2,87 +2,68 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { MDXRemote } from "next-mdx-remote/rsc";
+import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { EssayCover } from "@/components/essay-cover";
-import { EssayShare } from "@/components/essay-share";
-import { ReadingProgress } from "@/components/reading-progress";
-import { mdxComponents } from "@/components/essay-components";
-import { formatDate, getAllEssays, getEssay, getEssaySlugs } from "@/lib/essays";
-import { siteConfig } from "@/lib/site";
-import { NewsletterForm } from "@/components/newsletter-form";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
+import { formatDate, getEssay, getEssaySlugs } from "@/lib/essays";
 
-export function generateStaticParams() { return getEssaySlugs().map((slug) => ({ slug })); }
+type EssayPageProps = { params: Promise<{ slug: string }> };
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+export function generateStaticParams() {
+  return getEssaySlugs().map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({ params }: EssayPageProps): Promise<Metadata> {
   const { slug } = await params;
   if (!getEssaySlugs().includes(slug)) return {};
   const essay = getEssay(slug);
-  const url = `${siteConfig.url}/essays/${slug}`;
-  const image = `${siteConfig.url}${essay.coverImage}`;
+  const url = `https://noerong.com/essays/${slug}`;
+  const image = new URL(essay.coverImage, "https://noerong.com").toString();
+
   return {
     title: essay.title,
     description: essay.description,
-    authors: [{ name: siteConfig.author, url: `${siteConfig.url}${siteConfig.authorPath}` }],
     alternates: { canonical: url },
-    openGraph: { title: essay.title, description: essay.description, url, type: "article", publishedTime: essay.date, modifiedTime: essay.updated, authors: [siteConfig.author], section: essay.topic, images: [{ url: image, width: 1800, height: 1200, alt: essay.coverAlt }] },
+    openGraph: {
+      type: "article",
+      url,
+      title: essay.title,
+      description: essay.description,
+      publishedTime: essay.date,
+      images: [{ url: image, alt: essay.coverAlt }],
+    },
     twitter: { card: "summary_large_image", title: essay.title, description: essay.description, images: [image] },
   };
 }
 
-export default async function EssayPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function EssayPage({ params }: EssayPageProps) {
   const { slug } = await params;
   if (!getEssaySlugs().includes(slug)) notFound();
   const essay = getEssay(slug);
-  const related = getAllEssays().filter((item) => item.slug !== slug).slice(0, 2);
-  const sourcesMatch = /^## Sources and Further Reading$/m.exec(essay.content);
-  const essayContent = sourcesMatch ? essay.content.slice(0, sourcesMatch.index) : essay.content;
-  const sourcesContent = sourcesMatch ? essay.content.slice(sourcesMatch.index) : null;
-  const essayUrl = `${siteConfig.url}/essays/${slug}`;
-  const articleJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: essay.title,
-    description: essay.description,
-    datePublished: essay.date,
-    dateModified: essay.updated,
-    wordCount: essay.wordCount,
-    articleSection: essay.topic,
-    inLanguage: "en",
-    image: `${siteConfig.url}${essay.coverImage}`,
-    author: {
-      "@type": "Person",
-      "@id": siteConfig.personId,
-      name: siteConfig.author,
-      url: `${siteConfig.url}${siteConfig.authorPath}`,
-      image: `${siteConfig.url}${siteConfig.authorImage}`,
-      sameAs: [siteConfig.personalUrl, siteConfig.githubUrl, siteConfig.linkedinUrl],
-    },
-    publisher: { "@id": `${siteConfig.url}/#organization` },
-    mainEntityOfPage: essayUrl,
-  };
-  const breadcrumbJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: siteConfig.url },
-      { "@type": "ListItem", position: 2, name: "Essays", item: `${siteConfig.url}/essays` },
-      { "@type": "ListItem", position: 3, name: essay.title, item: `${siteConfig.url}/essays/${slug}` },
-    ],
-  };
+
   return (
-    <main><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd).replace(/</g, "\\u003c") }} /><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, "\\u003c") }} /><ReadingProgress /><article>
-      <header className="article-header shell-narrow"><p className="essay-meta"><Link href={`/topics/${essay.topic.toLowerCase().replaceAll(" ", "-")}`}>{essay.topic}</Link><i />{essay.readTime}</p><h1>{essay.title}</h1><p className="article-deck">{essay.description}</p><div className="byline"><Link className="avatar" href={siteConfig.authorPath} aria-label={`About ${siteConfig.author}`}><Image src={siteConfig.authorImage} alt="" fill sizes="39px" /></Link><p>By <strong><Link href={siteConfig.authorPath}>{siteConfig.author}</Link></strong><br /><time dateTime={essay.date}>{formatDate(essay.date)}</time></p></div></header>
-      <div className="article-cover-wrap shell"><EssayCover accent={essay.accent} src={essay.coverImage} alt={essay.coverAlt} credit={essay.coverCredit} sourceUrl={essay.coverSource} license={essay.coverLicense} priority /></div>
-      <div className="article-body">
-        <MDXRemote source={essayContent} components={mdxComponents} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
-        <EssayShare title={essay.title} url={essayUrl} />
-        {sourcesContent ? <div className="article-sources"><MDXRemote source={sourcesContent} components={mdxComponents} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} /></div> : null}
-      </div>
-      <aside className="article-newsletter shell-narrow"><div><p className="eyebrow">Continue the conversation</p><h2>One worthwhile idea,<br />occasionally.</h2><p>New Noerong essays and research notes, sent only when there is something worth reading.</p></div><NewsletterForm source={`essay_${slug}`} /></aside>
-      <footer className="article-end shell-narrow"><span className="end-mark">N.</span><p>Written by <Link href={siteConfig.authorPath}>{siteConfig.author}</Link> for Noerong.</p></footer>
-    </article>
-    <section className="related shell"><p className="eyebrow">Keep thinking</p><h2>Read next</h2><div className="related-grid">{related.map((item) => <Link href={`/essays/${item.slug}`} key={item.slug}><span>{item.topic} · {item.readTime}</span><h3>{item.title}</h3></Link>)}</div></section>
+    <main>
+      <SiteHeader />
+      <article className="article-page">
+        <header className="article-header shell">
+          <Link href="/essays">← Essay archive</Link>
+          <p>{essay.topic} · {formatDate(essay.date)} · {essay.readTime}</p>
+          <h1>{essay.title}</h1>
+          <p>{essay.description}</p>
+        </header>
+        <div className="article-cover shell">
+          <Image src={essay.coverImage} alt={essay.coverAlt} fill priority sizes="(max-width: 900px) 100vw, 1200px" />
+        </div>
+        <div className="article-body shell">
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{essay.content}</ReactMarkdown>
+        </div>
+      </article>
+      <section className="article-end shell">
+        <div><span>Back to the studio</span><h2>Writing is the side room.<br />Software is the work.</h2></div>
+        <Link className="button button-primary" href="/#products">Explore products <span>↗</span></Link>
+      </section>
+      <SiteFooter />
     </main>
   );
 }

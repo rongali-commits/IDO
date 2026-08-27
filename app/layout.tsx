@@ -1,92 +1,62 @@
 import type { Metadata } from "next";
-import { Inter, Source_Serif_4 } from "next/font/google";
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
-import { Analytics } from "@/components/analytics";
-import { siteConfig } from "@/lib/site";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const sans = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
-const serif = Source_Serif_4({ subsets: ["latin"], variable: "--font-serif", display: "swap" });
+const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
+const mono = Geist_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
-  title: { default: siteConfig.title, template: "%s — Noerong" },
-  description: siteConfig.description,
-  applicationName: siteConfig.name,
-  authors: [{ name: siteConfig.author, url: `${siteConfig.url}${siteConfig.authorPath}` }],
-  creator: siteConfig.author,
-  publisher: siteConfig.name,
-  manifest: "/site.webmanifest",
-  alternates: { canonical: "./", types: { "application/rss+xml": "/feed.xml" } },
-  verification: { google: process.env.GOOGLE_SITE_VERIFICATION },
-  icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/favicon-48x48.png", type: "image/png", sizes: "48x48" },
-      { url: "/favicon-96x96.png", type: "image/png", sizes: "96x96" },
-      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
-    ],
-    shortcut: [{ url: "/favicon.ico" }],
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  metadataBase: new URL("https://noerong.com"),
+  title: {
+    default: "Noerong — Focused SaaS products for real business work",
+    template: "%s — Noerong",
   },
-  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 } },
-  openGraph: { title: siteConfig.title, description: siteConfig.description, url: siteConfig.url, siteName: siteConfig.name, type: "website", images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Noerong — Essays by Rongali Chaitanya" }] },
-  twitter: { card: "summary_large_image", title: siteConfig.title, description: siteConfig.description, images: ["/twitter-image"] },
+  description: "Noerong builds practical AI and automation products for small businesses, agencies, and operators.",
+  alternates: { canonical: "/" },
+  icons: {
+    icon: [{ url: "/icon-192.png", type: "image/png", sizes: "192x192" }],
+    apple: [{ url: "/icon-192.png", type: "image/png", sizes: "192x192" }],
+  },
+  openGraph: {
+    type: "website",
+    url: "https://noerong.com",
+    siteName: "Noerong",
+    title: "Noerong — Focused SaaS products for real business work",
+    description: "Practical AI and automation products for small businesses, agencies, and operators.",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Noerong — Focused SaaS products for real business work" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Noerong — Focused SaaS products for real business work",
+    description: "Practical AI and automation products for small businesses, agencies, and operators.",
+    images: ["/og.png"],
+  },
+  robots: { index: true, follow: true },
 };
 
-const themeScript = `(function(){try{var t=localStorage.getItem('noerong-theme');var d=t==='dark'||(!t&&matchMedia('(prefers-color-scheme:dark)').matches);document.documentElement.classList.toggle('dark',d)}catch(e){}})()`;
-
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  const publicationJsonLd = {
+  const organizationData = {
     "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": `${siteConfig.url}/#website`,
-        name: siteConfig.name,
-        url: siteConfig.url,
-        description: siteConfig.description,
-        inLanguage: "en",
-        author: { "@id": siteConfig.personId },
-        creator: { "@id": siteConfig.personId },
-        publisher: { "@id": `${siteConfig.url}/#organization` },
-      },
-      {
-        "@type": "Organization",
-        "@id": `${siteConfig.url}/#organization`,
-        name: siteConfig.name,
-        url: siteConfig.url,
-        email: siteConfig.email,
-        logo: `${siteConfig.url}/icon-192.png`,
-        founder: { "@id": siteConfig.personId },
-        sameAs: ["https://noerong.substack.com"],
-      },
-      {
-        "@type": "Person",
-        "@id": siteConfig.personId,
-        name: siteConfig.author,
-        url: `${siteConfig.url}${siteConfig.authorPath}`,
-        mainEntityOfPage: `${siteConfig.url}${siteConfig.authorPath}`,
-        image: `${siteConfig.url}${siteConfig.authorImage}`,
-        description: "Writer, founder, and editor of Noerong, an independent publication of source-backed essays.",
-        jobTitle: ["Writer", "Founder and editor of Noerong"],
-        worksFor: { "@id": `${siteConfig.url}/#organization` },
-        sameAs: [siteConfig.personalUrl, siteConfig.githubUrl, siteConfig.linkedinUrl],
-        knowsAbout: ["History", "Anthropology", "Science", "Philosophy", "Geopolitics"],
-      },
+    "@type": "Organization",
+    name: "Noerong",
+    url: "https://noerong.com",
+    logo: "https://noerong.com/icon-192.png",
+    description: "An independent SaaS product studio building practical AI and automation products.",
+    founder: { "@type": "Person", name: "Rongali Chaitanya" },
+    sameAs: [
+      "https://github.com/rongali-commits",
+      "https://www.linkedin.com/in/rongalichaitanya",
     ],
   };
+
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head><script dangerouslySetInnerHTML={{ __html: themeScript }} /></head>
-      <body className={`${sans.variable} ${serif.variable}`}>
-        <a className="skip-link" href="#main-content">Skip to content</a>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(publicationJsonLd).replace(/</g, "\\u003c") }} />
-        <Header />
-        <div id="main-content" tabIndex={-1}>{children}</div>
-        <Footer />
-        <Analytics />
+    <html lang="en">
+      <body className={`${geist.variable} ${mono.variable}`}>
+        {children}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationData).replace(/</g, "\\u003c") }}
+        />
       </body>
     </html>
   );

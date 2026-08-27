@@ -1,12 +1,17 @@
 import type { MetadataRoute } from "next";
 import { getAllEssays } from "@/lib/essays";
-import { siteConfig, topicDescriptions } from "@/lib/site";
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const essays = getAllEssays();
-  const pages = ["", "/essays", "/topics", siteConfig.authorPath, "/newsletter", "/reading-list", "/editorial-policy", "/privacy"].map((path) => ({ url: `${siteConfig.url}${path}`, lastModified: new Date() }));
-  const topics = Object.keys(topicDescriptions).filter((topic) => essays.some((essay) => essay.topic === topic)).map((topic) => ({
-    url: `${siteConfig.url}/topics/${topic.toLowerCase().replaceAll(" ", "-")}`,
-    lastModified: new Date(),
+  const essays = getAllEssays().map((essay) => ({
+    url: `https://noerong.com/essays/${essay.slug}`,
+    lastModified: new Date(essay.date),
+    changeFrequency: "yearly" as const,
+    priority: 0.5,
   }));
-  return [...pages, ...topics, ...essays.map((essay) => ({ url: `${siteConfig.url}/essays/${essay.slug}`, lastModified: new Date(essay.updated) }))];
+
+  return [
+    { url: "https://noerong.com", lastModified: new Date(), changeFrequency: "monthly", priority: 1 },
+    { url: "https://noerong.com/essays", lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
+    ...essays,
+  ];
 }
