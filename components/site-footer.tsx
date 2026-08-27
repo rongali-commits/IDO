@@ -1,17 +1,15 @@
-import Link from "next/link";
-
 export function SiteFooter() {
   return (
     <footer className="site-footer">
       <div className="shell footer-main">
         <div>
-          <Link className="wordmark wordmark-large" href="/">noerong<span>.</span></Link>
+          <a className="wordmark wordmark-large" href="/">noerong<span>.</span></a>
           <p>Focused SaaS products for real business work.</p>
         </div>
         <nav aria-label="Footer navigation">
-          <Link href="/#products">Products</Link>
-          <Link href="/#about">About</Link>
-          <Link href="/essays">Essays</Link>
+          <a href="/#products">Products</a>
+          <a href="/#about">About</a>
+          <a href="/essays">Essays</a>
           <a href="https://github.com/rongali-commits" target="_blank" rel="noreferrer">GitHub ↗</a>
           <a href="https://www.linkedin.com/in/rongalichaitanya" target="_blank" rel="noreferrer">LinkedIn ↗</a>
         </nav>

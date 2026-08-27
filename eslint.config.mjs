@@ -5,6 +5,10 @@ import nextTs from 'eslint-config-next/typescript';
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
+  {
+    // Native navigation avoids a vinext client-link runtime failure in production.
+    rules: { '@next/next/no-html-link-for-pages': 'off' },
+  },
   globalIgnores(['.next/**', 'out/**', 'build/**', 'next-env.d.ts']),
 ]);
 
