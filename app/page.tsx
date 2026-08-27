@@ -1,0 +1,149 @@
+import Image from "next/image";
+import Link from "next/link";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
+import { getAllEssays } from "@/lib/essays";
+import { products } from "@/lib/products";
+
+export default function Home() {
+  const essays = getAllEssays();
+  const flagship = products[0];
+
+  return (
+    <main>
+      <SiteHeader />
+
+      <section className="hero shell">
+        <div className="hero-copy">
+          <p className="eyebrow"><span /> Independent SaaS product studio</p>
+          <h1>Useful software.<br /><em>Built to earn its place.</em></h1>
+          <p className="hero-intro">
+            Noerong builds focused AI and automation products for small businesses,
+            agencies, and operators who need less busywork and more leverage.
+          </p>
+          <div className="hero-actions">
+            <a className="button button-primary" href="#products">See what we build <span>↘</span></a>
+            <a className="button button-secondary" href="mailto:hello@noerong.com?subject=Noerong%20product%20enquiry">Discuss a product</a>
+          </div>
+          <div className="proof-row" aria-label="Product proof">
+            <div><strong>05</strong><span>working systems</span></div>
+            <div><strong>01</strong><span>production product</span></div>
+            <div><strong>0</strong><span>slide-deck-only ideas</span></div>
+          </div>
+        </div>
+
+        <aside className="launch-card" aria-label="Current flagship product">
+          <div className="launch-topline"><span className="status-dot" /> Live now <b>01 / 05</b></div>
+          <div className="launch-preview">
+            <Image src={flagship.image} alt={flagship.imageAlt} fill priority sizes="(max-width: 900px) 100vw, 44vw" />
+          </div>
+          <div className="launch-copy">
+            <div><span>Flagship product</span><h2>{flagship.name}</h2></div>
+            <p>{flagship.summary}</p>
+            <a href={flagship.liveUrl} target="_blank" rel="noreferrer">Open live product <span>↗</span></a>
+          </div>
+        </aside>
+      </section>
+
+      <section id="products" className="products-section">
+        <div className="section-title shell">
+          <div><p className="eyebrow"><span /> Products, not promises</p><h2>Small systems for<br />expensive problems.</h2></div>
+          <p>Each product begins with one repeated, measurable business frustration. Then it is designed, tested, documented, and made demonstrable.</p>
+        </div>
+
+        <div className="product-grid shell">
+          {products.map((product, index) => (
+            <article className={`product-card ${index === 0 ? "product-card-wide" : ""}`} key={product.slug}>
+              <a className="product-image" href={product.liveUrl} target="_blank" rel="noreferrer" aria-label={`Open ${product.name} live demo`}>
+                <Image src={product.image} alt={product.imageAlt} fill sizes={index === 0 ? "(max-width: 900px) 100vw, 66vw" : "(max-width: 900px) 100vw, 40vw"} />
+                <span>{String(index + 1).padStart(2, "0")}</span>
+              </a>
+              <div className="product-card-copy">
+                <div className="product-meta"><span>{product.stage}</span><span>{product.category}</span></div>
+                <h3>{product.name}</h3>
+                <p>{product.summary}</p>
+                <strong>{product.problem}</strong>
+                <ul>{product.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul>
+                <div className="product-links">
+                  <a href={product.liveUrl} target="_blank" rel="noreferrer">Live demo ↗</a>
+                  {product.repository && <a href={product.repository} target="_blank" rel="noreferrer">View source ↗</a>}
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="offer-section shell">
+        <div className="offer-heading">
+          <p className="eyebrow"><span /> What clients can buy</p>
+          <h2>Start with something that already works.</h2>
+          <p>Noerong products are designed to shorten the distance between a useful idea and a reliable business tool.</p>
+        </div>
+        <div className="offer-grid">
+          <article><span>01</span><h3>Ready-made product</h3><p>Purchase a focused working base instead of funding the same foundations from zero.</p></article>
+          <article><span>02</span><h3>Branded deployment</h3><p>Apply your business identity, approved content, workflow rules, and destination systems.</p></article>
+          <article><span>03</span><h3>Focused custom build</h3><p>Adapt a proven pattern to one painful process with a controlled scope and clear handoff.</p></article>
+        </div>
+        <a className="button button-dark" href="mailto:hello@noerong.com?subject=I%20want%20a%20Noerong%20product">Tell us what is slowing you down <span>↗</span></a>
+      </section>
+
+      <section id="method" className="method-section">
+        <div className="shell method-grid">
+          <div>
+            <p className="eyebrow"><span /> How Noerong works</p>
+            <h2>Proof before polish.</h2>
+          </div>
+          <ol>
+            <li><span>01</span><div><h3>Find the expensive repetition.</h3><p>Start with a workflow that repeatedly costs time, attention, API spend, or missed revenue.</p></div></li>
+            <li><span>02</span><div><h3>Make the core outcome work.</h3><p>Build the smallest honest product that solves the task and can be tested by a real buyer.</p></div></li>
+            <li><span>03</span><div><h3>Package the ownership.</h3><p>Add deployment, documentation, customization boundaries, and a handoff a client can understand.</p></div></li>
+          </ol>
+        </div>
+      </section>
+
+      <section className="essays-section">
+        <div className="shell essays-layout">
+          <div className="essays-intro">
+            <p className="eyebrow eyebrow-dark"><span /> Ideas, after hours</p>
+            <h2>The writing stays.<br />It just does not run the company.</h2>
+            <p>Essays remain part of Noerong as evidence of curiosity, research, and clear thinking—not as a freelance writing service.</p>
+            <Link className="text-link-dark" href="/essays">Browse the essay archive <span>→</span></Link>
+          </div>
+          <div className="essay-list">
+            {essays.map((essay, index) => (
+              <Link href={`/essays/${essay.slug}`} key={essay.slug}>
+                <span>{String(index + 1).padStart(2, "0")} · {essay.topic}</span>
+                <h3>{essay.title}</h3>
+                <p>{essay.description}</p>
+                <b>Read essay ↗</b>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="studio" className="studio-section shell">
+        <div className="studio-mark">N<span>●</span></div>
+        <div>
+          <p className="eyebrow"><span /> The studio</p>
+          <h2>Independent by design.</h2>
+          <p>Noerong is a product studio founded by Rongali Chaitanya in Visakhapatnam, India. It brings software engineering, AI integration, research, and unusually clear product communication into one compact practice.</p>
+          <div className="studio-links">
+            <a href="https://github.com/rongali-commits" target="_blank" rel="noreferrer">GitHub ↗</a>
+            <a href="https://www.linkedin.com/in/rongalichaitanya" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+            <a href="mailto:hello@noerong.com">hello@noerong.com ↗</a>
+          </div>
+        </div>
+      </section>
+
+      <section className="closing-section shell">
+        <p className="eyebrow"><span /> Have a costly workflow?</p>
+        <h2>Let&apos;s turn it into<br /><em>a product.</em></h2>
+        <a className="button button-primary" href="mailto:hello@noerong.com?subject=Noerong%20product%20enquiry">Start a conversation <span>↗</span></a>
+      </section>
+
+      <SiteFooter />
+    </main>
+  );
+}
