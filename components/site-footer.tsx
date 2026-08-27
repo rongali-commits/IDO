@@ -10,6 +10,7 @@ export function SiteFooter() {
         </div>
         <nav aria-label="Footer navigation">
           <Link href="/#products">Products</Link>
+          <Link href="/#about">About</Link>
           <Link href="/essays">Essays</Link>
           <a href="https://github.com/rongali-commits" target="_blank" rel="noreferrer">GitHub ↗</a>
           <a href="https://www.linkedin.com/in/rongalichaitanya" target="_blank" rel="noreferrer">LinkedIn ↗</a>
@@ -17,7 +18,7 @@ export function SiteFooter() {
       </div>
       <div className="shell footer-bottom">
         <span>© {new Date().getFullYear()} Noerong</span>
-        <span>Independent product studio · Visakhapatnam, India</span>
+        <span>Independent product studio · Bengaluru, India</span>
       </div>
     </footer>
   );

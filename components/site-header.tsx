@@ -8,7 +8,7 @@ export function SiteHeader() {
         <Link href="/#products">Products</Link>
         <Link href="/#method">Method</Link>
         <Link href="/essays">Essays</Link>
-        <Link href="/#studio">Studio</Link>
+        <Link href="/#about">About</Link>
       </nav>
       <a className="header-cta" href="mailto:hello@noerong.com?subject=Noerong%20product%20enquiry">Start a conversation</a>
     </header>
