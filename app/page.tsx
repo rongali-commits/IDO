@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { getAllEssays } from "@/lib/essays";
@@ -23,7 +22,7 @@ export default function Home() {
           </p>
           <div className="hero-actions">
             <a className="button button-primary" href="#products">See what we build <span>↘</span></a>
-            <a className="button button-secondary" href="mailto:hello@noerong.com?subject=Noerong%20product%20enquiry">Discuss a product</a>
+            <a className="button button-secondary" href="#contact">Discuss a product</a>
           </div>
           <div className="proof-row" aria-label="Product proof">
             <div><strong>05</strong><span>working systems</span></div>
@@ -85,7 +84,7 @@ export default function Home() {
           <article><span>02</span><h3>Branded deployment</h3><p>Apply your business identity, approved content, workflow rules, and destination systems.</p></article>
           <article><span>03</span><h3>Focused custom build</h3><p>Adapt a proven pattern to one painful process with a controlled scope and clear handoff.</p></article>
         </div>
-        <a className="button button-dark" href="mailto:hello@noerong.com?subject=I%20want%20a%20Noerong%20product">Tell us what is slowing you down <span>↗</span></a>
+        <a className="button button-dark" href="#contact">Tell us what is slowing you down <span>↘</span></a>
       </section>
 
       <section id="method" className="method-section">
@@ -108,16 +107,16 @@ export default function Home() {
             <p className="eyebrow eyebrow-dark"><span /> Ideas, after hours</p>
             <h2>The writing stays.<br />It just does not run the company.</h2>
             <p>Essays remain part of Noerong as evidence of curiosity, research, and clear thinking—not as a freelance writing service.</p>
-            <Link className="text-link-dark" href="/essays">Browse the essay archive <span>→</span></Link>
+            <a className="text-link-dark" href="/essays">Browse the essay archive <span>→</span></a>
           </div>
           <div className="essay-list">
             {essays.map((essay, index) => (
-              <Link href={`/essays/${essay.slug}`} key={essay.slug}>
+              <a href={`/essays/${essay.slug}`} key={essay.slug}>
                 <span>{String(index + 1).padStart(2, "0")} · {essay.topic}</span>
                 <h3>{essay.title}</h3>
                 <p>{essay.description}</p>
                 <b>Read essay ↗</b>
-              </Link>
+              </a>
             ))}
           </div>
         </div>
@@ -148,10 +147,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="closing-section shell">
+      <section id="contact" className="closing-section shell">
         <p className="eyebrow"><span /> Have a costly workflow?</p>
         <h2>Let&apos;s turn it into<br /><em>a product.</em></h2>
-        <a className="button button-primary" href="mailto:hello@noerong.com?subject=Noerong%20product%20enquiry">Start a conversation <span>↗</span></a>
+        <div className="contact-row">
+          <a className="button button-primary" href="mailto:hello@noerong.com?subject=Noerong%20product%20enquiry">Email hello@noerong.com <span>↗</span></a>
+          <p><strong>Reply within 12 hours.</strong><span>Tell me what is slowing your business down, what you use today, and the outcome you want.</span></p>
+        </div>
       </section>
 
       <SiteFooter />
