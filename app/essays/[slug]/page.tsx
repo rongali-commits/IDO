@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -47,7 +46,7 @@ export default async function EssayPage({ params }: EssayPageProps) {
       <SiteHeader />
       <article className="article-page">
         <header className="article-header shell">
-          <Link href="/essays">← Essay archive</Link>
+          <a href="/essays">← Essay archive</a>
           <p>{essay.topic} · {formatDate(essay.date)} · {essay.readTime}</p>
           <h1>{essay.title}</h1>
           <p>{essay.description}</p>
@@ -61,7 +60,7 @@ export default async function EssayPage({ params }: EssayPageProps) {
       </article>
       <section className="article-end shell">
         <div><span>Back to the studio</span><h2>Writing is the side room.<br />Software is the work.</h2></div>
-        <Link className="button button-primary" href="/#products">Explore products <span>↗</span></Link>
+        <a className="button button-primary" href="/#products">Explore products <span>↗</span></a>
       </section>
       <SiteFooter />
     </main>

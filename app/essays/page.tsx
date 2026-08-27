@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { formatDate, getAllEssays } from "@/lib/essays";
@@ -32,14 +31,14 @@ export default function EssaysPage() {
       <section className="essay-archive-grid shell" aria-label="Essay archive">
         {essays.map((essay) => (
           <article className="essay-archive-card" key={essay.slug}>
-            <Link className="essay-card-image" href={`/essays/${essay.slug}`}>
+            <a className="essay-card-image" href={`/essays/${essay.slug}`}>
               <Image src={essay.coverImage} alt={essay.coverAlt} fill sizes="(max-width: 780px) 100vw, 46vw" />
-            </Link>
+            </a>
             <div>
               <p>{essay.topic} · {formatDate(essay.date)} · {essay.readTime}</p>
-              <h2><Link href={`/essays/${essay.slug}`}>{essay.title}</Link></h2>
+              <h2><a href={`/essays/${essay.slug}`}>{essay.title}</a></h2>
               <p>{essay.description}</p>
-              <Link className="archive-link" href={`/essays/${essay.slug}`}>Read the essay <span>↗</span></Link>
+              <a className="archive-link" href={`/essays/${essay.slug}`}>Read the essay <span>↗</span></a>
             </div>
           </article>
         ))}
@@ -47,7 +46,7 @@ export default function EssaysPage() {
 
       <section className="archive-product-cta shell">
         <div><span>Noerong&apos;s main work</span><h2>See the software.</h2></div>
-        <Link className="button button-primary" href="/#products">Explore products <span>↗</span></Link>
+        <a className="button button-primary" href="/#products">Explore products <span>↗</span></a>
       </section>
       <SiteFooter />
     </main>
