@@ -1,14 +1,55 @@
 import type { Metadata } from "next";
-import { EssayCard } from "@/components/essay-card";
-import { getAllEssays } from "@/lib/essays";
+import Image from "next/image";
+import Link from "next/link";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
+import { formatDate, getAllEssays } from "@/lib/essays";
 
 export const metadata: Metadata = {
-  title: "Essays by Rongali Chaitanya",
-  description: "Long-form Noerong essays by Rongali Chaitanya on history, science, geopolitics, and philosophy.",
+  title: "Essays",
+  description: "Long-form essays from Noerong on history, philosophy, geopolitics, and the questions that refuse to stay small.",
   alternates: { canonical: "/essays" },
+  openGraph: {
+    title: "Essays — Noerong",
+    description: "Long-form curiosity from the Noerong product studio.",
+    url: "https://noerong.com/essays",
+    images: ["/og.png"],
+  },
 };
 
 export default function EssaysPage() {
   const essays = getAllEssays();
-  return <main className="page-main shell"><header className="page-header"><p className="eyebrow">The archive</p><h1>Essays</h1><p>Deep dives into ideas that are easy to miss and hard to stop thinking about.</p></header><div className="archive-grid">{essays.map((essay) => <EssayCard key={essay.slug} essay={essay} />)}</div></main>;
+
+  return (
+    <main>
+      <SiteHeader />
+      <section className="essay-archive-header shell">
+        <p className="eyebrow"><span /> Passion writing</p>
+        <h1>Long-form curiosity,<br /><em>kept in its proper place.</em></h1>
+        <p>Noerong is a software product studio. These essays are the founder&apos;s independent writing on history, philosophy, and geopolitics—not a writing service.</p>
+      </section>
+
+      <section className="essay-archive-grid shell" aria-label="Essay archive">
+        {essays.map((essay) => (
+          <article className="essay-archive-card" key={essay.slug}>
+            <Link className="essay-card-image" href={`/essays/${essay.slug}`}>
+              <Image src={essay.coverImage} alt={essay.coverAlt} fill sizes="(max-width: 780px) 100vw, 46vw" />
+            </Link>
+            <div>
+              <p>{essay.topic} · {formatDate(essay.date)} · {essay.readTime}</p>
+              <h2><Link href={`/essays/${essay.slug}`}>{essay.title}</Link></h2>
+              <p>{essay.description}</p>
+              <Link className="archive-link" href={`/essays/${essay.slug}`}>Read the essay <span>↗</span></Link>
+            </div>
+          </article>
+        ))}
+      </section>
+
+      <section className="archive-product-cta shell">
+        <div><span>Noerong&apos;s main work</span><h2>See the software.</h2></div>
+        <Link className="button button-primary" href="/#products">Explore products <span>↗</span></Link>
+      </section>
+      <SiteFooter />
+    </main>
+  );
 }
