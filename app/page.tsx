@@ -123,15 +123,26 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="studio" className="studio-section shell">
-        <div className="studio-mark">N<span>●</span></div>
+      <section id="about" className="studio-section shell">
+        <div className="studio-mark" aria-hidden="true">N<span>●</span></div>
         <div>
-          <p className="eyebrow"><span /> The studio</p>
-          <h2>Independent by design.</h2>
-          <p>Noerong is a product studio founded by Rongali Chaitanya in Visakhapatnam, India. It brings software engineering, AI integration, research, and unusually clear product communication into one compact practice.</p>
+          <p className="eyebrow"><span /> About the founder</p>
+          <h2>Rongali Chaitanya.</h2>
+          <p className="founder-role">Founder of Noerong · SaaS product builder · Bengaluru, India</p>
+          <div className="founder-copy">
+            <p>Rongali builds focused software for small businesses, agencies, and operators. He founded Noerong to turn costly, repetitive workflows into products people can inspect, use, and own.</p>
+            <p>His background in long-form research, editorial fact-checking, and clear communication shapes how every product is made: evidence first, honest demos, controlled scope, and practical handoff.</p>
+          </div>
+          <ul className="founder-skills" aria-label="Founder capabilities">
+            <li>Python automation</li>
+            <li>FastAPI</li>
+            <li>Next.js</li>
+            <li>AI integrations</li>
+            <li>Product research</li>
+          </ul>
           <div className="studio-links">
-            <a href="https://github.com/rongali-commits" target="_blank" rel="noreferrer">GitHub ↗</a>
-            <a href="https://www.linkedin.com/in/rongalichaitanya" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+            <a href="https://www.linkedin.com/in/rongalichaitanya" target="_blank" rel="noreferrer">View LinkedIn ↗</a>
+            <a href="https://github.com/rongali-commits" target="_blank" rel="noreferrer">View GitHub ↗</a>
             <a href="mailto:hello@noerong.com">hello@noerong.com ↗</a>
           </div>
         </div>
