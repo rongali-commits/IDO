@@ -56,11 +56,15 @@ a { color: inherit; text-decoration: none; }
 .launch-preview { position: relative; aspect-ratio: 1.46; margin: 16px; overflow: hidden; border-radius: 10px; background: var(--paper); }
 .launch-preview img { object-fit: cover; object-position: top left; }
 .launch-copy { display: grid; gap: 24px; padding: 18px 22px 25px; }
-.launch-copy > div span { color: var(--lime); font-family: var(--font-mono), monospace; font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; }
+.launch-heading > span { color: var(--lime); font-family: var(--font-mono), monospace; font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; }
 .launch-copy h2 { margin: 6px 0 0; font-size: 2rem; letter-spacing: -.05em; }
 .launch-copy p { margin: 0; color: #a9aea7; line-height: 1.55; }
-.launch-copy > a { display: flex; justify-content: space-between; padding-top: 18px; border-top: 1px solid #303430; color: var(--paper); font-size: .78rem; font-weight: 700; }
-.launch-copy > a:hover { color: var(--lime); }
+.launch-actions { display: grid; gap: 1px; overflow: hidden; border: 1px solid #303430; border-radius: 7px; background: #303430; }
+.launch-actions > a { display: flex; justify-content: space-between; gap: 18px; padding: 14px 15px; color: var(--paper); background: #111512; font-size: .76rem; font-weight: 700; transition: color .2s ease, background .2s ease; }
+.launch-actions > a:hover { color: var(--lime); }
+.launch-actions > .launch-buy { color: var(--ink); background: var(--lime); }
+.launch-actions > .launch-buy:hover { color: var(--ink); background: #d7ff8d; }
+.launch-actions span { font-family: var(--font-mono), monospace; font-size: .62rem; text-transform: uppercase; }
 
 .products-section { padding: 118px 0 130px; color: var(--ink); background: var(--paper); }
 .section-title { display: grid; grid-template-columns: 1.3fr .7fr; align-items: end; gap: 80px; padding-bottom: 60px; border-bottom: 1px solid var(--dark-line); }
@@ -86,6 +90,7 @@ a { color: inherit; text-decoration: none; }
 .product-card-copy li { padding: 7px 10px; color: #555a53; border: 1px solid var(--dark-line); border-radius: 999px; font-family: var(--font-mono), monospace; font-size: .59rem; }
 .product-links { display: flex; gap: 22px; margin-top: auto; padding-top: 19px; border-top: 1px solid var(--dark-line); font-size: .72rem; font-weight: 760; }
 .product-links a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.product-links .purchase-link { color: #365f00; }
 
 .offer-section { padding-block: 126px; color: var(--ink); background: var(--paper); }
 .offer-heading { display: grid; grid-template-columns: 1fr 1fr; gap: 50px 90px; }
