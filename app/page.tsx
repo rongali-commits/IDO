@@ -25,8 +25,8 @@ export default function Home() {
             <a className="button button-secondary" href="#products">See all products <span>↘</span></a>
           </div>
           <div className="proof-row" aria-label="Product proof">
-            <div><strong>05</strong><span>working systems</span></div>
-            <div><strong>01</strong><span>production product</span></div>
+            <div><strong>06</strong><span>working systems</span></div>
+            <div><strong>02</strong><span>production products</span></div>
             <div><strong>0</strong><span>slide-deck-only ideas</span></div>
           </div>
         </div>
