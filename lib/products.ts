@@ -8,6 +8,8 @@ export type Product = {
   image: string;
   imageAlt: string;
   liveUrl: string;
+  purchaseUrl?: string;
+  startingPrice?: string;
   repository?: string;
   tags: string[];
 };
@@ -23,7 +25,22 @@ export const products: Product[] = [
     image: "/products/leaddesk-ai.png",
     imageAlt: "LeadDesk AI customer website and embedded assistant",
     liveUrl: "https://leaddesk-ai-production.up.railway.app",
+    purchaseUrl: "https://www.upwork.com/services/product/development-it-a-white-label-ai-chatbot-and-lead-capture-system-for-your-website-2093012217047462206",
+    startingPrice: "$29",
     tags: ["FastAPI", "OpenAI-ready", "SQLite", "Docker"],
+  },
+  {
+    slug: "followdesk",
+    name: "FollowDesk",
+    stage: "Production",
+    category: "Lead follow-up automation",
+    summary: "A white-label follow-up system that moves new enquiries through a focused sales pipeline and toward a booked call.",
+    problem: "For service businesses losing good leads because follow-up depends on memory, spreadsheets, and scattered inboxes.",
+    image: "/products/followdesk.png",
+    imageAlt: "FollowDesk lead follow-up and booking dashboard",
+    liveUrl: "https://followdesk-production.up.railway.app",
+    startingPrice: "$29",
+    tags: ["FastAPI", "Email automation", "Booking", "SQLite"],
   },
   {
     slug: "sourceroom",
