@@ -8,6 +8,8 @@ export type Product = {
   image: string;
   imageAlt: string;
   liveUrl: string;
+  purchaseUrl?: string;
+  startingPrice?: string;
   repository?: string;
   tags: string[];
 };
@@ -23,6 +25,8 @@ export const products: Product[] = [
     image: "/products/leaddesk-ai.png",
     imageAlt: "LeadDesk AI customer website and embedded assistant",
     liveUrl: "https://leaddesk-ai-production.up.railway.app",
+    purchaseUrl: "https://www.upwork.com/services/product/development-it-a-white-label-ai-chatbot-and-lead-capture-system-for-your-website-2093012217047462206",
+    startingPrice: "$29",
     tags: ["FastAPI", "OpenAI-ready", "SQLite", "Docker"],
   },
   {

@@ -21,8 +21,8 @@ export default function Home() {
             agencies, and operators who need less busywork and more leverage.
           </p>
           <div className="hero-actions">
-            <a className="button button-primary" href="#products">See what we build <span>↘</span></a>
-            <a className="button button-secondary" href="#contact">Discuss a product</a>
+            <a className="button button-primary" href={flagship.purchaseUrl} target="_blank" rel="noreferrer">Buy LeadDesk — from {flagship.startingPrice} <span>↗</span></a>
+            <a className="button button-secondary" href="#products">See all products <span>↘</span></a>
           </div>
           <div className="proof-row" aria-label="Product proof">
             <div><strong>05</strong><span>working systems</span></div>
@@ -37,9 +37,12 @@ export default function Home() {
             <Image src={flagship.image} alt={flagship.imageAlt} fill priority sizes="(max-width: 900px) 100vw, 44vw" />
           </div>
           <div className="launch-copy">
-            <div><span>Flagship product</span><h2>{flagship.name}</h2></div>
+            <div className="launch-heading"><span>Flagship product</span><h2>{flagship.name}</h2></div>
             <p>{flagship.summary}</p>
-            <a href={flagship.liveUrl} target="_blank" rel="noreferrer">Open live product <span>↗</span></a>
+            <div className="launch-actions">
+              <a href={flagship.liveUrl} target="_blank" rel="noreferrer">Try live demo <span>↗</span></a>
+              <a className="launch-buy" href={flagship.purchaseUrl} target="_blank" rel="noreferrer">Buy on Upwork <span>From {flagship.startingPrice} ↗</span></a>
+            </div>
           </div>
         </aside>
       </section>
@@ -64,6 +67,7 @@ export default function Home() {
                 <strong>{product.problem}</strong>
                 <ul>{product.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul>
                 <div className="product-links">
+                  {product.purchaseUrl && <a className="purchase-link" href={product.purchaseUrl} target="_blank" rel="noreferrer">Buy on Upwork — from {product.startingPrice} ↗</a>}
                   <a href={product.liveUrl} target="_blank" rel="noreferrer">Live demo ↗</a>
                   {product.repository && <a href={product.repository} target="_blank" rel="noreferrer">View source ↗</a>}
                 </div>
@@ -151,7 +155,8 @@ export default function Home() {
         <p className="eyebrow"><span /> Have a costly workflow?</p>
         <h2>Let&apos;s turn it into<br /><em>a product.</em></h2>
         <div className="contact-row">
-          <a className="button button-primary" href="mailto:hello@noerong.com?subject=Noerong%20product%20enquiry">Email hello@noerong.com <span>↗</span></a>
+          <a className="button button-primary" href={flagship.purchaseUrl} target="_blank" rel="noreferrer">Buy LeadDesk on Upwork <span>From {flagship.startingPrice} ↗</span></a>
+          <a className="button button-secondary" href="mailto:hello@noerong.com?subject=Noerong%20product%20enquiry">Email hello@noerong.com <span>↗</span></a>
           <p><strong>Reply within 12 hours.</strong><span>Tell me what is slowing your business down, what you use today, and the outcome you want.</span></p>
         </div>
       </section>
