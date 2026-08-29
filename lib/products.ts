@@ -8,6 +8,7 @@ export type Product = {
   image: string;
   imageAlt: string;
   liveUrl: string;
+  contraUrl?: string;
   purchaseUrl?: string;
   startingPrice?: string;
   repository?: string;
@@ -25,6 +26,7 @@ export const products: Product[] = [
     image: "/products/leaddesk-ai.png",
     imageAlt: "LeadDesk AI customer website and embedded assistant",
     liveUrl: "https://leaddesk-ai-production.up.railway.app",
+    contraUrl: "https://contra.com/s/UbWOeM2v-i-will-build-a-white-label-ai-chatbot-and-lead-capture-system",
     purchaseUrl: "https://www.upwork.com/services/product/development-it-a-white-label-ai-chatbot-and-lead-capture-system-for-your-website-2093012217047462206",
     startingPrice: "$29",
     tags: ["FastAPI", "OpenAI-ready", "SQLite", "Docker"],
@@ -39,7 +41,8 @@ export const products: Product[] = [
     image: "/products/followdesk.png",
     imageAlt: "FollowDesk lead follow-up and booking dashboard",
     liveUrl: "https://followdesk-production.up.railway.app",
-    startingPrice: "$29",
+    contraUrl: "https://contra.com/s/sFBmXXU3-i-will-build-an-automated-lead-follow-up-and-booking-crm",
+    startingPrice: "$39",
     tags: ["FastAPI", "Email automation", "Booking", "SQLite"],
   },
   {
@@ -52,6 +55,7 @@ export const products: Product[] = [
     image: "/products/reviewdesk.png",
     imageAlt: "ReviewDesk branded customer feedback experience",
     liveUrl: "https://reviewdesk-noerong.vercel.app",
+    contraUrl: "https://contra.com/s/E6bAEMgv-i-will-build-an-automated-review-and-testimonial-system",
     startingPrice: "$29",
     tags: ["FastAPI", "Review requests", "Testimonials", "SQLite"],
   },

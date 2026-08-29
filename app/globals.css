@@ -88,7 +88,7 @@ a { color: inherit; text-decoration: none; }
 .product-card-copy > strong { display: block; margin-top: 24px; font-size: .82rem; line-height: 1.5; }
 .product-card-copy ul { display: flex; flex-wrap: wrap; gap: 7px; padding: 0; margin: 28px 0 34px; list-style: none; }
 .product-card-copy li { padding: 7px 10px; color: #555a53; border: 1px solid var(--dark-line); border-radius: 999px; font-family: var(--font-mono), monospace; font-size: .59rem; }
-.product-links { display: flex; gap: 22px; margin-top: auto; padding-top: 19px; border-top: 1px solid var(--dark-line); font-size: .72rem; font-weight: 760; }
+.product-links { display: flex; flex-wrap: wrap; gap: 12px 22px; margin-top: auto; padding-top: 19px; border-top: 1px solid var(--dark-line); font-size: .72rem; font-weight: 760; }
 .product-links a:hover { text-decoration: underline; text-underline-offset: 4px; }
 .product-links .purchase-link { color: #365f00; }
 

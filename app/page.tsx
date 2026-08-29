@@ -7,6 +7,7 @@ import { products } from "@/lib/products";
 export default function Home() {
   const essays = getAllEssays();
   const flagship = products[0];
+  const flagshipPurchaseUrl = flagship.contraUrl ?? flagship.purchaseUrl;
 
   return (
     <main>
@@ -21,18 +22,18 @@ export default function Home() {
             agencies, and operators who need less busywork and more leverage.
           </p>
           <div className="hero-actions">
-            <a className="button button-primary" href={flagship.purchaseUrl} target="_blank" rel="noreferrer">Buy LeadDesk — from {flagship.startingPrice} <span>↗</span></a>
+            <a className="button button-primary" href={flagshipPurchaseUrl} target="_blank" rel="noreferrer">Buy LeadDesk on Contra · from {flagship.startingPrice} <span>↗</span></a>
             <a className="button button-secondary" href="#products">See all products <span>↘</span></a>
           </div>
           <div className="proof-row" aria-label="Product proof">
-            <div><strong>06</strong><span>working systems</span></div>
-            <div><strong>02</strong><span>production products</span></div>
+            <div><strong>07</strong><span>working systems</span></div>
+            <div><strong>03</strong><span>production products</span></div>
             <div><strong>0</strong><span>slide-deck-only ideas</span></div>
           </div>
         </div>
 
         <aside className="launch-card" aria-label="Current flagship product">
-          <div className="launch-topline"><span className="status-dot" /> Live now <b>01 / 05</b></div>
+          <div className="launch-topline"><span className="status-dot" /> Live now <b>01 / 07</b></div>
           <div className="launch-preview">
             <Image src={flagship.image} alt={flagship.imageAlt} fill priority sizes="(max-width: 900px) 100vw, 44vw" />
           </div>
@@ -41,7 +42,8 @@ export default function Home() {
             <p>{flagship.summary}</p>
             <div className="launch-actions">
               <a href={flagship.liveUrl} target="_blank" rel="noreferrer">Try live demo <span>↗</span></a>
-              <a className="launch-buy" href={flagship.purchaseUrl} target="_blank" rel="noreferrer">Buy on Upwork <span>From {flagship.startingPrice} ↗</span></a>
+              {flagship.contraUrl && <a className="launch-buy" href={flagship.contraUrl} target="_blank" rel="noreferrer">Buy on Contra <span>From {flagship.startingPrice} ↗</span></a>}
+              {flagship.purchaseUrl && <a href={flagship.purchaseUrl} target="_blank" rel="noreferrer">Also available on Upwork <span>↗</span></a>}
             </div>
           </div>
         </aside>
@@ -67,7 +69,8 @@ export default function Home() {
                 <strong>{product.problem}</strong>
                 <ul>{product.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul>
                 <div className="product-links">
-                  {product.purchaseUrl && <a className="purchase-link" href={product.purchaseUrl} target="_blank" rel="noreferrer">Buy on Upwork — from {product.startingPrice} ↗</a>}
+                  {product.contraUrl && <a className="purchase-link" href={product.contraUrl} target="_blank" rel="noreferrer">Buy on Contra · from {product.startingPrice} ↗</a>}
+                  {product.purchaseUrl && <a href={product.purchaseUrl} target="_blank" rel="noreferrer">Upwork ↗</a>}
                   <a href={product.liveUrl} target="_blank" rel="noreferrer">Live demo ↗</a>
                   {product.repository && <a href={product.repository} target="_blank" rel="noreferrer">View source ↗</a>}
                 </div>
@@ -110,7 +113,7 @@ export default function Home() {
           <div className="essays-intro">
             <p className="eyebrow eyebrow-dark"><span /> Ideas, after hours</p>
             <h2>The writing stays.<br />It just does not run the company.</h2>
-            <p>Essays remain part of Noerong as evidence of curiosity, research, and clear thinking—not as a freelance writing service.</p>
+            <p>Essays remain part of Noerong as evidence of curiosity, research, and clear thinking; they are not a freelance writing service.</p>
             <a className="text-link-dark" href="/essays">Browse the essay archive <span>→</span></a>
           </div>
           <div className="essay-list">
@@ -144,7 +147,9 @@ export default function Home() {
             <li>Product research</li>
           </ul>
           <div className="studio-links">
+            <a href="https://contra.com/noerong_au1wq0v2" target="_blank" rel="noreferrer">View Contra ↗</a>
             <a href="https://www.linkedin.com/in/rongalichaitanya" target="_blank" rel="noreferrer">View LinkedIn ↗</a>
+            <a href="https://x.com/rongalichay" target="_blank" rel="noreferrer">View X ↗</a>
             <a href="https://github.com/rongali-commits" target="_blank" rel="noreferrer">View GitHub ↗</a>
             <a href="mailto:hello@noerong.com">hello@noerong.com ↗</a>
           </div>
@@ -155,7 +160,7 @@ export default function Home() {
         <p className="eyebrow"><span /> Have a costly workflow?</p>
         <h2>Let&apos;s turn it into<br /><em>a product.</em></h2>
         <div className="contact-row">
-          <a className="button button-primary" href={flagship.purchaseUrl} target="_blank" rel="noreferrer">Buy LeadDesk on Upwork <span>From {flagship.startingPrice} ↗</span></a>
+          <a className="button button-primary" href={flagshipPurchaseUrl} target="_blank" rel="noreferrer">Buy LeadDesk on Contra <span>From {flagship.startingPrice} ↗</span></a>
           <a className="button button-secondary" href="mailto:hello@noerong.com?subject=Noerong%20product%20enquiry">Email hello@noerong.com <span>↗</span></a>
           <p><strong>Reply within 12 hours.</strong><span>Tell me what is slowing your business down, what you use today, and the outcome you want.</span></p>
         </div>

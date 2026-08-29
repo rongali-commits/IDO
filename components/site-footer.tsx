@@ -10,6 +10,8 @@ export function SiteFooter() {
           <a href="/#products">Products</a>
           <a href="/#about">About</a>
           <a href="/essays">Essays</a>
+          <a href="https://contra.com/noerong_au1wq0v2" target="_blank" rel="noreferrer">Contra ↗</a>
+          <a href="https://x.com/rongalichay" target="_blank" rel="noreferrer">X ↗</a>
           <a href="https://github.com/rongali-commits" target="_blank" rel="noreferrer">GitHub ↗</a>
           <a href="https://www.linkedin.com/in/rongalichaitanya" target="_blank" rel="noreferrer">LinkedIn ↗</a>
         </nav>
