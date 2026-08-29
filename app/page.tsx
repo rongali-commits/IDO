@@ -26,14 +26,14 @@ export default function Home() {
             <a className="button button-secondary" href="#products">See all products <span>↘</span></a>
           </div>
           <div className="proof-row" aria-label="Product proof">
-            <div><strong>07</strong><span>working systems</span></div>
-            <div><strong>03</strong><span>production products</span></div>
+            <div><strong>08</strong><span>working systems</span></div>
+            <div><strong>04</strong><span>production products</span></div>
             <div><strong>0</strong><span>slide-deck-only ideas</span></div>
           </div>
         </div>
 
         <aside className="launch-card" aria-label="Current flagship product">
-          <div className="launch-topline"><span className="status-dot" /> Live now <b>01 / 07</b></div>
+          <div className="launch-topline"><span className="status-dot" /> Live now <b>01 / 08</b></div>
           <div className="launch-preview">
             <Image src={flagship.image} alt={flagship.imageAlt} fill priority sizes="(max-width: 900px) 100vw, 44vw" />
           </div>
