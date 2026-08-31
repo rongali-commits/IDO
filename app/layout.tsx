@@ -5,6 +5,11 @@ import "./globals.css";
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
 const mono = Geist_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
+// The portfolio only changes when a new version is deployed. Keep the
+// generated pages fresh at the edge so a cold application worker is not on
+// the critical path for visitors.
+export const revalidate = 86400;
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://noerong.com"),
   title: {
