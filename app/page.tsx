@@ -49,7 +49,7 @@ export default function Home() {
         <div><strong>05</strong><span>Production systems</span></div>
         <div><strong>04</strong><span>Marketplace channels</span></div>
         <div><strong>0→1</strong><span>Idea to deployment</span></div>
-        <div><strong>12h</strong><span>Typical reply time</span></div>
+        <div><strong>∞</strong><span>Available worldwide</span></div>
       </section>
 
       <section className="selected-work shell">
