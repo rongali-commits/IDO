@@ -62,10 +62,10 @@ h1 em, h2 em { color: var(--olive); font-family: Georgia, serif; font-weight: 40
 .home-hero h1 { margin: 72px 0; max-width: 1250px; font-size: clamp(72px, 10.3vw, 156px); line-height: .82; letter-spacing: -.085em; font-weight: 790; }
 .hero-bottom { align-self: flex-end; width: min(610px, 55%); display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 48px; }
 .hero-bottom > p { margin: 0; color: var(--muted); font-size: 18px; line-height: 1.55; }
-.reveal { animation: rise-in .7s cubic-bezier(.2,.75,.3,1) both; }
+.reveal { animation: rise-in .45s cubic-bezier(.2,.75,.3,1) both; }
 .reveal-delay-1 { animation-delay: .08s; }
 .reveal-delay-2 { animation-delay: .16s; }
-@keyframes rise-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes rise-in { from { transform: translateY(12px); } to { transform: none; } }
 
 .flagship { display: grid; grid-template-columns: minmax(0, 1.72fr) minmax(300px, .68fr); background: var(--ink); color: var(--paper); border-radius: var(--radius); overflow: hidden; }
 .flagship-visual { position: relative; min-height: 670px; overflow: hidden; background: #d9ddd3; }
@@ -124,6 +124,23 @@ h1 em, h2 em { color: var(--olive); font-family: Georgia, serif; font-weight: 40
 .essay-preview-image:hover img { transform: scale(1.025); }
 .essay-preview-grid article > p { color: var(--olive); font: 620 10px/1.4 var(--font-mono), monospace; text-transform: uppercase; letter-spacing: .1em; }
 .essay-preview-grid h3 { max-width: 620px; margin: 16px 0 32px; font-size: clamp(30px, 3.2vw, 46px); line-height: 1.02; letter-spacing: -.055em; }
+
+/* Defer layout and paint work for long sections until they approach the viewport. */
+.proof-strip,
+.selected-work,
+.studio-method,
+.founder-note,
+.writing-preview,
+.projects-archive,
+.case-overview,
+.case-sections,
+.about-values,
+.capability-band,
+.essay-archive-grid,
+.site-footer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
 
 /* Page headers */
 .page-hero { padding: 100px 0 90px; border-bottom: 1px solid var(--line); }

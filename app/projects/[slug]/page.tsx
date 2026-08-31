@@ -8,6 +8,7 @@ import { projectDetails } from "@/lib/project-details";
 import { products } from "@/lib/products";
 
 type ProjectPageProps = { params: Promise<{ slug: string }> };
+export const dynamicParams = false;
 export function generateStaticParams() { return products.map(({ slug }) => ({ slug })); }
 
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {

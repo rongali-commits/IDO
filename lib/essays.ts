@@ -10,6 +10,8 @@ const essaySources: Record<string, string> = {
   "the-british-empire-didnt-vanish-it-became-background-noise": empireSource,
 };
 
+const essayCache = new Map<string, Essay>();
+
 export type Essay = {
   slug: string;
   title: string;
@@ -27,13 +29,15 @@ export function getEssaySlugs() {
 }
 
 export function getEssay(slug: string): Essay {
+  const cached = essayCache.get(slug);
+  if (cached) return cached;
   const source = essaySources[slug];
   if (!source) throw new Error(`Unknown essay: ${slug}`);
   const match = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
   if (!match) throw new Error(`Invalid essay frontmatter: ${slug}`);
   const data = parseYaml(match[1]) as Record<string, unknown>;
   const content = match[2];
-  return {
+  const essay = {
     slug,
     title: String(data.title),
     description: String(data.description),
@@ -44,6 +48,8 @@ export function getEssay(slug: string): Essay {
     readTime: readingTime(content).text.replace("min read", "minute read"),
     content,
   };
+  essayCache.set(slug, essay);
+  return essay;
 }
 
 export function getAllEssays() {

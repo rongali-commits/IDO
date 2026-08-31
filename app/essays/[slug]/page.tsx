@@ -9,6 +9,7 @@ import { formatDate, getEssay, getEssaySlugs } from "@/lib/essays";
 
 type EssayPageProps = { params: Promise<{ slug: string }> };
 
+export const dynamicParams = false;
 export function generateStaticParams() {
   return getEssaySlugs().map((slug) => ({ slug }));
 }
