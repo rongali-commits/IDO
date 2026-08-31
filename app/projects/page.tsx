@@ -24,7 +24,7 @@ export default function ProjectsPage() {
         <div className="projects-grid">
           {products.map((product, index) => (
             <article className="project-card" key={product.slug}>
-              <Link className="project-card-image" href={`/projects/${product.slug}`}><Image src={product.image} alt={product.imageAlt} fill sizes="(max-width: 680px) 100vw, 50vw" /></Link>
+              <Link className="project-card-image" href={`/projects/${product.slug}`}><Image src={product.image} alt={product.imageAlt} fill unoptimized sizes="(max-width: 680px) 100vw, 50vw" /></Link>
               <div className="project-card-meta"><span>{String(index + 1).padStart(2, "0")} / {product.category}</span><span>{product.stage}</span></div>
               <h2><Link href={`/projects/${product.slug}`}>{product.name}</Link></h2><p>{product.summary}</p>
             </article>
