@@ -18,6 +18,7 @@ html { scroll-behavior: smooth; background: var(--paper); }
 body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--font-geist), Arial, sans-serif; -webkit-font-smoothing: antialiased; }
 body::selection { background: var(--lime); color: var(--ink); }
 a { color: inherit; text-decoration: none; }
+a:focus-visible, summary:focus-visible { outline: 3px solid var(--lime); outline-offset: 4px; border-radius: 4px; }
 img { max-width: 100%; }
 button, input, textarea, select { font: inherit; }
 main { overflow: hidden; }
@@ -273,6 +274,9 @@ h1 em, h2 em { color: var(--olive); font-family: Georgia, serif; font-weight: 40
   .mobile-menu summary { width: 42px; height: 42px; display: flex; flex-direction: column; justify-content: center; gap: 7px; cursor: pointer; list-style: none; }
   .mobile-menu summary::-webkit-details-marker { display: none; }
   .mobile-menu summary span { width: 24px; height: 1.5px; display: block; background: var(--ink); }
+  .mobile-menu summary span { transition: transform .2s ease; }
+  .mobile-menu[open] summary span:first-child { transform: translateY(4.25px) rotate(45deg); }
+  .mobile-menu[open] summary span:last-child { transform: translateY(-4.25px) rotate(-45deg); }
   .mobile-menu nav { position: absolute; left: 0; right: 0; top: 73px; padding: 20px; display: grid; background: var(--paper); border-bottom: 1px solid var(--line); box-shadow: 0 20px 40px rgba(16,23,18,.09); }
   .mobile-menu nav a { padding: 19px 0; display: flex; align-items: center; gap: 25px; border-bottom: 1px solid var(--line); font-size: 24px; font-weight: 700; }
   .mobile-menu nav a:last-child { border: 0; }

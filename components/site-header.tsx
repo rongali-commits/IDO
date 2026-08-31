@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/components/plain-link";
 
 const navigation = [
   { href: "/projects", label: "Projects" },
