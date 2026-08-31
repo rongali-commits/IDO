@@ -1,171 +1,109 @@
+import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { getAllEssays } from "@/lib/essays";
+import { formatDate, getAllEssays } from "@/lib/essays";
 import { products } from "@/lib/products";
 
+export const metadata: Metadata = {
+  title: "Independent SaaS product studio",
+  description: "Noerong designs and builds focused SaaS products, AI systems, and business automation from idea to production.",
+  alternates: { canonical: "/" },
+};
+
+const featuredSlugs = ["growthdesk", "leaddesk-ai", "clientdesk"];
+
 export default function Home() {
-  const essays = getAllEssays();
-  const flagship = products[0];
-  const flagshipPurchaseUrl = flagship.contraUrl ?? flagship.purchaseUrl;
+  const featured = featuredSlugs.map((slug) => products.find((product) => product.slug === slug)!);
+  const essays = getAllEssays().slice(0, 2);
 
   return (
     <main>
       <SiteHeader />
-
-      <section className="hero shell">
-        <div className="hero-copy">
-          <p className="eyebrow"><span /> Independent SaaS product studio</p>
-          <h1>Useful software.<br /><em>Built to earn its place.</em></h1>
-          <p className="hero-intro">
-            Noerong builds focused AI and automation products for small businesses,
-            agencies, and operators who need less busywork and more leverage.
-          </p>
-          <div className="hero-actions">
-            <a className="button button-primary" href={flagshipPurchaseUrl} target="_blank" rel="noreferrer">Buy LeadDesk on Contra · from {flagship.startingPrice} <span>↗</span></a>
-            <a className="button button-secondary" href="#products">See all products <span>↘</span></a>
-          </div>
-          <div className="proof-row" aria-label="Product proof">
-            <div><strong>09</strong><span>working systems</span></div>
-            <div><strong>05</strong><span>production products</span></div>
-            <div><strong>0</strong><span>slide-deck-only ideas</span></div>
-          </div>
+      <section className="home-hero shell">
+        <div className="hero-meta reveal">
+          <p><span className="status-dot" /> Independent SaaS product studio</p>
+          <p>Bengaluru · Working worldwide</p>
         </div>
-
-        <aside className="launch-card" aria-label="Current flagship product">
-          <div className="launch-topline"><span className="status-dot" /> Live now <b>01 / 09</b></div>
-          <div className="launch-preview">
-            <Image src={flagship.image} alt={flagship.imageAlt} fill priority sizes="(max-width: 900px) 100vw, 44vw" />
-          </div>
-          <div className="launch-copy">
-            <div className="launch-heading"><span>Flagship product</span><h2>{flagship.name}</h2></div>
-            <p>{flagship.summary}</p>
-            <div className="launch-actions">
-              <a href={flagship.liveUrl} target="_blank" rel="noreferrer">Try live demo <span>↗</span></a>
-              {flagship.contraUrl && <a className="launch-buy" href={flagship.contraUrl} target="_blank" rel="noreferrer">Buy on Contra <span>From {flagship.startingPrice} ↗</span></a>}
-              {flagship.purchaseUrl && <a href={flagship.purchaseUrl} target="_blank" rel="noreferrer">Also available on Upwork <span>↗</span></a>}
-            </div>
-          </div>
-        </aside>
+        <h1 className="reveal reveal-delay-1">Useful software,<br /><em>built all the way.</em></h1>
+        <div className="hero-bottom reveal reveal-delay-2">
+          <p>We turn practical business problems into clear, production-ready software. Product thinking, interface design, engineering, deployment, and handoff in one focused studio.</p>
+          <Link className="text-link" href="/projects">Explore the work <span>↗</span></Link>
+        </div>
       </section>
 
-      <section id="products" className="products-section">
-        <div className="section-title shell">
-          <div><p className="eyebrow"><span /> Products, not promises</p><h2>Small systems for<br />expensive problems.</h2></div>
-          <p>Each product begins with one repeated, measurable business frustration. Then it is designed, tested, documented, and made demonstrable.</p>
+      <section className="flagship shell" aria-labelledby="flagship-title">
+        <Link className="flagship-visual" href="/projects/growthdesk">
+          <Image src="/products/growthdesk.png" alt="GrowthDesk business operations platform" fill priority sizes="(max-width: 900px) 100vw, 80vw" />
+          <div className="visual-badge"><span className="status-dot" /> Live product</div>
+        </Link>
+        <div className="flagship-info">
+          <div><p className="section-kicker">01 / Flagship platform</p><h2 id="flagship-title">GrowthDesk</h2></div>
+          <p>An all-in-one operating system for service businesses, bringing lead management, follow-up, client delivery, feedback, and reporting into one branded platform.</p>
+          <Link className="button button-dark" href="/projects/growthdesk">View case study <span>↗</span></Link>
         </div>
+      </section>
 
-        <div className="product-grid shell">
-          {products.map((product, index) => (
-            <article className={`product-card ${index === 0 ? "product-card-wide" : ""}`} key={product.slug}>
-              <a className="product-image" href={product.liveUrl} target="_blank" rel="noreferrer" aria-label={`Open ${product.name} live demo`}>
-                <Image src={product.image} alt={product.imageAlt} fill sizes={index === 0 ? "(max-width: 900px) 100vw, 66vw" : "(max-width: 900px) 100vw, 40vw"} />
-                <span>{String(index + 1).padStart(2, "0")}</span>
-              </a>
-              <div className="product-card-copy">
-                <div className="product-meta"><span>{product.stage}</span><span>{product.category}</span></div>
-                <h3>{product.name}</h3>
-                <p>{product.summary}</p>
-                <strong>{product.problem}</strong>
-                <ul>{product.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul>
-                <div className="product-links">
-                  {product.contraUrl && <a className="purchase-link" href={product.contraUrl} target="_blank" rel="noreferrer">Buy on Contra · from {product.startingPrice} ↗</a>}
-                  {product.purchaseUrl && <a href={product.purchaseUrl} target="_blank" rel="noreferrer">Upwork ↗</a>}
-                  <a href={product.liveUrl} target="_blank" rel="noreferrer">Live demo ↗</a>
-                  {product.repository && <a href={product.repository} target="_blank" rel="noreferrer">View source ↗</a>}
-                </div>
+      <section className="proof-strip shell" aria-label="Studio capabilities">
+        <div><strong>05</strong><span>Production systems</span></div>
+        <div><strong>04</strong><span>Marketplace channels</span></div>
+        <div><strong>0→1</strong><span>Idea to deployment</span></div>
+        <div><strong>12h</strong><span>Typical reply time</span></div>
+      </section>
+
+      <section className="selected-work shell">
+        <div className="section-heading">
+          <div><p className="section-kicker">Selected work</p><h2>Built for the work<br /><em>businesses repeat.</em></h2></div>
+          <Link className="text-link" href="/projects">All projects <span>↗</span></Link>
+        </div>
+        <div className="project-list">
+          {featured.map((product, index) => (
+            <article className="project-row" key={product.slug}>
+              <Link className="project-row-image" href={`/projects/${product.slug}`}><Image src={product.image} alt={product.imageAlt} fill sizes="(max-width: 800px) 100vw, 42vw" /></Link>
+              <div className="project-row-copy">
+                <p className="project-index">0{index + 2}</p><p className="project-category">{product.category}</p>
+                <h3><Link href={`/projects/${product.slug}`}>{product.name}</Link></h3><p>{product.summary}</p>
+                <div className="tag-row">{product.tags.slice(0, 3).map((tag) => <span key={tag}>{tag}</span>)}</div>
+                <Link className="text-link" href={`/projects/${product.slug}`}>Open project <span>↗</span></Link>
               </div>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="offer-section shell">
-        <div className="offer-heading">
-          <p className="eyebrow"><span /> What clients can buy</p>
-          <h2>Start with something that already works.</h2>
-          <p>Noerong products are designed to shorten the distance between a useful idea and a reliable business tool.</p>
+      <section className="studio-method shell">
+        <div className="section-heading">
+          <div><p className="section-kicker">How Noerong works</p><h2>One studio.<br /><em>The whole journey.</em></h2></div>
+          <p>Most projects fail in the gaps between strategy, design, development, and launch. Noerong keeps those decisions in one place.</p>
         </div>
-        <div className="offer-grid">
-          <article><span>01</span><h3>Ready-made product</h3><p>Purchase a focused working base instead of funding the same foundations from zero.</p></article>
-          <article><span>02</span><h3>Branded deployment</h3><p>Apply your business identity, approved content, workflow rules, and destination systems.</p></article>
-          <article><span>03</span><h3>Focused custom build</h3><p>Adapt a proven pattern to one painful process with a controlled scope and clear handoff.</p></article>
-        </div>
-        <a className="button button-dark" href="#contact">Tell us what is slowing you down <span>↘</span></a>
-      </section>
-
-      <section id="method" className="method-section">
-        <div className="shell method-grid">
-          <div>
-            <p className="eyebrow"><span /> How Noerong works</p>
-            <h2>Proof before polish.</h2>
-          </div>
-          <ol>
-            <li><span>01</span><div><h3>Find the expensive repetition.</h3><p>Start with a workflow that repeatedly costs time, attention, API spend, or missed revenue.</p></div></li>
-            <li><span>02</span><div><h3>Make the core outcome work.</h3><p>Build the smallest honest product that solves the task and can be tested by a real buyer.</p></div></li>
-            <li><span>03</span><div><h3>Package the ownership.</h3><p>Add deployment, documentation, customization boundaries, and a handoff a client can understand.</p></div></li>
-          </ol>
+        <div className="method-grid">
+          <article><span>01</span><h3>Shape</h3><p>Clarify the painful workflow, the buyer, and the smallest product worth paying for.</p></article>
+          <article><span>02</span><h3>Design</h3><p>Turn the workflow into a focused interface with clear states, hierarchy, and trust.</p></article>
+          <article><span>03</span><h3>Build</h3><p>Engineer the real system, its data model, integrations, and operational safeguards.</p></article>
+          <article><span>04</span><h3>Launch</h3><p>Deploy, document, position, and hand over a product ready for real business use.</p></article>
         </div>
       </section>
 
-      <section className="essays-section">
-        <div className="shell essays-layout">
-          <div className="essays-intro">
-            <p className="eyebrow eyebrow-dark"><span /> Ideas, after hours</p>
-            <h2>The writing stays.<br />It just does not run the company.</h2>
-            <p>Essays remain part of Noerong as evidence of curiosity, research, and clear thinking; they are not a freelance writing service.</p>
-            <a className="text-link-dark" href="/essays">Browse the essay archive <span>→</span></a>
-          </div>
-          <div className="essay-list">
-            {essays.map((essay, index) => (
-              <a href={`/essays/${essay.slug}`} key={essay.slug}>
-                <span>{String(index + 1).padStart(2, "0")} · {essay.topic}</span>
-                <h3>{essay.title}</h3>
-                <p>{essay.description}</p>
-                <b>Read essay ↗</b>
-              </a>
-            ))}
-          </div>
-        </div>
+      <section className="founder-note shell">
+        <div className="founder-monogram" aria-hidden="true">N<span>●</span></div>
+        <div><p className="section-kicker">A note from the founder</p><blockquote>“I care about the last 10 percent, the part that turns a good prototype into something a business can confidently use.”</blockquote><p>Rongali Chaitanya · Founder and product builder</p><Link className="text-link" href="/about">About the studio <span>↗</span></Link></div>
       </section>
 
-      <section id="about" className="studio-section shell">
-        <div className="studio-mark" aria-hidden="true">N<span>●</span></div>
-        <div>
-          <p className="eyebrow"><span /> About the founder</p>
-          <h2>Rongali Chaitanya.</h2>
-          <p className="founder-role">Founder of Noerong · SaaS product builder · Bengaluru, India</p>
-          <div className="founder-copy">
-            <p>Rongali builds focused software for small businesses, agencies, and operators. He founded Noerong to turn costly, repetitive workflows into products people can inspect, use, and own.</p>
-            <p>His background in long-form research, editorial fact-checking, and clear communication shapes how every product is made: evidence first, honest demos, controlled scope, and practical handoff.</p>
-          </div>
-          <ul className="founder-skills" aria-label="Founder capabilities">
-            <li>Python automation</li>
-            <li>FastAPI</li>
-            <li>Next.js</li>
-            <li>AI integrations</li>
-            <li>Product research</li>
-          </ul>
-          <div className="studio-links">
-            <a href="https://contra.com/noerong_au1wq0v2" target="_blank" rel="noreferrer">View Contra ↗</a>
-            <a href="https://www.linkedin.com/in/rongalichaitanya" target="_blank" rel="noreferrer">View LinkedIn ↗</a>
-            <a href="https://x.com/rongalichay" target="_blank" rel="noreferrer">View X ↗</a>
-            <a href="https://github.com/rongali-commits" target="_blank" rel="noreferrer">View GitHub ↗</a>
-            <a href="mailto:hello@noerong.com">hello@noerong.com ↗</a>
-          </div>
+      <section className="writing-preview shell">
+        <div className="section-heading">
+          <div><p className="section-kicker">Writing, for the questions that stay</p><h2>Beyond the<br /><em>product work.</em></h2></div>
+          <p>Essays on history, philosophy, technology, and the ideas that deserve more room than a feed can give them.</p>
+        </div>
+        <div className="essay-preview-grid">
+          {essays.map((essay) => (
+            <article key={essay.slug}>
+              <Link className="essay-preview-image" href={`/essays/${essay.slug}`}><Image src={essay.coverImage} alt={essay.coverAlt} fill sizes="(max-width: 760px) 100vw, 48vw" /></Link>
+              <p>{essay.topic} · {formatDate(essay.date)}</p><h3><Link href={`/essays/${essay.slug}`}>{essay.title}</Link></h3><Link className="text-link" href={`/essays/${essay.slug}`}>Read essay <span>↗</span></Link>
+            </article>
+          ))}
         </div>
       </section>
-
-      <section id="contact" className="closing-section shell">
-        <p className="eyebrow"><span /> Have a costly workflow?</p>
-        <h2>Let&apos;s turn it into<br /><em>a product.</em></h2>
-        <div className="contact-row">
-          <a className="button button-primary" href={flagshipPurchaseUrl} target="_blank" rel="noreferrer">Buy LeadDesk on Contra <span>From {flagship.startingPrice} ↗</span></a>
-          <a className="button button-secondary" href="mailto:hello@noerong.com?subject=Noerong%20product%20enquiry">Email hello@noerong.com <span>↗</span></a>
-          <p><strong>Reply within 12 hours.</strong><span>Tell me what is slowing your business down, what you use today, and the outcome you want.</span></p>
-        </div>
-      </section>
-
       <SiteFooter />
     </main>
   );

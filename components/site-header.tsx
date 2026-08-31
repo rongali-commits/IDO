@@ -1,14 +1,30 @@
+import Link from "next/link";
+
+const navigation = [
+  { href: "/projects", label: "Projects" },
+  { href: "/about", label: "About" },
+  { href: "/essays", label: "Writing" },
+];
+
 export function SiteHeader() {
   return (
-    <header className="site-header shell">
-      <a className="wordmark" href="/" aria-label="Noerong home">noerong<span>.</span></a>
-      <nav aria-label="Primary navigation">
-        <a href="/#products">Products</a>
-        <a href="/#method">Method</a>
-        <a href="/essays">Essays</a>
-        <a href="/#about">About</a>
-      </nav>
-      <a className="header-cta" href="/#contact">Start a conversation</a>
+    <header className="site-header-wrap">
+      <div className="site-header shell">
+        <Link className="wordmark" href="/" aria-label="Noerong home">noerong<span>.</span></Link>
+        <nav className="desktop-nav" aria-label="Primary navigation">
+          {navigation.map((item) => <Link href={item.href} key={item.href}>{item.label}</Link>)}
+        </nav>
+        <Link className="header-cta" href="/contact">Start a project <span aria-hidden="true">↗</span></Link>
+        <details className="mobile-menu">
+          <summary aria-label="Open navigation"><span /><span /></summary>
+          <nav aria-label="Mobile navigation">
+            {navigation.map((item, index) => (
+              <Link href={item.href} key={item.href}><small>0{index + 1}</small>{item.label}</Link>
+            ))}
+            <Link href="/contact"><small>04</small>Start a project</Link>
+          </nav>
+        </details>
+      </div>
     </header>
   );
 }

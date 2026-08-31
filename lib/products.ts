@@ -84,7 +84,7 @@ export const products: Product[] = [
     liveUrl: "https://growthdesk-production-0258.up.railway.app",
     contraUrl: "https://contra.com/s/bQWU7WFR-all-in-one-crm-client-portal-and-automation-system",
     purchaseUrl: "https://www.upwork.com/services/product/development-it-a-complete-white-label-crm-client-portal-and-automation-system-2093957315253409665",
-    startingPrice: "$49",
+    startingPrice: "$299",
     tags: ["Next.js", "TypeScript", "Automations", "Client portals"],
   },
   {

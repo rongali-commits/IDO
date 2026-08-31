@@ -60,7 +60,7 @@ export default async function EssayPage({ params }: EssayPageProps) {
       </article>
       <section className="article-end shell">
         <div><span>Back to the studio</span><h2>Writing is the side room.<br />Software is the work.</h2></div>
-        <a className="button button-primary" href="/#products">Explore products <span>↗</span></a>
+        <a className="button button-outline" href="/projects">Explore projects <span>↗</span></a>
       </section>
       <SiteFooter />
     </main>

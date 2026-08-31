@@ -9,10 +9,10 @@ export const metadata: Metadata = {
   description: "Long-form essays from Noerong on history, philosophy, geopolitics, and the questions that refuse to stay small.",
   alternates: { canonical: "/essays" },
   openGraph: {
-    title: "Essays — Noerong",
+    title: "Essays | Noerong",
     description: "Long-form curiosity from the Noerong product studio.",
     url: "https://noerong.com/essays",
-    images: ["/og.png"],
+    images: ["/og-v2.webp"],
   },
 };
 
@@ -23,9 +23,9 @@ export default function EssaysPage() {
     <main>
       <SiteHeader />
       <section className="essay-archive-header shell">
-        <p className="eyebrow"><span /> Passion writing</p>
-        <h1>Long-form curiosity,<br /><em>kept in its proper place.</em></h1>
-        <p>Noerong is a software product studio. These essays are the founder&apos;s independent writing on history, philosophy, and geopolitics—not a writing service.</p>
+        <p className="eyebrow">Passion writing</p>
+        <h1>Ideas that need<br /><em>more room.</em></h1>
+        <p>Long-form essays from Noerong&apos;s founder on history, philosophy, technology, and geopolitics. This is a personal writing practice, not a freelance writing service.</p>
       </section>
 
       <section className="essay-archive-grid shell" aria-label="Essay archive">
@@ -46,7 +46,7 @@ export default function EssaysPage() {
 
       <section className="archive-product-cta shell">
         <div><span>Noerong&apos;s main work</span><h2>See the software.</h2></div>
-        <a className="button button-primary" href="/#products">Explore products <span>↗</span></a>
+        <a className="button button-light" href="/projects">Explore projects <span>↗</span></a>
       </section>
       <SiteFooter />
     </main>

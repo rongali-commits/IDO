@@ -8,10 +8,10 @@ const mono = Geist_Mono({ subsets: ["latin"], variable: "--font-mono" });
 export const metadata: Metadata = {
   metadataBase: new URL("https://noerong.com"),
   title: {
-    default: "Noerong — Focused SaaS products for real business work",
-    template: "%s — Noerong",
+    default: "Noerong | Independent SaaS product studio",
+    template: "%s | Noerong",
   },
-  description: "Noerong builds practical AI and automation products for small businesses, agencies, and operators.",
+  description: "Noerong designs and builds focused SaaS products, AI systems, and business automation from idea to production.",
   alternates: { canonical: "/" },
   icons: {
     icon: [{ url: "/icon-192.png", type: "image/png", sizes: "192x192" }],
@@ -21,15 +21,15 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://noerong.com",
     siteName: "Noerong",
-    title: "Noerong — Focused SaaS products for real business work",
-    description: "Practical AI and automation products for small businesses, agencies, and operators.",
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Noerong — Focused SaaS products for real business work" }],
+    title: "Noerong | Independent SaaS product studio",
+    description: "Focused SaaS products, AI systems, and business automation built from idea to production.",
+    images: [{ url: "/og-v2.webp", width: 1200, height: 630, alt: "Noerong independent SaaS product studio" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Noerong — Focused SaaS products for real business work",
-    description: "Practical AI and automation products for small businesses, agencies, and operators.",
-    images: ["/og.png"],
+    title: "Noerong | Independent SaaS product studio",
+    description: "Focused SaaS products, AI systems, and business automation built from idea to production.",
+    images: ["/og-v2.webp"],
   },
   robots: { index: true, follow: true },
 };
@@ -45,7 +45,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     founder: {
       "@type": "Person",
       name: "Rongali Chaitanya",
-      url: "https://noerong.com/#about",
+      url: "https://noerong.com/about",
       jobTitle: "Founder and SaaS Product Builder",
       sameAs: [
         "https://github.com/rongali-commits",
@@ -65,7 +65,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body className={`${geist.variable} ${mono.variable}`}>
-        {children}
+        <a className="skip-link" href="#main-content">Skip to content</a>
+        <div id="main-content">{children}</div>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationData).replace(/</g, "\\u003c") }}
