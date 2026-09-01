@@ -9,6 +9,7 @@ export type Product = {
   imageAlt: string;
   liveUrl: string;
   contraUrl?: string;
+  sourceKitUrl?: string;
   purchaseUrl?: string;
   startingPrice?: string;
   repository?: string;
@@ -16,6 +17,21 @@ export type Product = {
 };
 
 export const products: Product[] = [
+  {
+    slug: "noerong-proposals",
+    name: "Noerong Proposals",
+    stage: "Production",
+    category: "Proposal and client approval SaaS",
+    summary: "A white-label proposal workspace for accurate pricing, secure client links, comments, decisions, and a complete activity record.",
+    problem: "For independent teams still managing scope, calculations, approvals, and follow-up across documents, spreadsheets, and email.",
+    image: "/products/noerong-proposals.png",
+    imageAlt: "Noerong Proposals pipeline dashboard and proposal workflow",
+    liveUrl: "https://noerong-proposals-sa-ta7h.bolt.host",
+    contraUrl: "https://contra.com/s/lqMU2Wvl-white-label-proposal-and-client-approval-saa-s?r=noerong_au1wq0v2",
+    sourceKitUrl: "https://contra.com/products/Al07mNLl-noerong-proposals-source-kit",
+    startingPrice: "$29",
+    tags: ["Bolt", "React", "TypeScript", "Bolt Cloud"],
+  },
   {
     slug: "leaddesk-ai",
     name: "LeadDesk AI",

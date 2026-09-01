@@ -8,6 +8,19 @@ export type ProjectDetail = {
 };
 
 export const projectDetails: Record<string, ProjectDetail> = {
+  "noerong-proposals": {
+    audience: "Freelancers, consultants, studios, and small agencies",
+    role: "Product strategy, UX design, full-stack engineering, security review",
+    year: "2026",
+    overview: "Noerong Proposals turns the path from scope to client decision into one professional workflow. It replaces proposal documents, pricing spreadsheets, email approvals, and uncertain follow-up with a branded system that records every important step.",
+    approach: "The product was built in Bolt around five jobs: organize clients, price a clear scope, share one secure link, capture the decision, and maintain a trustworthy activity record. The interface stays deliberately focused so independent teams gain operational clarity without adopting a heavyweight CRM.",
+    features: [
+      { title: "Accurate proposal builder", description: "Services, quantities, rates, line discounts, proposal discounts, tax, terms, and expiry are calculated in one structured editor." },
+      { title: "Branded client link", description: "Every proposal is presented through a secure public page where the client can review, comment, accept, or decline." },
+      { title: "Visible proposal lifecycle", description: "Draft, viewed, accepted, rejected, and expired states give the business a clear pipeline instead of guesswork." },
+      { title: "Production-grade foundation", description: "Authentication, user-isolated data, protected functions, exact-origin CORS, responsive layouts, and safe error states support a dependable launch." },
+    ],
+  },
   growthdesk: {
     audience: "Service businesses and agencies",
     role: "Product strategy, design, full-stack engineering",

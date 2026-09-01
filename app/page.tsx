@@ -34,19 +34,19 @@ export default function Home() {
       </section>
 
       <section className="flagship shell" aria-labelledby="flagship-title">
-        <Link className="flagship-visual" href="/projects/growthdesk">
-          <Image src="/products/growthdesk.png" alt="GrowthDesk business operations platform" fill priority unoptimized sizes="(max-width: 900px) 100vw, 80vw" />
+        <Link className="flagship-visual" href="/projects/noerong-proposals">
+          <Image src="/products/noerong-proposals.png" alt="Noerong Proposals pipeline dashboard and proposal workflow" fill priority unoptimized sizes="(max-width: 900px) 100vw, 80vw" />
           <div className="visual-badge"><span className="status-dot" /> Live product</div>
         </Link>
         <div className="flagship-info">
-          <div><p className="section-kicker">01 / Flagship platform</p><h2 id="flagship-title">GrowthDesk</h2></div>
-          <p>An all-in-one operating system for service businesses, bringing lead management, follow-up, client delivery, feedback, and reporting into one branded platform.</p>
-          <Link className="button button-dark" href="/projects/growthdesk">View case study <span>↗</span></Link>
+          <div><p className="section-kicker">01 / New release · Built with Bolt</p><h2 id="flagship-title">Noerong Proposals</h2></div>
+          <p>A white-label proposal, pricing, and client approval SaaS that gives independent teams one clear path from scope to decision.</p>
+          <Link className="button button-dark" href="/projects/noerong-proposals">View case study <span>↗</span></Link>
         </div>
       </section>
 
       <section className="proof-strip shell" aria-label="Studio capabilities">
-        <div><strong>05</strong><span>Production systems</span></div>
+        <div><strong>06</strong><span>Production systems</span></div>
         <div><strong>04</strong><span>Marketplace channels</span></div>
         <div><strong>0→1</strong><span>Idea to deployment</span></div>
         <div><strong>∞</strong><span>Available worldwide</span></div>

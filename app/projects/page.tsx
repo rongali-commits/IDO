@@ -16,7 +16,7 @@ export default function ProjectsPage() {
     <main>
       <SiteHeader />
       <header className="page-hero shell">
-        <div className="hero-meta"><p><span className="status-dot" /> Noerong project archive</p><p>{String(products.length).padStart(2, "0")} systems · 05 in production</p></div>
+        <div className="hero-meta"><p><span className="status-dot" /> Noerong project archive</p><p>{String(products.length).padStart(2, "0")} systems · 06 in production</p></div>
         <h1>Software with a<br /><em>job to do.</em></h1>
         <div className="page-hero-bottom"><p>Each project starts with an expensive, repetitive, or frustrating business workflow. The goal is a product people understand quickly and can actually operate.</p><Link className="text-link" href="/contact">Build with Noerong <span>↗</span></Link></div>
       </header>
