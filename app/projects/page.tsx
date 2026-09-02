@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { Link } from "@/components/plain-link";
+import { ProjectMotionCover } from "@/components/project-motion-cover";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { products } from "@/lib/products";
@@ -24,7 +24,7 @@ export default function ProjectsPage() {
         <div className="projects-grid">
           {products.map((product, index) => (
             <article className="project-card" key={product.slug}>
-              <Link className="project-card-image" href={`/projects/${product.slug}`}><Image src={product.image} alt={product.imageAlt} fill unoptimized sizes="(max-width: 680px) 100vw, 50vw" /></Link>
+              <Link className="project-card-image" href={`/projects/${product.slug}`}><ProjectMotionCover poster={product.image} video={product.motionCover} alt={product.imageAlt} sizes="(max-width: 680px) 100vw, 50vw" /></Link>
               <div className="project-card-meta"><span>{String(index + 1).padStart(2, "0")} / {product.category}</span><span>{product.stage}</span></div>
               <h2><Link href={`/projects/${product.slug}`}>{product.name}</Link></h2><p>{product.summary}</p>
             </article>

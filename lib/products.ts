@@ -6,6 +6,7 @@ export type Product = {
   summary: string;
   problem: string;
   image: string;
+  motionCover?: string;
   imageAlt: string;
   liveUrl: string;
   contraUrl?: string;
@@ -25,6 +26,7 @@ export const products: Product[] = [
     summary: "A white-label proposal workspace for accurate pricing, secure client links, comments, decisions, and a complete activity record.",
     problem: "For independent teams still managing scope, calculations, approvals, and follow-up across documents, spreadsheets, and email.",
     image: "/products/noerong-proposals.png",
+    motionCover: "/products/motion/noerong-proposals.mp4",
     imageAlt: "Noerong Proposals pipeline dashboard and proposal workflow",
     liveUrl: "https://noerong-proposals-sa-ta7h.bolt.host",
     contraUrl: "https://contra.com/s/lqMU2Wvl-white-label-proposal-and-client-approval-saa-s?r=noerong_au1wq0v2",
@@ -40,6 +42,7 @@ export const products: Product[] = [
     summary: "A white-label website assistant that answers approved FAQs and turns high-intent visitors into structured quote requests.",
     problem: "For service businesses losing ready-to-buy visitors after hours.",
     image: "/products/leaddesk-ai.png",
+    motionCover: "/products/motion/leaddesk-ai.mp4",
     imageAlt: "LeadDesk AI customer website and embedded assistant",
     liveUrl: "https://leaddesk-ai-production.up.railway.app",
     contraUrl: "https://contra.com/s/UbWOeM2v-i-will-build-a-white-label-ai-chatbot-and-lead-capture-system",
@@ -55,6 +58,7 @@ export const products: Product[] = [
     summary: "A white-label follow-up system that moves new enquiries through a focused sales pipeline and toward a booked call.",
     problem: "For service businesses losing good leads because follow-up depends on memory, spreadsheets, and scattered inboxes.",
     image: "/products/followdesk.png",
+    motionCover: "/products/motion/followdesk.mp4",
     imageAlt: "FollowDesk lead follow-up and booking dashboard",
     liveUrl: "https://followdesk-production.up.railway.app",
     contraUrl: "https://contra.com/s/sFBmXXU3-i-will-build-an-automated-lead-follow-up-and-booking-crm",
@@ -69,6 +73,7 @@ export const products: Product[] = [
     summary: "A white-label system that requests honest feedback, automates reminders, and turns permissioned customer stories into an embeddable trust widget.",
     problem: "For local businesses doing excellent work but failing to turn completed jobs into consistent feedback and credible social proof.",
     image: "/products/reviewdesk.png",
+    motionCover: "/products/motion/reviewdesk.mp4",
     imageAlt: "ReviewDesk branded customer feedback experience",
     liveUrl: "https://reviewdesk-noerong.vercel.app",
     contraUrl: "https://contra.com/s/E6bAEMgv-i-will-build-an-automated-review-and-testimonial-system",
@@ -83,6 +88,7 @@ export const products: Product[] = [
     summary: "A white-label client portal for onboarding, project progress, deliverables, approvals, and invoice visibility.",
     problem: "For agencies and consultants losing time to scattered updates, files, approval threads, and invoice follow-up.",
     image: "/products/clientdesk.png",
+    motionCover: "/products/motion/clientdesk.mp4",
     imageAlt: "ClientDesk branded client portal and studio dashboard",
     liveUrl: "https://clientdesk-production-6c93.up.railway.app",
     startingPrice: "$39",
@@ -96,6 +102,7 @@ export const products: Product[] = [
     summary: "A complete white-label platform for enquiries, lead management, follow-up automation, client delivery, reviews, and revenue visibility.",
     problem: "For service businesses running one customer journey across disconnected forms, inboxes, spreadsheets, portals, and reminder tools.",
     image: "/products/growthdesk.png",
+    motionCover: "/products/motion/growthdesk.mp4",
     imageAlt: "GrowthDesk command center with revenue pipeline and automation status",
     liveUrl: "https://growthdesk-production-0258.up.railway.app",
     contraUrl: "https://contra.com/s/bQWU7WFR-all-in-one-crm-client-portal-and-automation-system",
