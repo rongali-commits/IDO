@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Link } from "@/components/plain-link";
+import { ProjectMotionCover } from "@/components/project-motion-cover";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { formatDate, getAllEssays } from "@/lib/essays";
@@ -35,7 +36,7 @@ export default function Home() {
 
       <section className="flagship shell" aria-labelledby="flagship-title">
         <Link className="flagship-visual" href="/projects/noerong-proposals">
-          <Image src="/products/noerong-proposals.png" alt="Noerong Proposals pipeline dashboard and proposal workflow" fill priority unoptimized sizes="(max-width: 900px) 100vw, 80vw" />
+          <ProjectMotionCover poster="/products/noerong-proposals.png" video="/products/motion/noerong-proposals.mp4" alt="Noerong Proposals pipeline dashboard and proposal workflow" priority sizes="(max-width: 900px) 100vw, 80vw" />
           <div className="visual-badge"><span className="status-dot" /> Live product</div>
         </Link>
         <div className="flagship-info">
@@ -60,7 +61,7 @@ export default function Home() {
         <div className="project-list">
           {featured.map((product, index) => (
             <article className="project-row" key={product.slug}>
-              <Link className="project-row-image" href={`/projects/${product.slug}`}><Image src={product.image} alt={product.imageAlt} fill unoptimized sizes="(max-width: 800px) 100vw, 42vw" /></Link>
+              <Link className="project-row-image" href={`/projects/${product.slug}`}><ProjectMotionCover poster={product.image} video={product.motionCover} alt={product.imageAlt} sizes="(max-width: 800px) 100vw, 42vw" /></Link>
               <div className="project-row-copy">
                 <p className="project-index">0{index + 2}</p><p className="project-category">{product.category}</p>
                 <h3><Link href={`/projects/${product.slug}`}>{product.name}</Link></h3><p>{product.summary}</p>
