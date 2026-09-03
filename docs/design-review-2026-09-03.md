@@ -24,11 +24,13 @@ Review from the perspective of a prospective buyer or portfolio reviewer, not an
 8. Small olive labels measured approximately 3.29:1 contrast on paper. Their separate text color measures approximately 5.21:1; the original large olive display type is retained.
 9. Motion buttons lacked an explicit keyboard focus style, and the skip link targeted a wrapper before navigation. Focus styling and the skip destination are corrected.
 10. Missing URLs now have a branded 404 page with a clear return to the project archive.
+11. A second-pass review found that the Essays introduction occupied too much of a common laptop viewport before revealing the work. Its scale and vertical rhythm are now tighter on desktop, tablet, and phone while retaining the editorial character.
+12. The transition from the founder note into the homepage writing section has a shorter, more deliberate pause. The writing introduction now clearly presents essays as the founder's personal passion for unconventional topics and different perspectives, separate from client services.
 
 ## Verification
 
 - Browser layout sweep: 18 content routes at five requested viewport widths (320, 390, 768, 1024, 1440px), 90 combinations. Browser scrollbar reduces the actual content viewport by 15px in the test fixture. No detected horizontal overflow, missing headings, or broken loaded images after fixes. All project posters reported contain.
-- Manual visual inspection: desktop home/process, project archive, About portrait, Contact, writing archive, case-study gallery, and mobile project introduction.
+- Manual visual inspection: desktop home/process, project archive, About portrait, Contact, writing archive, case-study gallery, mobile project introduction, and the revised writing sections at laptop, tablet, and phone widths.
 - Real browser interaction: motion pause state and accessible label changed correctly; mobile navigation expanded; Projects opened the archive; a project title opened its full case study.
 - Read-only route/link check: 18 pages, 43 unique local links, 26 image/source references, and branded HTTP 404 recovery passed locally.
 - Repeatable network check: `node scripts/check-site.mjs http://localhost:3000` (or the deployed origin).

@@ -23,9 +23,9 @@ export default function EssaysPage() {
     <main>
       <SiteHeader />
       <section className="essay-archive-header shell">
-        <p className="eyebrow">Passion writing</p>
+        <p className="eyebrow">Writing · A personal passion</p>
         <h1>Ideas that need<br /><em>more room.</em></h1>
-        <p>Long-form essays from Noerong&apos;s founder on history, philosophy, technology, and geopolitics. This is a personal writing practice, not a freelance writing service.</p>
+        <p>Writing is a personal passion and a way to think carefully. These long-form essays explore unconventional topics across history, philosophy, technology, and geopolitics—often from a different perspective. It is not a freelance writing service.</p>
       </section>
 
       <section className="essay-archive-grid shell" aria-label="Essay archive">

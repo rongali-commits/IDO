@@ -93,7 +93,7 @@ export default function Home() {
       <section className="writing-preview shell">
         <div className="section-heading">
           <div><p className="section-kicker">Writing, for the questions that stay</p><h2>Beyond the<br /><em>product work.</em></h2></div>
-          <p>Essays on history, philosophy, technology, and the ideas that deserve more room than a feed can give them.</p>
+          <p>Writing is a personal passion—a place to explore unconventional topics across history, philosophy, technology, and geopolitics from perspectives that do not fit neatly into a feed.</p>
         </div>
         <div className="essay-preview-grid">
           {essays.map((essay) => (
