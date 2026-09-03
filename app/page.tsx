@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Link } from "@/components/plain-link";
 import { ProjectMotionCover } from "@/components/project-motion-cover";
-import { MotionControl } from "@/components/motion-preference";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { formatDate, getAllEssays } from "@/lib/essays";
@@ -22,8 +21,7 @@ export default function Home() {
 
   return (
     <main>
-      <SiteHeader />
-      <MotionControl />
+      <SiteHeader motionControls />
       <section className="home-hero shell">
         <div className="hero-meta reveal">
           <p><span className="status-dot" /> Independent SaaS product studio</p>
@@ -39,10 +37,9 @@ export default function Home() {
       <section className="flagship shell" aria-labelledby="flagship-title">
         <Link className="flagship-visual" href="/projects/noerong-proposals">
           <ProjectMotionCover poster="/products/noerong-proposals.png" video="/products/motion/noerong-proposals.mp4" alt="Noerong Proposals pipeline dashboard and proposal workflow" priority sizes="(max-width: 900px) 100vw, 80vw" />
-          <div className="visual-badge"><span className="status-dot" /> Live product</div>
         </Link>
         <div className="flagship-info">
-          <div><p className="section-kicker">01 / New release · Built with Bolt</p><h2 id="flagship-title">Noerong Proposals</h2></div>
+          <div><p className="section-kicker">01 / Live product · Built with Bolt</p><h2 id="flagship-title">Noerong Proposals</h2></div>
           <p>A white-label proposal, pricing, and client approval SaaS that gives independent teams one clear path from scope to decision.</p>
           <Link className="button button-dark" href="/projects/noerong-proposals">View case study <span>↗</span></Link>
         </div>

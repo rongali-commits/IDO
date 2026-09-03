@@ -53,7 +53,7 @@ export function ProjectMotionCover({ alt, className, poster, priority = false, s
 
   return (
     <div ref={frameRef} className={["project-motion-cover", className].filter(Boolean).join(" ")} role="img" aria-label={alt}>
-      <Image src={poster} alt="" fill priority={priority} unoptimized sizes={sizes} />
+      <Image src={poster} alt="" fill priority={priority} unoptimized sizes={sizes} style={{ objectFit: "contain" }} />
       {video && shouldLoad && (
         <video
           ref={videoRef}

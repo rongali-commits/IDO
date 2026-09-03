@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Link } from "@/components/plain-link";
 import { ProjectMotionCover } from "@/components/project-motion-cover";
-import { MotionControl } from "@/components/motion-preference";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { products } from "@/lib/products";
@@ -15,8 +14,7 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   return (
     <main>
-      <SiteHeader />
-      <MotionControl />
+      <SiteHeader motionControls />
       <header className="page-hero shell">
         <div className="hero-meta"><p><span className="status-dot" /> Noerong project archive</p><p>{String(products.length).padStart(2, "0")} systems · {String(products.filter((product) => product.stage === "Live product").length).padStart(2, "0")} live products</p></div>
         <h1>Software with a<br /><em>job to do.</em></h1>
