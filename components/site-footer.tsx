@@ -1,13 +1,13 @@
 import { Link } from "@/components/plain-link";
 
-export function SiteFooter() {
+export function SiteFooter({ showProjectCta = true }: { showProjectCta?: boolean }) {
   return (
-    <footer className="site-footer">
-      <div className="shell footer-lead">
+    <footer className={`site-footer${showProjectCta ? "" : " site-footer-compact"}`}>
+      {showProjectCta && <div className="shell footer-lead">
         <p className="section-kicker">Have a useful idea?</p>
         <h2>Let&apos;s turn it into<br /><em>working software.</em></h2>
         <Link className="circle-link" href="/contact" aria-label="Start a project"><span>Start a<br />project</span><b>↗</b></Link>
-      </div>
+      </div>}
       <div className="shell footer-main">
         <div>
           <Link className="wordmark wordmark-large" href="/">noerong<span>.</span></Link>

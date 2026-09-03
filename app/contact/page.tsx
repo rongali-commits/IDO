@@ -18,7 +18,7 @@ export default function ContactPage() {
           <div><div className="contact-links"><a href="mailto:hello@noerong.com?subject=Noerong%20project%20enquiry">Email Noerong <span>↗</span></a><a href="https://contra.com/rongalichaitanya" target="_blank" rel="noreferrer">Start through Contra <span>↗</span></a><a href="https://www.upwork.com/freelancers/~017d6b93e78fe54961" target="_blank" rel="noreferrer">Start through Upwork <span>↗</span></a><a href="https://www.linkedin.com/in/rongalichaitanya" target="_blank" rel="noreferrer">Connect on LinkedIn <span>↗</span></a></div><div className="response-note"><strong>Bengaluru · IST (UTC+5:30) · Working worldwide.</strong><span>Include the workflow, your current tools, desired launch date, and budget range. I will respond with the clearest next step.</span></div></div>
         </div>
       </section>
-      <SiteFooter />
+      <SiteFooter showProjectCta={false} />
     </main>
   );
 }
