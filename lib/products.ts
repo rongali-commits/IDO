@@ -1,7 +1,7 @@
 export type Product = {
   slug: string;
   name: string;
-  stage: "Production" | "Working demo";
+  stage: "Live product" | "Working demo";
   category: string;
   summary: string;
   problem: string;
@@ -11,6 +11,7 @@ export type Product = {
   liveUrl: string;
   contraUrl?: string;
   sourceKitUrl?: string;
+  sourceKitPrice?: string;
   purchaseUrl?: string;
   startingPrice?: string;
   repository?: string;
@@ -21,7 +22,7 @@ export const products: Product[] = [
   {
     slug: "noerong-proposals",
     name: "Noerong Proposals",
-    stage: "Production",
+    stage: "Live product",
     category: "Proposal and client approval SaaS",
     summary: "A white-label proposal workspace for accurate pricing, secure client links, comments, decisions, and a complete activity record.",
     problem: "For independent teams still managing scope, calculations, approvals, and follow-up across documents, spreadsheets, and email.",
@@ -29,15 +30,16 @@ export const products: Product[] = [
     motionCover: "/products/motion/noerong-proposals.mp4",
     imageAlt: "Noerong Proposals pipeline dashboard and proposal workflow",
     liveUrl: "https://noerong-proposals-sa-ta7h.bolt.host",
-    contraUrl: "https://contra.com/s/lqMU2Wvl-white-label-proposal-and-client-approval-saa-s?r=noerong_au1wq0v2",
+    contraUrl: "https://contra.com/s/lqMU2Wvl-white-label-proposal-and-client-approval-saa-s",
     sourceKitUrl: "https://contra.com/products/Al07mNLl-noerong-proposals-source-kit",
+    sourceKitPrice: "$29",
     startingPrice: "$29",
     tags: ["Bolt", "React", "TypeScript", "Bolt Cloud"],
   },
   {
     slug: "leaddesk-ai",
     name: "LeadDesk AI",
-    stage: "Production",
+    stage: "Live product",
     category: "AI lead capture",
     summary: "A white-label website assistant that answers approved FAQs and turns high-intent visitors into structured quote requests.",
     problem: "For service businesses losing ready-to-buy visitors after hours.",
@@ -46,6 +48,8 @@ export const products: Product[] = [
     imageAlt: "LeadDesk AI customer website and embedded assistant",
     liveUrl: "https://leaddesk-ai-production.up.railway.app",
     contraUrl: "https://contra.com/s/UbWOeM2v-i-will-build-a-white-label-ai-chatbot-and-lead-capture-system",
+    sourceKitUrl: "https://contra.com/products/j2KQHEh8-lead-desk-ai-white-label-chatbot-source-kit",
+    sourceKitPrice: "$29",
     purchaseUrl: "https://www.upwork.com/services/product/development-it-a-white-label-ai-chatbot-and-lead-capture-system-for-your-website-2093012217047462206",
     startingPrice: "$29",
     tags: ["FastAPI", "OpenAI-ready", "SQLite", "Docker"],
@@ -53,7 +57,7 @@ export const products: Product[] = [
   {
     slug: "followdesk",
     name: "FollowDesk",
-    stage: "Production",
+    stage: "Live product",
     category: "Lead follow-up automation",
     summary: "A white-label follow-up system that moves new enquiries through a focused sales pipeline and toward a booked call.",
     problem: "For service businesses losing good leads because follow-up depends on memory, spreadsheets, and scattered inboxes.",
@@ -62,13 +66,15 @@ export const products: Product[] = [
     imageAlt: "FollowDesk lead follow-up and booking dashboard",
     liveUrl: "https://followdesk-production.up.railway.app",
     contraUrl: "https://contra.com/s/sFBmXXU3-i-will-build-an-automated-lead-follow-up-and-booking-crm",
+    sourceKitUrl: "https://contra.com/products/lJMSSAkT-follow-desk-lead-follow-up-crm-source-kit",
+    sourceKitPrice: "$29",
     startingPrice: "$39",
     tags: ["FastAPI", "Email automation", "Booking", "SQLite"],
   },
   {
     slug: "reviewdesk",
     name: "ReviewDesk",
-    stage: "Production",
+    stage: "Live product",
     category: "Customer feedback automation",
     summary: "A white-label system that requests honest feedback, automates reminders, and turns permissioned customer stories into an embeddable trust widget.",
     problem: "For local businesses doing excellent work but failing to turn completed jobs into consistent feedback and credible social proof.",
@@ -77,13 +83,15 @@ export const products: Product[] = [
     imageAlt: "ReviewDesk branded customer feedback experience",
     liveUrl: "https://reviewdesk-noerong.vercel.app",
     contraUrl: "https://contra.com/s/E6bAEMgv-i-will-build-an-automated-review-and-testimonial-system",
+    sourceKitUrl: "https://contra.com/products/TVvI1cOr-review-desk-feedback-and-testimonial-source-kit",
+    sourceKitPrice: "$29",
     startingPrice: "$29",
     tags: ["FastAPI", "Review requests", "Testimonials", "SQLite"],
   },
   {
     slug: "clientdesk",
     name: "ClientDesk",
-    stage: "Production",
+    stage: "Live product",
     category: "Client operations",
     summary: "A white-label client portal for onboarding, project progress, deliverables, approvals, and invoice visibility.",
     problem: "For agencies and consultants losing time to scattered updates, files, approval threads, and invoice follow-up.",
@@ -91,13 +99,16 @@ export const products: Product[] = [
     motionCover: "/products/motion/clientdesk.mp4",
     imageAlt: "ClientDesk branded client portal and studio dashboard",
     liveUrl: "https://clientdesk-production-6c93.up.railway.app",
+    contraUrl: "https://contra.com/s/B6A6Fkcc-white-label-client-portal-for-agencies-and-consultants",
+    sourceKitUrl: "https://contra.com/products/5yhDIHNw-client-desk-white-label-client-portal-source-kit",
+    sourceKitPrice: "$49",
     startingPrice: "$39",
     tags: ["FastAPI", "Client portals", "Approvals", "SQLite"],
   },
   {
     slug: "growthdesk",
     name: "GrowthDesk",
-    stage: "Production",
+    stage: "Live product",
     category: "Client-service operating system",
     summary: "A complete white-label platform for enquiries, lead management, follow-up automation, client delivery, reviews, and revenue visibility.",
     problem: "For service businesses running one customer journey across disconnected forms, inboxes, spreadsheets, portals, and reminder tools.",
@@ -105,7 +116,9 @@ export const products: Product[] = [
     motionCover: "/products/motion/growthdesk.mp4",
     imageAlt: "GrowthDesk command center with revenue pipeline and automation status",
     liveUrl: "https://growthdesk-production-0258.up.railway.app",
-    contraUrl: "https://contra.com/s/bQWU7WFR-all-in-one-crm-client-portal-and-automation-system",
+    contraUrl: "https://contra.com/s/bQWU7WFR-white-label-crm-and-client-portal-deployed-in-4-days",
+    sourceKitUrl: "https://contra.com/products/RlzR2x7T-growth-desk-white-label-crm-source-kit",
+    sourceKitPrice: "$79",
     purchaseUrl: "https://www.upwork.com/services/product/development-it-a-complete-white-label-crm-client-portal-and-automation-system-2093957315253409665",
     startingPrice: "$299",
     tags: ["Next.js", "TypeScript", "Automations", "Client portals"],

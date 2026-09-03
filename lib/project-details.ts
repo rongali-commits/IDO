@@ -18,7 +18,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
       { title: "Accurate proposal builder", description: "Services, quantities, rates, line discounts, proposal discounts, tax, terms, and expiry are calculated in one structured editor." },
       { title: "Branded client link", description: "Every proposal is presented through a secure public page where the client can review, comment, accept, or decline." },
       { title: "Visible proposal lifecycle", description: "Draft, viewed, accepted, rejected, and expired states give the business a clear pipeline instead of guesswork." },
-      { title: "Production-grade foundation", description: "Authentication, user-isolated data, protected functions, exact-origin CORS, responsive layouts, and safe error states support a dependable launch." },
+      { title: "Access and reliability controls", description: "Authentication, user-isolated data, protected functions, exact-origin CORS, responsive layouts, and safe error states define the application's operating boundaries." },
     ],
   },
   growthdesk: {

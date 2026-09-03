@@ -269,6 +269,20 @@ h1 em, h2 em { color: var(--olive); font-family: Georgia, serif; font-weight: 40
 .article-end h2 { margin: 13px 0 0; font-size: 44px; letter-spacing: -.055em; }
 
 /* Footer */
+.motion-control { position: fixed; z-index: 30; right: 16px; bottom: 16px; border: 1px solid var(--line); border-radius: 24px; padding: 11px 15px; background: var(--paper); color: var(--ink); font: 600 12px/1.3 var(--font-geist), sans-serif; box-shadow: 0 3px 16px #10171212; cursor: pointer; }
+.motion-control:hover { border-color: var(--olive); }
+.case-offer-note { margin-top: 20px; color: var(--muted); font-size: 13px !important; line-height: 1.65 !important; }
+.case-evidence { padding: 75px 0; border-top: 1px solid var(--line); }
+.case-evidence h2 { margin: 20px 0 40px; font-size: clamp(36px, 5vw, 64px); letter-spacing: -.055em; }
+.case-evidence-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; }
+.case-evidence figure { min-width: 0; margin: 0; }
+.case-evidence figure a { display: block; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--paper); }
+.case-evidence img { display: block; width: 100%; height: auto; object-fit: contain; }
+.case-evidence figcaption { margin-top: 16px; color: var(--muted); font-size: 14px; line-height: 1.6; }
+.case-evidence-note { color: var(--muted); font-size: 13px !important; line-height: 1.7 !important; }
+.case-story h3 { font-size: 20px; margin-top: 30px; }
+@media (max-width: 680px) { .case-evidence-grid { grid-template-columns: 1fr; } }
+
 .site-footer { margin-top: 40px; padding-top: 130px; color: var(--paper); background: var(--ink); }
 .footer-lead { position: relative; padding-bottom: 130px; border-bottom: 1px solid var(--line-light); }
 .footer-lead .section-kicker::before { background: var(--lime); }
