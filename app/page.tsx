@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Link } from "@/components/plain-link";
 import { ProjectMotionCover } from "@/components/project-motion-cover";
+import { MotionControl } from "@/components/motion-preference";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { formatDate, getAllEssays } from "@/lib/essays";
@@ -22,6 +23,7 @@ export default function Home() {
   return (
     <main>
       <SiteHeader />
+      <MotionControl />
       <section className="home-hero shell">
         <div className="hero-meta reveal">
           <p><span className="status-dot" /> Independent SaaS product studio</p>
@@ -29,7 +31,7 @@ export default function Home() {
         </div>
         <h1 className="reveal reveal-delay-1">Useful software,<br /><em>built all the way.</em></h1>
         <div className="hero-bottom reveal reveal-delay-2">
-          <p>We turn practical business problems into clear, production-ready software. Product thinking, interface design, engineering, deployment, and handoff in one focused studio.</p>
+          <p>I design and build practical SaaS products for service businesses and independent teams. Product thinking, interface design, engineering, deployment, and handoff in one focused studio.</p>
           <Link className="text-link" href="/projects">Explore the work <span>↗</span></Link>
         </div>
       </section>
@@ -47,8 +49,8 @@ export default function Home() {
       </section>
 
       <section className="proof-strip shell" aria-label="Studio capabilities">
-        <div><strong>06</strong><span>Production systems</span></div>
-        <div><strong>04</strong><span>Marketplace channels</span></div>
+        <div><strong>06</strong><span>Live studio products</span></div>
+        <div><strong>01</strong><span>Independent founder</span></div>
         <div><strong>0→1</strong><span>Idea to deployment</span></div>
         <div><strong>∞</strong><span>Available worldwide</span></div>
       </section>
@@ -76,7 +78,7 @@ export default function Home() {
       <section className="studio-method shell">
         <div className="section-heading">
           <div><p className="section-kicker">How Noerong works</p><h2>One studio.<br /><em>The whole journey.</em></h2></div>
-          <p>Most projects fail in the gaps between strategy, design, development, and launch. Noerong keeps those decisions in one place.</p>
+          <p>Strategy, design, development, and launch work better when they share the same context. Noerong keeps those decisions in one place.</p>
         </div>
         <div className="method-grid">
           <article><span>01</span><h3>Shape</h3><p>Clarify the painful workflow, the buyer, and the smallest product worth paying for.</p></article>

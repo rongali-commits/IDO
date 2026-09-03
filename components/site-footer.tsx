@@ -15,7 +15,7 @@ export function SiteFooter() {
         </div>
         <div className="footer-links">
           <nav aria-label="Footer pages"><span>Explore</span><Link href="/projects">Projects</Link><Link href="/about">About</Link><Link href="/essays">Writing</Link><Link href="/contact">Contact</Link></nav>
-          <nav aria-label="Social links"><span>Elsewhere</span><a href="https://contra.com/noerong_au1wq0v2" target="_blank" rel="noreferrer">Contra ↗</a><a href="https://www.linkedin.com/in/rongalichaitanya" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://x.com/rongalichay" target="_blank" rel="noreferrer">X ↗</a><a href="https://github.com/rongali-commits" target="_blank" rel="noreferrer">GitHub ↗</a></nav>
+          <nav aria-label="Social links"><span>Elsewhere</span><a href="https://contra.com/rongalichaitanya" target="_blank" rel="noreferrer">Contra ↗</a><a href="https://www.linkedin.com/in/rongalichaitanya" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://x.com/rongalichay" target="_blank" rel="noreferrer">X ↗</a><a href="https://github.com/rongali-commits" target="_blank" rel="noreferrer">GitHub ↗</a></nav>
         </div>
       </div>
       <div className="shell footer-bottom"><span>© {new Date().getFullYear()} Noerong</span><span>Software that earns its place.</span></div>
