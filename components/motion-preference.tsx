@@ -34,12 +34,12 @@ export function useMotionPaused() {
 export function MotionControl() {
   const paused = useMotionPaused();
   return (
-    <button className="motion-control" type="button" aria-pressed={paused} onClick={() => {
+    <button className="motion-control" type="button" aria-pressed={paused} aria-label={paused ? "Resume cover motion" : "Pause cover motion"} onClick={() => {
       sessionPreference = !paused;
       try { window.localStorage.setItem(preferenceKey, String(!paused)); } catch { /* Keep the in-memory control usable. */ }
       window.dispatchEvent(new Event(changeEvent));
     }}>
-      {paused ? "Resume cover motion" : "Pause cover motion"}
+      <span aria-hidden="true">{paused ? "▶" : "Ⅱ"}</span> {paused ? "Play motion" : "Pause motion"}
     </button>
   );
 }

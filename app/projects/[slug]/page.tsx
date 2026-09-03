@@ -3,7 +3,6 @@ import Image from "next/image";
 import { Link } from "@/components/plain-link";
 import { notFound } from "next/navigation";
 import { ProjectMotionCover } from "@/components/project-motion-cover";
-import { MotionControl } from "@/components/motion-preference";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { projectDetails } from "@/lib/project-details";
@@ -40,8 +39,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <main>
-      <SiteHeader />
-      {product.motionCover && <MotionControl />}
+      <SiteHeader motionControls={Boolean(product.motionCover)} />
       <header className="case-hero shell">
         <Link className="case-breadcrumb" href="/projects">← Projects / {product.category}</Link>
         <div className="case-hero-grid"><h1>{product.name}</h1><div className="case-intro"><p className="section-kicker">{product.stage} · Independent Noerong product</p><p>{product.summary}</p><div className="case-actions"><a className="button button-dark" href={product.liveUrl} target="_blank" rel="noreferrer">View live product <span aria-hidden="true">↗</span></a>{product.sourceKitUrl && <a className="button button-outline" href={product.sourceKitUrl} target="_blank" rel="noreferrer">Source kit · {product.sourceKitPrice} <span aria-hidden="true">↗</span></a>}{product.contraUrl && <a className="button button-outline" href={product.contraUrl} target="_blank" rel="noreferrer">Setup service · from {product.startingPrice} <span aria-hidden="true">↗</span></a>}</div>{product.sourceKitUrl && <p className="case-offer-note">Source kit: downloadable code and documentation. Setup service: a separately scoped implementation. Hosting, domains, paid APIs, and extra integrations are not included in the source-kit price.</p>}</div></div>

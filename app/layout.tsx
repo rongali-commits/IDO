@@ -71,7 +71,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en">
       <body className={`${geist.variable} ${mono.variable}`}>
         <a className="skip-link" href="#main-content">Skip to content</a>
-        <div id="main-content">{children}</div>
+        {children}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationData).replace(/</g, "\\u003c") }}
