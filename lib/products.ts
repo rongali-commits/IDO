@@ -31,7 +31,7 @@ export const products: Product[] = [
     image: "/products/margin-and-matter.png",
     motionCover: "/products/motion/margin-and-matter.mp4",
     imageAlt: "Margin & Matter editorial application: journal, photographic stories, and reading experience",
-    liveUrl: "https://margin-and-matter.rongalisai757.chatgpt.site/",
+    liveUrl: "https://margin-and-matter-production.up.railway.app/",
     contraUrl: "https://contra.com/s/7AmsAFLW-margin-and-matter-word-press-branding-and-setup",
     sourceKitUrl: "https://contra.com/products/SnewMMM1-margin-and-matter-editorial-word-press-theme",
     sourceKitPrice: "$29",
