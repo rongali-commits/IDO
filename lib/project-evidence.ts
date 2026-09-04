@@ -6,6 +6,17 @@ type ProjectEvidence = {
 };
 
 export const projectEvidence: Record<string, ProjectEvidence> = {
+  "margin-and-matter": {
+    architecture: "The application uses React and TypeScript with a Worker-compatible server, D1 story storage, R2 uploads, and Sites-managed sign-in plus an editor allowlist. It is not a generic static template. The separate WordPress theme uses theme.json, native block templates, PHP theme setup, lightweight CSS and JavaScript, and system fonts. It does not require React, a paid page builder, or the application's hosting stack.",
+    outcome: "A public editorial application and a separately installable WordPress edition, designed and built as independent Noerong work. The application has model and API tests covering editorial behavior and access boundaries. The theme was checked at laptop, tablet, and phone widths, with 43 browser checks and native validation of all 10 template files. These are product verification results, not client revenue or audience-growth claims.",
+    deployment: "The $29 WordPress download needs buyer-owned WordPress hosting that permits custom themes. It excludes the custom application studio, hosting, domains, memberships, newsletters, AI writing, and migration. The application currently relies on Sites-managed authentication and Cloudflare storage; another hosting platform needs an explicitly scoped authentication/storage adaptation. Review publication identity, content rights, privacy, editor access, and backups before a business launch.",
+    gallery: [
+      { image: "/products/evidence/margin-matter-reader.png", caption: "Application edition: a focused article view with readable typography and full-composition photography." },
+      { image: "/products/evidence/margin-matter-collections.png", caption: "Application edition: collections give readers another way into the publication." },
+      { image: "/products/evidence/margin-matter-wordpress.png", caption: "WordPress edition: the independently implemented block theme, using native posts and templates." },
+      { image: "/products/evidence/margin-matter-wordpress-reader.png", caption: "WordPress edition: an article layout with reading-size controls and native publishing content." },
+    ],
+  },
   "noerong-proposals": {
     architecture: "React and TypeScript keep the proposal editor and pricing states explicit. Supabase authentication and PostgreSQL Row Level Security separate each user's records; a server-side function handles token-based client review without exposing private workspace data.",
     outcome: "A working path from client record to priced scope, branded review link, and recorded decision. The public sample lets a reviewer inspect the client experience without signing up.",
