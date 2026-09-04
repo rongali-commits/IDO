@@ -8,6 +8,20 @@ export type ProjectDetail = {
 };
 
 export const projectDetails: Record<string, ProjectDetail> = {
+  "margin-and-matter": {
+    audience: "Independent writers, creative publications, and small editorial teams",
+    role: "Art direction, editorial UX, full-stack engineering, WordPress theme development",
+    year: "2026",
+    overview: "Margin & Matter began with a publishing problem: a distinctive reading experience is not enough if the daily editorial workflow is awkward. I designed the public journal and the private writing process together, then built a separate WordPress edition for buyers who want familiar content tools rather than a custom application.",
+    approach: "The design borrows its rhythm from print: expressive serif headlines, restrained blue accents, generous but deliberate margins, and a clear hierarchy between story, category, and metadata. Full-composition photography preserves the original image. Motion introduces stories without trapping the reader; keyboard controls, pause behavior, and reduced-motion fallbacks remain part of the experience.",
+    features: [
+      { title: "A publication made for reading", description: "The application brings essays, field notes, and photo stories into a searchable reading room with collection and format filters, light/dark appearance, reading controls, RSS, and a sitemap." },
+      { title: "A protected editorial workflow", description: "The application’s author studio supports structured blocks, drafts, private preview, revisions, scheduled visibility, archive/restore, image upload, publication settings, and JSON export. Publishing controls remain behind editor authorization." },
+      { title: "Motion with an off switch", description: "The photographic reel has manual navigation and pause controls. It respects reduced-motion preferences and suspends automatic movement when appropriate, keeping the story more important than the animation." },
+      { title: "A genuinely native WordPress edition", description: "A separate block theme provides editable templates and header/footer parts, three style palettes, three editorial patterns, search, archives, article layouts, reading controls, and a featured-story carousel. WordPress itself manages posts, media, revisions, scheduling, and users." },
+      { title: "A clear buyer handoff", description: "The WordPress package contains an installable theme ZIP, GPL licence, setup guide, credits, and optional draft example content. The application and theme are explicitly distinguished; customization and hosting are scoped separately." },
+    ],
+  },
   "noerong-proposals": {
     audience: "Freelancers, consultants, studios, and small agencies",
     role: "Product strategy, UX design, full-stack engineering, security review",

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
-const featuredSlugs = ["growthdesk", "leaddesk-ai", "clientdesk"];
+const featuredSlugs = ["noerong-proposals", "growthdesk", "clientdesk"];
 
 export default function Home() {
   const featured = featuredSlugs.map((slug) => products.find((product) => product.slug === slug)!);
@@ -35,18 +35,18 @@ export default function Home() {
       </section>
 
       <section className="flagship shell" aria-labelledby="flagship-title">
-        <Link className="flagship-visual" href="/projects/noerong-proposals">
-          <ProjectMotionCover poster="/products/noerong-proposals.png" video="/products/motion/noerong-proposals.mp4" alt="Noerong Proposals pipeline dashboard and proposal workflow" priority sizes="(max-width: 900px) 100vw, 80vw" />
+        <Link className="flagship-visual" href="/projects/margin-and-matter">
+          <ProjectMotionCover poster="/products/margin-and-matter.png" video="/products/motion/margin-and-matter.mp4" alt="Margin & Matter journal, reading experience, and editorial collections" priority sizes="(max-width: 900px) 100vw, 80vw" />
         </Link>
         <div className="flagship-info">
-          <div><p className="section-kicker">01 / Live product · Built with Bolt</p><h2 id="flagship-title">Noerong Proposals</h2></div>
-          <p>A white-label proposal, pricing, and client approval SaaS that gives independent teams one clear path from scope to decision.</p>
-          <Link className="button button-dark" href="/projects/noerong-proposals">View case study <span>↗</span></Link>
+          <div><p className="section-kicker">01 / Featured · Editorial publishing</p><h2 id="flagship-title">Margin &amp; Matter</h2></div>
+          <p>A considered reading experience and protected writing studio, with a separate native WordPress edition for independent publications.</p>
+          <Link className="button button-dark" href="/projects/margin-and-matter">View case study <span>↗</span></Link>
         </div>
       </section>
 
       <section className="proof-strip shell" aria-label="Studio capabilities">
-        <div><strong>06</strong><span>Live studio products</span></div>
+        <div><strong>{String(products.filter((product) => product.stage === "Live product").length).padStart(2, "0")}</strong><span>Live studio products</span></div>
         <div><strong>01</strong><span>Independent founder</span></div>
         <div><strong>0→1</strong><span>Idea to deployment</span></div>
         <div><strong>∞</strong><span>Available worldwide</span></div>

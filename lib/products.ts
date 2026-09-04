@@ -12,6 +12,8 @@ export type Product = {
   contraUrl?: string;
   sourceKitUrl?: string;
   sourceKitPrice?: string;
+  sourceKitLabel?: string;
+  offerNote?: string;
   purchaseUrl?: string;
   startingPrice?: string;
   repository?: string;
@@ -19,6 +21,25 @@ export type Product = {
 };
 
 export const products: Product[] = [
+  {
+    slug: "margin-and-matter",
+    name: "Margin & Matter",
+    stage: "Live product",
+    category: "Editorial publishing & WordPress",
+    summary: "A considered home for independent writing, with an editorial application, protected writing studio, and a separate native WordPress theme edition.",
+    problem: "For writers and creative publications that need both a distinctive reading experience and a practical way to publish.",
+    image: "/products/margin-and-matter.png",
+    motionCover: "/products/motion/margin-and-matter.mp4",
+    imageAlt: "Margin & Matter editorial application: journal, photographic stories, and reading experience",
+    liveUrl: "https://margin-and-matter.rongalisai757.chatgpt.site/",
+    contraUrl: "https://contra.com/s/7AmsAFLW-margin-and-matter-word-press-branding-and-setup",
+    sourceKitUrl: "https://contra.com/products/SnewMMM1-margin-and-matter-editorial-word-press-theme",
+    sourceKitPrice: "$29",
+    sourceKitLabel: "WordPress theme",
+    startingPrice: "$79",
+    offerNote: "Two separate editions: the live application includes a custom writing studio. The $29 download is a native WordPress block theme, not that application's source code. The $79 WordPress setup includes the theme, so you do not need to buy it twice. Application customization is quoted to scope. Hosting, domains, paid plugins and content migration are not included.",
+    tags: ["Editorial design", "React", "TypeScript", "WordPress"],
+  },
   {
     slug: "noerong-proposals",
     name: "Noerong Proposals",
