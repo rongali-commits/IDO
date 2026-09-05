@@ -7,9 +7,9 @@ type ProjectEvidence = {
 
 export const projectEvidence: Record<string, ProjectEvidence> = {
   "margin-and-matter": {
-    architecture: "The application uses React and TypeScript with a Worker-compatible server, D1 story storage, R2 uploads, and Sites-managed sign-in plus an editor allowlist. It is not a generic static template. The separate WordPress theme uses theme.json, native block templates, PHP theme setup, lightweight CSS and JavaScript, and system fonts. It does not require React, a paid page builder, or the application's hosting stack.",
+    architecture: "The deployed application uses React, Next.js and TypeScript with SQLite and image storage on a persistent Railway volume. Independent editor login uses scrypt password hashes, revocable database sessions and same-origin write checks. It is not a generic static template. The separate WordPress theme uses theme.json, native block templates, PHP theme setup, lightweight CSS and JavaScript, and system fonts. It does not require React, a paid page builder, or the application's hosting stack.",
     outcome: "A public editorial application and a separately installable WordPress edition, designed and built as independent Noerong work. The application has model and API tests covering editorial behavior and access boundaries. The theme was checked at laptop, tablet, and phone widths, with 43 browser checks and native validation of all 10 template files. These are product verification results, not client revenue or audience-growth claims.",
-    deployment: "The $29 WordPress download needs buyer-owned WordPress hosting that permits custom themes. It excludes the custom application studio, hosting, domains, memberships, newsletters, AI writing, and migration. The application currently relies on Sites-managed authentication and Cloudflare storage; another hosting platform needs an explicitly scoped authentication/storage adaptation. Review publication identity, content rights, privacy, editor access, and backups before a business launch.",
+    deployment: "The $29 WordPress download needs buyer-owned WordPress hosting that permits custom themes. It excludes the custom application studio, hosting, domains, memberships, newsletters, AI writing, and migration. The separate application runs on Railway with a persistent volume and its own protected editor login; application customization and source delivery require a separate scope. Review publication identity, content rights, privacy, editor access, and backups before a business launch.",
     gallery: [
       { image: "/products/evidence/margin-matter-reader.png", caption: "Application edition: a focused article view with readable typography and full-composition photography." },
       { image: "/products/evidence/margin-matter-collections.png", caption: "Application edition: collections give readers another way into the publication." },
@@ -20,19 +20,19 @@ export const projectEvidence: Record<string, ProjectEvidence> = {
   "noerong-proposals": {
     architecture: "React and TypeScript keep the proposal editor and pricing states explicit. Supabase authentication and PostgreSQL Row Level Security separate each user's records; a server-side function handles token-based client review without exposing private workspace data.",
     outcome: "A working path from client record to priced scope, branded review link, and recorded decision. The public sample lets a reviewer inspect the client experience without signing up.",
-    deployment: "The source kit requires its own database, authentication configuration, function deployment, and secrets. Configure and test the buyer's production origin before sharing real proposals. Sample records illustrate the workflow; they are not client results.",
+    deployment: "The source kit requires its own database, authentication configuration, function deployment, and secrets. Configure and test the buyer's production origin and password-reset redirect before sharing real proposals. Version 1.0.1 adds the missing new-password screen and a clear email-confirmation state after signup. Sample records illustrate the workflow; they are not client results.",
     gallery: [
       { image: "/products/evidence/noerong-proposals-client.png", caption: "The client review page keeps scope, pricing, and decision actions together." },
       { image: "/products/evidence/noerong-proposals-pipeline.png", caption: "The workspace exposes proposal status, value, and the next action." },
     ],
   },
   growthdesk: {
-    architecture: "Next.js and TypeScript support the customer-facing pages and operational workspace in one application. Shared records connect leads, delivery, feedback, and reporting, avoiding duplicated customer context across modules.",
-    outcome: "A deployed end-to-end customer-service workflow with connected modules and a reusable white-label configuration. The work demonstrates product integration, not measured revenue gains from a client engagement.",
-    deployment: "The source kit is a single-business foundation, not a turnkey multi-tenant SaaS. Add and verify authentication and authorization before using real customer data. Configure storage, secrets, provider credentials, backups, and integrations for the buyer's environment.",
+    architecture: "React and TypeScript use Next-compatible routes through vinext and a D1-compatible database. Version 1.1 adds protected single-owner sessions, validated public enquiries and guarded staff APIs. Broader CRM modules are interface and data-model previews.",
+    outcome: "A deployed read-only fictional showcase and a working owner lead-management foundation. Three focused test groups and 27 local HTTP checks passed. Inbox delivery, automation execution, portal approvals, downloads, payments and review collection are not implemented.",
+    deployment: "Use a fresh buyer-owned persistent database, explicit production mode, a random owner key and the exact public origin. Never enable demo mode against customer records. Team accounts, provider integrations and full CRM workflows require additional development. The $299 setup covers the implemented lead-management foundation only.",
     gallery: [
       { image: "/products/evidence/growthdesk-pipeline.png", width: 1265, height: 712, caption: "A lead pipeline makes ownership, value, stage, and next action visible." },
-      { image: "/products/evidence/growthdesk-portal.png", width: 1265, height: 712, caption: "Client delivery stays connected to the same customer journey." },
+      { image: "/products/evidence/growthdesk-portal.png", width: 1265, height: 712, caption: "A fictional client-portal layout previews future delivery features; approvals, downloads and payment processing are not implemented." },
     ],
   },
   "leaddesk-ai": {
@@ -45,7 +45,7 @@ export const projectEvidence: Record<string, ProjectEvidence> = {
     ],
   },
   followdesk: {
-    architecture: "FastAPI and SQLite maintain the lead record, six-stage pipeline, and activity history. Scheduled follow-ups use editable approved templates; booking and closed states suppress future sequence messages. SMTP is configured separately from the no-send showcase.",
+    architecture: "FastAPI and SQLite maintain the lead record, six-stage pipeline, and activity history. Scheduled follow-ups use editable approved templates; booking and closed states suppress future sequence messages. Version 1.0.1 also lets staff stop remaining queued emails after a reply or opt-out. Replies arrive in the configured mailbox; automatic reply detection is not included. SMTP is configured separately from the no-send showcase.",
     outcome: "A working enquiry-to-booking workflow with explicit next actions and repeatable follow-up. The emphasis is operational clarity rather than an unverified conversion-rate promise.",
     deployment: "Production email needs the buyer's SMTP provider, verified sender domain, and approved copy. Configure private admin/webhook tokens and persistent storage. The public example does not send real outreach; multi-tenant operation requires additional authentication and database work.",
     gallery: [

@@ -36,16 +36,16 @@ export const projectDetails: Record<string, ProjectDetail> = {
     ],
   },
   growthdesk: {
-    audience: "Service businesses and agencies",
-    role: "Product strategy, design, full-stack engineering",
+    audience: "Developers and businesses commissioning a scoped implementation",
+    role: "Product design, interface engineering, owner access and lead workflow",
     year: "2026",
-    overview: "GrowthDesk was designed around one clear observation: a customer journey should not become six disconnected workflows just because a business grows. It brings the daily operating loop into one branded system without the weight of enterprise software.",
-    approach: "The platform is structured around the customer journey, from first enquiry to follow-up, delivery, feedback, and revenue visibility. Each module shares the same records and context, so teams can act without rebuilding the story in another tool.",
+    overview: "GrowthDesk explores the customer journey in one interface. Version 1.1 provides a working single-owner lead-management foundation and identifies the larger CRM areas that still require development.",
+    approach: "A focused operational core is paired with visible previews. The public demo rejects writes and uses fictional records. Production mode requires configured owner access and a fresh database before customer enquiries can be stored.",
     features: [
-      { title: "Lead command center", description: "A single view of new opportunities, deal stage, value, ownership, and the next action." },
-      { title: "Follow-up engine", description: "Repeatable outreach sequences and reminders that keep qualified enquiries from going cold." },
-      { title: "Branded client portal", description: "One clear place for progress, deliverables, approvals, updates, and client communication." },
-      { title: "Feedback and reporting", description: "Structured review collection and practical reporting across the full customer journey." },
+      { title: "Protected owner workspace", description: "Signed sessions, server checks on staff pages and APIs, same-origin write protection and explicit production configuration." },
+      { title: "Working lead management", description: "Consent-based website enquiries, manual leads, validated fields, opportunity stages and stored business settings." },
+      { title: "Clearly marked CRM previews", description: "Inbox, automation, client delivery and portal layouts show an extension path. Message delivery, project creation, approvals, downloads and payments are not implemented." },
+      { title: "Tested foundation", description: "Session, validation and HTTP workflow checks cover access boundaries and lead persistence. Report charts are labelled illustrative and pipeline estimates are not described as earned revenue." },
     ],
   },
   "leaddesk-ai": {
@@ -69,7 +69,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
     approach: "Every lead has a stage, owner, next action, and history. The interface prioritizes what needs attention now, while templates and booking steps remove repetitive manual work.",
     features: [
       { title: "Focused pipeline", description: "A clear progression from new enquiry to qualified, booked, won, or closed." },
-      { title: "Automated reminders", description: "Follow-up tasks and repeatable messages reduce the risk of valuable leads being forgotten." },
+      { title: "Automated reminders", description: "Approved email sequences support consistent follow-up. Booked/closed leads suppress future sends; staff can stop queued messages after a reply or opt-out. Automatic reply detection is not included." },
       { title: "Booking workflow", description: "Qualified conversations move toward a scheduled call with fewer back-and-forth messages." },
       { title: "Activity history", description: "Notes, contact attempts, stage changes, and next actions stay attached to the lead." },
     ],
