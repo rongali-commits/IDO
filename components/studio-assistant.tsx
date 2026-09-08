@@ -20,11 +20,18 @@ export function StudioAssistant() {
   const input = useRef<HTMLTextAreaElement>(null);
   const launcher = useRef<HTMLButtonElement>(null);
   const feed = useRef<HTMLDivElement>(null);
+  const latestTurn = useRef<HTMLDivElement>(null);
   const request = useRef<AbortController | null>(null);
   const active = useRef(false);
 
   useEffect(() => { if (open) input.current?.focus(); }, [open]);
-  useEffect(() => { feed.current?.scrollTo({ top: feed.current.scrollHeight, behavior: "instant" }); }, [messages, busy, error]);
+  // Position a new question once. Streaming text must not move the reader.
+  useEffect(() => {
+    const container = feed.current, turn = latestTurn.current;
+    if (!container || !turn) return;
+    const padding = parseFloat(getComputedStyle(container).paddingTop) || 0;
+    container.scrollTo({ top: container.scrollTop + turn.getBoundingClientRect().top - container.getBoundingClientRect().top - padding, behavior: "instant" });
+  }, [messages.length, open]);
   useEffect(() => () => request.current?.abort(), []);
 
   function close() { setOpen(false); launcher.current?.focus(); }
@@ -93,10 +100,11 @@ export function StudioAssistant() {
       <header className="assistant-header"><Mark /><div><strong>Noerong assistant</strong><span>AI guide to the studio</span></div><button type="button" onClick={close} aria-label="Close assistant" className="assistant-icon">×</button></header>
       <div className="assistant-feed" ref={feed}>
         {!messages.length && <div className="assistant-welcome"><span className="assistant-eyebrow">A GOOD PLACE TO START</span><h2>What are you<br />looking to build?</h2><p>Ask about Chaitanya’s work, explore a project, or tell me about your idea.</p><div className="assistant-suggestions">{suggestions.map(s => <button key={s} onClick={() => void send(s)} disabled={busy}>{s}<span aria-hidden="true">↗</span></button>)}</div><a className="assistant-writing" href="/essays">Here for the writing? Explore the essays ↗</a></div>}
-        {messages.map((message, i) => <div className={`assistant-message assistant-message-${message.role}`} key={i}>
+        {messages.filter((_, i) => i % 2 === 0).map((_, turnIndex) => <div className="assistant-turn" key={turnIndex} ref={turnIndex === Math.ceil(messages.length / 2) - 1 ? latestTurn : undefined}>
+        {messages.slice(turnIndex * 2, turnIndex * 2 + 2).map((message) => <div className={`assistant-message assistant-message-${message.role}`} key={message.role}>
           <span className="assistant-speaker">{message.role === "user" ? "YOU" : "NOERONG AI"}</span>
           {message.content ? <Suspense fallback={<p>{message.content}</p>}><ReactMarkdown skipHtml allowedElements={["p", "strong", "em", "ul", "ol", "li", "a", "br"]} unwrapDisallowed urlTransform={safeAssistantLink} components={{ a: ({ href, children }) => href ? <a href={href}>{children}</a> : <span>{children}</span> }}>{message.content}</ReactMarkdown></Suspense> : <span className="assistant-thinking" role="status">Reading the studio notes<span aria-hidden="true"> ···</span></span>}
-        </div>)}
+        </div>)}</div>)}
         {error && <div className="assistant-error" role="alert">{error} <a href="/contact">Contact Chaitanya ↗</a></div>}
       </div>
       <footer className="assistant-bottom">

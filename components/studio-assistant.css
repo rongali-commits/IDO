@@ -9,3 +9,4 @@
 @keyframes assistant-enter{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}@keyframes assistant-spin{to{transform:rotate(360deg)}}
 @media(max-width:520px){.studio-assistant{right:14px;bottom:max(14px,env(safe-area-inset-bottom))}.assistant-panel{width:calc(100vw - 28px);height:min(650px,calc(100dvh - 105px));bottom:68px}.assistant-launcher{min-height:50px}.assistant-feed{padding:22px 18px}.assistant-header{padding:15px 18px}.assistant-bottom{padding:12px 14px}.assistant-welcome h2{font-size:30px}}
 @media(prefers-reduced-motion:reduce){.assistant-panel,.assistant-spinner{animation:none}}
+.assistant-feed{overflow-anchor:none}.assistant-turn:last-of-type{min-height:100%}
