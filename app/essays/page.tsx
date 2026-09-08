@@ -23,9 +23,10 @@ export default function EssaysPage() {
     <main>
       <SiteHeader />
       <section className="essay-archive-header shell">
-        <p className="eyebrow">Writing · A personal passion</p>
-        <h1>Ideas that need<br /><em>more room.</em></h1>
-        <p>Writing is a personal passion and a way to think carefully. These long-form essays explore unconventional topics across history, philosophy, technology, and geopolitics—often from a different perspective. It is not a freelance writing service.</p>
+        <p className="eyebrow">The Noerong journal · By Rongali Chaitanya</p>
+        <h1>A question worth<br /><em>staying with.</em></h1>
+        <p>History, philosophy, and the forces that shape ordinary lives. Independent essays that follow the evidence, leave room for uncertainty, and look a little closer.</p>
+        <div className="journal-topics"><span>History</span><span>Philosophy</span><span>Geopolitics</span><span>{essays.length} essays</span></div>
       </section>
 
       <section className="essay-archive-grid shell" aria-label="Essay archive">
@@ -44,11 +45,8 @@ export default function EssaysPage() {
         ))}
       </section>
 
-      <section className="archive-product-cta shell">
-        <div><span>Noerong&apos;s main work</span><h2>See the software.</h2></div>
-        <a className="button button-light" href="/projects">Explore projects <span>↗</span></a>
-      </section>
-      <SiteFooter />
+      <aside className="journal-note shell"><p>Written by Rongali Chaitanya, a developer and founder who also follows questions beyond software. These essays express personal interpretations. References are included so you can explore the evidence yourself.</p><a href="/about">About the author ↗</a></aside>
+      <SiteFooter showProjectCta={false} />
     </main>
   );
 }

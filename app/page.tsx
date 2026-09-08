@@ -8,7 +8,7 @@ import { formatDate, getAllEssays } from "@/lib/essays";
 import { products } from "@/lib/products";
 
 export const metadata: Metadata = {
-  title: "Independent SaaS product studio",
+  title: { absolute: "Noerong | Independent SaaS product studio" },
   description: "Noerong designs and builds focused SaaS products, AI systems, and business automation from idea to production.",
   alternates: { canonical: "/" },
 };
@@ -93,7 +93,7 @@ export default function Home() {
       <section className="writing-preview shell">
         <div className="section-heading">
           <div><p className="section-kicker">Writing, for the questions that stay</p><h2>Beyond the<br /><em>product work.</em></h2></div>
-          <p>Writing is a personal passion—a place to explore unconventional topics across history, philosophy, technology, and geopolitics from perspectives that do not fit neatly into a feed.</p>
+          <p>Essays on history, philosophy, technology, and geopolitics. A place to follow a question further, examine the evidence, and make room for a different perspective.</p>
         </div>
         <div className="essay-preview-grid">
           {essays.map((essay) => (

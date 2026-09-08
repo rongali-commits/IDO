@@ -5,7 +5,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { formatDate, getEssay, getEssaySlugs } from "@/lib/essays";
+import { formatDate, getEssay, getEssaySlugs, getAllEssays } from "@/lib/essays";
 
 type EssayPageProps = { params: Promise<{ slug: string }> };
 
@@ -31,6 +31,8 @@ export async function generateMetadata({ params }: EssayPageProps): Promise<Meta
       title: essay.title,
       description: essay.description,
       publishedTime: essay.date,
+      modifiedTime: essay.updated,
+      authors: ["Rongali Chaitanya"],
       images: [{ url: image, alt: essay.coverAlt }],
     },
     twitter: { card: "summary_large_image", title: essay.title, description: essay.description, images: [image] },
@@ -42,6 +44,9 @@ export default async function EssayPage({ params }: EssayPageProps) {
   if (!getEssaySlugs().includes(slug)) notFound();
   const essay = getEssay(slug);
 
+  const [body, sources] = essay.content.split(/^## Sources and Further Reading\s*$/m);
+  const related = getAllEssays().filter(item => item.slug !== slug);
+
   return (
     <main>
       <SiteHeader />
@@ -51,19 +56,22 @@ export default async function EssayPage({ params }: EssayPageProps) {
           <p>{essay.topic} · {formatDate(essay.date)} · {essay.readTime}</p>
           <h1>{essay.title}</h1>
           <p>{essay.description}</p>
+          <div className="article-byline"><a href="/about">By Rongali Chaitanya</a><span>Updated {formatDate(essay.updated)}</span>{sources && <a href="#sources">Sources ↓</a>}</div>
         </header>
         <div className="article-cover shell">
           <Image src={essay.coverImage} alt={essay.coverAlt} fill priority sizes="(max-width: 900px) 100vw, 1200px" />
         </div>
+        {essay.coverCredit && <p className="cover-credit shell">Image: <a href={essay.coverSource}>{essay.coverCredit}</a>{essay.coverLicense && ` · ${essay.coverLicense}`}</p>}
         <div className="article-body shell">
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>{essay.content}</ReactMarkdown>
+          <ReactMarkdown skipHtml remarkPlugins={[remarkGfm]}>{body}</ReactMarkdown>
+          {sources && <section id="sources" className="article-sources" aria-labelledby="sources-title"><p className="section-kicker">Explore the evidence</p><h2 id="sources-title">Sources and further reading</h2><ReactMarkdown skipHtml remarkPlugins={[remarkGfm]}>{sources}</ReactMarkdown></section>}
         </div>
       </article>
       <section className="article-end shell">
-        <div><span>Back to the studio</span><h2>Writing is the side room.<br />Software is the work.</h2></div>
-        <a className="button button-outline" href="/projects">Explore projects <span>↗</span></a>
+        <div><span>Continue reading</span><h2>Another perspective.</h2></div>
+        <div className="related-essays">{related.map(item => <a key={item.slug} href={`/essays/${item.slug}`}><span>{item.topic}</span><strong>{item.title} ↗</strong></a>)}</div>
       </section>
-      <SiteFooter />
+      <SiteFooter showProjectCta={false} />
     </main>
   );
 }

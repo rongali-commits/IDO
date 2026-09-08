@@ -118,6 +118,6 @@ export function StudioAssistant() {
         <span className="assistant-sr" role="status" aria-live="polite">{busy ? "Preparing an answer" : messages.at(-1)?.role === "assistant" ? "Answer ready" : ""}</span>
       </footer>
     </section>}
-    <button ref={launcher} type="button" className="assistant-launcher" aria-expanded={open} aria-label={open ? "Close Noerong assistant" : "Ask about Noerong"} onClick={() => open ? close() : setOpen(true)}><Mark /><span>Ask about Noerong</span><span className="assistant-launch-icon" aria-hidden="true">{open ? "×" : "↗"}</span></button>
+    <button ref={launcher} type="button" className="assistant-launcher" aria-expanded={open} aria-label={open ? "Close Noerong assistant" : "Ask about Noerong"} onClick={() => open ? close() : setOpen(true)}><Mark /><span>{open ? "Close Noerong assistant" : "Ask about Noerong"}</span><span className="assistant-launch-icon" aria-hidden="true">{open ? "×" : "↗"}</span></button>
   </div>;
 }

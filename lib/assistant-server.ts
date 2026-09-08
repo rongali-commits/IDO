@@ -85,7 +85,7 @@ export async function handleAssistant(request: Request, env: AssistantEnv, instr
             const delta=choice?.delta?.content;
             if(typeof delta==="string"){
               outputLength+=delta.length;if(outputLength>5000)throw new Error("output limit");
-              send({delta});
+              send({delta: delta.replace(/\u2014/g, ", ")});
             }
             if(choice?.finish_reason==="stop")completed=true;
             else if(choice?.finish_reason)throw new Error("incomplete answer");

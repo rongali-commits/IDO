@@ -18,6 +18,10 @@ export type Essay = {
   description: string;
   topic: string;
   date: string;
+  updated: string;
+  coverCredit: string;
+  coverSource: string;
+  coverLicense: string;
   coverImage: string;
   coverAlt: string;
   readTime: string;
@@ -43,6 +47,10 @@ export function getEssay(slug: string): Essay {
     description: String(data.description),
     topic: String(data.topic),
     date: String(data.date),
+    updated: String(data.updated || data.date),
+    coverCredit: String(data.coverCredit || ""),
+    coverSource: String(data.coverSource || ""),
+    coverLicense: String(data.coverLicense || ""),
     coverImage: String(data.coverImage),
     coverAlt: String(data.coverAlt || data.title),
     readTime: readingTime(content).text.replace("min read", "minute read"),
