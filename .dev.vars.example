@@ -1,0 +1,3 @@
+# Local only. Copy to .dev.vars and enter the key securely outside chat.
+DEEPSEEK_API_KEY=
+DEEPSEEK_MODEL=deepseek-v4-flash
