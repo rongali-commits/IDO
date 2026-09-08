@@ -16,7 +16,7 @@ for (const path of paths) {
   if (!/<title>[^<]+<\/title>/.test(html)) failures.push(`${path}: missing title`);
   if (!/name="description" content="[^"]+"/.test(html)) failures.push(`${path}: missing description`);
   for (const [, href] of html.matchAll(/href="([^"]+)"/g)) {
-    const url = new URL(href.replaceAll('&amp;', '&'), base);
+    const url = new URL(href.replaceAll('&amp;', '&'), new URL(path, base));
     if (url.origin === base.origin && !url.pathname.startsWith('/_next/') && !url.pathname.startsWith('/@')) links.set(url.pathname + url.hash, url);
   }
   for (const [, src] of html.matchAll(/<(?:img|source)[^>]*\ssrc="([^"]+)"/g)) {

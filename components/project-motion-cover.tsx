@@ -27,17 +27,19 @@ export function ProjectMotionCover({ alt, className, poster, priority = false, s
     const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
     if (connection?.saveData || paused) return;
 
+    let loadTimer: ReturnType<typeof setTimeout> | undefined;
     const observer = new IntersectionObserver(
       ([entry]) => {
         setCanAnimate(entry.isIntersecting);
-        if (entry.isIntersecting) setShouldLoad(true);
+        clearTimeout(loadTimer);
+        if (entry.isIntersecting) loadTimer = setTimeout(() => setShouldLoad(true), priority ? 2200 : 500);
       },
       { rootMargin: "0px", threshold: 0.12 },
     );
 
     observer.observe(frameRef.current);
-    return () => observer.disconnect();
-  }, [video, paused]);
+    return () => { observer.disconnect(); clearTimeout(loadTimer); };
+  }, [video, paused, priority]);
 
   useEffect(() => {
     if (!videoRef.current) return;
@@ -53,7 +55,7 @@ export function ProjectMotionCover({ alt, className, poster, priority = false, s
 
   return (
     <div ref={frameRef} className={["project-motion-cover", className].filter(Boolean).join(" ")} role="img" aria-label={alt}>
-      <Image src={poster} alt="" fill priority={priority} unoptimized sizes={sizes} style={{ objectFit: "contain" }} />
+      <Image src={poster} alt="" fill priority={priority} sizes={sizes} style={{ objectFit: "contain" }} />
       {video && shouldLoad && (
         <video
           ref={videoRef}

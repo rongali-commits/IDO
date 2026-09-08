@@ -18,7 +18,7 @@ export function SiteFooter({ showProjectCta = true }: { showProjectCta?: boolean
           <nav aria-label="Social links"><span>Elsewhere</span><a href="https://contra.com/rongalichaitanya" target="_blank" rel="noreferrer">Contra ↗</a><a href="https://www.linkedin.com/in/rongalichaitanya" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://x.com/rongalichay" target="_blank" rel="noreferrer">X ↗</a><a href="https://github.com/rongali-commits" target="_blank" rel="noreferrer">GitHub ↗</a></nav>
         </div>
       </div>
-      <div className="shell footer-bottom"><span>© {new Date().getFullYear()} Noerong</span><span>Software that earns its place.</span></div>
+      <div className="shell footer-bottom"><span>© {new Date().getFullYear()} Noerong</span><nav className="policy-links" aria-label="Studio policies"><Link href="/mission">Mission</Link><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link></nav><span>Software that earns its place.</span></div>
     </footer>
   );
 }
