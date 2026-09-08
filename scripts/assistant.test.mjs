@@ -39,6 +39,23 @@ test('persistent visitor counters reset and do not store raw IPs',async()=>{
   assert.equal(await consumeLimit(storage,'secret','203.0.113.24',now+61000),true);
   assert.ok(storage.sql.prepare('SELECT bucket FROM assistant_limits').all().every(x=>!x.bucket.includes('203.0.113.24')));
 });
+test('only an authenticated relay can supply a visitor identity',async()=>{
+  const never=()=>{throw Error('provider must not be called')};
+  const config={...env(),ASSISTANT_PROXY_SECRET:'test-relay-secret'};
+  const bad=request(undefined,{'x-noerong-proxy-secret':'wrong','x-noerong-client-ip':'203.0.113.1'});
+  assert.equal((await handleAssistant(bad,config,'',()=>'',never)).status,403);
+  const missing=request(undefined,{'x-noerong-proxy-secret':'test-relay-secret'});
+  assert.equal((await handleAssistant(missing,config,'',()=>'',never)).status,400);
+  // Exhaust one relayed visitor, then prove a second visitor remains eligible.
+  const mock=async()=>new Response('data: {"choices":[{"delta":{"content":"OK"},"finish_reason":"stop"}]}\n\ndata: [DONE]\n\n');
+  for(let i=0;i<6;i++){
+    const r=await handleAssistant(request(undefined,{'x-noerong-proxy-secret':'test-relay-secret','x-noerong-client-ip':'visitor-one'}),config,'',()=>'',mock);
+    assert.equal(r.status,200);await r.text();
+  }
+  assert.equal((await handleAssistant(request(undefined,{'x-noerong-proxy-secret':'test-relay-secret','x-noerong-client-ip':'visitor-one'}),config,'',()=>'',never)).status,429);
+  const other=await handleAssistant(request(undefined,{'x-noerong-proxy-secret':'test-relay-secret','x-noerong-client-ip':'visitor-two'}),config,'',()=>'',mock);
+  assert.equal(other.status,200);await other.text();
+});
 test('global daily budget stops API spending across distinct visitors',async()=>{
   const storage=db(), now=1800000000000;
   for(let i=0;i<200;i++)assert.equal(await consumeLimit(storage,'secret',`visitor-${i}`,now),true);

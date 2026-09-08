@@ -1,0 +1,12 @@
+.git
+node_modules
+.env*
+.dev.vars*
+.wrangler
+.next
+.next-vercel
+.vinext
+dist
+outputs
+work
+*.tsbuildinfo

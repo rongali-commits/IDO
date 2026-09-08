@@ -1,5 +1,5 @@
 export type ChatMessage = { role: "user" | "assistant"; content: string };
-export type AssistantEnv = { DEEPSEEK_API_KEY?: string; DEEPSEEK_MODEL?: string; ASSISTANT_DB?: D1Database };
+export type AssistantEnv = { DEEPSEEK_API_KEY?: string; DEEPSEEK_MODEL?: string; ASSISTANT_PROXY_SECRET?: string; ASSISTANT_DB?: D1Database };
 const jsonHeaders = { "Cache-Control": "no-store", "Content-Type": "application/json" };
 const fail = (error: string, status: number, extra = {}) => new Response(JSON.stringify({error}), {status,headers:{...jsonHeaders,...extra}});
 
@@ -30,7 +30,7 @@ export async function consumeLimit(db: D1Database, secret: string, ip: string, n
   return !!(await increment(`global:${day}`,200,(day+1)*86400000).all()).results.length;
 }
 
-async function readLimited(request: Request) {
+export async function readLimited(request: Request) {
   if (!request.body) throw new Error("empty");
   const reader=request.body.getReader(); const chunks:Uint8Array[]=[]; let size=0;
   while(true){const {done,value}=await reader.read();if(done)break;size+=value.byteLength;if(size>32000){await reader.cancel();throw new Error("large");}chunks.push(value);}
@@ -45,9 +45,17 @@ export async function handleAssistant(request: Request, env: AssistantEnv, instr
   let messages:ChatMessage[]|null;
   try { messages=parseMessages(await readLimited(request)); } catch { return fail("Please send a shorter question.",400); }
   if(!messages)return fail("Please start a new conversation and keep questions under 1,200 characters.",400);
+  let visitorIp=request.headers.get("cf-connecting-ip") || "local-preview";
+  const proxySecret=request.headers.get("x-noerong-proxy-secret");
+  if(proxySecret!==null){
+    if(!env.ASSISTANT_PROXY_SECRET || proxySecret!==env.ASSISTANT_PROXY_SECRET)return fail("Unauthorized relay.",403);
+    const forwarded=request.headers.get("x-noerong-client-ip");
+    if(!forwarded || forwarded.length>100)return fail("Invalid relay request.",400);
+    visitorIp=forwarded;
+  }
   if(!env.DEEPSEEK_API_KEY || !env.ASSISTANT_DB)return fail("The assistant isn't available just yet. You can explore the projects or contact Chaitanya directly.",503);
   try {
-    if(!await consumeLimit(env.ASSISTANT_DB,env.DEEPSEEK_API_KEY,request.headers.get("cf-connecting-ip") || "local-preview"))return fail("The assistant has reached its message limit. Please try later or contact Chaitanya directly.",429,{"Retry-After":"60"});
+    if(!await consumeLimit(env.ASSISTANT_DB,env.DEEPSEEK_API_KEY,visitorIp))return fail("The assistant has reached its message limit. Please try later or contact Chaitanya directly.",429,{"Retry-After":"60"});
   } catch { return fail("I can't connect just now. Please try again later.",503); }
   const abort=new AbortController();
   const timeout=setTimeout(()=>abort.abort(),30000);

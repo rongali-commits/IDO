@@ -8,9 +8,9 @@
   "scripts": {
     "dev": "vinext dev",
     "build": "vinext build",
-    "build:vercel": "next build --webpack",
+    "build:vercel": "node scripts/build-vercel.mjs",
     "start": "vinext start",
-    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next"
+    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern .next-vercel"
   },
   "dependencies": {
     "drizzle-orm": "^0.45.2",
