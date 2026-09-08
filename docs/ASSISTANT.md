@@ -44,3 +44,7 @@ After activating a key, check the actual model's answers to:
 10. Follow-up question referring to the previously recommended product.
 
 Check source links, uncertainty, product stages, no fabricated prices/results, and graceful provider errors. Browser visual and interaction QA should cover desktop, narrow mobile, keyboard close/focus, streaming, new conversation, and error retry when authorized.
+
+## Vercel domain deployment
+
+The custom domain noerong.com is served by the Vercel ido project. The native Next.js build selects assistant-runtime.vercel.ts using the build:vercel script; Sites uses assistant-runtime.ts and owns the DeepSeek key and D1 counters. Vercel forwards bounded same-origin requests through an authenticated server relay. Configure the same ASSISTANT_PROXY_SECRET as a secret on both hosts. Only the authenticated relay can supply the Vercel-verified visitor IP, preserving individual usage limits without storing raw IPs. No key is sent to the browser. Deploy Sites before Vercel when updating the relay contract. Native Next.js output is isolated in .next-vercel.
