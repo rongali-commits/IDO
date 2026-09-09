@@ -206,6 +206,7 @@ h1 em, h2 em { color: var(--olive); font-family: Georgia, serif; font-weight: 40
 .portrait-wrap img { object-fit: cover; }
 .about-copy { padding-top: 40px; }
 .about-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 20px 32px; }
+.about-actions .text-link { min-width: 0; width: max-content; justify-content: flex-start; gap: 12px; }
 .about-copy h1 { margin: 0 0 45px; font-size: clamp(60px, 8vw, 116px); line-height: .86; letter-spacing: -.08em; }
 .about-copy .lead { max-width: 760px; font-size: clamp(25px, 3vw, 38px); line-height: 1.25; letter-spacing: -.035em; }
 .about-copy > p:not(.lead):not(.section-kicker) { max-width: 700px; color: var(--muted); font-size: 18px; line-height: 1.7; }
