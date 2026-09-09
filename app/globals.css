@@ -502,3 +502,12 @@ h1 em, h2 em { color: var(--olive); font-family: Georgia, serif; font-weight: 40
   .footer-bottom { flex-wrap:wrap; gap:20px; }
   .studio-document { padding-top:34px; }
 }
+
+.linkedin-section{display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;padding:40px 0 56px;border-top:1px solid var(--line);margin-bottom:50px}
+.linkedin-section h2{font-size:clamp(30px,4vw,48px);line-height:1.12;letter-spacing:-.045em;margin:18px 0}
+.linkedin-section p{max-width:520px;font-size:17px;line-height:1.6;color:var(--muted)}
+.linkedin-section .linkedin-disclosure{font-size:13px}
+.linkedin-section a{text-decoration:underline;text-underline-offset:4px}
+.linkedin-badge-wrap{min-height:310px;width:335px;max-width:100%;min-width:0}
+.linkedin-badge-wrap iframe{max-width:100%}
+@media(max-width:780px){.linkedin-section{grid-template-columns:minmax(0,1fr);gap:24px}.linkedin-badge-wrap{justify-self:start}}
