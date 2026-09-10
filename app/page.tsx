@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
-const featuredSlugs = ["noerong-proposals", "growthdesk", "clientdesk"];
+const featuredSlugs = ["margin-and-matter", "noerong-proposals", "clientdesk"];
 
 export default function Home() {
   const featured = featuredSlugs.map((slug) => products.find((product) => product.slug === slug)!);
@@ -35,13 +35,13 @@ export default function Home() {
       </section>
 
       <section className="flagship shell" aria-labelledby="flagship-title">
-        <Link className="flagship-visual" href="/projects/margin-and-matter">
-          <ProjectMotionCover poster="/products/margin-and-matter.png" video="/products/motion/margin-and-matter.mp4" alt="Margin & Matter journal, reading experience, and editorial collections" priority sizes="(max-width: 900px) 100vw, 80vw" />
+        <Link className="flagship-visual" href="/projects/signalroom">
+          <ProjectMotionCover poster="/products/signalroom.png" video="/products/motion/signalroom.mp4" alt="SignalRoom customer intelligence workspace with evidence, themes, opportunities, and reports" priority sizes="(max-width: 900px) 100vw, 80vw" />
         </Link>
         <div className="flagship-info">
-          <div><p className="section-kicker">01 / Featured · Editorial publishing</p><h2 id="flagship-title">Margin &amp; Matter</h2></div>
-          <p>A considered reading experience and protected writing studio, with a separate native WordPress edition for independent publications.</p>
-          <Link className="button button-dark" href="/projects/margin-and-matter">View case study <span>↗</span></Link>
+          <div><p className="section-kicker">01 / Featured · Customer intelligence AI</p><h2 id="flagship-title">SignalRoom</h2></div>
+          <p>Evidence-first customer intelligence for product teams, from structured research and traceable themes to grounded AI answers and decision-ready reports.</p>
+          <Link className="button button-dark" href="/projects/signalroom">View case study <span>↗</span></Link>
         </div>
       </section>
 
