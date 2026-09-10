@@ -6,6 +6,17 @@ type ProjectEvidence = {
 };
 
 export const projectEvidence: Record<string, ProjectEvidence> = {
+  signalroom: {
+    architecture: "Next.js, React, TypeScript, and Tailwind CSS provide the product shell and five responsive workspaces. SQLite/D1-compatible persistence stores evidence and workflow state. DeepSeek runs only through a protected server route with input validation, request-size limits, rate limiting, same-origin checks, provider timeouts, and structured diagnostics. Docker and Railway configuration support a repeatable deployment with persistent storage.",
+    outcome: "A complete working product from evidence import to cited AI analysis and stakeholder reporting. The live Railway deployment passed laptop, tablet, and mobile checks, CSV import and review-state tests, valid and invalid AI request tests, cross-origin rejection, and a browser-console review without application errors. These are product verification results, not client-performance claims.",
+    deployment: "A business deployment requires a buyer-owned hosting account, persistent storage, an exact production origin, and a funded DeepSeek API key stored only as a server environment value. The $249 service covers one brand and one focused workflow. Historical data migration, enterprise integrations, multi-tenant architecture, hosting, API fees, and ongoing maintenance require a separate scope.",
+    gallery: [
+      { image: "/products/signalroom.png", width: 1600, height: 1200, caption: "The research overview brings evidence volume, themes, opportunities, coverage, and emerging signals into one decision surface." },
+      { image: "/products/evidence/signalroom-evidence.png", width: 1600, height: 1200, caption: "The evidence workspace keeps source, segment, company, quote, and review status visible for every record." },
+      { image: "/products/evidence/signalroom-opportunities.png", width: 1600, height: 1200, caption: "Opportunity scoring makes reach, urgency, confidence, and commercial relevance explicit and reviewable." },
+      { image: "/products/evidence/signalroom-reports.png", width: 1600, height: 1200, caption: "Decision-ready reports preserve the connection between findings, supporting evidence, and recommended next steps." },
+    ],
+  },
   "margin-and-matter": {
     architecture: "The deployed application uses React, Next.js and TypeScript with SQLite and image storage on a persistent Railway volume. Independent editor login uses scrypt password hashes, revocable database sessions and same-origin write checks. It is not a generic static template. The separate WordPress theme uses theme.json, native block templates, PHP theme setup, lightweight CSS and JavaScript, and system fonts. It does not require React, a paid page builder, or the application's hosting stack.",
     outcome: "A public editorial application and a separately installable WordPress edition, designed and built as independent Noerong work. The application has model and API tests covering editorial behavior and access boundaries. The theme was checked at laptop, tablet, and phone widths, with 43 browser checks and native validation of all 10 template files. These are product verification results, not client revenue or audience-growth claims.",

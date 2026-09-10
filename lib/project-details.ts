@@ -8,6 +8,20 @@ export type ProjectDetail = {
 };
 
 export const projectDetails: Record<string, ProjectDetail> = {
+  signalroom: {
+    audience: "SaaS product teams, research consultancies, and customer-led agencies",
+    role: "Product strategy, UX design, full-stack engineering, AI integration, deployment",
+    year: "2026",
+    overview: "SignalRoom began with a trust problem in customer research. Evidence was scattered across interviews, support tickets, surveys, and reviews, while the reasoning behind product priorities was difficult to audit. I designed and built one connected workspace that keeps every theme, opportunity, report, and AI answer anchored to its underlying evidence.",
+    approach: "The system follows the real research journey from capture to decision. Structured evidence can be imported by CSV, reviewed, grouped into themes, and connected to opportunities. Prioritization makes reach, urgency, confidence, and commercial relevance visible. The AI layer is deliberately constrained to the workspace evidence and cites supporting records instead of inventing unsupported conclusions.",
+    features: [
+      { title: "Structured evidence library", description: "Interviews, support conversations, survey responses, and public reviews share a consistent record with source, segment, company, quote, and review status." },
+      { title: "Traceable themes", description: "Recurring signals are organized into searchable themes with coverage and confidence indicators, keeping patterns connected to the records that support them." },
+      { title: "Opportunity scoring", description: "Reach, urgency, confidence, and commercial relevance create a visible prioritization model instead of a hidden or arbitrary score." },
+      { title: "Evidence-grounded AI", description: "Ask SignalRoom answers from the available research, cites evidence such as E1 and E2, and communicates uncertainty when the workspace does not support a strong conclusion." },
+      { title: "Decision-ready reporting", description: "Reports are assembled from the same evidence and opportunity model, giving stakeholders a clear view of findings, support, and next steps." },
+    ],
+  },
   "margin-and-matter": {
     audience: "Independent writers, creative publications, and small editorial teams",
     role: "Art direction, editorial UX, full-stack engineering, WordPress theme development",
