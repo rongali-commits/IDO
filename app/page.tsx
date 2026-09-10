@@ -36,7 +36,7 @@ export default function Home() {
 
       <section className="flagship shell" aria-labelledby="flagship-title">
         <Link className="flagship-visual" href="/projects/signalroom">
-          <ProjectMotionCover poster="/products/signalroom.png" video="/products/motion/signalroom.mp4" alt="SignalRoom customer intelligence workspace with evidence, themes, opportunities, and reports" priority sizes="(max-width: 900px) 100vw, 80vw" />
+          <ProjectMotionCover poster="/products/signalroom.webp" video="/products/motion/signalroom.mp4" alt="SignalRoom customer intelligence workspace with evidence, themes, opportunities, and reports" priority sizes="(max-width: 900px) 100vw, 80vw" />
         </Link>
         <div className="flagship-info">
           <div><p className="section-kicker">01 / Featured · Customer intelligence AI</p><h2 id="flagship-title">SignalRoom</h2></div>

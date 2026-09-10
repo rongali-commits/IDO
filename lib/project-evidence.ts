@@ -11,10 +11,10 @@ export const projectEvidence: Record<string, ProjectEvidence> = {
     outcome: "A complete working product from evidence import to cited AI analysis and stakeholder reporting. The live Railway deployment passed laptop, tablet, and mobile checks, CSV import and review-state tests, valid and invalid AI request tests, cross-origin rejection, and a browser-console review without application errors. These are product verification results, not client-performance claims.",
     deployment: "A business deployment requires a buyer-owned hosting account, persistent storage, an exact production origin, and a funded DeepSeek API key stored only as a server environment value. The $249 service covers one brand and one focused workflow. Historical data migration, enterprise integrations, multi-tenant architecture, hosting, API fees, and ongoing maintenance require a separate scope.",
     gallery: [
-      { image: "/products/signalroom.png", width: 1600, height: 1200, caption: "The research overview brings evidence volume, themes, opportunities, coverage, and emerging signals into one decision surface." },
-      { image: "/products/evidence/signalroom-evidence.png", width: 1600, height: 1200, caption: "The evidence workspace keeps source, segment, company, quote, and review status visible for every record." },
-      { image: "/products/evidence/signalroom-opportunities.png", width: 1600, height: 1200, caption: "Opportunity scoring makes reach, urgency, confidence, and commercial relevance explicit and reviewable." },
-      { image: "/products/evidence/signalroom-reports.png", width: 1600, height: 1200, caption: "Decision-ready reports preserve the connection between findings, supporting evidence, and recommended next steps." },
+      { image: "/products/signalroom.webp", width: 1600, height: 1200, caption: "The research overview brings evidence volume, themes, opportunities, coverage, and emerging signals into one decision surface." },
+      { image: "/products/evidence/signalroom-evidence.webp", width: 1600, height: 1200, caption: "The evidence workspace keeps source, segment, company, quote, and review status visible for every record." },
+      { image: "/products/evidence/signalroom-opportunities.webp", width: 1600, height: 1200, caption: "Opportunity scoring makes reach, urgency, confidence, and commercial relevance explicit and reviewable." },
+      { image: "/products/evidence/signalroom-reports.webp", width: 1600, height: 1200, caption: "Decision-ready reports preserve the connection between findings, supporting evidence, and recommended next steps." },
     ],
   },
   "margin-and-matter": {
