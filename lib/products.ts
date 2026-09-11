@@ -7,6 +7,7 @@ export type Product = {
   problem: string;
   image: string;
   motionCover?: string;
+  walkthroughVideo?: string;
   imageAlt: string;
   liveUrl: string;
   contraUrl?: string;
@@ -30,10 +31,11 @@ export const products: Product[] = [
     problem: "For product teams that need to act on customer evidence without losing the sources behind each decision.",
     image: "/products/signalroom.webp",
     motionCover: "/products/motion/signalroom.mp4",
+    walkthroughVideo: "/products/walkthroughs/signalroom.mp4",
     imageAlt: "SignalRoom customer intelligence workspace with evidence, themes, opportunities, and reports",
     liveUrl: "https://signalroom-production-cda7.up.railway.app/",
-    contraUrl: "https://contra.com/s/qLRBkAbs-customize-and-deploy-an-ai-customer-intelligence-workspace",
-    sourceKitUrl: "https://contra.com/products/aQ8Yncsl-signal-room-customer-intelligence-source-kit",
+    contraUrl: "https://contra.com/s/36kmgmOA-customize-and-deploy-a-customer-intelligence-workspace",
+    sourceKitUrl: "https://contra.com/products/oFJkr27J-signal-room-customer-intelligence-source-kit",
     sourceKitPrice: "$29",
     startingPrice: "$249",
     offerNote: "The $29 source kit includes the application code, sample data, commercial licence, setup guidance, security notes, and Railway configuration. The $249 customization service covers one brand, one focused workflow, a buyer-owned deployment, DeepSeek configuration, handoff, and one revision. Hosting, domains, API usage, data migration, custom integrations, and ongoing maintenance are separate.",
