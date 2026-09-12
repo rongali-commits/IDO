@@ -50,7 +50,7 @@ export default async function EssayPage({ params }: EssayPageProps) {
 
   return (
     <main>
-      <SiteHeader />
+      <SiteHeader activeSection="essays" />
       <StructuredData data={[{ "@context": "https://schema.org", "@type": "BlogPosting", mainEntityOfPage: `https://noerong.com/essays/${slug}`, headline: essay.title, description: essay.description, image: `https://noerong.com${essay.coverImage}`, datePublished: essay.date, dateModified: essay.updated, author: { "@type": "Person", "@id": "https://noerong.com/about#rongali", name: "Rongali Chaitanya", url: "https://noerong.com/about" }, publisher: { "@id": "https://noerong.com/#studio" } }, breadcrumbData([{ name: "Home", path: "/" }, { name: "Writing", path: "/essays" }, { name: essay.title, path: `/essays/${slug}` }])]} />
       <article className="article-page">
         <header className="article-header shell">

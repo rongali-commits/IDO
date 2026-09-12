@@ -40,7 +40,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <main>
-      <SiteHeader motionControls={Boolean(product.motionCover)} />
+      <SiteHeader motionControls={Boolean(product.motionCover)} activeSection="projects" />
       <StructuredData data={[{ "@context": "https://schema.org", "@type": "CreativeWork", "@id": `https://noerong.com/projects/${slug}#case-study`, name: `${product.name} case study`, description: product.summary, url: `https://noerong.com/projects/${slug}`, image: `https://noerong.com${product.image}`, author: { "@id": "https://noerong.com/about#rongali" }, about: { "@type": "SoftwareApplication", name: product.name, applicationCategory: "BusinessApplication", operatingSystem: "Web browser", url: product.liveUrl, description: product.summary } }, breadcrumbData([{ name: "Home", path: "/" }, { name: "Projects", path: "/projects" }, { name: product.name, path: `/projects/${slug}` }])]} />
       <header className="case-hero shell">
         <Link className="case-breadcrumb" href="/projects">← Projects / {product.category}</Link>
