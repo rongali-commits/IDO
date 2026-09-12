@@ -87,7 +87,7 @@ export function StudioAssistant() {
   }
 
   return <div className="studio-assistant">
-    {open && <section ref={panel} className="assistant-panel" role="dialog" aria-label="Ask about Noerong" onKeyDown={event => {
+    {open && <section id="noerong-assistant-panel" ref={panel} className="assistant-panel" role="dialog" aria-label="Ask about Noerong" onKeyDown={event => {
       if (event.key === "Escape") { event.stopPropagation(); close(); }
       if (event.key === "Tab") {
         const items = panel.current?.querySelectorAll<HTMLElement>('button:not(:disabled), a[href], textarea:not(:disabled), summary');
@@ -118,6 +118,6 @@ export function StudioAssistant() {
         <span className="assistant-sr" role="status" aria-live="polite">{busy ? "Preparing an answer" : messages.at(-1)?.role === "assistant" ? "Answer ready" : ""}</span>
       </footer>
     </section>}
-    <button ref={launcher} type="button" className="assistant-launcher" aria-expanded={open} aria-label={open ? "Close Noerong assistant" : "Ask about Noerong"} onClick={() => open ? close() : setOpen(true)}><Mark /><span>{open ? "Close Noerong assistant" : "Ask about Noerong"}</span><span className="assistant-launch-icon" aria-hidden="true">{open ? "×" : "↗"}</span></button>
+    <button ref={launcher} type="button" className="assistant-launcher" title={open ? "Close Noerong assistant" : "Ask about Noerong"} aria-expanded={open} aria-controls={open ? "noerong-assistant-panel" : undefined} aria-label={open ? "Close Noerong assistant" : "Ask about Noerong"} onClick={() => open ? close() : setOpen(true)}><Mark /><span>{open ? "Close Noerong assistant" : "Ask about Noerong"}</span><span className="assistant-launch-icon" aria-hidden="true">{open ? "×" : "↗"}</span></button>
   </div>;
 }

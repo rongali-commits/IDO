@@ -4,6 +4,9 @@ import path from 'node:path';
 const nextConfig: NextConfig = {
   distDir: '.next-vercel',
   poweredByHeader: false,
+  async redirects() {
+    return [{ source: "/:path*", has: [{ type: "host" as const, value: "www.noerong.com" }], destination: "https://noerong.com/:path*", permanent: true }];
+  },
   async headers() {
     const headers = [
       { key: 'X-Content-Type-Options', value: 'nosniff' },

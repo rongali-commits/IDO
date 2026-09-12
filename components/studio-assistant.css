@@ -11,7 +11,7 @@
 @media(prefers-reduced-motion:reduce){.assistant-panel,.assistant-spinner{animation:none}}
 .assistant-feed{overflow-anchor:none}.assistant-turn:last-of-type{min-height:100%}
 
-@media (max-width: 600px) {
+@media (max-width: 600px), (max-height: 800px) {
   .assistant-launcher { width:52px; height:52px; padding:0; justify-content:center; }
   .assistant-launcher > span:not(.assistant-mark) { display:none; }
 }

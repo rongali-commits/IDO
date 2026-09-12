@@ -4,11 +4,14 @@ import { Link } from "@/components/plain-link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { LinkedInBadge } from "@/components/linkedin-badge";
+import { StructuredData, breadcrumbData } from "@/components/structured-data";
 
 export const metadata: Metadata = {
   title: "About",
   description: "Meet Rongali Chaitanya, founder of Noerong and a full-stack product builder focused on useful SaaS, AI systems, and business automation.",
   alternates: { canonical: "/about" },
+  openGraph: { title: "Rongali Chaitanya | Founder of Noerong", description: "Product strategy, UX, full-stack engineering, and practical software built from idea to handoff.", url: "https://noerong.com/about", images: [{ url: "/about/rongali-chaitanya.webp", alt: "Rongali Chaitanya, founder of Noerong" }] },
+  twitter: { card: "summary_large_image", title: "Rongali Chaitanya | Founder of Noerong", description: "Meet the person behind Noerong and explore the studio's working principles.", images: ["/about/rongali-chaitanya.webp"] },
 };
 
 const values = [
@@ -22,6 +25,7 @@ export default function AboutPage() {
   return (
     <main>
       <SiteHeader />
+      <StructuredData data={[{ "@context": "https://schema.org", "@type": "ProfilePage", url: "https://noerong.com/about", mainEntity: { "@type": "Person", "@id": "https://noerong.com/about#rongali", name: "Rongali Chaitanya", url: "https://noerong.com/about", image: "https://noerong.com/about/rongali-chaitanya.webp", jobTitle: "Founder and SaaS Product Builder", worksFor: { "@id": "https://noerong.com/#studio" }, sameAs: ["https://contra.com/rongalichaitanya", "https://www.linkedin.com/in/rongalichaitanya", "https://github.com/rongali-commits"] } }, breadcrumbData([{ name: "Home", path: "/" }, { name: "About", path: "/about" }])]} />
       <section className="about-intro shell">
         <div className="portrait-wrap"><Image src="/about/rongali-chaitanya.webp" alt="Rongali Chaitanya, founder of Noerong" fill priority sizes="(max-width: 980px) 100vw, 42vw" /></div>
         <div className="about-copy"><p className="section-kicker">Rongali Chaitanya · Founder</p><h1>I build SaaS<br /><em>from 0 to 1.</em></h1><p className="lead">Not just the code. The problem, product, interface, system, launch, and the work after launch.</p><p>I have worked independently as a full-stack engineer since 2021. Noerong is the product studio that grew from that practice: a place for focused software that solves operational problems and feels considered from the first screen to the final handoff.</p><p>My work spans Next.js, TypeScript, Python, FastAPI, PostgreSQL, Supabase, Stripe, LLM integrations, product design, deployment, and marketplace positioning. I care most about joining those pieces into one product people can confidently understand and operate.</p><p>Outside the studio, I write long-form essays on history, philosophy, technology, and geopolitics. Writing is a passion and a way to think carefully, explore unconventional topics, and look at familiar questions from a different perspective. It is not a freelance writing service.</p><div className="about-actions"><Link className="text-link" href="/contact">Work with me <span>↗</span></Link><Link className="text-link" href="/essays">Explore my essays <span aria-hidden="true">↗</span></Link></div></div>
