@@ -17,6 +17,7 @@ export const metadata: Metadata = {
 const featuredSlugs = ["margin-and-matter", "noerong-proposals", "clientdesk"];
 
 export default function Home() {
+  const flagship = products.find((product) => product.slug === "signalroom")!;
   const featured = featuredSlugs.map((slug) => products.find((product) => product.slug === slug)!);
   const essays = getAllEssays().slice(0, 2);
 
@@ -25,37 +26,39 @@ export default function Home() {
       <SiteHeader motionControls />
       <section className="home-hero shell">
         <div className="hero-meta reveal">
-          <p><span className="status-dot" /> Independent SaaS product studio</p>
+          <p>Independent SaaS product studio</p>
           <p>Bengaluru · Working worldwide</p>
         </div>
-        <h1 className="reveal reveal-delay-1">Useful software,<br /><em>built all the way.</em></h1>
-        <div className="hero-bottom reveal reveal-delay-2">
-          <p>I design and build practical SaaS products for service businesses and independent teams. Product thinking, interface design, engineering, deployment, and handoff in one focused studio.</p>
-          <Link className="text-link" href="/projects">Explore the work <span>↗</span></Link>
+        <div className="hero-layout">
+          <h1 className="reveal reveal-delay-1">Useful software,<br /><em>built all the way.</em></h1>
+          <div className="hero-bottom reveal reveal-delay-2">
+            <p>I’m Rongali, the founder of Noerong. I design and build focused products for service businesses and independent teams, from the first workflow to a usable handoff.</p>
+            <Link className="text-link" href="/projects">Explore the work <span aria-hidden="true">↗</span></Link>
+          </div>
         </div>
       </section>
 
       <section className="flagship shell" aria-labelledby="flagship-title">
         <Link className="flagship-visual" href="/projects/signalroom">
-          <ProjectMotionCover poster="/products/signalroom.webp" video="/products/motion/signalroom.mp4" alt="SignalRoom customer intelligence workspace with evidence, themes, opportunities, and reports" priority sizes="(max-width: 900px) 100vw, 80vw" />
+          <ProjectMotionCover poster={flagship.image} video={flagship.motionCover} alt={flagship.imageAlt} priority sizes="(max-width: 980px) 100vw, 70vw" />
         </Link>
         <div className="flagship-info">
-          <div><p className="section-kicker">01 / Featured · Customer intelligence AI</p><h2 id="flagship-title">SignalRoom</h2></div>
-          <p>Evidence-first customer intelligence for product teams, from structured research and traceable themes to grounded AI answers and decision-ready reports.</p>
+          <div><p className="section-kicker">Featured / Customer intelligence</p><h2 id="flagship-title">SignalRoom</h2></div>
+          <p>Turn scattered customer research into decisions you can trace back to the evidence. A complete product, from the research workspace to cited AI answers.</p>
           <Link className="button button-dark" href="/projects/signalroom">View case study <span>↗</span></Link>
         </div>
       </section>
 
       <section className="proof-strip shell" aria-label="Studio capabilities">
         <div><strong>{String(products.filter((product) => product.stage === "Live product").length).padStart(2, "0")}</strong><span>Live studio products</span></div>
-        <div><strong>01</strong><span>Independent founder</span></div>
-        <div><strong>0→1</strong><span>Idea to deployment</span></div>
-        <div><strong>∞</strong><span>Available worldwide</span></div>
+        <div><strong>5+ years</strong><span>In IT & software</span></div>
+        <div><strong>Design + code</strong><span>One point of contact</span></div>
+        <div><strong>Bengaluru</strong><span>Working worldwide</span></div>
       </section>
 
       <section className="selected-work shell">
         <div className="section-heading">
-          <div><p className="section-kicker">Selected work</p><h2>Built for the work<br /><em>businesses repeat.</em></h2></div>
+          <div><p className="section-kicker">Selected work</p><h2>Different products.<br /><em>The same care.</em></h2></div>
           <Link className="text-link" href="/projects">All projects <span>↗</span></Link>
         </div>
         <div className="project-list">
@@ -89,7 +92,7 @@ export default function Home() {
       </section>
 
       <section className="founder-note shell">
-        <div className="founder-monogram" aria-hidden="true">N<span>●</span></div>
+        <div className="founder-portrait"><Image src="/about/rongali-chaitanya.webp" alt="Rongali Chaitanya, founder of Noerong" width={240} height={240} sizes="(max-width: 680px) 120px, 200px" /></div>
         <div><p className="section-kicker">A note from the founder</p><blockquote>“I care about the last 10 percent, the part that turns a good prototype into something a business can confidently use.”</blockquote><p>Rongali Chaitanya · Founder and product builder</p><Link className="text-link" href="/about">About the studio <span>↗</span></Link></div>
       </section>
 

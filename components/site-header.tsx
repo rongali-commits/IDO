@@ -7,14 +7,14 @@ const navigation = [
   { href: "/essays", label: "Writing" },
 ];
 
-export function SiteHeader({ motionControls = false }: { motionControls?: boolean }) {
+export function SiteHeader({ motionControls = false, activeSection }: { motionControls?: boolean; activeSection?: "projects" | "about" | "essays" }) {
   return (
     <>
     <header className="site-header-wrap">
       <div className="site-header shell">
         <Link className="wordmark" href="/" aria-label="Noerong home">noerong<span>.</span></Link>
         <nav className="desktop-nav" aria-label="Primary navigation">
-          {navigation.map((item) => <Link href={item.href} key={item.href}>{item.label}</Link>)}
+          {navigation.map((item) => <Link href={item.href} key={item.href} aria-current={item.href === `/${activeSection}` ? "page" : undefined}>{item.label}</Link>)}
         </nav>
         <div className={`header-tools${motionControls ? " has-motion-control" : ""}`}>
           {motionControls && <MotionControl />}
@@ -24,7 +24,7 @@ export function SiteHeader({ motionControls = false }: { motionControls?: boolea
           <summary aria-label="Open navigation"><span /><span /></summary>
           <nav aria-label="Mobile navigation">
             {navigation.map((item, index) => (
-              <Link href={item.href} key={item.href}><small>0{index + 1}</small>{item.label}</Link>
+              <Link href={item.href} key={item.href} aria-current={item.href === `/${activeSection}` ? "page" : undefined}><small>0{index + 1}</small>{item.label}</Link>
             ))}
             <Link href="/contact"><small>04</small>Start a project</Link>
           </nav>

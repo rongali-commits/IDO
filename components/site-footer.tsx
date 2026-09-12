@@ -6,7 +6,7 @@ export function SiteFooter({ showProjectCta = true }: { showProjectCta?: boolean
       {showProjectCta && <div className="shell footer-lead">
         <p className="section-kicker">Have a useful idea?</p>
         <h2>Let&apos;s turn it into<br /><em>working software.</em></h2>
-        <Link className="circle-link" href="/contact" aria-label="Start a project"><span>Start a<br />project</span><b>↗</b></Link>
+        <Link className="circle-link" href="/contact" aria-label="Start a project"><span>Start a project</span><b aria-hidden="true">↗</b></Link>
       </div>}
       <div className="shell footer-main">
         <div>

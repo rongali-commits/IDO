@@ -21,7 +21,7 @@ export default function EssaysPage() {
 
   return (
     <main>
-      <SiteHeader />
+      <SiteHeader activeSection="essays" />
       <section className="essay-archive-header shell">
         <p className="eyebrow">The Noerong journal · By Rongali Chaitanya</p>
         <h1>A question worth<br /><em>staying with.</em></h1>
