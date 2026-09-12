@@ -1,5 +1,4 @@
 import { Link } from "@/components/plain-link";
-import { MotionControl } from "@/components/motion-preference";
 
 const navigation = [
   { href: "/projects", label: "Projects" },
@@ -7,7 +6,7 @@ const navigation = [
   { href: "/essays", label: "Writing" },
 ];
 
-export function SiteHeader({ motionControls = false, activeSection }: { motionControls?: boolean; activeSection?: "projects" | "about" | "essays" }) {
+export function SiteHeader({ activeSection }: { activeSection?: "projects" | "about" | "essays" }) {
   return (
     <>
     <header className="site-header-wrap">
@@ -16,8 +15,7 @@ export function SiteHeader({ motionControls = false, activeSection }: { motionCo
         <nav className="desktop-nav" aria-label="Primary navigation">
           {navigation.map((item) => <Link href={item.href} key={item.href} aria-current={item.href === `/${activeSection}` ? "page" : undefined}>{item.label}</Link>)}
         </nav>
-        <div className={`header-tools${motionControls ? " has-motion-control" : ""}`}>
-          {motionControls && <MotionControl />}
+        <div className="header-tools">
           <Link className="header-cta" href="/contact">Start a project <span aria-hidden="true">↗</span></Link>
         </div>
         <details className="mobile-menu">

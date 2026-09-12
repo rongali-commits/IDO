@@ -23,7 +23,7 @@ export default function Home() {
 
   return (
     <main>
-      <SiteHeader motionControls />
+      <SiteHeader />
       <section className="studio-hero shell" aria-labelledby="home-title">
         <div className="studio-hero-copy">
           <p className="eyebrow"><span className="status-dot" /> Independent product studio</p>
