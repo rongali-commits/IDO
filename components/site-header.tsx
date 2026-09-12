@@ -21,8 +21,8 @@ export function SiteHeader({ motionControls = false, activeSection }: { motionCo
           <Link className="header-cta" href="/contact">Start a project <span aria-hidden="true">↗</span></Link>
         </div>
         <details className="mobile-menu">
-          <summary aria-label="Open navigation"><span /><span /></summary>
-          <nav aria-label="Mobile navigation">
+          <summary role="button" aria-label="Toggle navigation" aria-controls="mobile-navigation"><span /><span /></summary>
+          <nav id="mobile-navigation" aria-label="Mobile navigation">
             {navigation.map((item, index) => (
               <Link href={item.href} key={item.href} aria-current={item.href === `/${activeSection}` ? "page" : undefined}><small>0{index + 1}</small>{item.label}</Link>
             ))}
