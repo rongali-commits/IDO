@@ -1,17 +1,17 @@
 /* Noerong: a precise, product-led studio. */
 :root {
-  --ink: #111111;
-  --ink-soft: #303030;
+  --ink: #050505;
+  --ink-soft: #202020;
   --paper: #fafafa;
   --paper-2: #efefef;
   --white: #fff;
-  --accent: #171717;
-  --accent-text: #242424;
+  --accent: #0a0a0a;
+  --accent-text: #141414;
   --accent-soft: #f0f0f0;
   --lime: #ededed;
   --olive: var(--accent);
   --olive-text: var(--accent-text);
-  --muted: #626262;
+  --muted: #545454;
   --line: #dedede;
   --line-light: #3a3a3a;
   --radius: 16px;
@@ -193,11 +193,16 @@ p {
   font-weight: 600;
 }
 .section-heading>p {
-  max-width: 490px;
+  max-width: 680px;
   margin: 0;
   color: var(--muted);
   font-size: 17px;
   line-height: 1.7;
+}
+.section-heading:has(>p) {
+  grid-template-columns: minmax(0,1fr);
+  align-items: start;
+  gap: 20px;
 }
 .section-heading>.text-link {
   justify-self: end;
