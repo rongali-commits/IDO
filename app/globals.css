@@ -96,11 +96,12 @@ p {
 .site-header {
   min-height: 84px;
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: minmax(0,1fr) auto minmax(0,1fr);
   align-items: center;
   gap: 30px;
 }
 .wordmark {
+  justify-self: start;
   font-size: 27px;
   font-weight: 750;
   line-height: 1;
@@ -128,6 +129,7 @@ p {
   background: var(--paper-2);
 }
 .header-tools {
+  justify-self: end;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -1677,7 +1679,20 @@ p {
 .policy-links a:hover {
   color: white;
 }
-.site-footer a:focus-visible,.capability-band a:focus-visible {
+.site-footer .motion-control {
+  padding: 8px 0;
+  border: 0;
+  border-radius: 2px;
+  color: inherit;
+  font-size: 12px;
+}
+.site-footer .motion-control span {
+  color: #b7edcd;
+}
+.site-footer .motion-control:hover {
+  color: white;
+}
+.site-footer :focus-visible,.capability-band a:focus-visible {
   outline-color: #b7edcd;
 }
 /* Responsive composition */
@@ -1707,13 +1722,13 @@ p {
   }
   .site-header {
     min-height: 72px;
-    grid-template-columns: 1fr auto auto;
+    grid-template-columns: 1fr auto;
     gap: 12px;
   }
   .desktop-nav,.header-cta {
     display: none;
   }
-  .header-tools:not(.has-motion-control) {
+  .header-tools {
     display: none;
   }
   .mobile-menu {

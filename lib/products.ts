@@ -30,6 +30,7 @@ export const products: Product[] = [
     summary: "An evidence-first customer intelligence workspace that turns research into traceable themes, prioritized opportunities, and decision-ready reports.",
     problem: "For product teams that need to act on customer evidence without losing the sources behind each decision.",
     image: "/products/signalroom.webp",
+    motionCover: "/products/motion/signalroom.mp4",
     walkthroughVideo: "/products/walkthroughs/signalroom.mp4",
     imageAlt: "SignalRoom customer intelligence workspace with evidence, themes, opportunities, and reports",
     liveUrl: "https://signalroom-production-cda7.up.railway.app/",

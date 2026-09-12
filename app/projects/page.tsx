@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   return (
     <main>
-      <SiteHeader motionControls activeSection="projects" />
+      <SiteHeader activeSection="projects" />
       <StructuredData data={[{ "@context": "https://schema.org", "@type": "ItemList", name: "Noerong independent products", itemListElement: products.map((product, index) => ({ "@type": "ListItem", position: index + 1, name: product.name, url: `https://noerong.com/projects/${product.slug}` })) }, breadcrumbData([{ name: "Home", path: "/" }, { name: "Projects", path: "/projects" }])]} />
       <header className="page-hero shell">
         <div className="hero-meta"><p>Noerong project archive</p><p>{String(products.length).padStart(2, "0")} systems · {String(products.filter((product) => product.stage === "Live product").length).padStart(2, "0")} live products</p></div>
