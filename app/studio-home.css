@@ -6,8 +6,8 @@
   padding: 36px 44px;
   margin-top: 24px;
   border-radius: 24px;
-  background: #101e19;
-  color: #f9fcfa;
+  background: #111111;
+  color: #fafafa;
 }
 .studio-hero-copy {
   min-width: 0;
@@ -16,7 +16,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  color: #c5ded0;
+  color: #d2d2d2;
   font-size: 12px;
   letter-spacing: .06em;
 }
@@ -29,13 +29,13 @@
   text-wrap: initial;
 }
 .studio-hero h1 span {
-  color: #a5e5ba;
+  color: #bfbfbf;
 }
 .studio-hero-description {
   max-width: 450px;
   font-size: 17px;
   line-height: 1.7;
-  color: #c3d5cb;
+  color: #cecece;
 }
 .hero-actions {
   display: flex;
@@ -45,11 +45,16 @@
   margin-top: 28px;
 }
 .button-primary {
-  border-color: var(--accent);
-  background: var(--accent);
-  color: white;
+  border-color: white;
+  background: white;
+  color: var(--ink);
   border-radius: 8px;
   gap: 12px;
+}
+.button-primary:hover {
+  border-color: #dedede;
+  background: #dedede;
+  color: var(--ink);
 }
 .hero-secondary {
   font-size: 14px;
@@ -76,14 +81,14 @@
   font-weight: 550;
 }
 .hero-signature p span {
-  color: #a9c0b3;
+  color: #b8b8b8;
 }
 .hero-project {
   min-width: 0;
-  border: 1px solid #344c40;
+  border: 1px solid #3a3a3a;
   border-radius: 14px;
   overflow: hidden;
-  background: #1a3025;
+  background: #202020;
 }
 .hero-project-top {
   display: flex;
@@ -91,13 +96,13 @@
   gap: 12px;
   padding: 17px 20px;
   font: 500 12px/1.5 var(--font-mono),monospace;
-  color: #b5d0c0;
+  color: #c5c5c5;
 }
 .hero-project-media {
   display: block;
   position: relative;
   aspect-ratio: 4/3;
-  background: #edf2ee;
+  background: #f1f1f1;
 }
 .hero-project-bottom {
   display: flex;
@@ -114,7 +119,7 @@
 }
 .hero-project-bottom p {
   margin: 0;
-  color: #b5d0c0;
+  color: #c5c5c5;
   font-size: 14px;
 }
 .round-link {
@@ -123,7 +128,7 @@
   width: 44px;
   height: 44px;
   flex-shrink: 0;
-  border: 1px solid #617e6c;
+  border: 1px solid #737373;
   border-radius: 50%;
   font-size: 22px;
 }
@@ -132,7 +137,7 @@
   border-color: var(--accent);
 }
 .studio-hero a:focus-visible {
-  outline-color: #b7edcd;
+  outline-color: #ededed;
 }
 @media(min-width:901px) and (max-height:760px) {
   .studio-hero {
