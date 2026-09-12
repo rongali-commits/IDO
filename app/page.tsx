@@ -24,29 +24,19 @@ export default function Home() {
   return (
     <main>
       <SiteHeader motionControls />
-      <section className="home-hero shell">
-        <div className="hero-meta reveal">
-          <p>Independent SaaS product studio</p>
-          <p>Bengaluru · Working worldwide</p>
+      <section className="studio-hero shell" aria-labelledby="home-title">
+        <div className="studio-hero-copy">
+          <p className="eyebrow"><span className="status-dot" /> Independent product studio</p>
+          <h1 id="home-title">Complex workflows.<br /><span>Clear products.</span></h1>
+          <p className="studio-hero-description">I’m Rongali. I turn the messy work behind a business into focused software, from the first design decision to the final line of code.</p>
+          <div className="hero-actions"><Link className="button button-primary" href="/projects">Explore the work <span aria-hidden="true">↗</span></Link><Link className="hero-secondary" href="/contact">Let’s build something <span aria-hidden="true">↗</span></Link></div>
+          <div className="hero-signature"><Image src="/about/rongali-chaitanya.webp" alt="" width={40} height={40} /><p><strong>Rongali Chaitanya</strong><span>Founder, designer & developer</span></p></div>
         </div>
-        <div className="hero-layout">
-          <h1 className="reveal reveal-delay-1">Useful software,<br /><em>built all the way.</em></h1>
-          <div className="hero-bottom reveal reveal-delay-2">
-            <p>I’m Rongali, the founder of Noerong. I design and build focused products for service businesses and independent teams, from the first workflow to a usable handoff.</p>
-            <Link className="text-link" href="/projects">Explore the work <span aria-hidden="true">↗</span></Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="flagship shell" aria-labelledby="flagship-title">
-        <Link className="flagship-visual" href="/projects/signalroom">
-          <ProjectMotionCover poster={flagship.image} video={flagship.motionCover} alt={flagship.imageAlt} priority sizes="(max-width: 980px) 100vw, 70vw" />
-        </Link>
-        <div className="flagship-info">
-          <div><p className="section-kicker">Featured / Customer intelligence</p><h2 id="flagship-title">SignalRoom</h2></div>
-          <p>Turn scattered customer research into decisions you can trace back to the evidence. A complete product, from the research workspace to cited AI answers.</p>
-          <Link className="button button-dark" href="/projects/signalroom">View case study <span>↗</span></Link>
-        </div>
+        <article className="hero-project">
+          <div className="hero-project-top"><span>Featured build</span><span>01 / SignalRoom</span></div>
+          <Link className="hero-project-media" href="/projects/signalroom" aria-label="Explore the SignalRoom case study"><ProjectMotionCover poster={flagship.image} video={flagship.motionCover} alt={flagship.imageAlt} priority sizes="(max-width: 900px) 90vw, 48vw" /></Link>
+          <div className="hero-project-bottom"><div><h2>From feedback to evidence.</h2><p>Customer research, connected.</p></div><Link className="round-link" href="/projects/signalroom" aria-label="View SignalRoom case study">↗</Link></div>
+        </article>
       </section>
 
       <section className="proof-strip shell" aria-label="Studio capabilities">
@@ -58,7 +48,7 @@ export default function Home() {
 
       <section className="selected-work shell">
         <div className="section-heading">
-          <div><p className="section-kicker">Selected work</p><h2>Different products.<br /><em>The same care.</em></h2></div>
+          <div><p className="section-kicker">Selected work / 2026</p><h2>Built with purpose.<br /><em>Designed to be used.</em></h2></div>
           <Link className="text-link" href="/projects">All projects <span>↗</span></Link>
         </div>
         <div className="project-list">
@@ -80,7 +70,7 @@ export default function Home() {
 
       <section className="studio-method shell">
         <div className="section-heading">
-          <div><p className="section-kicker">How Noerong works</p><h2>One studio.<br /><em>The whole journey.</em></h2></div>
+          <div><p className="section-kicker">From first question to final handoff</p><h2>One builder.<br /><em>The complete picture.</em></h2></div>
           <p>Strategy, design, development, and launch work better when they share the same context. Noerong keeps those decisions in one place.</p>
         </div>
         <div className="method-grid">
@@ -98,8 +88,8 @@ export default function Home() {
 
       <section className="writing-preview shell">
         <div className="section-heading">
-          <div><p className="section-kicker">Writing, for the questions that stay</p><h2>Beyond the<br /><em>product work.</em></h2></div>
-          <p>Essays on history, philosophy, technology, and geopolitics. A place to follow a question further, examine the evidence, and make room for a different perspective.</p>
+          <div><p className="section-kicker">The other side of the studio</p><h2>Curiosity,<br /><em>in long form.</em></h2></div>
+          <p>Writing is my personal passion. I explore unconventional topics across history, philosophy, technology, and geopolitics, often from a different perspective.</p>
         </div>
         <div className="essay-preview-grid">
           {essays.map((essay) => (

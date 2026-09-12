@@ -25,7 +25,7 @@ export default function EssaysPage() {
       <section className="essay-archive-header shell">
         <p className="eyebrow">The Noerong journal · By Rongali Chaitanya</p>
         <h1>A question worth<br /><em>staying with.</em></h1>
-        <p>History, philosophy, and the forces that shape ordinary lives. Independent essays that follow the evidence, leave room for uncertainty, and look a little closer.</p>
+        <p>Writing is my personal passion. I explore unconventional topics in history, philosophy, technology, and geopolitics, following the evidence and making room for a different perspective.</p>
         <div className="journal-topics"><span>History</span><span>Philosophy</span><span>Geopolitics</span><span>{essays.length} essays</span></div>
       </section>
 

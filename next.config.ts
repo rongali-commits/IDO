@@ -2,7 +2,8 @@ import type { NextConfig } from 'next';
 import path from 'node:path';
 
 const nextConfig: NextConfig = {
-  distDir: '.next-vercel',
+  // Allow isolated local builds when cloud-sync software locks an old cache.
+  distDir: process.env.NOERONG_BUILD_DIR || '.next-vercel',
   poweredByHeader: false,
   async redirects() {
     return [{ source: "/:path*", has: [{ type: "host" as const, value: "www.noerong.com" }], destination: "https://noerong.com/:path*", permanent: true }];

@@ -14,6 +14,7 @@
 # next.js
 /.next/
 /.next-vercel/
+/.next-redesign*/
 /.vinext/
 /out/
 
