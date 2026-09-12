@@ -6,7 +6,7 @@
   padding: 36px 44px;
   margin-top: 24px;
   border-radius: 24px;
-  background: #111111;
+  background: #060606;
   color: #fafafa;
 }
 .studio-hero-copy {
@@ -88,7 +88,7 @@
   border: 1px solid #3a3a3a;
   border-radius: 14px;
   overflow: hidden;
-  background: #202020;
+  background: #121212;
 }
 .hero-project-top {
   display: flex;
