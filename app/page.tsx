@@ -6,6 +6,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { formatDate, getAllEssays } from "@/lib/essays";
 import { products } from "@/lib/products";
+import { WaysToWork } from "@/components/ways-to-work";
 
 export const metadata: Metadata = {
   title: { absolute: "Noerong | Independent SaaS product studio" },
@@ -71,6 +72,8 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      <WaysToWork />
 
       <section className="studio-method shell">
         <div className="section-heading">
