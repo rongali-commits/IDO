@@ -14,10 +14,10 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
-const featuredSlugs = ["margin-and-matter", "noerong-proposals", "clientdesk"];
+const featuredSlugs = ["signalroom", "margin-and-matter", "noerong-proposals"];
 
 export default function Home() {
-  const flagship = products.find((product) => product.slug === "signalroom")!;
+  const flagship = products.find((product) => product.slug === "frameproof")!;
   const featured = featuredSlugs.map((slug) => products.find((product) => product.slug === slug)!);
   const essays = getAllEssays().slice(0, 2);
 
@@ -33,9 +33,9 @@ export default function Home() {
           <div className="hero-signature"><Image src="/about/rongali-chaitanya.webp" alt="" width={40} height={40} /><p><strong>Rongali Chaitanya</strong><span>Founder, designer & developer</span></p></div>
         </div>
         <article className="hero-project">
-          <div className="hero-project-top"><span>Featured build</span><span>01 / SignalRoom</span></div>
-          <Link className="hero-project-media" href="/projects/signalroom" aria-label="Explore the SignalRoom case study"><ProjectMotionCover poster={flagship.image} video={flagship.motionCover} alt={flagship.imageAlt} priority sizes="(max-width: 900px) 90vw, 48vw" /></Link>
-          <div className="hero-project-bottom"><div><h2>From feedback to evidence.</h2><p>Customer research, connected.</p></div><Link className="round-link" href="/projects/signalroom" aria-label="View SignalRoom case study">↗</Link></div>
+          <div className="hero-project-top"><span>Featured build</span><span>01 / FrameProof</span></div>
+          <Link className="hero-project-media" href="/projects/frameproof" aria-label="Explore the FrameProof case study"><ProjectMotionCover poster={flagship.image} video={flagship.motionCover} alt={flagship.imageAlt} priority sizes="(max-width: 900px) 90vw, 48vw" /></Link>
+          <div className="hero-project-bottom"><div><h2>Clear feedback. One final version.</h2><p>Visual review, in context.</p></div><Link className="round-link" href="/projects/frameproof" aria-label="View FrameProof case study">↗</Link></div>
         </article>
       </section>
 

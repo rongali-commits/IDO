@@ -6,6 +6,17 @@ type ProjectEvidence = {
 };
 
 export const projectEvidence: Record<string, ProjectEvidence> = {
+  frameproof: {
+    architecture: "React, TypeScript and Vite power the interface. Supabase authentication, database policies and private storage isolate projects; server-side role checks and atomic revision allocation protect workflow integrity. Guest review validates hashed tokens with asset scope, expiry and revocation. Bolt created the initial canvas and database foundation. Focused local engineering added integrated workflows, interface refinement, tests and security corrections, with the live application hosted on Bolt.",
+    outcome: "A working review path from private image upload to pinned discussion, revision comparison, guest review and exact-version decisions. The release passed 36 unit tests and 25 backend assertions, plus browser checks at phone, tablet and laptop widths. Signup email confirmation was verified. These are development verification results, not customer-performance claims or a security certification.",
+    deployment: "Use a buyer-owned frontend and backend, verified authentication, reliable SMTP and an exact production origin. Test password-reset email delivery and saving downloaded exports on the buyer's deployment; those were not completed release checks. Configure backups, retention, deletion, monitoring and abuse controls before a broader commercial launch. Video annotation, Figma sync, AI critique, billing and legal e-signatures are excluded. Active guest links include all asset revisions; previously issued image URLs may remain usable for up to two minutes after revocation.",
+    gallery: [
+      { image: "/products/evidence/frameproof-workspace.jpg", width: 1439, height: 876, caption: "The fictional Aster Studio demo keeps the artwork central, with assets, version-specific comments and revision history nearby." },
+      { image: "/products/evidence/frameproof-feedback.jpg", width: 1439, height: 900, caption: "Pinned feedback stays attached to a specific detail and revision. Replies and resolution keep the discussion in context." },
+      { image: "/products/evidence/frameproof-comparison.jpg", width: 1439, height: 900, caption: "The before-and-after slider compares actual revisions. Each full composition is fitted without cropping." },
+      { image: "/products/evidence/frameproof-sharing.jpg", width: 1439, height: 876, caption: "The sharing panel makes scope, expiry and revocation clear. This demonstration contains no active review credential." },
+    ],
+  },
   signalroom: {
     architecture: "Next.js, React, TypeScript, and Tailwind CSS provide the product shell and five responsive workspaces. SQLite/D1-compatible persistence stores evidence and workflow state. DeepSeek runs only through a protected server route with input validation, request-size limits, rate limiting, same-origin checks, provider timeouts, and structured diagnostics. Docker and Railway configuration support a repeatable deployment with persistent storage.",
     outcome: "A complete working product from evidence import to cited AI analysis and stakeholder reporting. The live Railway deployment passed laptop, tablet, and mobile checks, CSV import and review-state tests, valid and invalid AI request tests, cross-origin rejection, and a browser-console review without application errors. These are product verification results, not client-performance claims.",
