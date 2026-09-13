@@ -8,6 +8,8 @@ export type Product = {
   image: string;
   motionCover?: string;
   walkthroughVideo?: string;
+  walkthroughDescription?: string;
+  walkthroughMeta?: string;
   imageAlt: string;
   liveUrl: string;
   contraUrl?: string;
@@ -22,6 +24,26 @@ export type Product = {
 };
 
 export const products: Product[] = [
+  {
+    slug: "frameproof",
+    name: "FrameProof",
+    stage: "Live product",
+    category: "Visual review and creative collaboration",
+    summary: "A focused image-review workspace that keeps artwork, pinned feedback, revision comparisons and decisions together.",
+    problem: "For designers and creative teams that need clear feedback on the right version, without scattered threads and ambiguous approvals.",
+    image: "/products/frameproof.png",
+    walkthroughVideo: "/products/walkthroughs/frameproof.mp4",
+    walkthroughDescription: "A narrated guide to pinned feedback, revision comparison, exact-version decisions, private uploads, guest access and review-record export.",
+    walkthroughMeta: "1080p video · 2 minutes 46 seconds · Voice-over · No subtitles",
+    imageAlt: "FrameProof: good work, clear feedback, one final version, with original Aster Studio artwork",
+    liveUrl: "https://frameproof-visual-re-o866.bolt.host/",
+    sourceKitUrl: "https://contra.com/products/mHxtVfQw-frame-proof-or-visual-review-source-kit",
+    contraUrl: "https://contra.com/s/OeqZWvNY-frame-proof-or-branded-visual-review-workspace-setup",
+    sourceKitPrice: "$99",
+    startingPrice: "$249",
+    offerNote: "The $99 source kit includes the application, migrations, tests, buyer guide and a single-organization commercial licence. The separate $249 setup service includes the kit, one branded deployment and one scoped revision. Hosting, domains, email delivery, provider usage, new features and ongoing maintenance are separate.",
+    tags: ["Bolt", "React", "TypeScript", "Supabase"],
+  },
   {
     slug: "signalroom",
     name: "SignalRoom",

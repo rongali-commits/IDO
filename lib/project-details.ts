@@ -8,6 +8,20 @@ export type ProjectDetail = {
 };
 
 export const projectDetails: Record<string, ProjectDetail> = {
+  frameproof: {
+    audience: "Brand designers, independent studios and small creative teams",
+    role: "Product strategy, visual design, frontend and backend integration, testing and deployment",
+    year: "2026",
+    overview: "FrameProof addresses a familiar review problem: artwork in one place, comments in another, and approvals attached to the wrong revision. I designed and built an independent Noerong product that keeps each image, its feedback and its decision in context. The public Aster Studio demo uses fictional artwork and people; it does not represent a paid client engagement.",
+    approach: "The artwork stays central, supported by compact asset, comment and revision rails. Normalized pin coordinates keep feedback attached to the same detail across screen sizes. Full compositions are fitted without cropping. Phone drawers preserve canvas space, while keyboard navigation and dialog focus restoration make the workflow usable beyond a mouse. A warm neutral palette and restrained terracotta accent keep attention on the work.",
+    features: [
+      { title: "Feedback in the frame", description: "Pin a comment to an exact image detail, reply in context, resolve the thread and reopen it when needed. Each revision keeps its own feedback." },
+      { title: "Actual revision comparison", description: "Immutable uploads preserve earlier artwork. Compare any two revisions with a keyboard-accessible reveal slider and side-by-side views." },
+      { title: "Decisions with a version", description: "Approve or request changes on the selected revision. A new upload starts pending rather than inheriting an old approval. Decisions are review records, not legal signatures." },
+      { title: "Private projects and controlled sharing", description: "Authenticated roles separate administration, uploads and review. Expiring, revocable bearer links grant access to one asset and its revisions. Guest display names are self-reported." },
+      { title: "A practical source handoff", description: "The source kit includes React and TypeScript code, database migrations, a guest-review function, tests and deployment guidance. JSON exports preserve activity without temporary image-access URLs." },
+    ],
+  },
   signalroom: {
     audience: "SaaS product teams, research consultancies, and customer-led agencies",
     role: "Product strategy, UX design, full-stack engineering, AI integration, deployment",
