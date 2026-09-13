@@ -6,6 +6,17 @@ type ProjectEvidence = {
 };
 
 export const projectEvidence: Record<string, ProjectEvidence> = {
+  seatloom: {
+    architecture: "React, TypeScript and Vite power the interface. Supabase authentication and PostgreSQL policies separate visitor and organizer access. Transactional database functions handle reservation capacity, waitlists and booking changes. Bolt provides the live deployment; focused local implementation and isolated regression checks keep iteration deliberate.",
+    outcome: "The release passed 30 domain tests and 27 isolated database checks. A real-account walkthrough verified email confirmation, workshop creation, publishing, reservation, rescheduling, roster access, check-in and cancellation. A hosted email-type mismatch found during that walkthrough was corrected and retested. These are development checks, not customer outcomes or a security certification.",
+    deployment: "Deploy to buyer-owned hosting and Supabase accounts, apply the supplied migrations and configure authentication origins. Confirm email delivery and run the booking checks on the buyer's environment. This release provides free reservations and in-app updates. Payments, automatic booking emails, background waitlist scheduling, custom integrations and ongoing maintenance are not included. Demo participants and booking records are fictional.",
+    gallery: [
+      { image: "/products/evidence/seatloom-workshop.png", width: 1357, height: 885, caption: "Workshop details put the creative experience and session information in the same view." },
+      { image: "/products/evidence/seatloom-booking.png", width: 1357, height: 885, caption: "A fictional demo reservation shows the participant-facing confirmation state." },
+      { image: "/products/evidence/seatloom-organizer.png", width: 1357, height: 885, caption: "The organizer overview keeps workshop operations separate from the public catalogue." },
+      { image: "/products/evidence/seatloom-roster.png", width: 1357, height: 885, caption: "The demo roster brings attendance and check-in together using fictional participants." },
+    ],
+  },
   frameproof: {
     architecture: "React, TypeScript and Vite power the interface. Supabase authentication, database policies and private storage isolate projects; server-side role checks and atomic revision allocation protect workflow integrity. Guest review validates hashed tokens with asset scope, expiry and revocation. Bolt created the initial canvas and database foundation. Focused local engineering added integrated workflows, interface refinement, tests and security corrections, with the live application hosted on Bolt.",
     outcome: "A working review path from private image upload to pinned discussion, revision comparison, guest review and exact-version decisions. The release passed 36 unit tests and 25 backend assertions, plus browser checks at phone, tablet and laptop widths. Signup email confirmation was verified. These are development verification results, not customer-performance claims or a security certification.",
