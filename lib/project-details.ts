@@ -8,6 +8,20 @@ export type ProjectDetail = {
 };
 
 export const projectDetails: Record<string, ProjectDetail> = {
+  seatloom: {
+    audience: "Independent creative studios and workshop organizers",
+    role: "Product strategy, interface design, full-stack development, testing and deployment",
+    year: "2026",
+    overview: "Seatloom connects the welcoming side of a creative workshop with the operational work behind it. Visitors can discover sessions and reserve a place, while organizers manage availability, rosters and attendance in one workspace. It is an independent Noerong product. The public demo uses fictional participants and workshops, not a paid client engagement.",
+    approach: "Warm editorial typography and photography make workshop discovery approachable. Clear session details and explicit time zones support booking decisions. Behind the interface, database transactions protect capacity and preserve waitlist order. Demo interactions are separate from authenticated live records, so visitors can explore without affecting a real studio.",
+    features: [
+      { title: "From discovery to reservation", description: "Browse workshops, inspect session details and reserve a free place. Booking state and session availability stay visible rather than disappearing into a message thread." },
+      { title: "Fair capacity and waitlists", description: "Capacity-aware transactions prevent conflicting reservations. FIFO waitlists offer released seats in order, with a 15-minute claim window. Offers reconcile on relevant actions or refresh, not through a background scheduler." },
+      { title: "Changes without spreadsheet work", description: "Reschedule or cancel a booking within the supported workflow. State changes stay connected to session availability and the participant record." },
+      { title: "A focused studio workspace", description: "Create and publish workshops, manage sessions, inspect participant rosters and record check-in. Organizer access is authenticated and scoped to studio ownership." },
+      { title: "A buyer-owned foundation", description: "The source kit includes the React and TypeScript application, Supabase migrations, domain and database checks, licence and setup guide. Hosting and backend accounts remain buyer-owned." },
+    ],
+  },
   frameproof: {
     audience: "Brand designers, independent studios and small creative teams",
     role: "Product strategy, visual design, frontend and backend integration, testing and deployment",

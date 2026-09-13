@@ -25,6 +25,26 @@ export type Product = {
 
 export const products: Product[] = [
   {
+    slug: "seatloom",
+    name: "Seatloom",
+    stage: "Live product",
+    category: "Creative workshop booking and studio operations",
+    summary: "An inviting workshop catalogue backed by capacity-aware reservations, fair waitlists and a focused organizer workspace.",
+    problem: "For creative studios that need to fill workshops without juggling booking messages, spreadsheets and uncertain seat availability.",
+    image: "/products/seatloom.png",
+    walkthroughVideo: "/products/walkthroughs/seatloom.mp4",
+    walkthroughDescription: "A narrated walkthrough of workshop discovery, reservations, waitlists, rescheduling and organizer check-in, with an explanation of the current release scope.",
+    walkthroughMeta: "1080p video · 2 minutes 27 seconds · Voice-over · No subtitles",
+    imageAlt: "Seatloom workshop catalogue with editorial typography and creative studio photography",
+    liveUrl: "https://seatloom-workshop-pl-rcs7.bolt.host/",
+    sourceKitUrl: "https://contra.com/products/GJNrLUmu-seatloom-or-workshop-booking-source-kit",
+    contraUrl: "https://contra.com/s/RgOblbcE-seatloom-workshop-platform-or-setup-and-branding",
+    sourceKitPrice: "$99",
+    startingPrice: "$249",
+    offerNote: "The $99 source kit includes application code, database migrations, tests, buyer instructions and a single-organization commercial licence. The separate $249 setup service covers one buyer-owned deployment, existing brand assets, one studio, up to three supplied workshops, a smoke test, written handoff and one consolidated revision. The kit, hosting, domains, provider fees, new features and ongoing maintenance are separate from the setup price. This release supports free reservations and in-app updates, not payments or automatic booking emails.",
+    tags: ["Bolt", "React", "TypeScript", "Supabase"],
+  },
+  {
     slug: "frameproof",
     name: "FrameProof",
     stage: "Live product",
