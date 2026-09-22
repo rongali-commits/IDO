@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import "./studio-home.css";
 import { StudioAssistant } from "@/components/studio-assistant";
+import { StudioMotion } from "@/components/studio-motion";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
 const mono = Geist_Mono({ subsets: ["latin"], variable: "--font-mono" });
+const editorial = Instrument_Serif({ subsets: ["latin"], weight: "400", style: ["normal", "italic"], variable: "--font-editorial" });
 
 // The portfolio only changes when a new version is deployed. Keep the
 // generated pages fresh at the edge so a cold application worker is not on
@@ -15,10 +17,10 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   metadataBase: new URL("https://noerong.com"),
   title: {
-    default: "Noerong | Independent SaaS product studio",
+    default: "Noerong | Independent design & development",
     template: "%s | Noerong",
   },
-  description: "Noerong designs and builds focused SaaS products, AI systems, and business automation from idea to production.",
+  description: "Distinctive websites and thoughtful digital products, designed and built by Rongali Chaitanya at Noerong.",
   alternates: { canonical: "/" },
   icons: {
     icon: [{ url: "/icon-192.png", type: "image/png", sizes: "192x192" }],
@@ -28,15 +30,15 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://noerong.com",
     siteName: "Noerong",
-    title: "Noerong | Independent SaaS product studio",
-    description: "Focused SaaS products, AI systems, and business automation built from idea to production.",
-    images: [{ url: "/og-v2.webp", width: 1200, height: 630, alt: "Noerong independent SaaS product studio" }],
+    title: "Noerong | Independent design & development",
+    description: "Distinctive websites and thoughtful digital products. From a clear idea to a working experience.",
+    images: [{ url: "/og-design-2026.webp", width: 1200, height: 630, alt: "Noerong independent design and development studio" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Noerong | Independent SaaS product studio",
-    description: "Focused SaaS products, AI systems, and business automation built from idea to production.",
-    images: ["/og-v2.webp"],
+    title: "Noerong | Independent design & development",
+    description: "Distinctive websites and thoughtful digital products. From a clear idea to a working experience.",
+    images: ["/og-design-2026.webp"],
   },
   robots: { index: true, follow: true },
 };
@@ -73,9 +75,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 
   return (
     <html lang="en">
-      <body className={`${geist.variable} ${mono.variable}`}>
+      <body className={`${geist.variable} ${mono.variable} ${editorial.variable}`}>
         <a className="skip-link" href="#main-content">Skip to content</a>
         {children}
+        <StudioMotion />
         <StudioAssistant />
         <script
           type="application/ld+json"

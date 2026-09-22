@@ -4,102 +4,52 @@ import { Link } from "@/components/plain-link";
 import { ProjectMotionCover } from "@/components/project-motion-cover";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { KineticForm } from "@/components/kinetic-form";
+import { MotionControl } from "@/components/motion-preference";
 import { formatDate, getAllEssays } from "@/lib/essays";
 import { products } from "@/lib/products";
 import { WaysToWork } from "@/components/ways-to-work";
 
 export const metadata: Metadata = {
-  title: { absolute: "Noerong | Independent SaaS product studio" },
-  description: "Noerong designs and builds focused SaaS products, AI systems, and business automation from idea to production.",
+  title: { absolute: "Noerong | Independent design & development" },
+  description: "Distinctive websites and thoughtful digital products. An independent design and development studio by Rongali Chaitanya, from first idea to working experience.",
   alternates: { canonical: "/" },
 };
-
-const featuredSlugs = ["frameproof", "signalroom", "margin-and-matter"];
-
+const selected = [
+  { slug: "seatloom", discipline: "Web design · Booking experience", line: "A place for making. A system for gathering.", note: "Editorial warmth meets the practical details of a workshop booking.", className: "work-wide work-seatloom" },
+  { slug: "frameproof", discipline: "Product design · Creative tools", line: "Good work deserves clear feedback.", note: "An image-first review space that keeps every decision in context.", className: "work-frameproof" },
+  { slug: "margin-and-matter", discipline: "Art direction · Editorial web design", line: "Room for a different perspective.", note: "A considered reading experience with a distinct editorial rhythm.", className: "work-margin" },
+  { slug: "signalroom", discipline: "Interface design · Research & AI", line: "From scattered evidence to a clear signal.", note: "A complex research workflow made legible, traceable, and calm.", className: "work-wide work-signalroom" },
+];
 export default function Home() {
-  const flagship = products.find((product) => product.slug === "seatloom")!;
-  const featured = featuredSlugs.map((slug) => products.find((product) => product.slug === slug)!);
   const essays = getAllEssays().slice(0, 2);
-
   return (
-    <main>
+    <main className="curated-home">
       <SiteHeader />
-      <section className="studio-hero shell" aria-labelledby="home-title">
-        <div className="studio-hero-copy">
-          <p className="eyebrow"><span className="status-dot" /> Independent product studio</p>
-          <h1 id="home-title">Complex workflows.<br /><span>Clear products.</span></h1>
-          <p className="studio-hero-description">I’m Rongali. I turn the messy work behind a business into focused software, from the first design decision to the final line of code.</p>
-          <div className="hero-actions"><Link className="button button-primary" href="/projects">Explore the work <span aria-hidden="true">↗</span></Link><Link className="hero-secondary" href="/contact">Let’s build something <span aria-hidden="true">↗</span></Link></div>
-          <div className="hero-signature"><Image src="/about/rongali-chaitanya.webp" alt="" width={40} height={40} /><p><strong>Rongali Chaitanya</strong><span>Founder, designer & developer</span></p></div>
-        </div>
-        <article className="hero-project">
-          <div className="hero-project-top"><span>Featured build</span><span>01 / Seatloom</span></div>
-          <Link className="hero-project-media" href="/projects/seatloom" aria-label="Explore the Seatloom case study"><ProjectMotionCover poster={flagship.image} video={flagship.motionCover} alt={flagship.imageAlt} priority sizes="(max-width: 900px) 90vw, 48vw" /></Link>
-          <div className="hero-project-bottom"><div><h2>Creative workshops. Clear operations.</h2><p>From discovery to check-in.</p></div><Link className="round-link" href="/projects/seatloom" aria-label="View Seatloom case study">↗</Link></div>
-        </article>
+      <section className="design-hero shell" aria-labelledby="home-title">
+        <div className="hero-eyeline"><p><span className="studio-dot" /> Independent design & development</p><span>Bengaluru, India / Working worldwide</span></div>
+        <div className="design-hero-stage"><div className="design-hero-type"><h1 id="home-title"><span>Made to</span><span><em>matter.</em></span></h1><p>Websites with character.<br />Products with purpose.</p></div><KineticForm /></div>
+        <div className="design-hero-bottom"><a className="work-jump" href="#selected-work"><span className="arrow-disc" aria-hidden="true">↓</span><span>Explore selected work<small>Four projects, one considered approach</small></span></a><p>I’m Rongali, the designer and developer behind Noerong. I bring a clear point of view to the way things look, move, and work.</p><div className="hero-motion"><MotionControl /></div></div>
       </section>
-
-      <section className="proof-strip shell" aria-label="Studio capabilities">
-        <div><strong>{String(products.filter((product) => product.stage === "Live product").length).padStart(2, "0")}</strong><span>Live studio products</span></div>
-        <div><strong>5+ years</strong><span>In IT & software</span></div>
-        <div><strong>Design + code</strong><span>One point of contact</span></div>
-        <div><strong>Bengaluru</strong><span>Working worldwide</span></div>
+      <section className="curated-work shell" id="selected-work" aria-labelledby="selected-title">
+        <div className="portfolio-section-heading"><p className="section-kicker">01 / Selected work</p><h2 id="selected-title">A little character.<br /><em>A lot of intention.</em></h2><p>Independent studio projects.<br />Designed, built, and brought to life.</p></div>
+        <div className="curated-work-grid">{selected.map((item, index) => {
+          const product = products.find(p => p.slug === item.slug)!;
+          return <article className={`curated-work-card ${item.className}`} key={item.slug} data-reveal>
+            <Link className="curated-work-media" href={`/projects/${item.slug}`} aria-label={`Explore ${product.name}: ${item.line}`}><div className="work-media-bar"><span>{product.name}</span><span>{String(index + 1).padStart(2, "0")} / 2026</span></div><div className="work-image-stage"><ProjectMotionCover poster={product.image} video={product.motionCover} alt={product.imageAlt} sizes={item.className.includes("work-wide") ? "(max-width: 700px) 90vw, 75vw" : "(max-width: 700px) 90vw, 44vw"} /></div><span className="work-open" aria-hidden="true">View project ↗</span></Link>
+            <div className="curated-work-caption"><div><p>{item.discipline}</p><h3><Link href={`/projects/${item.slug}`}>{product.name}<span aria-hidden="true">↗</span></Link></h3></div><div><h4>{item.line}</h4><p>{item.note}</p></div></div>
+          </article>;
+        })}</div>
+        <div className="work-archive-link"><span>There’s more behind the work.</span><Link className="text-link" href="/projects">Explore all {products.length} projects <span aria-hidden="true">↗</span></Link></div>
       </section>
-
-      <section className="selected-work shell">
-        <div className="section-heading">
-          <div><p className="section-kicker">Selected work / 2026</p><h2>Built with purpose.<br /><em>Designed to be used.</em></h2></div>
-          <Link className="text-link" href="/projects">All projects <span>↗</span></Link>
-        </div>
-        <div className="project-list">
-          {featured.map((product, index) => (
-            <article className="project-row" key={product.slug}>
-              <Link className="project-row-image" href={`/projects/${product.slug}`}><ProjectMotionCover poster={product.image} video={product.motionCover} alt={product.imageAlt} sizes="(max-width: 800px) 100vw, 42vw" /></Link>
-              <div className="project-row-copy">
-                <p className="project-index">0{index + 2}</p><p className="project-category">{product.category}</p>
-                <h3><Link href={`/projects/${product.slug}`}>{product.name}</Link></h3><p>{product.summary}</p>
-                <div className="tag-row">{product.tags.slice(0, 3).map((tag) => <span key={tag}>{tag}</span>)}</div>
-                <Link className="text-link" href={`/projects/${product.slug}`}>Open project <span>↗</span></Link>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
+      <section className="design-practice" aria-labelledby="practice-title"><div className="shell practice-layout"><div className="practice-heading"><p className="section-kicker">02 / The approach</p><h2 id="practice-title">Care is in<br /><em>the details.</em></h2><p>A beautiful first impression matters. So does every interaction that follows it.</p><div className="practice-seal" aria-hidden="true"><span>n</span><span>Form meets function.</span></div></div><div className="practice-steps">
+        <article data-reveal><span>01</span><div><h3>Find the point of view.</h3><p>Start with the people, the purpose, and the feeling the experience should leave behind. Give the work something specific to say.</p><small>Discovery / Creative direction</small></div></article>
+        <article data-reveal><span>02</span><div><h3>Make every choice count.</h3><p>Type, space, imagery, and motion share a visual language. Build a hierarchy that feels natural, from the largest headline to the smallest state.</p><small>Web design / Interface systems / Motion</small></div></article>
+        <article data-reveal><span>03</span><div><h3>Carry the idea all the way.</h3><p>Build the real experience. Check the small screens, the keyboard paths, the loading states, and the handoff. The finish is part of the design.</p><small>Development / Quality review / Launch</small></div></article>
+      </div></div></section>
+      <section className="studio-introduction shell" aria-labelledby="intro-title"><div className="intro-portrait" data-reveal><Image src="/about/rongali-chaitanya.webp" alt="Rongali Chaitanya, designer, developer, and founder of Noerong" width={560} height={620} sizes="(max-width: 700px) 80vw, 30vw" /><span>Rongali Chaitanya / Founder</span></div><div className="intro-copy"><p className="section-kicker">03 / The independent spirit</p><h2 id="intro-title">One mind.<br /><em>Many moving parts.</em></h2><p>Good design and good engineering should be in the same conversation. At Noerong, they’re handled by the same person.</p><p>I bring 5+ years in IT and software to an independent practice spanning web design, digital products, and practical AI systems. A small studio, with care that carries from the first sketch to the final build.</p><Link className="text-link" href="/about">A little more about me <span aria-hidden="true">↗</span></Link></div></section>
       <WaysToWork />
-
-      <section className="studio-method shell">
-        <div className="section-heading">
-          <div><p className="section-kicker">From first question to final handoff</p><h2>One builder.<br /><em>The complete picture.</em></h2></div>
-          <p>Strategy, design, development, and launch work better when they share the same context. Noerong keeps those decisions in one place.</p>
-        </div>
-        <div className="method-grid">
-          <article><span>01</span><h3>Shape</h3><p>Clarify the painful workflow, the buyer, and the smallest product worth paying for.</p></article>
-          <article><span>02</span><h3>Design</h3><p>Turn the workflow into a focused interface with clear states, hierarchy, and trust.</p></article>
-          <article><span>03</span><h3>Build</h3><p>Engineer the real system, its data model, integrations, and operational safeguards.</p></article>
-          <article><span>04</span><h3>Launch</h3><p>Deploy, document, position, and hand over a product ready for real business use.</p></article>
-        </div>
-      </section>
-
-      <section className="founder-note shell">
-        <div className="founder-portrait"><Image src="/about/rongali-chaitanya.webp" alt="Rongali Chaitanya, founder of Noerong" width={240} height={240} sizes="(max-width: 680px) 120px, 200px" /></div>
-        <div><p className="section-kicker">A note from the founder</p><blockquote>“I care about the last 10 percent, the part that turns a good prototype into something a business can confidently use.”</blockquote><p>Rongali Chaitanya · Founder and product builder</p><Link className="text-link" href="/about">About the studio <span>↗</span></Link></div>
-      </section>
-
-      <section className="writing-preview shell">
-        <div className="section-heading">
-          <div><p className="section-kicker">The other side of the studio</p><h2>Curiosity,<br /><em>in long form.</em></h2></div>
-          <p>Writing is my personal passion. I explore unconventional topics across history, philosophy, technology, and geopolitics, often from a different perspective.</p>
-        </div>
-        <div className="essay-preview-grid">
-          {essays.map((essay) => (
-            <article key={essay.slug}>
-              <Link className="essay-preview-image" href={`/essays/${essay.slug}`}><Image src={essay.coverImage} alt={essay.coverAlt} fill sizes="(max-width: 760px) 100vw, 48vw" /></Link>
-              <p>{essay.topic} · {formatDate(essay.date)}</p><h3><Link href={`/essays/${essay.slug}`}>{essay.title}</Link></h3><Link className="text-link" href={`/essays/${essay.slug}`}>Read essay <span>↗</span></Link>
-            </article>
-          ))}
-        </div>
-      </section>
+      <section className="studio-notes shell" aria-labelledby="notes-title"><div className="notes-heading"><p className="section-kicker">04 / Outside the canvas</p><h2 id="notes-title">A curious mind<br /><em>keeps wandering.</em></h2><p>Personal essays on history, philosophy, technology, and the questions that stay with me.</p><Link className="text-link" href="/essays">All writing <span aria-hidden="true">↗</span></Link></div><div className="notes-list">{essays.map(essay => <article key={essay.slug}><Link href={`/essays/${essay.slug}`} className="notes-image"><Image src={essay.coverImage} alt={essay.coverAlt} fill sizes="(max-width: 700px) 30vw, 160px" /></Link><div><p>{essay.topic} / {formatDate(essay.date)}</p><h3><Link href={`/essays/${essay.slug}`}>{essay.title}</Link></h3><Link className="text-link" href={`/essays/${essay.slug}`}>Read essay <span aria-hidden="true">↗</span></Link></div></article>)}</div></section>
       <SiteFooter />
     </main>
   );
