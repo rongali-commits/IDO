@@ -3,7 +3,7 @@ import { Link } from "@/components/plain-link";
 
 const navigation = [
   { href: "/projects", label: "Projects" },
-  { href: "/about", label: "About" },
+  { href: "/#motion-studies", label: "Play" }, { href: "/about", label: "About" },
   { href: "/essays", label: "Writing" },
 ];
 
