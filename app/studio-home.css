@@ -97,7 +97,7 @@
 .practice-steps small { display:block; margin-top:25px; font:9px/1.6 var(--font-mono),monospace; color:#d6e0bd; }
 .studio-introduction { display:grid; grid-template-columns:.8fr 1.2fr; align-items:center; gap:12%; padding-block:115px; }
 .intro-portrait { position:relative; background:#e3e0d5; padding:34px 34px 0; }
-.intro-portrait img { display:block; width:100%; height:auto; aspect-ratio:.88; object-fit:cover; object-position:center top; filter:grayscale(100%); }
+.intro-portrait img { display:block; width:100%; height:auto; aspect-ratio:1; object-fit:contain; object-position:center; }
 .intro-portrait>span { display:block; font:9px/1.6 var(--font-mono),monospace; padding:16px 0; }
 .intro-copy>.section-kicker { margin-bottom:32px; }
 .intro-copy>p:not(.section-kicker) { max-width:480px; font-size:14px; color:var(--muted); line-height:1.8; }
