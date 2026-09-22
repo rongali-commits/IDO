@@ -21,7 +21,7 @@ export default function ProjectsPage() {
       <StructuredData data={[{ "@context": "https://schema.org", "@type": "ItemList", name: "Noerong independent products", itemListElement: products.map((product, index) => ({ "@type": "ListItem", position: index + 1, name: product.name, url: `https://noerong.com/projects/${product.slug}` })) }, breadcrumbData([{ name: "Home", path: "/" }, { name: "Projects", path: "/projects" }])]} />
       <header className="page-hero shell">
         <div className="hero-meta"><p>Noerong project archive</p><p>{String(products.length).padStart(2, "0")} systems · {String(products.filter((product) => product.stage === "Live product").length).padStart(2, "0")} live products</p></div>
-        <h1>Software with a<br /><em>job to do.</em></h1>
+        <h1>Ideas, made<br /><em>tangible.</em></h1>
         <div className="page-hero-bottom"><p>Independently designed and built at Noerong. Each project explores a real business workflow through a working product, concrete design decisions, and documented implementation boundaries.</p><Link className="text-link" href="/contact">Build with Noerong <span>↗</span></Link></div>
       </header>
       <section className="projects-archive shell" aria-label="All Noerong projects">

@@ -5,14 +5,14 @@ export function SiteFooter({ showProjectCta = true }: { showProjectCta?: boolean
   return (
     <footer className={`site-footer${showProjectCta ? "" : " site-footer-compact"}`}>
       {showProjectCta && <div className="shell footer-lead">
-        <p className="section-kicker">Have a useful idea?</p>
-        <h2>Let&apos;s turn it into<br /><em>working software.</em></h2>
+        <p className="section-kicker">A new idea deserves a good beginning.</p>
+        <h2>Let&apos;s make<br /><em>something matter.</em></h2>
         <Link className="circle-link" href="/contact" aria-label="Start a project"><span>Start a project</span><b aria-hidden="true">↗</b></Link>
       </div>}
       <div className="shell footer-main">
         <div>
           <Link className="wordmark wordmark-large" href="/">noerong<span>.</span></Link>
-          <p>Independent SaaS product studio.<br />Built in Bengaluru, available worldwide.</p>
+          <p>Independent design & development.<br />Built in Bengaluru, available worldwide.</p>
         </div>
         <div className="footer-links">
           <nav aria-label="Footer pages"><span>Explore</span><Link href="/projects">Projects</Link><Link href="/about">About</Link><Link href="/essays">Writing</Link><Link href="/contact">Contact</Link></nav>
