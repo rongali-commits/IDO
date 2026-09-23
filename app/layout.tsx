@@ -5,6 +5,7 @@ import "lenis/dist/lenis.css";
 import "./studio-home.css";
 import "./studio-craft.css";
 import "./motion-studies.css";
+import "./appearance.css";
 import { StudioAssistant } from "@/components/studio-assistant";
 import { StudioMotion } from "@/components/studio-motion";
 
@@ -77,7 +78,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   };
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head><script id="noerong-appearance-init" dangerouslySetInnerHTML={{ __html: `try{document.documentElement.dataset.appearance=localStorage.getItem("noerong-appearance-v1")==="midnight"?"midnight":"studio"}catch{}` }} /></head>
       <body className={`${geist.variable} ${mono.variable} ${editorial.variable}`}>
         <a className="skip-link" href="#main-content">Skip to content</a>
         {children}
