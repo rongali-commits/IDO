@@ -1,5 +1,13 @@
 export type DesignStudy = { premise: string; decisions: { title: string; detail: string }[] };
 export const designStudies: Record<string, DesignStudy> = {
+  dayrate: {
+    premise: "A creator's working tools should feel connected to their creative identity. Dayrate balances expressive art direction with the quiet clarity of a useful operational workspace.",
+    decisions: [
+      { title: "Warmth with working clarity", detail: "Neutral surfaces and original campaign imagery create character. Consistent spacing, restrained category colors, and clear actions keep the dense partnership views readable." },
+      { title: "One record, several useful views", detail: "The pipeline, calendar, and earnings summary share campaign data. Each view emphasizes a different decision without asking the creator to re-enter the same information." },
+      { title: "A kit ready to leave the workspace", detail: "The editable profile becomes an editorial media kit. Its print layout removes navigation and private campaign information, producing a focused one-page introduction." },
+    ],
+  },
   seatloom: {
     premise: "A workshop is an experience before it is a reservation. The visual direction makes space for that feeling, while keeping the practical booking decisions close at hand.",
     decisions: [
