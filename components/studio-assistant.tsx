@@ -2,16 +2,23 @@
 
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { safeAssistantLink } from "@/lib/assistant-links";
+import { useMotionPaused } from "@/components/motion-preference";
 import "./studio-assistant.css";
 
 type Message = { role: "user" | "assistant"; content: string };
 const ReactMarkdown = lazy(() => import("react-markdown"));
 const suggestions = ["Which project fits my idea?", "What can Chaitanya build?", "How does a project work?"];
+const welcomeKey = "noerong-assistant-welcome-v1";
 
 function Mark() { return <span className="assistant-mark" aria-hidden="true">n<span>·</span></span>; }
 
 export function StudioAssistant() {
+  const paused = useMotionPaused();
   const [open, setOpen] = useState(false);
+  const [welcoming, setWelcoming] = useState(false);
+  const welcome = useRef<HTMLDivElement>(null);
+  const welcomeTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const welcomeAttempted = useRef(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [question, setQuestion] = useState("");
   const [busy, setBusy] = useState(false);
@@ -23,6 +30,42 @@ export function StudioAssistant() {
   const latestTurn = useRef<HTMLDivElement>(null);
   const request = useRef<AbortController | null>(null);
   const active = useRef(false);
+
+  useEffect(() => {
+    const dismissOnPreference = () => setWelcoming(false);
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    window.addEventListener("noerong-motion-preference", dismissOnPreference);
+    media.addEventListener("change", dismissOnPreference);
+    return () => {
+      clearTimeout(welcomeTimer.current);
+      window.removeEventListener("noerong-motion-preference", dismissOnPreference);
+      media.removeEventListener("change", dismissOnPreference);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (paused || open || welcomeAttempted.current || window.location.pathname !== "/") return;
+    try { if (sessionStorage.getItem(welcomeKey)) return; } catch { /* Session storage is optional. */ }
+    const arrival = setTimeout(() => {
+      // Never interrupt someone who has already started navigating or typing.
+      if (document.hidden || window.scrollY > 100 || document.activeElement?.matches("input, textarea, button, a, summary")) return;
+      welcomeAttempted.current = true;
+      try { sessionStorage.setItem(welcomeKey, "seen"); } catch { /* Keep the page functional in private contexts. */ }
+      setWelcoming(true);
+      welcomeTimer.current = setTimeout(() => setWelcoming(false), 6500);
+    }, 1400);
+    return () => { clearTimeout(arrival); clearTimeout(welcomeTimer.current); };
+  }, [paused, open]);
+
+  const showWelcome = welcoming && !open && !paused;
+  function dismissWelcome() { clearTimeout(welcomeTimer.current); setWelcoming(false); }
+  function holdWelcome() { clearTimeout(welcomeTimer.current); }
+  function releaseWelcome() {
+    if (welcome.current?.matches(":hover, :focus-within")) return;
+    clearTimeout(welcomeTimer.current);
+    welcomeTimer.current = setTimeout(() => setWelcoming(false), 3500);
+  }
+  function openAssistant() { dismissWelcome(); setOpen(true); }
 
   useEffect(() => { if (open) input.current?.focus(); }, [open]);
   // Position a new question once. Streaming text must not move the reader.
@@ -86,7 +129,16 @@ export function StudioAssistant() {
     }
   }
 
-  return <div className="studio-assistant">
+  return <div className={`studio-assistant${showWelcome ? " assistant-is-welcoming" : ""}`}>
+    <div ref={welcome} className="assistant-arrival" aria-hidden={!showWelcome} inert={!showWelcome}
+      onPointerEnter={holdWelcome} onPointerLeave={releaseWelcome} onFocus={holdWelcome} onBlur={releaseWelcome}
+      onKeyDown={event => { if (event.key === "Escape") { dismissWelcome(); launcher.current?.focus(); } }}>
+      <button className="assistant-arrival-dismiss" aria-label="Dismiss welcome" onClick={() => { dismissWelcome(); launcher.current?.focus(); }}>×</button>
+      <div className="assistant-arrival-heading"><span className="assistant-orbit" aria-hidden="true"><i /><i /><i /><Mark /></span><span className="assistant-eyebrow">YOUR STUDIO GUIDE<br /><small>A little help finding your way.</small></span></div>
+      <p className="assistant-arrival-title">Good to have you here.</p>
+      <p className="assistant-arrival-copy">I’m Noerong’s AI guide. Explore the work, or tell me what you’re thinking.</p>
+      <button className="assistant-arrival-start" onClick={openAssistant}>Let’s explore <span aria-hidden="true">↗</span></button>
+    </div>
     {open && <section id="noerong-assistant-panel" ref={panel} className="assistant-panel" role="dialog" aria-label="Ask about Noerong" onKeyDown={event => {
       if (event.key === "Escape") { event.stopPropagation(); close(); }
       if (event.key === "Tab") {
@@ -118,6 +170,6 @@ export function StudioAssistant() {
         <span className="assistant-sr" role="status" aria-live="polite">{busy ? "Preparing an answer" : messages.at(-1)?.role === "assistant" ? "Answer ready" : ""}</span>
       </footer>
     </section>}
-    <button ref={launcher} type="button" className="assistant-launcher" title={open ? "Close Noerong assistant" : "Ask about Noerong"} aria-expanded={open} aria-controls={open ? "noerong-assistant-panel" : undefined} aria-label={open ? "Close Noerong assistant" : "Ask about Noerong"} onClick={() => open ? close() : setOpen(true)}><Mark /><span>{open ? "Close Noerong assistant" : "Ask about Noerong"}</span><span className="assistant-launch-icon" aria-hidden="true">{open ? "×" : "↗"}</span></button>
+    <button ref={launcher} type="button" className="assistant-launcher" title={open ? "Close Noerong assistant" : "Ask about Noerong"} aria-expanded={open} aria-controls={open ? "noerong-assistant-panel" : undefined} aria-label={open ? "Close Noerong assistant" : "Ask about Noerong"} onClick={() => open ? close() : openAssistant()}><Mark /><span>{open ? "Close Noerong assistant" : "Ask about Noerong"}</span><span className="assistant-launch-icon" aria-hidden="true">{open ? "×" : "↗"}</span></button>
   </div>;
 }

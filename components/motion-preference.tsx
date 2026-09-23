@@ -7,6 +7,8 @@ const changeEvent = "noerong-motion-preference";
 let sessionPreference: boolean | undefined;
 
 function getPaused() {
+  // A saved site preference must never override the operating system's request.
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return true;
   if (sessionPreference !== undefined) return sessionPreference;
   try {
     const saved = window.localStorage.getItem(preferenceKey);
