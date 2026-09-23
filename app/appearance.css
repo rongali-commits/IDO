@@ -18,9 +18,9 @@ html[data-appearance=midnight] {
   color-scheme:dark;
   --ink:#f2f0f6;
   --ink-soft:#ddd9e8;
-  --paper:#15151c;
-  --paper-2:#22222d;
-  --white:#1c1c25;
+  --paper:#050a13;
+  --paper-2:#111c2d;
+  --white:#0c1523;
   --accent:#b7a6f3;
   --accent-text:#c4b5fd;
   --accent-soft:#2c263d;
@@ -29,6 +29,16 @@ html[data-appearance=midnight] {
   --line:#3c3949;
   --line-light:#4b465b;
 }
+/* Fixed behind the document, never above links, media or the assistant. */
+.space-background { display:none; position:fixed; inset:0; z-index:-1; pointer-events:none; overflow:hidden; background:radial-gradient(ellipse at 82% 35%,#19355755,transparent 58%),radial-gradient(ellipse at 52% 95%,#30274a33,transparent 55%),#050a13; }
+.space-background canvas { display:block; width:100%; height:100%; }
+.space-background::after { content:""; position:absolute; inset:0; background:#050a13; opacity:0; transition:opacity .5s ease; }
+.space-background[data-reading=true]::after { opacity:.82; }
+html[data-appearance=midnight] body { isolation:isolate; }
+html[data-appearance=midnight] .space-background { display:block; background-image:linear-gradient(90deg,#050a1333,transparent),url('/noerong-space-2026.webp'); background-size:cover; background-position:center; }
+html[data-appearance=midnight] .site-header-wrap { background:#050a13e8; }
+html[data-appearance=midnight] .design-hero .kinetic-form { visibility:hidden; }
+@media(max-width:700px) { html[data-appearance=midnight] .space-background { background-position:72% center; } .space-background:not([data-reading=true])::after { opacity:.33; } }
 .appearance-switch { display:inline-flex; gap:8px; align-items:center; min-height:44px; padding:9px 11px; border:1px solid var(--line); border-radius:30px; background:transparent; color:var(--ink); font-size:12px; font-weight:450; cursor:pointer; white-space:nowrap; }
 .appearance-switch:hover { background:var(--paper-2); border-color:var(--muted); }
 .appearance-symbol { width:15px; height:15px; border:1px solid currentColor; border-radius:50%; background:linear-gradient(90deg,var(--ink) 50%,transparent 50%); transform:rotate(-35deg); transition:transform .35s ease; flex-shrink:0; }
@@ -72,5 +82,5 @@ html[data-appearance=midnight] .assistant-arrival-dismiss:hover { background:var
   .mobile-menu nav .appearance-switch { justify-self:start; margin:12px 8px; padding:10px 15px; }
   .mobile-menu nav .appearance-current { font-size:10px; }
 }
-@media(prefers-reduced-motion:reduce) { .appearance-symbol { transition:none; } }
-html[data-motion=paused] .appearance-symbol { transition:none; }
+@media(prefers-reduced-motion:reduce) { .appearance-symbol,.space-background::after { transition:none; } }
+html[data-motion=paused] :is(.appearance-symbol,.space-background::after) { transition:none; }

@@ -31,9 +31,10 @@ export function NoerongBot({ compact = false }: { compact?: boolean }) {
       <path d="M96 214H106M114 214H124" stroke="#948e81" strokeWidth="2" strokeLinecap="round" />
       <circle className="bot-heart" cx="144" cy="214" r="2.6" fill="#bb4c30" />
       <g className="bot-wave-arm">
-        <ellipse cx="164" cy="151" rx="7" ry="9" fill="#929487" />
-        <path d="M160 145C164 129 181 105 195 88C205 75 213 78 209 93C203 118 187 150 174 161C165 169 154 160 160 145Z" fill={paint("arm")} stroke="#aaa595" strokeWidth="1.1" />
-        <path d="M168 145C179 125 191 106 201 92" stroke="#fffefa" strokeOpacity=".9" strokeWidth="3" strokeLinecap="round" />
+        <g transform="translate(236 0) scale(-1 1)">
+          <path d="M72 142C59 142 44 170 39 194C36 209 42 220 49 211C63 194 74 168 79 153C81 148 78 144 72 142Z" fill={paint("ceramic")} stroke="#b3ad9e" strokeWidth="1.1" />
+          <path d="M67 151C56 166 48 184 44 200" stroke="#fffefa" strokeOpacity=".8" strokeWidth="2.5" strokeLinecap="round" />
+        </g>
       </g>
       <g className="bot-head">
         <path d="M55 87C55 58 79 41 117 41C155 41 180 59 180 87C180 117 157 138 117 138C78 138 55 117 55 87Z" fill={paint("head")} stroke="#b5afa1" strokeWidth="1.1" />
