@@ -32,10 +32,13 @@ html[data-appearance=midnight] {
 /* Fixed behind the document, never above links, media or the assistant. */
 .space-background { display:none; position:fixed; inset:0; z-index:-1; pointer-events:none; overflow:hidden; background:radial-gradient(ellipse at 82% 35%,#19355755,transparent 58%),radial-gradient(ellipse at 52% 95%,#30274a33,transparent 55%),#050a13; }
 .space-background canvas { display:block; width:100%; height:100%; }
+.space-background .space-planets { position:absolute; inset:0; opacity:0; }
+.space-background[data-planets=ready] .space-planets { opacity:1; }
 .space-background::after { content:""; position:absolute; inset:0; background:#050a13; opacity:0; transition:opacity .5s ease; }
 .space-background[data-reading=true]::after { opacity:.82; }
 html[data-appearance=midnight] body { isolation:isolate; }
 html[data-appearance=midnight] .space-background { display:block; background-image:linear-gradient(90deg,#050a1333,transparent),url('/noerong-space-2026.webp'); background-size:cover; background-position:center; }
+html[data-appearance=midnight] .space-background[data-planets=ready] { background-image:radial-gradient(ellipse at 82% 35%,#14233855,transparent 58%),radial-gradient(ellipse at 52% 95%,#201d3233,transparent 55%); }
 html[data-appearance=midnight] .site-header-wrap { background:#050a13e8; }
 html[data-appearance=midnight] .design-hero .kinetic-form { visibility:hidden; }
 @media(max-width:700px) { html[data-appearance=midnight] .space-background { background-position:72% center; } .space-background:not([data-reading=true])::after { opacity:.33; } }
