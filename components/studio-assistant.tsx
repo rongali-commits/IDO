@@ -1,19 +1,21 @@
 "use client";
 
-import { lazy, Suspense, useEffect, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { safeAssistantLink } from "@/lib/assistant-links";
 import { useMotionPaused } from "@/components/motion-preference";
+import { NoerongBot } from "@/components/noerong-bot";
 import "./studio-assistant.css";
 
 type Message = { role: "user" | "assistant"; content: string };
 const ReactMarkdown = lazy(() => import("react-markdown"));
 const suggestions = ["Which project fits my idea?", "What can Chaitanya build?", "How does a project work?"];
-const welcomeKey = "noerong-assistant-welcome-v1";
-
-function Mark() { return <span className="assistant-mark" aria-hidden="true">n<span>·</span></span>; }
+const welcomeKey = "noerong-bot-welcome-v2";
+const subscribePreview = () => () => {};
+const isLocalPreview = () => ["localhost", "127.0.0.1"].includes(window.location.hostname) && new URLSearchParams(window.location.search).has("bot-preview");
 
 export function StudioAssistant() {
   const paused = useMotionPaused();
+  const preview = useSyncExternalStore(subscribePreview, isLocalPreview, () => false);
   const [open, setOpen] = useState(false);
   const [welcoming, setWelcoming] = useState(false);
   const welcome = useRef<HTMLDivElement>(null);
@@ -52,7 +54,7 @@ export function StudioAssistant() {
       welcomeAttempted.current = true;
       try { sessionStorage.setItem(welcomeKey, "seen"); } catch { /* Keep the page functional in private contexts. */ }
       setWelcoming(true);
-      welcomeTimer.current = setTimeout(() => setWelcoming(false), 6500);
+      welcomeTimer.current = setTimeout(() => setWelcoming(false), 9000);
     }, 1400);
     return () => { clearTimeout(arrival); clearTimeout(welcomeTimer.current); };
   }, [paused, open]);
@@ -66,8 +68,14 @@ export function StudioAssistant() {
     welcomeTimer.current = setTimeout(() => setWelcoming(false), 3500);
   }
   function openAssistant() { dismissWelcome(); setOpen(true); }
+  function replayWelcome() {
+    if (paused) return;
+    clearTimeout(welcomeTimer.current);
+    setWelcoming(true);
+    welcomeTimer.current = setTimeout(() => setWelcoming(false), 9000);
+  }
 
-  useEffect(() => { if (open) input.current?.focus(); }, [open]);
+  useEffect(() => { if (open) input.current?.focus({ preventScroll: true }); }, [open]);
   // Position a new question once. Streaming text must not move the reader.
   useEffect(() => {
     const container = feed.current, turn = latestTurn.current;
@@ -77,10 +85,10 @@ export function StudioAssistant() {
   }, [messages.length, open]);
   useEffect(() => () => request.current?.abort(), []);
 
-  function close() { setOpen(false); launcher.current?.focus(); }
+  function close() { setOpen(false); launcher.current?.focus({ preventScroll: true }); }
   function reset() {
     request.current?.abort(); request.current = null; active.current = false;
-    setBusy(false); setMessages([]); setError(""); setQuestion(""); input.current?.focus();
+    setBusy(false); setMessages([]); setError(""); setQuestion(""); input.current?.focus({ preventScroll: true });
   }
 
   async function send(value: string) {
@@ -129,14 +137,14 @@ export function StudioAssistant() {
     }
   }
 
-  return <div className={`studio-assistant${showWelcome ? " assistant-is-welcoming" : ""}`}>
+  return <div className={`studio-assistant noerong-bot-assistant${showWelcome ? " assistant-is-welcoming" : ""}${open ? " assistant-is-open" : ""}`}>
     <div ref={welcome} className="assistant-arrival" aria-hidden={!showWelcome} inert={!showWelcome}
       onPointerEnter={holdWelcome} onPointerLeave={releaseWelcome} onFocus={holdWelcome} onBlur={releaseWelcome}
-      onKeyDown={event => { if (event.key === "Escape") { dismissWelcome(); launcher.current?.focus(); } }}>
-      <button className="assistant-arrival-dismiss" aria-label="Dismiss welcome" onClick={() => { dismissWelcome(); launcher.current?.focus(); }}>×</button>
-      <div className="assistant-arrival-heading"><span className="assistant-orbit" aria-hidden="true"><i /><i /><i /><Mark /></span><span className="assistant-eyebrow">YOUR STUDIO GUIDE<br /><small>A little help finding your way.</small></span></div>
-      <p className="assistant-arrival-title">Good to have you here.</p>
-      <p className="assistant-arrival-copy">I’m Noerong’s AI guide. Explore the work, or tell me what you’re thinking.</p>
+      onKeyDown={event => { if (event.key === "Escape") { dismissWelcome(); launcher.current?.focus({ preventScroll: true }); } }}>
+      <button className="assistant-arrival-dismiss" aria-label="Dismiss welcome" onClick={() => { dismissWelcome(); launcher.current?.focus({ preventScroll: true }); }}>×</button>
+      <span className="assistant-eyebrow">A LITTLE HELLO FROM THE STUDIO</span>
+      <p className="assistant-arrival-title">Hi there<span>!</span></p>
+      <p className="assistant-arrival-copy">I’m <strong>Noerong Bot.</strong><br />A curious little guide to the work.<br />What brings you here?</p>
       <button className="assistant-arrival-start" onClick={openAssistant}>Let’s explore <span aria-hidden="true">↗</span></button>
     </div>
     {open && <section id="noerong-assistant-panel" ref={panel} className="assistant-panel" role="dialog" aria-label="Ask about Noerong" onKeyDown={event => {
@@ -149,7 +157,7 @@ export function StudioAssistant() {
         else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
       }
     }}>
-      <header className="assistant-header"><Mark /><div><strong>Noerong assistant</strong><span>AI guide to the studio</span></div><button type="button" onClick={close} aria-label="Close assistant" className="assistant-icon">×</button></header>
+      <header className="assistant-header"><NoerongBot compact /><div><strong>Noerong Bot</strong><span>Your AI studio guide</span></div><button type="button" onClick={close} aria-label="Close assistant" className="assistant-icon">×</button></header>
       <div className="assistant-feed" ref={feed}>
         {!messages.length && <div className="assistant-welcome"><span className="assistant-eyebrow">A GOOD PLACE TO START</span><h2>What are you<br />looking to build?</h2><p>Ask about Chaitanya’s work, explore a project, or tell me about your idea.</p><div className="assistant-suggestions">{suggestions.map(s => <button key={s} onClick={() => void send(s)} disabled={busy}>{s}<span aria-hidden="true">↗</span></button>)}</div><a className="assistant-writing" href="/essays">Here for the writing? Explore the essays ↗</a></div>}
         {messages.filter((_, i) => i % 2 === 0).map((_, turnIndex) => <div className="assistant-turn" key={turnIndex} ref={turnIndex === Math.ceil(messages.length / 2) - 1 ? latestTurn : undefined}>
@@ -170,6 +178,7 @@ export function StudioAssistant() {
         <span className="assistant-sr" role="status" aria-live="polite">{busy ? "Preparing an answer" : messages.at(-1)?.role === "assistant" ? "Answer ready" : ""}</span>
       </footer>
     </section>}
-    <button ref={launcher} type="button" className="assistant-launcher" title={open ? "Close Noerong assistant" : "Ask about Noerong"} aria-expanded={open} aria-controls={open ? "noerong-assistant-panel" : undefined} aria-label={open ? "Close Noerong assistant" : "Ask about Noerong"} onClick={() => open ? close() : openAssistant()}><Mark /><span>{open ? "Close Noerong assistant" : "Ask about Noerong"}</span><span className="assistant-launch-icon" aria-hidden="true">{open ? "×" : "↗"}</span></button>
+    <button ref={launcher} type="button" className="assistant-launcher bot-launcher" title={open ? "Close Noerong Bot" : "Chat with Noerong Bot"} aria-expanded={open} aria-controls={open ? "noerong-assistant-panel" : undefined} aria-label={open ? "Close Noerong Bot" : "Chat with Noerong Bot"} onClick={() => open ? close() : openAssistant()}><NoerongBot /><span className="assistant-sr">{open ? "Close Noerong Bot" : "Chat with Noerong Bot"}</span></button>
+    {preview && <div className="bot-preview-controls"><span>LOCAL MOTION PREVIEW</span><button type="button" disabled={paused || open || showWelcome} onClick={replayWelcome}>{showWelcome ? "Saying hello…" : "Replay hello ↗"}</button><small>{paused ? "Turn site motion on to preview." : "Not published. Your live site is unchanged."}</small></div>}
   </div>;
 }
