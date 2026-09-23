@@ -18,3 +18,29 @@
 
 /* The composer's focus-within ring identifies the field without a second ring. */
 .assistant-composer textarea:focus-visible { outline: none; }
+
+/* A short introduction, never a blocking modal or an unsolicited conversation. */
+.assistant-arrival { position:absolute; right:0; bottom:68px; width:320px; padding:24px; background:var(--paper); border:1px solid var(--line); border-radius:16px; box-shadow:0 18px 65px #23231f1c; opacity:0; visibility:hidden; transform:translateY(28px) scale(.88); transform-origin:calc(100% - 22px) calc(100% + 46px); transition:opacity .42s ease,transform .75s cubic-bezier(.22,1,.36,1),visibility .75s; pointer-events:none; }
+.assistant-is-welcoming .assistant-arrival { opacity:1; visibility:visible; transform:none; pointer-events:auto; }
+.assistant-arrival-heading { display:flex; gap:16px; align-items:center; padding-right:8px; }
+.assistant-arrival-heading .assistant-eyebrow { font-size:9px; letter-spacing:.09em; color:var(--accent-text); }
+.assistant-arrival-heading small { display:block; font:11px/1.5 var(--font-geist),sans-serif; letter-spacing:0; color:var(--muted); margin-top:5px; }
+.assistant-orbit { position:relative; display:grid; place-items:center; width:58px; height:58px; flex-shrink:0; }
+.assistant-orbit .assistant-mark { width:44px; height:44px; background:var(--ink); color:var(--paper); z-index:1; }
+.assistant-orbit .assistant-mark span { color:#f5b69e; }
+.assistant-orbit i { position:absolute; inset:0; border:1px solid var(--accent); border-radius:50%; opacity:.35; }
+.assistant-orbit i:nth-child(2) { rotate:60deg; scale:.7 1.15; }
+.assistant-orbit i:nth-child(3) { rotate:-60deg; scale:.7 1.15; }
+.assistant-is-welcoming .assistant-orbit { animation:assistant-orbit-arrive 1.25s cubic-bezier(.16,1,.3,1) both; }
+.assistant-arrival-title { font:400 30px/1.08 var(--font-editorial),Georgia,serif; letter-spacing:-.025em; margin:22px 0 12px; }
+.assistant-arrival-copy { color:var(--muted); font-size:14px; line-height:1.65; margin:0; max-width:27ch; }
+.assistant-arrival-dismiss { position:absolute; top:6px; right:6px; width:40px; height:40px; border:0; background:transparent; color:var(--muted); font-size:24px; cursor:pointer; }
+.assistant-arrival-start { display:flex; justify-content:space-between; align-items:center; width:100%; min-height:44px; margin-top:17px; padding:10px 0 0; border:0; border-top:1px solid var(--line); color:var(--ink); background:transparent; font-size:13px; font-weight:550; text-align:left; cursor:pointer; }
+.assistant-arrival-start span { font-size:21px; }
+.studio-assistant .assistant-launcher { transition:transform .75s cubic-bezier(.22,1,.36,1),box-shadow .5s; transform-origin:bottom right; }
+.studio-assistant.assistant-is-welcoming .assistant-launcher { transform:scale(1.18); box-shadow:0 6px 22px #23231f24; }
+@keyframes assistant-orbit-arrive { from { transform:rotate(-65deg) scale(.65); opacity:0; } to { transform:rotate(0) scale(1); opacity:1; } }
+@media(max-width:520px) { .assistant-arrival { width:min(300px,calc(100vw - 36px)); padding:22px; bottom:66px; } .assistant-arrival-title { font-size:28px; } }
+@media(max-height:580px) { .assistant-arrival { display:none; } .studio-assistant.assistant-is-welcoming .assistant-launcher { transform:none; } }
+@media(prefers-reduced-motion:reduce) { .assistant-arrival,.assistant-orbit,.studio-assistant .assistant-launcher { animation:none!important; transition:none!important; transform:none!important; } }
+html[data-motion=paused] :is(.assistant-arrival,.assistant-orbit,.studio-assistant .assistant-launcher) { animation:none; transition:none; transform:none; }
