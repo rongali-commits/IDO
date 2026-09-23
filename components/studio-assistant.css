@@ -31,7 +31,7 @@
 .bot-head { transform-origin:117px 134px; animation:bot-curiosity 8s ease-in-out infinite; }
 .bot-eyes { transform-origin:117px 90px; animation:bot-blink 6.2s infinite; }
 .bot-left-arm { transform-origin:73px 149px; }
-.bot-wave-arm { transform-origin:164px 151px; transform:rotate(73deg); transition:transform .85s cubic-bezier(.2,.8,.2,1); }
+.bot-wave-arm { transform-origin:164px 151px; transform:rotate(0deg); transition:transform .85s cubic-bezier(.2,.8,.2,1); }
 .bot-hello-marks { opacity:0; }
 .bot-ground-shadow { transform-origin:118px 262px; animation:bot-shadow 5s ease-in-out infinite; }
 .assistant-is-welcoming .bot-launcher .bot-wave-arm { animation:bot-wave 3.6s .5s ease-in-out 2 both; }
@@ -62,7 +62,7 @@
 @keyframes bot-shadow { 0%,100% { transform:scaleX(1); opacity:1; } 50% { transform:scaleX(.85); opacity:.7; } }
 @keyframes bot-curiosity { 0%,25%,65%,100% { transform:rotate(0); } 38%,52% { transform:rotate(-4deg); } }
 @keyframes bot-blink { 0%,43%,48%,92%,97%,100% { transform:scaleY(1); } 45%,95% { transform:scaleY(.1); } }
-@keyframes bot-wave { 0% { transform:rotate(73deg); } 20% { transform:rotate(-12deg); } 30%,50%,70% { transform:rotate(15deg); } 40%,60%,80% { transform:rotate(-13deg); } 100% { transform:rotate(73deg); } }
+@keyframes bot-wave { 0%,100% { transform:rotate(0deg); } 20% { transform:rotate(-132deg); } 30%,50%,70% { transform:rotate(-102deg); } 40%,60%,80% { transform:rotate(-132deg); } }
 @keyframes bot-happy-tilt { 0%,100% { transform:rotate(0); } 25%,75% { transform:rotate(-8deg) translateY(-2px); } }
 @keyframes bot-balance { 0%,100% { transform:rotate(0); } 30%,65% { transform:rotate(12deg); } }
 @keyframes bot-hello-lines { 0%,15%,85%,100% { opacity:0; } 25%,75% { opacity:.7; } }
@@ -78,10 +78,35 @@
  .bot-preview-controls { left:12px; bottom:12px; max-width:200px; padding:10px 12px; }
  .bot-preview-controls>small { font-size:9px; }
 }
-@media(max-height:580px) { .assistant-arrival { display:none; } .studio-assistant.assistant-is-welcoming .bot-launcher { transform:none; } }
+@media(max-height:420px) { .assistant-arrival { display:none; } .studio-assistant.assistant-is-welcoming .bot-launcher { transform:none; } }
 @media(prefers-reduced-motion:reduce) {
  .noerong-bot *, .studio-assistant .assistant-launcher.bot-launcher, .assistant-arrival { animation:none!important; transition:none!important; }
  .studio-assistant.assistant-is-welcoming .bot-launcher { transform:none; }
 }
 html[data-motion=paused] :is(.noerong-bot *, .studio-assistant .assistant-launcher.bot-launcher, .assistant-arrival) { animation:none; transition:none; }
 html[data-motion=paused] .studio-assistant.assistant-is-welcoming .bot-launcher { transform:none; }
+
+/* Visitor-controlled dock: fixed to the viewport, independent of the chat panel. */
+.bot-dock { --bot-width:76px; --bot-height:89px; position:fixed; width:var(--bot-width); height:var(--bot-height); right:20px; bottom:16px; z-index:72; }
+.bot-dock .bot-launcher { touch-action:none; user-select:none; -webkit-user-select:none; cursor:grab; }
+.noerong-bot-assistant .assistant-panel { z-index:74; }
+.bot-is-dragging .bot-launcher { cursor:grabbing; transform:scale(1.07)!important; transition:transform .18s ease!important; filter:drop-shadow(0 12px 12px #0004); }
+.bot-is-dragging .bot-float,.bot-is-dragging .bot-head { animation:none; }
+.bot-remove-target { position:fixed; bottom:max(24px,env(safe-area-inset-bottom)); left:50%; translate:-50% 0; display:flex; flex-direction:column; justify-content:center; gap:5px; width:280px; min-height:84px; padding:16px 16px 16px 70px; border:1px solid var(--line); border-radius:24px; color:var(--ink); background:var(--paper); box-shadow:0 12px 60px #0004; pointer-events:none; visibility:hidden; opacity:0; z-index:71; transition:background .16s,border-color .16s,opacity .16s; }
+.bot-remove-active { visibility:visible; opacity:1; }
+.bot-remove-cross { position:absolute; left:16px; top:50%; translate:0 -50%; display:grid; place-items:center; width:42px; height:42px; border:1px solid var(--line); border-radius:50%; font:300 32px/1 var(--font-geist),sans-serif; }
+.bot-over-remove .bot-launcher { opacity:.22; transform:scale(.75)!important; }
+.bot-remove-target strong { font-size:13px; font-weight:550; }
+.bot-remove-target small { color:var(--muted); font-size:11px; }
+.bot-remove-ready { background:#702b32; color:#fff; border-color:#f2a2ad; }
+.bot-remove-ready small { color:#ffe0e4; }
+.bot-remove-ready .bot-remove-cross { border-color:#ffd6dc; background:#ffffff18; }
+.bot-visibility-control { border:0; padding:8px 0; background:none; color:inherit; font:inherit; cursor:pointer; min-height:40px; text-underline-offset:4px; }
+.bot-visibility-control:hover { text-decoration:underline; }
+.bot-visibility-control:focus-visible { outline:2px solid var(--accent-text); outline-offset:5px; border-radius:3px; }
+.policy-links { flex-wrap:wrap; align-items:center; }
+@media(max-width:600px) {
+ .bot-dock { --bot-width:64px; --bot-height:75px; right:12px; bottom:max(12px,env(safe-area-inset-bottom)); }
+ .noerong-bot-assistant .assistant-panel { position:fixed; left:16px; right:16px; width:auto; bottom:max(98px,calc(env(safe-area-inset-bottom) + 86px)); }
+}
+@media(prefers-reduced-motion:reduce) { .bot-remove-target,.bot-is-dragging .bot-launcher { transition:none!important; } }

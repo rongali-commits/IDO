@@ -8,6 +8,7 @@ import "./motion-studies.css";
 import "./appearance.css";
 import { StudioAssistant } from "@/components/studio-assistant";
 import { StudioMotion } from "@/components/studio-motion";
+import { SpaceBackground } from "@/components/space-background";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
 const mono = Geist_Mono({ subsets: ["latin"], variable: "--font-mono" });
@@ -81,6 +82,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en" suppressHydrationWarning>
       <head><script id="noerong-appearance-init" dangerouslySetInnerHTML={{ __html: `try{document.documentElement.dataset.appearance=localStorage.getItem("noerong-appearance-v1")==="midnight"?"midnight":"studio"}catch{}` }} /></head>
       <body className={`${geist.variable} ${mono.variable} ${editorial.variable}`}>
+        <SpaceBackground />
         <a className="skip-link" href="#main-content">Skip to content</a>
         {children}
         <StudioMotion />

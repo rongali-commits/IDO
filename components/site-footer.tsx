@@ -1,5 +1,6 @@
 import { Link } from "@/components/plain-link";
 import { MotionControl } from "@/components/motion-preference";
+import { BotVisibilityControl } from "@/components/bot-preference";
 
 export function SiteFooter({ showProjectCta = true }: { showProjectCta?: boolean }) {
   return (
@@ -21,7 +22,7 @@ export function SiteFooter({ showProjectCta = true }: { showProjectCta?: boolean
       </div>
       <div className="shell footer-bottom">
         <span>© {new Date().getFullYear()} Noerong</span>
-        <nav className="policy-links" aria-label="Studio policies"><Link href="/mission">Mission</Link><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link></nav>
+        <nav className="policy-links" aria-label="Studio policies"><Link href="/mission">Mission</Link><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link><BotVisibilityControl /></nav>
         <MotionControl />
         <span>Software that earns its place.</span>
       </div>

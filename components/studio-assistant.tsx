@@ -4,16 +4,23 @@ import { lazy, Suspense, useEffect, useRef, useState, useSyncExternalStore } fro
 import { safeAssistantLink } from "@/lib/assistant-links";
 import { useMotionPaused } from "@/components/motion-preference";
 import { NoerongBot } from "@/components/noerong-bot";
+import { DraggableBot } from "@/components/draggable-bot";
+import { useBotHidden } from "@/components/bot-preference";
 import "./studio-assistant.css";
 
 type Message = { role: "user" | "assistant"; content: string };
 const ReactMarkdown = lazy(() => import("react-markdown"));
-const suggestions = ["Which project fits my idea?", "What can Chaitanya build?", "How does a project work?"];
+const suggestions = ["Which project fits my idea?", "What can Rongali build?", "How does a project work?"];
 const welcomeKey = "noerong-bot-welcome-v2";
 const subscribePreview = () => () => {};
 const isLocalPreview = () => ["localhost", "127.0.0.1"].includes(window.location.hostname) && new URLSearchParams(window.location.search).has("bot-preview");
 
 export function StudioAssistant() {
+  const hidden = useBotHidden();
+  return hidden ? null : <AssistantWidget />;
+}
+
+function AssistantWidget() {
   const paused = useMotionPaused();
   const preview = useSyncExternalStore(subscribePreview, isLocalPreview, () => false);
   const [open, setOpen] = useState(false);
@@ -47,7 +54,7 @@ export function StudioAssistant() {
 
   useEffect(() => {
     if (paused || open || welcomeAttempted.current || window.location.pathname !== "/") return;
-    try { if (sessionStorage.getItem(welcomeKey)) return; } catch { /* Session storage is optional. */ }
+    try { if (sessionStorage.getItem(welcomeKey) || sessionStorage.getItem("noerong-bot-position-v1")) return; } catch { /* Session storage is optional. */ }
     const arrival = setTimeout(() => {
       // Never interrupt someone who has already started navigating or typing.
       if (document.hidden || window.scrollY > 100 || document.activeElement?.matches("input, textarea, button, a, summary")) return;
@@ -103,7 +110,7 @@ export function StudioAssistant() {
       const response = await fetch("/api/assistant", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messages: history.slice(-9) }), signal: controller.signal });
       if (!response.ok) {
         const data = await response.json().catch(() => ({}));
-        throw new Error(data && typeof data === "object" && "error" in data && typeof data.error === "string" ? data.error : "I couldn't connect just now. Please try again or contact Chaitanya directly.");
+        throw new Error(data && typeof data === "object" && "error" in data && typeof data.error === "string" ? data.error : "I couldn't connect just now. Please try again or contact Rongali directly.");
       }
       if (!response.body) throw new Error("The answer couldn't be loaded. Please try again.");
       const reader = response.body.getReader(); const decoder = new TextDecoder();
@@ -159,13 +166,13 @@ export function StudioAssistant() {
     }}>
       <header className="assistant-header"><NoerongBot compact /><div><strong>Noerong Bot</strong><span>Your AI studio guide</span></div><button type="button" onClick={close} aria-label="Close assistant" className="assistant-icon">×</button></header>
       <div className="assistant-feed" ref={feed}>
-        {!messages.length && <div className="assistant-welcome"><span className="assistant-eyebrow">A GOOD PLACE TO START</span><h2>What are you<br />looking to build?</h2><p>Ask about Chaitanya’s work, explore a project, or tell me about your idea.</p><div className="assistant-suggestions">{suggestions.map(s => <button key={s} onClick={() => void send(s)} disabled={busy}>{s}<span aria-hidden="true">↗</span></button>)}</div><a className="assistant-writing" href="/essays">Here for the writing? Explore the essays ↗</a></div>}
+        {!messages.length && <div className="assistant-welcome"><span className="assistant-eyebrow">A GOOD PLACE TO START</span><h2>What are you<br />looking to build?</h2><p>Ask about Rongali’s work, explore a project, or tell me about your idea.</p><div className="assistant-suggestions">{suggestions.map(s => <button key={s} onClick={() => void send(s)} disabled={busy}>{s}<span aria-hidden="true">↗</span></button>)}</div><a className="assistant-writing" href="/essays">Here for the writing? Explore the essays ↗</a></div>}
         {messages.filter((_, i) => i % 2 === 0).map((_, turnIndex) => <div className="assistant-turn" key={turnIndex} ref={turnIndex === Math.ceil(messages.length / 2) - 1 ? latestTurn : undefined}>
         {messages.slice(turnIndex * 2, turnIndex * 2 + 2).map((message) => <div className={`assistant-message assistant-message-${message.role}`} key={message.role}>
           <span className="assistant-speaker">{message.role === "user" ? "YOU" : "NOERONG AI"}</span>
           {message.content ? <Suspense fallback={<p>{message.content}</p>}><ReactMarkdown skipHtml allowedElements={["p", "strong", "em", "ul", "ol", "li", "a", "br"]} unwrapDisallowed urlTransform={safeAssistantLink} components={{ a: ({ href, children }) => href ? <a href={href}>{children}</a> : <span>{children}</span> }}>{message.content}</ReactMarkdown></Suspense> : <span className="assistant-thinking" role="status">Reading the studio notes<span aria-hidden="true"> ···</span></span>}
         </div>)}</div>)}
-        {error && <div className="assistant-error" role="alert">{error} <a href="/contact">Contact Chaitanya ↗</a></div>}
+        {error && <div className="assistant-error" role="alert">{error} <a href="/contact">Contact Rongali ↗</a></div>}
       </div>
       <footer className="assistant-bottom">
         <div className="assistant-actions"><a href="/contact">Start a project ↗</a>{messages.length > 0 && <button type="button" onClick={reset}>New conversation</button>}</div>
@@ -178,7 +185,7 @@ export function StudioAssistant() {
         <span className="assistant-sr" role="status" aria-live="polite">{busy ? "Preparing an answer" : messages.at(-1)?.role === "assistant" ? "Answer ready" : ""}</span>
       </footer>
     </section>}
-    <button ref={launcher} type="button" className="assistant-launcher bot-launcher" title={open ? "Close Noerong Bot" : "Chat with Noerong Bot"} aria-expanded={open} aria-controls={open ? "noerong-assistant-panel" : undefined} aria-label={open ? "Close Noerong Bot" : "Chat with Noerong Bot"} onClick={() => open ? close() : openAssistant()}><NoerongBot /><span className="assistant-sr">{open ? "Close Noerong Bot" : "Chat with Noerong Bot"}</span></button>
+    <DraggableBot open={open} launcher={launcher} onToggle={() => open ? close() : openAssistant()} onMove={() => { dismissWelcome(); setOpen(false); }} />
     {preview && <div className="bot-preview-controls"><span>LOCAL MOTION PREVIEW</span><button type="button" disabled={paused || open || showWelcome} onClick={replayWelcome}>{showWelcome ? "Saying hello…" : "Replay hello ↗"}</button><small>{paused ? "Turn site motion on to preview." : "Not published. Your live site is unchanged."}</small></div>}
   </div>;
 }
