@@ -8,6 +8,20 @@ export type ProjectDetail = {
 };
 
 export const projectDetails: Record<string, ProjectDetail> = {
+  dayrate: {
+    audience: "Independent creators, brand collaborators, and developers building creator tools",
+    role: "Product strategy, art direction, interaction design, frontend development, testing, and deployment",
+    year: "2026",
+    overview: "A partnership begins as a conversation, becomes a brief, then turns into dated deliverables and a payment to record. Dayrate brings those moments together with the creator's next introduction: an editable media kit. I designed and built this independent Noerong product around a fictional creator studio. Its brands, audience figures, and financial amounts are sample data, not client results.",
+    approach: "Warm neutral surfaces, precise typography, soft category colors, and original synthetic campaign artwork give the workspace a distinctive identity. Working screens prioritize the next action; the media kit carries the same language into an expressive editorial composition. Shared typed records connect the views. Short entrance sequences and smooth navigation respect reduced-motion preferences, while keyboard controls and visible recovery states support practical daily use.",
+    features: [
+      { title: "From first conversation to final deliverable", description: "Create and edit partnerships with a brief, fee, contact, stage, notes, and deliverables. Switch between a visual grid and pipeline, search, and filter. Campaign changes feed the surrounding overview and progress summaries." },
+      { title: "A calendar connected to the work", description: "Review deliverables in a monthly view, open the campaign behind a date, and mark work complete. Download an ICS snapshot for another calendar. Exports are portable files, not live synchronization." },
+      { title: "An introduction with your point of view", description: "Edit the creator profile, audience figures, and collaboration packages. Preview the media kit and print a focused one-page A4 PDF. Navigation and private partnership records stay out of the printed output." },
+      { title: "Recorded amounts, clearly explained", description: "Review entered fees, received amounts, outstanding balances, and work by category. Payments exceeding the campaign fee are rejected. These are manual records, not bank-confirmed payments or recognized revenue." },
+      { title: "Portable data and considered recovery", description: "JSON backups validate structure, dates, amounts, identifiers, and local image paths before replacement. Oversized imports are rejected, corrupt data is preserved until a recovery choice, and blocked writes show visible feedback. CSV exports escape spreadsheet-sensitive content." },
+    ],
+  },
   seatloom: {
     audience: "Independent creative studios and workshop organizers",
     role: "Product strategy, interface design, full-stack development, testing and deployment",

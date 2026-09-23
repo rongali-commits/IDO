@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 const selected = [
-  { slug: "seatloom", discipline: "Web design · Booking experience", line: "A place for making. A system for gathering.", note: "Editorial warmth meets the practical details of a workshop booking.", className: "work-wide work-seatloom" },
+  { slug: "dayrate", discipline: "Product design · Creator tools", line: "Your work, in good company.", note: "A little editorial warmth for the business of being creative.", className: "work-wide work-dayrate" },
   { slug: "frameproof", discipline: "Product design · Creative tools", line: "Good work deserves clear feedback.", note: "An image-first review space that keeps every decision in context.", className: "work-frameproof" },
   { slug: "margin-and-matter", discipline: "Art direction · Editorial web design", line: "Room for a different perspective.", note: "A considered reading experience with a distinct editorial rhythm.", className: "work-margin" },
   { slug: "signalroom", discipline: "Interface design · Research & AI", line: "From scattered evidence to a clear signal.", note: "A complex research workflow made legible, traceable, and calm.", className: "work-wide work-signalroom" },

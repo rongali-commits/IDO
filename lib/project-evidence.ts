@@ -6,6 +6,17 @@ type ProjectEvidence = {
 };
 
 export const projectEvidence: Record<string, ProjectEvidence> = {
+  dayrate: {
+    architecture: "React, TypeScript, and Vite power seven views. CSS handles responsive layouts and motion, with typed records and a tested domain layer connecting campaigns, deliverables, profiles, packages, totals, and exports. LocalStorage persists the workspace in the current browser and origin. A Docker configuration and lightweight static server support the live Railway deployment.",
+    outcome: "The release passed its production build, 13 domain tests, and 19 browser tests. Responsive checks covered seven views at six widths from 360 to 1440 pixels, with no page-level overflow or page errors. Automated accessibility scans reported no violations in the configured WCAG 2 A/AA and WCAG 2.1 AA rules on seven desktop views. The A4 media kit was visually reviewed, and six smooth-scroll checks passed on the live Railway deployment. These are development checks, not a certification or measured customer outcomes.",
+    deployment: "Deploy the source to buyer-owned static hosting or Railway. Workspace data stays in one browser and website origin; clearing site storage can erase it, and another device has separate data. Export JSON backups for recovery and transfer. This release has no accounts, backend, cloud backup, shared collaboration, payment processing, email delivery, social synchronization, image upload, or AI service. Amounts use USD. Extending those capabilities requires a separate scope.",
+    gallery: [
+      { image: "/products/evidence/dayrate-partnerships.png", width: 1600, height: 1200, caption: "A visual partnership grid connects fictional campaigns, stages, dates, and recorded values." },
+      { image: "/products/evidence/dayrate-media-kit.png", width: 1600, height: 1200, caption: "An editable media kit carries the creator's identity into a focused introduction and printable PDF." },
+      { image: "/products/evidence/dayrate-calendar.png", width: 1600, height: 1200, caption: "Deliverable dates remain connected to their partnership and completion state." },
+      { image: "/products/evidence/dayrate-earnings.png", width: 1600, height: 1200, caption: "Fees and received amounts are clearly labeled as user-entered records. All displayed values are fictional." },
+    ],
+  },
   seatloom: {
     architecture: "React, TypeScript and Vite power the interface. Supabase authentication and PostgreSQL policies separate visitor and organizer access. Transactional database functions handle reservation capacity, waitlists and booking changes. Bolt provides the live deployment; focused local implementation and isolated regression checks keep iteration deliberate.",
     outcome: "The release passed 30 domain tests and 27 isolated database checks. A real-account walkthrough verified email confirmation, workshop creation, publishing, reservation, rescheduling, roster access, check-in and cancellation. A hosted email-type mismatch found during that walkthrough was corrected and retested. These are development checks, not customer outcomes or a security certification.",

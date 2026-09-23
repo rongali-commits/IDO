@@ -1,6 +1,7 @@
 // Only links to reviewed public pages can become clickable model output.
 const pages = new Set(["/", "/about", "/contact", "/projects", "/essays", "/assistant-privacy", "/privacy", "/terms", "/mission"]);
 pages.add("/projects/seatloom");
+pages.add("/projects/dayrate");
 pages.add("/projects/frameproof");
 for (const slug of ["signalroom", "margin-and-matter", "noerong-proposals", "leaddesk-ai", "followdesk", "reviewdesk", "clientdesk", "growthdesk", "sourceroom", "proofread", "ledgerflow", "prospectlab"]) pages.add(`/projects/${slug}`);
 for (const slug of ["would-i-exist-without-world-war-ii", "the-universe-is-not-a-coffee-mug", "the-british-empire-didnt-vanish-it-became-background-noise"]) pages.add(`/essays/${slug}`);

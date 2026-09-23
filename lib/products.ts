@@ -25,6 +25,27 @@ export type Product = {
 
 export const products: Product[] = [
   {
+    slug: "dayrate",
+    name: "Dayrate",
+    stage: "Live product",
+    category: "Creator partnerships and media kits",
+    summary: "A considered workspace for the business of being creative: partnerships, deliverables, recorded payments, and an editable media kit.",
+    problem: "For independent creators who need to keep brand conversations, campaign commitments, and their next introduction connected.",
+    image: "/products/dayrate.png",
+    motionCover: "/products/motion/dayrate.mp4",
+    walkthroughVideo: "/products/walkthroughs/dayrate.mp4",
+    walkthroughDescription: "A narrated tour of the connected creator workflow, including partnerships, calendar, recorded earnings, the printable media kit, and portable backups.",
+    walkthroughMeta: "1600 × 1200 video · 2 minutes 42 seconds · Voice-over · No subtitles",
+    imageAlt: "Dayrate creator studio with warm editorial styling, campaign artwork, and a connected partnership overview",
+    liveUrl: "https://dayrate-creator-studio-production.up.railway.app/",
+    contraUrl: "https://contra.com/s/FUQskFmZ-dayrate-or-creator-workspace-setup-and-customization",
+    sourceKitUrl: "https://contra.com/products/l3YzJFNV-dayrate-or-creator-partnership-studio-source-kit",
+    sourceKitPrice: "$299",
+    startingPrice: "$599",
+    offerNote: "The $299 source kit includes React and TypeScript source, a production build, original synthetic campaign artwork, buyer guide, deployment files, and a commercial license for one end project. The $599 setup service includes the license, one brand configuration, one creator profile with up to three packages, one buyer-owned deployment, two scoped revision rounds, and handoff. Hosting, domains, new features, and ongoing support are separate. Workspace data stays in the current browser; accounts, cloud sync, shared collaboration, and payment processing are not included.",
+    tags: ["Product design", "React", "TypeScript", "Vite"],
+  },
+  {
     slug: "seatloom",
     name: "Seatloom",
     stage: "Live product",
