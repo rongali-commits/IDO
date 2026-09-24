@@ -11,7 +11,7 @@ const float PI=3.14159265359;
 vec4 moon(vec2 q,float radius){
  float d=length(q)/radius;if(d>1.01)return vec4(0);
  vec2 xy=q/radius;vec3 n=vec3(xy,sqrt(max(0.,1.-dot(xy,xy))));
- float a=time*.003;vec3 surface=vec3(n.x*cos(a)+n.z*sin(a),n.y,-n.x*sin(a)+n.z*cos(a));
+ float a=time*(2.*PI/90.);vec3 surface=vec3(n.x*cos(a)+n.z*sin(a),n.y,-n.x*sin(a)+n.z*cos(a));
  vec2 tex=vec2(atan(surface.x,surface.z)/(2.*PI)+.5,.5-asin(surface.y)/PI);
  float light=max(0.,dot(n,normalize(vec3(-.85,.38,.4))));
  vec3 col=texture2D(lunar,tex).rgb*(.025+light*1.15);
@@ -25,7 +25,7 @@ void main(){
  float radius=mix(.192,.142,mobile);
  vec2 center=mix(vec2(.755,.59),vec2(.88,.70),mobile);
  center.y=mix(center.y,.44,phone);
- center+=vec2(sin(time*.027)*.004,cos(time*.027)*.006);
+ center+=vec2(sin(time*.09)*.004,cos(time*.09)*.006);
  vec2 q=(uv-center)*vec2(aspect,1.)/radius;
  float d2=dot(q,q);vec4 result=vec4(0);
  vec3 axis=normalize(vec3(-.27,.91,.32));
@@ -36,7 +36,7 @@ void main(){
   vec3 n=normalize(vec3(q,sphereZ));
   float latitude=asin(clamp(dot(n,axis),-1.,1.));
   float longitude=atan(dot(n,east),dot(n,front));
-  vec2 tex=vec2(fract(longitude/(2.*PI)+.5+time/240.),.5-latitude/PI);
+  vec2 tex=vec2(fract(longitude/(2.*PI)+.5+time/72.),.5-latitude/PI);
   vec3 albedo=texture2D(clouds,tex).rgb;
   float diffuse=max(0.,dot(n,light));
   vec3 color=albedo*(.022+pow(diffuse,1.08)*.96);
@@ -57,7 +57,7 @@ void main(){
   result=vec4(mix(result.rgb,ringColor,alpha),max(result.a,alpha));
  }
  if(result.a<.01){
-  vec2 mc=mix(vec2(.867,.20),vec2(.86,.27),mobile)+vec2(sin(time*.019)*.005,cos(time*.019)*.009);
+  vec2 mc=mix(vec2(.867,.20),vec2(.86,.27),mobile)+vec2(sin(time*.065)*.005,cos(time*.065)*.009);
   mc.y=mix(mc.y,.23,phone);
   result=moon((uv-mc)*vec2(aspect,1.),mix(.083,.058,mobile));
   if(result.a<.01){

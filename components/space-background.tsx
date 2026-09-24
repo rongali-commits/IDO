@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { shootingStarAt } from "@/lib/shooting-stars.mjs";
+import { createStarfield, starCount, starAlpha } from "@/lib/starfield.mjs";
 
 /** Decorative scene. No pointer capture or layout shift; planets load only in Midnight. */
 export function SpaceBackground() {
@@ -32,30 +33,30 @@ export function SpaceBackground() {
     let time = 0;
     let width = 0;
     let height = 0;
-    let seed = 20260923;
-    const random = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
-    const stars = Array.from({ length: 260 }, () => ({ x: random(), y: random(), r: .35 + random() ** 3 * 1.5, phase: random() * Math.PI * 2, depth: .2 + random() * .8 }));
+    const stars = createStarfield();
     const enabled = () => root.dataset.appearance === "midnight" && !document.hidden;
     const animated = () => !reduced.matches && root.dataset.motion !== "paused";
     const draw = (updatePlanets = true) => {
       context.clearRect(0, 0, width, height);
       if (updatePlanets && planets?.draw(width, height, time) && scene) scene.dataset.planets = "ready";
-      const count = width < 600 ? 100 : stars.length;
+      const count = starCount(width, height);
+      if (scene && scene.dataset.starCount !== String(count)) scene.dataset.starCount = String(count);
       for (let i = 0; i < count; i++) {
         const star = stars[i];
         const x = (star.x * width + time * star.depth * 1.3) % width;
         const y = ((star.y * height - time * star.depth * .6) % height + height) % height;
         // Quiet left-hand reading area; a richer field around the hero artwork.
-        const quiet = x < width * .48 ? .45 : 1;
-        const alpha = (.45 + Math.sin(time * .22 + star.phase) * .16) * quiet;
-        if (star.r > 1.2) {
+        const quiet = x < width * .48 ? .65 : 1;
+        const alpha = starAlpha(star, time, quiet);
+        const color = star.warm ? "255,235,211" : "207,229,255";
+        if (star.bright) {
           const glow = context.createRadialGradient(x, y, 0, x, y, star.r * 5);
-          glow.addColorStop(0, `rgba(181,215,255,${alpha * .55})`);
-          glow.addColorStop(1, "rgba(181,215,255,0)");
+          glow.addColorStop(0, `rgba(${color},${alpha * .5})`);
+          glow.addColorStop(1, `rgba(${color},0)`);
           context.fillStyle = glow;
           context.fillRect(x - star.r * 5, y - star.r * 5, star.r * 10, star.r * 10);
         }
-        context.fillStyle = `rgba(221,234,255,${alpha})`;
+        context.fillStyle = `rgba(${color},${alpha})`;
         context.beginPath();
         context.arc(x, y, star.r, 0, Math.PI * 2);
         context.fill();
