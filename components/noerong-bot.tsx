@@ -11,16 +11,21 @@ export function NoerongBot({ compact = false }: { compact?: boolean }) {
       <linearGradient id={`${id}-ceramic`} x1="65" y1="85" x2="185" y2="234" gradientUnits="userSpaceOnUse"><stop stopColor="var(--bot-shell-light,#fffdf7)" /><stop offset=".4" stopColor="var(--bot-shell-mid,#eee9dd)" /><stop offset=".78" stopColor="var(--bot-shell-shade,#d8d1c2)" /><stop offset="1" stopColor="var(--bot-shell-dark,#aaa598)" /></linearGradient>
       <linearGradient id={`${id}-head`} x1="65" y1="46" x2="165" y2="137" gradientUnits="userSpaceOnUse"><stop stopColor="var(--bot-head-light,#fffefa)" /><stop offset=".52" stopColor="var(--bot-head-mid,#f0ece2)" /><stop offset="1" stopColor="var(--bot-head-dark,#b8b2a6)" /></linearGradient>
       <linearGradient id={`${id}-glass`} x1="78" y1="65" x2="149" y2="125" gradientUnits="userSpaceOnUse"><stop stopColor="#41443f" /><stop offset=".45" stopColor="#222721" /><stop offset="1" stopColor="#111710" /></linearGradient>
-      <linearGradient id={`${id}-arm`} x1="152" y1="94" x2="199" y2="173" gradientUnits="userSpaceOnUse"><stop stopColor="var(--bot-arm-light,#fffdf6)" /><stop offset=".56" stopColor="var(--bot-arm-mid,#e8e1d2)" /><stop offset="1" stopColor="var(--bot-arm-dark,#bab3a6)" /></linearGradient>
+      <linearGradient id={`${id}-arm`} x1="-25" y1="0" x2="8" y2="67" gradientUnits="userSpaceOnUse"><stop stopColor="var(--bot-arm-light,#fffdf6)" /><stop offset=".56" stopColor="var(--bot-arm-mid,#e8e1d2)" /><stop offset="1" stopColor="var(--bot-arm-dark,#bab3a6)" /></linearGradient>
       <linearGradient id={`${id}-accent`} x1="91" y1="147" x2="153" y2="203" gradientUnits="userSpaceOnUse"><stop stopColor="#d67a52" /><stop offset=".6" stopColor="#bc4a2a" /><stop offset="1" stopColor="#843e2b" /></linearGradient>
       <radialGradient id={`${id}-shadow`}><stop stopColor="#39392c" stopOpacity=".23" /><stop offset="1" stopColor="#39392c" stopOpacity="0" /></radialGradient>
+      <g id={`${id}-flipper`}>
+        <path d="M0-6C-13-6-28 22-33 46C-36 61-30 72-23 63C-9 46 2 20 7 5C9 0 6-4 0-6Z" fill={paint("arm")} stroke="#b3ad9e" strokeWidth="1.1" />
+        <path d="M-5 3C-16 18-24 36-28 52" stroke="#fffefa" strokeOpacity=".8" strokeWidth="2.5" strokeLinecap="round" />
+      </g>
     </defs>
     <ellipse className="bot-ground-shadow" cx="118" cy="262" rx="75" ry="11" fill={paint("shadow")} />
     <g className="bot-float">
-      <g className="bot-left-arm">
-        <path d="M72 142C59 142 44 170 39 194C36 209 42 220 49 211C63 194 74 168 79 153C81 148 78 144 72 142Z" fill={paint("ceramic")} stroke="#b3ad9e" strokeWidth="1.1" />
-        <path d="M67 151C56 166 48 184 44 200" stroke="#fffefa" strokeOpacity=".8" strokeWidth="2.5" strokeLinecap="round" />
-      </g>
+      {/* Matching sockets and mirrored flippers share one shape and depth plane. */}
+      <circle cx="72" cy="148" r="7" fill={paint("ceramic")} stroke="#aaa696" strokeWidth="1.1" />
+      <circle cx="164" cy="148" r="7" fill={paint("ceramic")} stroke="#aaa696" strokeWidth="1.1" />
+      <g className="bot-left-arm"><use href={`#${id}-flipper`} transform="translate(72 148)" /></g>
+      <g className="bot-wave-arm"><use href={`#${id}-flipper`} transform="translate(164 148) scale(-1 1)" /></g>
       <path d="M96 127L96 147H143L139 126" fill="#7d7c70" />
       <path d="M74 143C82 134 100 134 119 134C138 134 155 136 165 146C174 162 173 199 161 225C150 247 92 247 79 225C66 200 64 161 74 143Z" fill={paint("ceramic")} stroke="#aaa696" strokeWidth="1.2" />
       <path d="M80 151C79 174 80 212 91 226" stroke="#fffefa" strokeOpacity=".85" strokeWidth="4" strokeLinecap="round" />
@@ -30,12 +35,6 @@ export function NoerongBot({ compact = false }: { compact?: boolean }) {
       <circle cx="139" cy="181" r="3" fill="#f8d9ad" />
       <path d="M96 214H106M114 214H124" stroke="#948e81" strokeWidth="2" strokeLinecap="round" />
       <circle className="bot-heart" cx="144" cy="214" r="2.6" fill="#bb4c30" />
-      <g className="bot-wave-arm">
-        <g transform="translate(236 0) scale(-1 1)">
-          <path d="M72 142C59 142 44 170 39 194C36 209 42 220 49 211C63 194 74 168 79 153C81 148 78 144 72 142Z" fill={paint("ceramic")} stroke="#b3ad9e" strokeWidth="1.1" />
-          <path d="M67 151C56 166 48 184 44 200" stroke="#fffefa" strokeOpacity=".8" strokeWidth="2.5" strokeLinecap="round" />
-        </g>
-      </g>
       <g className="bot-head">
         <path d="M55 87C55 58 79 41 117 41C155 41 180 59 180 87C180 117 157 138 117 138C78 138 55 117 55 87Z" fill={paint("head")} stroke="#b5afa1" strokeWidth="1.1" />
         <path d="M70 59C85 51 103 50 119 50" stroke="#fffefa" strokeWidth="3" strokeLinecap="round" />
