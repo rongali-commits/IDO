@@ -10,3 +10,5 @@ dist
 outputs
 work
 *.tsbuildinfo
+public/audio/essays/*.fixed.mp3
+public/audio/essays/*.rebuilt.mp3
