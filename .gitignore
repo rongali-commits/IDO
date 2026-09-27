@@ -45,3 +45,7 @@ next-env.d.ts
 /outputs/
 /work/
 .env*
+
+# Local narration render comparisons; only the canonical essay MP3s should be tracked.
+/public/audio/essays/*.fixed.mp3
+/public/audio/essays/*.rebuilt.mp3
