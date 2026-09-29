@@ -25,6 +25,19 @@ export type Product = {
 
 export const products: Product[] = [
   {
+    slug: "kiln-atlas", name: "Kiln Atlas", stage: "Live product",
+    category: "Ceramics booking and studio operations",
+    summary: "A fictional ceramics studio concept that turns a vague firing inquiry into a structured sample reservation and an owner-ready review record.",
+    problem: "For a solo ceramics studio that needs material details, protected drop-off time, and every sample decision in one place.",
+    image: "/products/kiln-atlas/cover.png",
+    walkthroughVideo: "/products/walkthroughs/kiln-atlas.mp4",
+    walkthroughDescription: "A narrated walkthrough from the public studio story and Ember assistant through booking, confirmation, and the private owner workbench.",
+    walkthroughMeta: "1904 × 934 video · 2 minutes 54 seconds · Voice-over included",
+    imageAlt: "Kiln Atlas ceramics studio concept with a dark editorial hero and textured stoneware vessel",
+    liveUrl: "https://kiln-atlas-booking-flow.lovable.app/",
+    tags: ["Built in Lovable AI", "Booking workflow", "Owner workbench", "AI assistant"],
+  },
+  {
     slug: "dayrate",
     name: "Dayrate",
     stage: "Live product",

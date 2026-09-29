@@ -8,6 +8,20 @@ export type ProjectDetail = {
 };
 
 export const projectDetails: Record<string, ProjectDetail> = {
+  "kiln-atlas": {
+    audience: "Independent ceramics studios and firing services",
+    role: "Brief, product direction, prompting, art direction, workflow testing, and refinement in Lovable AI",
+    year: "2026",
+    overview: "Kiln Atlas is a fictional client brief for a solo ceramics studio in Indiranagar, Bengaluru. The owner has limited 20-minute drop-off windows, needs material information before accepting work, and loses time gathering missing details across messages. The complete product, including its public site, booking flow, data, AI companion, and private workbench, was created from start to finish in Lovable AI under Noerong's direction.",
+    approach: "The experience treats booking as a careful handoff. A visitor chooses a firing, records piece and material details, selects a sample window, reviews the request, and receives a reference. The matching record reaches a protected owner workbench where it can be searched, reviewed, rescheduled, cancelled, and moved toward a simulated kiln board. Ember answers preparation questions without replacing human material judgment.",
+    features: [
+      { title: "A structured front door", description: "Service, dimensions, clay body, rated cone, readiness, glaze information, notes, contact details, and a limited drop-off window are collected in one guided reservation." },
+      { title: "A confirmation with a trace", description: "The completed request returns its chosen time, firing type, and reference number, replacing an open-ended inquiry with a record both sides can identify." },
+      { title: "A private owner workbench", description: "Reservations are grouped by date and status with search, review, reschedule, cancellation, and history controls. The images below reveal this protected workflow without exposing owner access." },
+      { title: "Human judgment stays visible", description: "The system gathers compatibility evidence but never claims to approve or fire physical work. A person records the simulated review outcome before a record can advance." },
+      { title: "Ember supports the handoff", description: "A friendly ceramic companion greets visitors and answers preparation and firing questions. It can be hidden or replayed without turning the booking into another chat thread." },
+    ],
+  },
   dayrate: {
     audience: "Independent creators, brand collaborators, and developers building creator tools",
     role: "Product strategy, art direction, interaction design, frontend development, testing, and deployment",
