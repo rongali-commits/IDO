@@ -1,5 +1,13 @@
 export type DesignStudy = { premise: string; decisions: { title: string; detail: string }[] };
 export const designStudies: Record<string, DesignStudy> = {
+  "kiln-atlas": {
+    premise: "A ceramics booking tool should feel as considered as the material practice it supports. Editorial storytelling builds trust, while the operational flow stays precise about what a reservation can and cannot decide.",
+    decisions: [
+      { title: "The material leads", detail: "Stoneware imagery, kiln-dark surfaces, warm clay accents, and measured typography give the fictional studio a distinct identity before asking for form details." },
+      { title: "Ask once, carry it forward", detail: "Material and scheduling answers move from booking to confirmation and owner review as one record, reducing repeated questions." },
+      { title: "Automation stops at judgment", detail: "Availability and information capture are streamlined, while firing compatibility remains an explicit owner decision." },
+    ],
+  },
   dayrate: {
     premise: "A creator's working tools should feel connected to their creative identity. Dayrate balances expressive art direction with the quiet clarity of a useful operational workspace.",
     decisions: [

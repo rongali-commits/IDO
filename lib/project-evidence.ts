@@ -6,6 +6,16 @@ type ProjectEvidence = {
 };
 
 export const projectEvidence: Record<string, ProjectEvidence> = {
+  "kiln-atlas": {
+    architecture: "The full experience was created in Lovable AI, including the responsive public site, multi-step booking flow, Lovable Cloud records, protected email-link owner access, DeepSeek-powered Ember assistant, and deployed build. Noerong supplied the fictional client brief, product direction, content, prompts, review criteria, testing, and refinement.",
+    outcome: "The working concept demonstrates the full path from an inbound firing question to a recorded sample booking. A test journey produced reference KA-ZDCA-BR4S for Thursday, 1 October at 12:00 pm, and the same reference appears in the private workbench with its material details. This is verified product behavior using fictional records, not a measured business result.",
+    deployment: "Kiln Atlas is a public portfolio concept, not an operating ceramics studio and not a product offered for sale. Reservations, reviews, kiln stages, and assistant conversations are simulations. It does not send transactional email, take payment, inspect physical clay, confirm firing compatibility, or create real appointments. A real launch would require a verified studio, service policies, transactional messaging, monitoring, and production data controls.",
+    gallery: [
+      { image: "/products/kiln-atlas/workbench.png", width: 1600, height: 1000, caption: "The protected workbench groups reservations by date and status. Counts make the owner's next review visible." },
+      { image: "/products/kiln-atlas/reservation.png", width: 1585, height: 1000, caption: "The video booking appears as KA-ZDCA-BR4S, with its time, firing, dimensions, clay body, rated cone, and readiness in one record." },
+      { image: "/products/kiln-atlas/review-controls.png", width: 1585, height: 1051, caption: "Review controls preserve the human decision, with private and customer-facing notes kept beside the sample." },
+    ],
+  },
   dayrate: {
     architecture: "React, TypeScript, and Vite power seven views. CSS handles responsive layouts and motion, with typed records and a tested domain layer connecting campaigns, deliverables, profiles, packages, totals, and exports. LocalStorage persists the workspace in the current browser and origin. A Docker configuration and lightweight static server support the live Railway deployment.",
     outcome: "The release passed its production build, 13 domain tests, and 19 browser tests. Responsive checks covered seven views at six widths from 360 to 1440 pixels, with no page-level overflow or page errors. Automated accessibility scans reported no violations in the configured WCAG 2 A/AA and WCAG 2.1 AA rules on seven desktop views. The A4 media kit was visually reviewed, and six smooth-scroll checks passed on the live Railway deployment. These are development checks, not a certification or measured customer outcomes.",
