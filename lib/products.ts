@@ -32,7 +32,7 @@ export const products: Product[] = [
     image: "/products/kiln-atlas/cover.png",
     walkthroughVideo: "/products/walkthroughs/kiln-atlas.mp4",
     walkthroughDescription: "A narrated walkthrough from the public studio story and Ember assistant through booking, confirmation, and the private owner workbench.",
-    walkthroughMeta: "1904 × 934 video · 2 minutes 54 seconds · Voice-over included",
+    walkthroughMeta: "1280 × 628 video · 2 minutes 54 seconds · Voice-over included",
     imageAlt: "Kiln Atlas ceramics studio concept with a dark editorial hero and textured stoneware vessel",
     liveUrl: "https://kiln-atlas-booking-flow.lovable.app/",
     tags: ["Built in Lovable AI", "Booking workflow", "Owner workbench", "AI assistant"],
