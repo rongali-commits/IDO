@@ -6,6 +6,7 @@ import "./studio-home.css";
 import "./studio-craft.css";
 import "./motion-studies.css";
 import "./appearance.css";
+import "./kiln-case-study.css";
 import { StudioAssistant } from "@/components/studio-assistant";
 import { StudioMotion } from "@/components/studio-motion";
 import { SpaceBackground } from "@/components/space-background";

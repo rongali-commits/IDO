@@ -17,7 +17,7 @@ export const projectDetails: Record<string, ProjectDetail> = {
     features: [
       { title: "A structured front door", description: "Service, dimensions, clay body, rated cone, readiness, glaze information, notes, contact details, and a limited drop-off window are collected in one guided reservation." },
       { title: "A confirmation with a trace", description: "The completed request returns its chosen time, firing type, and reference number, replacing an open-ended inquiry with a record both sides can identify." },
-      { title: "A private owner workbench", description: "Reservations are grouped by date and status with search, review, reschedule, cancellation, and history controls. The images below reveal this protected workflow without exposing owner access." },
+      { title: "A private owner workbench", description: "Reservations are grouped by date and status with search, review, reschedule, cancellation, and history controls. The owner walkthrough shows this protected workflow without exposing owner access." },
       { title: "Human judgment stays visible", description: "The system gathers compatibility evidence but never claims to approve or fire physical work. A person records the simulated review outcome before a record can advance." },
       { title: "Ember supports the handoff", description: "A friendly ceramic companion greets visitors and answers preparation and firing questions. It can be hidden or replayed without turning the booking into another chat thread." },
     ],

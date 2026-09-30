@@ -18,7 +18,7 @@
 .hero-eyeline p { margin:0; display:flex; align-items:center; gap:9px; }
 .hero-eyeline>span { color:var(--muted); }
 .studio-dot { width:6px; height:6px; background:var(--accent); border-radius:50%; }
-.design-hero-stage { display:grid; grid-template-columns:1.1fr 1fr; align-items:center; gap:20px; padding:28px 0 38px; }
+.design-hero-stage { display:grid; grid-template-columns:1.1fr 1fr; align-items:start; gap:20px; padding:28px 0 38px; }
 .design-hero-type { position:relative; z-index:1; }
 .design-hero-type h1 { margin:0; font-size:clamp(76px,9.7vw,148px); font-weight:450; line-height:.91; letter-spacing:-.075em; text-wrap:initial; }
 .design-hero-type h1>span { display:block; }
