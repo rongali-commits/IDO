@@ -29,7 +29,7 @@ export const products: Product[] = [
     category: "Ceramics booking and studio operations",
     summary: "A fictional ceramics studio concept that turns a vague firing inquiry into a structured sample reservation and an owner-ready review record.",
     problem: "For a solo ceramics studio that needs material details, protected drop-off time, and every sample decision in one place.",
-    image: "/products/kiln-atlas/cover-motion-poster.jpg",
+    image: "/products/kiln-atlas/cover-hd.png",
     motionCover: "/products/kiln-atlas/cover-loop.mp4",
     walkthroughVideo: "/products/walkthroughs/kiln-atlas.mp4",
     walkthroughDescription: "A narrated walkthrough from the public studio story and Ember assistant through booking, confirmation, and the private owner workbench.",
