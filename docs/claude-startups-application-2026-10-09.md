@@ -23,11 +23,7 @@ Startup credits, architecture guidance, and evaluation support to standardize Si
 
 ## What Noerong is building on Claude
 
-Noerong is bringing Claude into SignalRoom, an evidence-first customer intelligence product for SaaS teams, research consultancies, and customer-led agencies. SignalRoom turns interviews, support conversations, surveys, and reviews into traceable themes, prioritized opportunities, cited answers, and decision-ready reports.
-
-Claude will power evidence-constrained synthesis and source-linked question answering. Outputs must cite the workspace records that support a conclusion and communicate uncertainty when the evidence is incomplete, rather than inventing unsupported findings.
-
-Noerong is a bootstrapped, revenue-generating SaaS product studio founded in October 2024 and operated by a solo founder. Its products already serve real users. Anthropic support would help move this Claude workflow from founder-led validation into a reliable production deployment.
+Noerong is bringing Claude into SignalRoom, an evidence-first customer intelligence product for SaaS teams. It turns interviews, support conversations, surveys, and reviews into traceable themes, prioritized opportunities, cited answers, and decision-ready reports. Claude will power evidence-constrained synthesis and source-linked Q&A that cites workspace records and states uncertainty when evidence is incomplete. Noerong is bootstrapped, revenue-generating, and already serves real users.
 
 ## Verification links
 
