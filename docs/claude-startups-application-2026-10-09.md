@@ -10,7 +10,7 @@ Prepared for review on 9 October 2026. These answers distinguish current busines
 - Country: India
 - City: Bengaluru
 - Industry: Software & SaaS
-- Founded: October 2024
+- Founded: December 2021
 - Latest funding round: Not yet raised
 - Raised outside funding in the last two years: No
 - Investors: Not applicable

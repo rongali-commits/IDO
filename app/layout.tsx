@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     default: "Noerong | Independent SaaS product studio",
     template: "%s | Noerong",
   },
-  description: "Noerong is an independent SaaS product studio founded in October 2024 by Rongali Chaitanya in Bengaluru, India.",
+  description: "Noerong is an independent SaaS product studio founded in December 2021 by Rongali Chaitanya in Bengaluru, India.",
   alternates: { canonical: "/" },
   icons: {
     icon: [{ url: "/icon-192.png", type: "image/png", sizes: "192x192" }],
@@ -58,7 +58,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     url: "https://noerong.com",
     logo: "https://noerong.com/icon-192.png",
     description: "An independent SaaS product studio building practical AI and automation products.",
-    foundingDate: "2024-10",
+    foundingDate: "2021-12",
     email: "hello@noerong.com",
     numberOfEmployees: {
       "@type": "QuantitativeValue",
