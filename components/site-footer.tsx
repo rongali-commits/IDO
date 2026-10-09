@@ -13,7 +13,7 @@ export function SiteFooter({ showProjectCta = true }: { showProjectCta?: boolean
       <div className="shell footer-main">
         <div>
           <Link className="wordmark wordmark-large" href="/">noerong<span>.</span></Link>
-          <p>Independent design & development.<br />Built in Bengaluru, available worldwide.</p>
+          <p>Bootstrapped, solo-founder SaaS product studio.<br />Founded October 2024 in Bengaluru.</p>
         </div>
         <div className="footer-links">
           <nav aria-label="Footer pages"><span>Explore</span><Link href="/projects">Projects</Link><Link href="/about">About</Link><Link href="/essays">Writing</Link><Link href="/contact">Contact</Link></nav>
