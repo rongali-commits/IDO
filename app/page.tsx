@@ -13,8 +13,8 @@ import { products } from "@/lib/products";
 import { WaysToWork } from "@/components/ways-to-work";
 
 export const metadata: Metadata = {
-  title: { absolute: "Noerong | Independent design & development" },
-  description: "Distinctive websites and thoughtful digital products. An independent design and development studio by Rongali Chaitanya, from first idea to working experience.",
+  title: { absolute: "Noerong | Independent SaaS product studio" },
+  description: "Noerong is an independent SaaS product studio founded in October 2024 by Rongali Chaitanya in Bengaluru, building thoughtful software, AI systems, and automation.",
   alternates: { canonical: "/" },
 };
 const selected = [
@@ -29,7 +29,7 @@ export default function Home() {
     <main className="curated-home">
       <SiteHeader />
       <section className="design-hero shell" aria-labelledby="home-title">
-        <div className="hero-eyeline"><p><span className="studio-dot" /> Independent design & development</p><span>Bengaluru, India / Working worldwide</span></div>
+        <div className="hero-eyeline"><p><span className="studio-dot" /> Independent SaaS product studio</p><span>Founded October 2024 / Bengaluru, India</span></div>
         <div className="design-hero-stage"><div className="design-hero-type"><h1 id="home-title"><span>Made to</span><span><em>matter.</em></span></h1><p>Websites with character.<br />Products with purpose.</p></div><KineticForm /></div>
         <div className="design-hero-bottom"><a className="work-jump" href="#selected-work"><span className="arrow-disc" aria-hidden="true">↓</span><span>Explore selected work<small>Four projects, one considered approach</small></span></a><p>I’m Rongali, the designer and developer behind Noerong. I bring a clear point of view to the way things look, move, and work.</p><div className="hero-motion"><MotionControl /></div></div>
       </section>
@@ -50,7 +50,7 @@ export default function Home() {
         <article data-reveal><span>02</span><div><h3>Make every choice count.</h3><p>Type, space, imagery, and motion share a visual language. Build a hierarchy that feels natural, from the largest headline to the smallest state.</p><small>Web design / Interface systems / Motion</small></div></article>
         <article data-reveal><span>03</span><div><h3>Carry the idea all the way.</h3><p>Build the real experience. Check the small screens, the keyboard paths, the loading states, and the handoff. The finish is part of the design.</p><small>Development / Quality review / Launch</small></div></article>
       </div></div></section>
-      <section className="studio-introduction shell" aria-labelledby="intro-title"><div className="intro-portrait" data-reveal><Image src="/about/rongali-chaitanya-color.png" alt="Rongali Chaitanya, designer, developer, and founder of Noerong" width={1254} height={1254} sizes="(max-width: 700px) 80vw, 30vw" /><span>Rongali Chaitanya / Founder</span></div><div className="intro-copy"><p className="section-kicker">04 / The independent spirit</p><h2 id="intro-title">One mind.<br /><em>Many moving parts.</em></h2><p>Good design and good engineering should be in the same conversation. At Noerong, they’re handled by the same person.</p><p>I bring 5+ years in IT and software to an independent practice spanning web design, digital products, and practical AI systems. A small studio, with care that carries from the first sketch to the final build.</p><Link className="text-link" href="/about">A little more about me <span aria-hidden="true">↗</span></Link></div></section>
+      <section className="studio-introduction shell" aria-labelledby="intro-title"><div className="intro-portrait" data-reveal><Image src="/about/rongali-chaitanya-color.png" alt="Rongali Chaitanya, designer, developer, and founder of Noerong" width={1254} height={1254} sizes="(max-width: 700px) 80vw, 30vw" /><span>Rongali Chaitanya / Solo founder</span></div><div className="intro-copy"><p className="section-kicker">04 / The independent spirit</p><h2 id="intro-title">One mind.<br /><em>Many moving parts.</em></h2><p>Founded in October 2024, Noerong is a bootstrapped, solo-founder SaaS product studio that brings product thinking, design, engineering, and deployment together.</p><p>I bring 5+ years in IT and software to work spanning web design, digital products, and practical AI systems, with care that carries from the first sketch to the final build.</p><Link className="text-link" href="/about">Company and founder details <span aria-hidden="true">↗</span></Link></div></section>
       <WaysToWork />
       <section className="studio-notes shell" aria-labelledby="notes-title"><div className="notes-heading"><p className="section-kicker">05 / Outside the canvas</p><h2 id="notes-title">A curious mind<br /><em>keeps wandering.</em></h2><p>Personal essays on history, philosophy, technology, and the questions that stay with me.</p><Link className="text-link" href="/essays">All writing <span aria-hidden="true">↗</span></Link></div><div className="notes-list">{essays.map(essay => <article key={essay.slug}><Link href={`/essays/${essay.slug}`} className="notes-image"><Image src={essay.coverImage} alt={essay.coverAlt} fill sizes="(max-width: 700px) 30vw, 160px" /></Link><div><p>{essay.topic} / {formatDate(essay.date)}</p><h3><Link href={`/essays/${essay.slug}`}>{essay.title}</Link></h3><Link className="text-link" href={`/essays/${essay.slug}`}>Read essay <span aria-hidden="true">↗</span></Link></div></article>)}</div></section>
       <SiteFooter />

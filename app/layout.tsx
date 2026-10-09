@@ -23,10 +23,10 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   metadataBase: new URL("https://noerong.com"),
   title: {
-    default: "Noerong | Independent design & development",
+    default: "Noerong | Independent SaaS product studio",
     template: "%s | Noerong",
   },
-  description: "Distinctive websites and thoughtful digital products, designed and built by Rongali Chaitanya at Noerong.",
+  description: "Noerong is an independent SaaS product studio founded in October 2024 by Rongali Chaitanya in Bengaluru, India.",
   alternates: { canonical: "/" },
   icons: {
     icon: [{ url: "/icon-192.png", type: "image/png", sizes: "192x192" }],
@@ -36,14 +36,14 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://noerong.com",
     siteName: "Noerong",
-    title: "Noerong | Independent design & development",
-    description: "Distinctive websites and thoughtful digital products. From a clear idea to a working experience.",
+    title: "Noerong | Independent SaaS product studio",
+    description: "Independent SaaS, AI, and automation products founded and built by Rongali Chaitanya in Bengaluru.",
     images: [{ url: "/og-design-2026.webp", width: 1200, height: 630, alt: "Noerong independent design and development studio" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Noerong | Independent design & development",
-    description: "Distinctive websites and thoughtful digital products. From a clear idea to a working experience.",
+    title: "Noerong | Independent SaaS product studio",
+    description: "Independent SaaS, AI, and automation products founded and built by Rongali Chaitanya in Bengaluru.",
     images: ["/og-design-2026.webp"],
   },
   robots: { index: true, follow: true },
@@ -58,6 +58,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     url: "https://noerong.com",
     logo: "https://noerong.com/icon-192.png",
     description: "An independent SaaS product studio building practical AI and automation products.",
+    foundingDate: "2024-10",
+    email: "hello@noerong.com",
+    numberOfEmployees: {
+      "@type": "QuantitativeValue",
+      value: 1,
+    },
     founder: {
       "@type": "Person",
       "@id": "https://noerong.com/about#rongali",
@@ -68,6 +74,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         "https://github.com/rongali-commits",
         "https://www.linkedin.com/in/rongalichaitanya",
       ],
+    },
+    foundingLocation: {
+      "@type": "Place",
+      address: { "@type": "PostalAddress", addressLocality: "Bengaluru", addressCountry: "IN" },
     },
     location: {
       "@type": "Place",
