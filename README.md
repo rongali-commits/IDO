@@ -1,5 +1,9 @@
 # Noerong
 
+[![Checks](https://github.com/rongali-commits/IDO/actions/workflows/checks.yml/badge.svg)](https://github.com/rongali-commits/IDO/actions/workflows/checks.yml)
+
+[Studio](https://noerong.com) · [Live studio](https://noerong.com) · [Contact](https://noerong.com/contact)
+
 Noerong is a product studio focused on practical SaaS products for small teams, agencies, and growing businesses.
 
 This repository contains the production portfolio at [noerong.com](https://noerong.com), including product showcases and the preserved Noerong essay archive.

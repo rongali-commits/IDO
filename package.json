@@ -11,7 +11,8 @@
     "build:vercel": "node scripts/check-content.mjs && node scripts/build-vercel.mjs",
     "start": "vinext start",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern .next-vercel",
-    "check:content": "node scripts/check-content.mjs"
+    "check:content": "node scripts/check-content.mjs",
+    "test": "node --test scripts/*.test.mjs"
   },
   "dependencies": {
     "drizzle-orm": "^0.45.2",
